@@ -1,6 +1,6 @@
 I am stars! 
 I like to draw!
-Here is a simple guide on how to make this portfolio website!
+Here is a simple guide on how to make this portfolio website! 
 
 This site was built with:
 HTML for website structure and content.
