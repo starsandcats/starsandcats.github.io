@@ -22,7 +22,7 @@ For updating when you go to the repository upload everything to the appropriate 
 Edit the index.html to add new galleries and other sections of your website
 *ITS IMPORTANT THAT YOU MAKE SURE EACH IMAGE PATH AND FILENAME MATCHES THE UPLOADED FILE EXACTLY INCLUDING CAPITALIZATION AND FILE EXTENSION* when you do not do this there will be a "image not found" in place of the image
 
-if the site fails or anything check the settings then the pages and actions tabs if the site will not update or a deployment error
+if the site fails or anything check the settings then the pages and actions tabs if the site will not update or in case of a deployment error
 
 
 ⣬⡙⡻⣿⣿⣿⣷⣞⡻⡶⢀⣀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡠⠃⠀⠀⢀⡼⣹⣟⣿⡿⣟⡟⢁⣴⣿⣿⢣⡃
