@@ -30,6 +30,59 @@
       height: auto;
       display: block;
     }
+    
+/* Make gallery artwork clickable */
+.gallery img {
+  cursor: zoom-in;
+  transition: opacity 0.2s ease;
+}
+
+.gallery img:hover {
+  opacity: 0.85;
+}
+
+/* Full-screen dark overlay */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.88);
+  justify-content: center;
+  align-items: center;
+  padding: 50px 20px;
+  box-sizing: border-box;
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+/* Enlarged artwork */
+.lightbox img {
+  max-width: 90vw;
+  max-height: 85vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* X close button */
+.lightbox-close {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  color: white;
+  font-size: 42px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.lightbox-close:hover {
+  opacity: 0.7;
+}
   </style>
 </head>
 <body>
@@ -48,5 +101,49 @@
      <img src="../images/illustration/ripped.jpg"
          alt="Illustration: Ripped">
   </div>
+  
+<div class="lightbox" id="lightbox" role="dialog"
+     aria-modal="true" aria-label="Enlarged artwork">
+  <button class="lightbox-close" id="lightboxClose"
+          aria-label="Close enlarged image">&times;</button>
+  <img id="lightboxImage" src="" alt="">
+</div>
+
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImage = document.getElementById('lightboxImage');
+  const closeButton = document.getElementById('lightboxClose');
+
+  document.querySelectorAll('.gallery img').forEach(img => {
+    img.addEventListener('click', () => {
+      lightboxImage.src = img.src;
+      lightboxImage.alt = img.alt;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      closeButton.focus();
+    });
+  });
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    lightboxImage.src = '';
+    document.body.style.overflow = '';
+  }
+
+  closeButton.addEventListener('click', closeLightbox);
+
+  lightbox.addEventListener('click', event => {
+    if (event.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && lightbox.classList.contains('active')) {
+      closeLightbox();
+    }
+  });
+</script>
+</body>
 </body>
 </html>
