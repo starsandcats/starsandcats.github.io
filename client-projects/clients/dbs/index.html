@@ -1,1 +1,175 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DBS — starsandtigers</title>
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #181818;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background: #050505;
+  padding: 28px 5%;
+  border-bottom: 1px solid #777;
+}
+
+.brand {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+nav {
+  text-align: center;
+  margin-top: 22px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 13px;
+}
+
+nav a:hover, .back:hover { color: #ffdc00; }
+
+h1 {
+  text-align: center;
+  font-size: clamp(38px, 6vw, 68px);
+  margin: 60px 10px 25px;
+}
+
+.description {
+  max-width: 650px;
+  margin: 0 auto 55px;
+  padding: 0 20px;
+  text-align: center;
+  line-height: 1.8;
+}
+
+.gallery {
+  width: min(950px, 90%);
+  margin: 0 auto 60px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.gallery img {
+  width: 100%;
+  display: block;
+  cursor: zoom-in;
+  transition: opacity .2s;
+}
+
+.gallery img:hover { opacity: .8; }
+
+.back {
+  display: block;
+  text-align: center;
+  margin: 35px;
+  color: white;
+  text-decoration: none;
+}
+
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  background: rgba(0,0,0,.94);
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+}
+
+.lightbox.active { display: flex; }
+
+.lightbox img {
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 28px;
+  color: white;
+  background: none;
+  border: 0;
+  font-size: 38px;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .gallery { grid-template-columns: 1fr; }
+  nav a { margin: 0 5px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">starsandtigers</div>
+  <nav>
+    <a href="../../">Home</a>
+    <a href="../../illustrations/">Illustrations</a>
+    <a href="../../animations/">Animations</a>
+    <a href="../../client-projects/">Client Projects</a>
+    <a href="../../sketches/">Sketches</a>
+  </nav>
+</header>
+
+<h1>DBS</h1>
+
+<div class="description">
+  <p>Selected artwork and creative projects for DBS.</p>
+</div>
+
+<main class="gallery">
+  <img src="../../images/clients/dbs/dbsposter.jpg" alt="DBS poster">
+  <img src="../../images/clients/dbs/dbsrecord.jpg" alt="DBS record">
+</main>
+
+<a class="back" href="../../client-projects/">← Back to Client Projects</a>
+
+<div class="lightbox" id="lightbox">
+  <button class="close" aria-label="Close image">&times;</button>
+  <img src="" alt="Enlarged artwork">
+</div>
+
+<script>
+const lightbox = document.getElementById('lightbox');
+const enlarged = lightbox.querySelector('img');
+
+document.querySelectorAll('.gallery img').forEach(img => {
+  img.addEventListener('click', () => {
+    enlarged.src = img.src;
+    enlarged.alt = img.alt;
+    lightbox.classList.add('active');
+  });
+});
+
+lightbox.addEventListener('click', event => {
+  if (event.target === lightbox ||
+      event.target.classList.contains('close')) {
+    lightbox.classList.remove('active');
+  }
+});
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') lightbox.classList.remove('active');
+});
+</script>
+
+</body>
+</html>
+
