@@ -97,6 +97,35 @@
   opacity: 0.7;
 }
   </style>
+  ```css
+.instagram-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: white;
+    text-decoration: none;
+    margin-top: 15px;
+}
+
+.instagram-icon {
+    font-size: 32px;
+}
+
+.instagram-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.instagram-info small {
+    color: #999;
+    font-size: 12px;
+}
+
+.instagram-link:hover {
+    opacity: 0.7;
+}
+```
 </head>
 <body>
   <header>
@@ -134,6 +163,15 @@
     </section>
 
     <section id="contact">
+      ```html
+<a href="https://www.instagram.com/starsandtigers/" target="_blank" rel="noopener noreferrer" class="instagram-link">
+    <span class="instagram-icon">◎</span>
+    <span class="instagram-info">
+        <strong>@starsandtigers</strong>
+        <small>Follow my work on Instagram</small>
+    </span>
+</a>
+```
       <h2>Contact</h2>
       <p>Instagram: @starsandtigers</p>
     </section>
