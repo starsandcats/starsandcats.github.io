@@ -1,43 +1,19 @@
- <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>starsandtigers — Art Portfolio</title>
+
   <style>
-.instagram-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    color: white;
-    text-decoration: none;
-    margin-top: 15px;
-}
-
-.instagram-icon {
-    font-size: 32px;
-}
-
-.instagram-info {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.instagram-info small {
-    color: #999;
-    font-size: 12px;
-}
-
-.instagram-link:hover {
-    opacity: 0.7;
-}
     body {
       margin: 0;
       background: #f7f5f0;
       color: #222;
-      font-family: Arial, sans-serif; 
+      font-family: Arial, sans-serif;
     }
+
     header {
       padding: 32px 6%;
       display: flex;
@@ -45,144 +21,239 @@
       align-items: center;
       border-bottom: 1px solid #ddd;
     }
+
+    /* Instagram logo beside branding */
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .header-instagram {
+      display: inline-flex;
+      align-items: center;
+      color: #000000;
+      text-decoration: none;
+    }
+
+    .header-instagram svg {
+      width: 20px;
+      height: 20px;
+      display: block;
+    }
+
+    .header-instagram:hover {
+      opacity: 0.7;
+    }
+
     nav a {
       margin-left: 18px;
       color: inherit;
       text-decoration: none;
     }
-    main { padding: 55px 6%; }
-  main > h1 {
-  text-align: center;
-  font-size: clamp(34px, 5vw, 64px);
-  font-weight: bold;
-  margin: 45px 10px 18px;
-  text-transform: uppercase;
-}
 
-main > p {
-  text-align: center;
-  margin: 0 10px 30px;
-}
+    main {
+      padding: 55px 6%;
+    }
+
+    /* Center homepage title and description */
+    main > h1 {
+      text-align: center;
+      font-size: clamp(36px, 7vw, 72px);
+      font-weight: bold;
+      margin: 45px 10px 18px;
+    }
+
+    main > p {
+      text-align: center;
+      margin: 0 10px 30px;
+    }
+
     .gallery {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 18px;
     }
+
     .gallery img {
       width: 100%;
       display: block;
       object-fit: cover;
+      cursor: zoom-in;
+      transition: opacity 0.2s ease;
     }
-    .about { margin-top: 70px; max-width: 600px; }
-    footer { padding: 30px 6%; }
+
+    .gallery img:hover {
+      opacity: 0.85;
+    }
+
+    .about {
+      margin-top: 70px;
+      max-width: 600px;
+    }
+
+    footer {
+      padding: 30px 6%;
+    }
+
     @media (max-width: 600px) {
-      .gallery { grid-template-columns: 1fr; }
-      header { padding: 22px 5%; }
-      nav a { margin-left: 8px; }
-      main { padding: 30px 5%; }
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        padding: 22px 5%;
+      }
+
+      nav a {
+        margin-left: 8px;
+      }
+
+      main {
+        padding: 30px 5%;
+      }
     }
-    
-/* Make gallery artwork clickable */
-.gallery img {
-  cursor: zoom-in;
-  transition: opacity 0.2s ease;
-}
 
-.gallery img:hover {
-  opacity: 0.85;
-}
+    /* Full-screen dark overlay */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0, 0, 0, 0.88);
+      justify-content: center;
+      align-items: center;
+      padding: 50px 20px;
+      box-sizing: border-box;
+    }
 
-/* Full-screen dark overlay */
-.lightbox {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  background: rgba(0, 0, 0, 0.88);
-  justify-content: center;
-  align-items: center;
-  padding: 50px 20px;
-  box-sizing: border-box;
-}
+    .lightbox.active {
+      display: flex;
+    }
 
-.lightbox.active {
-  display: flex;
-}
+    /* Enlarged artwork */
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 85vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
 
-/* Enlarged artwork */
-.lightbox img {
-  max-width: 90vw;
-  max-height: 85vh;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-}
+    /* X close button */
+    .lightbox-close {
+      position: absolute;
+      top: 15px;
+      right: 25px;
+      color: white;
+      font-size: 42px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      line-height: 1;
+    }
 
-/* X close button */
-.lightbox-close {
-  position: absolute;
-  top: 15px;
-  right: 25px;
-  color: white;
-  font-size: 42px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  line-height: 1;
-}
+    .lightbox-close:hover {
+      opacity: 0.7;
+    }
 
-.lightbox-close:hover {
-  opacity: 0.7;
-}
-   .instagram-link {
-  color: #000000;
-  font-size: 20px;
-  margin-left: 8px;
-  text-decoration: none;
-}
+    /* Existing contact Instagram styling */
+    .instagram-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: white;
+      text-decoration: none;
+      margin-top: 15px;
+    }
 
-.instagram-link:hover {
-  opacity: 0.7;
-}
-   .brand {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
+    .instagram-icon {
+      font-size: 32px;
+    }
 
-.instagram-link {
-  color: #000000;
-  font-size: 20px;
-  text-decoration: none;
-}
+    .instagram-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .instagram-info small {
+      color: #999;
+      font-size: 12px;
+    }
+
+    .instagram-link:hover {
+      opacity: 0.7;
+    }
   </style>
 </head>
+
 <body>
+
   <header>
-    <strong>starsandtigers</strong>
+
+    <strong class="brand">
+      <a href="https://www.instagram.com/starsandtigers/"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="header-instagram"
+         aria-label="Instagram">
+
+        <svg viewBox="0 0 24 24"
+             fill="none"
+             stroke="currentColor"
+             stroke-width="2"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+        </svg>
+
+      </a>
+
+      <span>starsandtigers</span>
+    </strong>
+
     <p>★</p>
-    
-<nav>
-  <a href="illustrations/">Illustrations</a>
-  <a href="animations/">Animations</a>
-  <a href="client-projects/">Client Projects</a>
-  <a href="sketches/">Sketches</a>
-</nav>
+
+    <nav>
+      <a href="illustrations/">Illustrations</a>
+      <a href="animations/">Animations</a>
+      <a href="client-projects/">Client Projects</a>
+      <a href="sketches/">Sketches</a>
+    </nav>
+
     <p>★</p>
+
     <nav>
       <a href="#work">Work</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
+
   </header>
+
   <main>
+
     <h1>★The Finest Work★</h1>
-    <p>Magnum Opus</p>
+    <p>magnum opus.</p>
+
     <section id="work" class="gallery">
-      <img src="images/illustration/butchers.jpg" alt="Butchers artwork">
-      <img src="images/illustration/paulo.jpg" alt="Paulo artwork">
-      <img src="images/illustration/dbs.jpg" alt="Dbs artwork">
-      <img src="images/illustration/ripped.jpg" alt="Ripped artwork">
+      <img src="images/illustration/butchers.jpg"
+           alt="Butchers artwork">
+
+      <img src="images/illustration/paulo.jpg"
+           alt="Paulo artwork">
+
+      <img src="images/illustration/dbs.jpg"
+           alt="Dbs artwork">
+
+      <img src="images/illustration/ripped.jpg"
+           alt="Ripped artwork">
     </section>
 
     <section id="about" class="about">
@@ -194,66 +265,76 @@ main > p {
 
     <section id="contact">
       <h2>Contact</h2>
-        <div class="brand">
-  <a href="https://www.instagram.com/starsandtigers/"
-     target="_blank"
-     rel="noopener noreferrer"
-     class="instagram-link"
-     aria-label="Instagram">
-    <i class="fa-brands fa-instagram"></i>
-  </a>
-  <span>★starsandtigers★</span>
-</div>
-</a>
 
-      <p>Made by the stars</p>
+      <a href="https://www.instagram.com/starsandtigers/"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="instagram-link">
+
+        <span class="instagram-info">
+          <strong>@starsandtigers</strong>
+          <span class="instagram-icon">★</span>
+        </span>
+
+      </a>
+
+      <p>Made by Me and only me</p>
     </section>
+
   </main>
 
   <footer>© 2026 starsandtigers</footer>
-  
-<div class="lightbox" id="lightbox" role="dialog"
-     aria-modal="true" aria-label="Enlarged artwork">
-  <button class="lightbox-close" id="lightboxClose"
-          aria-label="Close enlarged image">&times;</button>
-  <img id="lightboxImage" src="" alt="">
-</div>
 
-<script>
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImage = document.getElementById('lightboxImage');
-  const closeButton = document.getElementById('lightboxClose');
+  <div class="lightbox" id="lightbox"
+       role="dialog"
+       aria-modal="true"
+       aria-label="Enlarged artwork">
 
-  document.querySelectorAll('.gallery img').forEach(img => {
-    img.addEventListener('click', () => {
-      lightboxImage.src = img.src;
-      lightboxImage.alt = img.alt;
-      lightbox.classList.add('active');
-      document.body.style.overflow = 'hidden';
-      closeButton.focus();
+    <button class="lightbox-close"
+            id="lightboxClose"
+            aria-label="Close enlarged image">
+      &times;
+    </button>
+
+    <img id="lightboxImage" src="" alt="">
+
+  </div>
+
+  <script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const closeButton = document.getElementById('lightboxClose');
+
+    document.querySelectorAll('.gallery img').forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImage.src = img.src;
+        lightboxImage.alt = img.alt;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        closeButton.focus();
+      });
     });
-  });
 
-  function closeLightbox() {
-    lightbox.classList.remove('active');
-    lightboxImage.src = '';
-    document.body.style.overflow = '';
-  }
-
-  closeButton.addEventListener('click', closeLightbox);
-
-  lightbox.addEventListener('click', event => {
-    if (event.target === lightbox) {
-      closeLightbox();
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      lightboxImage.src = '';
+      document.body.style.overflow = '';
     }
-  });
 
-  document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && lightbox.classList.contains('active')) {
-      closeLightbox();
-    }
-  });
-</script>
-</body>
+    closeButton.addEventListener('click', closeLightbox);
+
+    lightbox.addEventListener('click', event => {
+      if (event.target === lightbox) {
+        closeLightbox();
+      }
+    });
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && lightbox.classList.contains('active')) {
+        closeLightbox();
+      }
+    });
+  </script>
+
 </body>
 </html>
