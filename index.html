@@ -144,6 +144,17 @@ main > p {
 .instagram-link:hover {
   opacity: 0.7;
 }
+   .brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.instagram-link {
+  color: #000000;
+  font-size: 20px;
+  text-decoration: none;
+}
   </style>
 </head>
 <body>
@@ -183,10 +194,16 @@ main > p {
 
     <section id="contact">
       <h2>Contact</h2>
-        
-<a href="https://www.instagram.com/starsandtigers/" target="_blank" rel="noopener noreferrer" class="instagram-link">
-    <span class="instagram-info">
-       <strong>🅾 ★starsandtigers★</strong>
+        <div class="brand">
+  <a href="https://www.instagram.com/starsandtigers/"
+     target="_blank"
+     rel="noopener noreferrer"
+     class="instagram-link"
+     aria-label="Instagram">
+    <i class="fa-brands fa-instagram"></i>
+  </a>
+  <span>★starsandtigers★</span>
+</div>
 </a>
 
       <p>Made by the stars</p>
