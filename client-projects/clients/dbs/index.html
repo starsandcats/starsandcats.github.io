@@ -68,7 +68,7 @@ h1 {
     font-size: 15px;
 }
 
-/* SPACE BETWEEN DESCRIPTION AND GALLERY */
+/* GALLERY HEADING */
 
 .gallery-heading {
     text-align: center;
@@ -79,87 +79,57 @@ h1 {
     margin-bottom: 25px;
 }
 
-/* CIRCULAR GALLERY */
+/* ORIGINAL THREE-COLUMN MASONRY GALLERY */
 
-.gallery-scroll {
-    width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
-    padding: 10px 0 70px;
-}
-
-.orbit {
-    position: relative;
-    width: 1000px;
-    height: 1000px;
+.gallery {
+    max-width: 1100px;
     margin: 0 auto;
-    max-width: none;
+    padding: 20px 35px 80px;
+    columns: 3;
+    column-gap: 35px;
 }
 
-/* ARTWORK AROUND THE CIRCLE */
-
-.orbit-item {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 135px;
-    height: 135px;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-    transition: z-index 0.2s;
-}
-
-.orbit-item img {
+.gallery-item {
+    display: inline-block;
     width: 100%;
-    height: 100%;
-    object-fit: contain;
+    margin-bottom: 35px;
+    break-inside: avoid;
+    position: relative;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
     display: block;
     cursor: zoom-in;
     transition: transform 0.35s ease, filter 0.35s ease;
     filter: drop-shadow(0 0 5px rgba(255,255,255,0.12));
 }
 
-.orbit-item:hover {
-    z-index: 20;
+.gallery-item:hover {
+    z-index: 10;
 }
 
-.orbit-item:hover img {
-    transform: scale(1.3);
+.gallery-item:hover img {
+    transform: scale(1.07);
     filter: drop-shadow(0 0 12px rgba(245,215,66,0.5));
 }
 
-/* CENTER VIDEO */
+/* VIDEO */
 
-.center-video {
-    position: absolute;
-    width: 310px;
-    height: 220px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 5;
-    background: #111;
-    border: 1px solid #333;
-    padding: 5px;
-}
-
-.center-video video {
+.gallery-item.video-item video {
     width: 100%;
-    height: 100%;
-    object-fit: contain;
+    height: auto;
     display: block;
     background: #000;
 }
 
 .video-label {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -28px;
     text-align: center;
     color: #f5d742;
     font-size: 11px;
     letter-spacing: 2px;
+    margin-top: 10px;
 }
 
 /* BACK LINK */
@@ -210,25 +180,21 @@ h1 {
 
 /* MOBILE */
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
+    .gallery {
+        columns: 2;
+    }
+}
+
+@media (max-width: 500px) {
+    .gallery {
+        columns: 1;
+        padding: 20px 22px 60px;
+    }
+
     nav a {
         margin: 0 5px;
         font-size: 12px;
-    }
-
-    .orbit {
-        width: 780px;
-        height: 780px;
-    }
-
-    .orbit-item {
-        width: 95px;
-        height: 95px;
-    }
-
-    .center-video {
-        width: 230px;
-        height: 165px;
     }
 
     .gallery-heading {
@@ -259,8 +225,8 @@ h1 {
         Upon reading the letters D, B, and S, you might be wondering
         "just what is DBS?" All I can tell you is my best interpretation
         of what DBS is to me. DBS simply put is a concept, an idea.
-        DBS is a brand, it's a character, it's a man, it's men, it's
-        action and violence, it's chaotic and dancing in the dark,
+        DBS is a brand, it's a character, it's a man, it's men,
+        it's action and violence, it's chaotic and dancing in the dark,
         with the one and only MR.DBS being the masked face of it all.
     </p>
 
@@ -278,132 +244,140 @@ h1 {
 
 <div class="gallery-heading">DOWN BAD SOCIETY</div>
 
-<div class="gallery-scroll">
+<!-- DBS GALLERY -->
 
-<main class="orbit" id="orbit">
+<main class="gallery">
 
     <!-- ARTWORK 1 -->
-    <div class="orbit-item">
+    <div class="gallery-item">
         <img src="../../../images/clients/dbs/dbsposter.JPG"
              alt="DBS poster">
     </div>
 
     <!-- ARTWORK 2 -->
-    <div class="orbit-item">
+    <div class="gallery-item">
         <img src="../../../images/clients/dbs/dbsrecord.jpg"
              alt="DBS record">
     </div>
 
     <!-- ARTWORK 3 -->
-    <div class="orbit-item">
+    <div class="gallery-item">
         <img src="../../../images/clients/dbs/DBSdancewithfoid2.JPG"
              alt="DBS dance with foid 2">
     </div>
 
     <!-- ARTWORK 4 -->
-    <div class="orbit-item">
+    <div class="gallery-item">
         <img src="../../../images/clients/dbs/DBSdancewithfoid3.JPG"
              alt="DBS dance with foid 3">
     </div>
 
     <!-- ARTWORK 5 -->
-    <div class="orbit-item">
+    <div class="gallery-item">
         <img src="../../../images/clients/dbs/DBSdancewithfoid1.JPG"
              alt="DBS dance with foid 1">
     </div>
 
-    <!-- GIF 1: PISTOL ANIMATION -->
-    <div class="orbit-item">
+    <!-- GIF 1 -->
+    <div class="gallery-item">
         <img src="../../../images/clients/dbs/DBS_Pistol_Animation.GIF"
              alt="DBS pistol animation">
     </div>
 
-    <!-- GIF 2: LIFTING ANIMATION -->
-    <div class="orbit-item">
+    <!-- GIF 2 -->
+    <div class="gallery-item">
         <img src="../../../images/clients/dbs/DBS_lifting_Animation.GIF"
              alt="DBS lifting animation">
     </div>
 
-    <!-- GIF 3: GUN ANIMATION -->
-    <div class="orbit-item">
+    <!-- GIF 3 -->
+    <div class="gallery-item">
         <img src="../../../images/animation/DBS_gun_Animation_Final.gif"
              alt="DBS gun animation">
     </div>
 
-    <!-- ARTWORK 9 -->
-    <div class="orbit-item">
-        <img src="../../../images/clients/dbs/dbspanels.JPG"
-             alt="DBS panels">
-    </div>
-
-    <!-- ARTWORK 10 -->
-    <div class="orbit-item">
-        <img src="../../../images/clients/dbs/dbsdance.JPG"
-             alt="DBS dance">
-    </div>
-
-    <!-- ARTWORK 11 -->
-    <div class="orbit-item">
-        <img src="../../../images/clients/dbs/dbsfalloff.JPG"
-             alt="DBS falloff">
-    </div>
-
-    <!-- ARTWORK 12 -->
-    <div class="orbit-item">
-        <img src="../../../images/clients/dbs/dbsrepeat.JPG"
-             alt="DBS repeat">
-    </div>
-
-    <!-- ARTWORK 13 -->
-    <div class="orbit-item">
-        <img src="../../../images/clients/dbs/dbsshadow.JPG"
-             alt="DBS shadow">
-    </div>
-
-    <!-- ARTWORK 14 -->
-    <div class="orbit-item">
-        <img src="../../../images/clients/dbs/dbsondbs.JPG"
-             alt="DBS on DBS">
-    </div>
-
-    <!-- ARTWORK 15 -->
-    <div class="orbit-item">
-        <img src="../../../images/clients/dbs/dbstie.JPG"
-             alt="DBS tie">
-    </div>
-
-    <!-- ARTWORK 16 -->
-    <div class="orbit-item">
-        <img src="../../../images/clients/dbs/dbsspotlight.JPG"
-             alt="DBS spotlight">
-    </div>
-
-    <!-- ARTWORK 17 -->
-    <div class="orbit-item">
-        <img src="../../../images/clients/dbs/dbsportrait.JPG"
-             alt="DBS portrait">
-    </div>
-
-
-    <!-- CENTER VIDEO -->
-    <div class="center-video">
+    <!-- CENTER VIDEO, NOW IN THE GALLERY -->
+    <div class="gallery-item video-item">
         <video controls muted loop playsinline>
-            
             <source src="../../../images/clients/dbs/DBS.mp4"
                     type="video/mp4">
             Your browser does not support video.
         </video>
         <div class="video-label">MR. DBS</div>
     </div>
-<img src="../../../images/clients/dbs/dbswindy.GIF" alt="DBS Windy">
 
-<img src="../../../images/clients/dbs/dbsyeah.JPG" alt="DBS Yeah">
+    <!-- ARTWORK 9 -->
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/dbspanels.JPG"
+             alt="DBS panels">
+    </div>
+
+    <!-- ARTWORK 10 -->
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/dbsdance.JPG"
+             alt="DBS dance">
+    </div>
+
+    <!-- ARTWORK 11 -->
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/dbsfalloff.JPG"
+             alt="DBS falloff">
+    </div>
+
+    <!-- ARTWORK 12 -->
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/dbsrepeat.JPG"
+             alt="DBS repeat">
+    </div>
+
+    <!-- ARTWORK 13 -->
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/dbsshadow.JPG"
+             alt="DBS shadow">
+    </div>
+
+    <!-- ARTWORK 14 -->
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/dbsondbs.JPG"
+             alt="DBS on DBS">
+    </div>
+
+    <!-- ARTWORK 15 -->
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/dbstie.JPG"
+             alt="DBS tie">
+    </div>
+
+    <!-- ARTWORK 16 -->
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/dbsspotlight.JPG"
+             alt="DBS spotlight">
+    </div>
+
+    <!-- ARTWORK 17 -->
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/dbsportrait.JPG"
+             alt="DBS portrait">
+    </div>
+
+    <!-- NEW GIF -->
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/dbswindy.gif"
+             alt="DBS Windy">
+    </div>
+
+    <!-- NEW IMAGE -->
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/dbsyeah.jpg"
+             alt="DBS Yeah">
+    </div>
+
 </main>
-</div>
 
 <a class="back" href="../../">← Back to Client Projects</a>
 
 <!-- IMAGE ENLARGEMENT -->
+
 <div class="lightbox" id="lightbox">
     <button class="close" aria-label="Close image">&times;</button>
     <img src="" alt="Enlarged DBS artwork">
@@ -411,38 +385,12 @@ h1 {
 
 <script>
 
-/* AUTOMATIC CIRCULAR IMAGE PLACEMENT */
-
-const orbit = document.getElementById("orbit");
-const items = document.querySelectorAll(".orbit-item");
-
-function arrangeGallery() {
-    const orbitWidth = orbit.clientWidth;
-    const radius = orbitWidth * 0.405;
-    const total = items.length;
-
-    items.forEach((item, index) => {
-        const angle = (360 / total) * index - 90;
-        const radians = angle * Math.PI / 180;
-
-        const x = Math.cos(radians) * radius;
-        const y = Math.sin(radians) * radius;
-
-        item.style.left = `calc(50% + ${x}px)`;
-        item.style.top = `calc(50% + ${y}px)`;
-    });
-}
-
-arrangeGallery();
-window.addEventListener("resize", arrangeGallery);
-
-
 /* IMAGE LIGHTBOX */
 
 const lightbox = document.getElementById("lightbox");
 const enlarged = lightbox.querySelector("img");
 
-document.querySelectorAll(".orbit-item img").forEach(img => {
+document.querySelectorAll(".gallery-item img").forEach(img => {
     img.addEventListener("click", () => {
         enlarged.src = img.src;
         enlarged.alt = img.alt;
