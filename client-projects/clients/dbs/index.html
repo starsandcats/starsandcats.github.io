@@ -5,15 +5,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>DBS — starsandtigers</title>
+
 <style>
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
-  background: #000000;
+  background: #000;
   color: white;
   font-family: Arial, sans-serif;
 }
+
+/* HEADER */
 
 header {
   background: #050505;
@@ -38,58 +43,127 @@ nav a {
   font-size: 13px;
 }
 
-nav a:hover, .back:hover { color: #ffdc00; }
+nav a:hover, .back:hover {
+  color: #ffdc00;
+}
+
+/* PAGE INTRO */
 
 h1 {
   text-align: center;
   font-size: clamp(38px, 6vw, 68px);
   margin: 60px 10px 25px;
+  color: #f5d742;
 }
 
 .description {
   max-width: 650px;
-  margin: 0 auto 55px;
+  margin: 0 auto 75px;
   padding: 0 20px;
   text-align: center;
   line-height: 1.8;
-}
-.gallery {
-    column-count: 3;
-    column-gap: 15px;
-    max width: 1000px:
-    margin: 30px auto;
-    padding: 0 20px;
+  color: #f5d742;
 }
 
-.gallery img {
-    width: 100%;
-    height: auto;
-    display: block;
-    margin-bottom: 15px;
-    break-inside: avoid;
-    cursor: zoom-in;
-    transition: transform 0.3s ease;
+/* GALLERY SECTIONS */
+
+.gallery-section {
+  width: min(1200px, 92%);
+  margin: 0 auto 90px;
 }
 
-.gallery img:hover {
-    transform: scale(1.03);
+.section-heading {
+  color: #f5d742;
+  font-size: 23px;
+  font-weight: normal;
+  border-bottom: 1px solid #494000;
+  padding-bottom: 12px;
+  margin-bottom: 25px;
 }
-  .gallery img:hover {
-    transform: scale(1.15);
-    z-index: 10;
+
+/* ASYMMETRIC GRID */
+
+.artwork-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 22px;
+  align-items: start;
 }
+
+.artwork {
+  position: relative;
+  margin: 0;
+  min-width: 0;
+}
+
+.artwork img {
+  display: block;
+  width: 100%;
+  height: auto;
+  cursor: zoom-in;
+  transition: transform .3s ease;
+}
+
+.artwork:hover {
+  z-index: 5;
+}
+
+.artwork img:hover {
+  transform: scale(1.045);
+}
+
+/* DIFFERENT IMAGE WIDTHS */
+
+.span-12 { grid-column: span 12; }
+.span-7 { grid-column: span 7; }
+.span-6 { grid-column: span 6; }
+.span-5 { grid-column: span 5; }
+.span-4 { grid-column: span 4; }
+.span-3 { grid-column: span 3; }
+
+/* DANCE SEQUENCE */
+
+.sequence-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+/* ANIMATIONS */
+
+.animation-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  align-items: start;
+}
+
+/* BACK LINK */
+
+.back {
+  display: block;
+  text-align: center;
+  margin: 60px 20px 40px;
+  color: white;
+  text-decoration: none;
+}
+
+/* IMAGE LIGHTBOX */
+
 .lightbox {
   display: none;
   position: fixed;
   inset: 0;
-  z-index: 10;
-  background: rgba(0,0,0,.94);
+  z-index: 100;
+  background: rgba(0,0,0,.96);
   justify-content: center;
   align-items: center;
   padding: 25px;
 }
 
-.lightbox.active { display: flex; }
+.lightbox.active {
+  display: flex;
+}
 
 .lightbox img {
   max-width: 90vw;
@@ -108,27 +182,61 @@ h1 {
   cursor: pointer;
 }
 
-@media (max-width: 900px) {
-    .gallery {
-        column-count: 2;
-    }
+/* TABLET */
+
+@media (max-width: 850px) {
+  .span-7,
+  .span-5,
+  .span-4,
+  .span-3 {
+    grid-column: span 6;
+  }
+
+  .sequence-grid,
+  .animation-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
-@media (max-width: 600px) {
-    .gallery {
-        column-count: 1;
-    }
+/* MOBILE */
 
-    nav a {
-        margin: 0 5px;
-    }
+@media (max-width: 600px) {
+  nav a {
+    margin: 0 5px;
+    font-size: 12px;
+  }
+
+  .gallery-section {
+    width: 92%;
+    margin-bottom: 60px;
+  }
+
+  .span-12,
+  .span-7,
+  .span-6,
+  .span-5,
+  .span-4,
+  .span-3 {
+    grid-column: span 12;
+  }
+
+  .sequence-grid,
+  .animation-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .description {
+    margin-bottom: 55px;
+  }
 }
 </style>
 </head>
+
 <body>
 
 <header>
   <div class="brand">starsandtigers</div>
+
   <nav>
     <a href="../../../">Home</a>
     <a href="../../../illustrations/">Illustrations</a>
@@ -138,63 +246,206 @@ h1 {
   </nav>
 </header>
 
-<h1 style="text-align: center; color: #f5d742;">DBS</h1>
+<h1>DBS</h1>
 
 <div class="description">
-  <p style="text-align: center; color: #f5d742;"> Upon reading the letters D,B, and S you might be wondering "just what is DBS?" All I can tell you is my best interpetation of what DBS is to me. DBS simply put is a concept, an idea. DBS is a brand, it's a character, it's a man, it's men, it's action and violence, it's chaotic and dancing in the dark, with the one and only MR.DBS being the masked face of it all. You may ask "just who is MR.DBS?" What does he want? Where is he going? What is he doing? What will he do next? Are we in danger? MR.DBS is the mysterious figure who will answer NONE of these questions. Just who the hat selling, gun shooting, suitcase carrying, man of the night in a trench coat and balaclava is mgiht remain one of the worlds greatest mysteries, but regardless of it all he will do what he wants and get what he needs. </p>
+  <p>
+    Upon reading the letters D,B, and S you might be wondering
+    "just what is DBS?" All I can tell you is my best interpretation
+    of what DBS is to me. DBS simply put is a concept, an idea.
+    DBS is a brand, it's a character, it's a man, it's men,
+    it's action and violence, it's chaotic and dancing in the dark,
+    with the one and only MR.DBS being the masked face of it all.
+
+    You may ask "just who is MR.DBS?" What does he want?
+    Where is he going? What is he doing? What will he do next?
+    Are we in danger? MR.DBS is the mysterious figure who will
+    answer NONE of these questions. Just who the hat selling,
+    gun shooting, suitcase carrying, man of the night in a
+    trench coat and balaclava is might remain one of the world's
+    greatest mysteries, but regardless of it all he will do what
+    he wants and get what he needs.
+  </p>
 </div>
 
-<main class="gallery">
-  <img src="../../../images/clients/dbs/dbsposter.JPG" alt="DBS poster">
-  <img src="../../../images/clients/dbs/dbsrecord.jpg" alt="DBS record">
-  <img src="../../../images/clients/dbs/DBSdancewithfoid2.JPG" alt="DBSdancewithfoid2">
-  <img src="../../../images/clients/dbs/DBSdancewithfoid3.JPG" alt="DBSdancewithfoid3">
-  <img src="../../../images/clients/dbs/DBSdancewithfoid1.JPG" alt="DBSdancewithfoid1">
-  <img src="../../../images/clients/dbs/DBS_Pistol_Animation.GIF" alt="DBS_Pistol_Animation">
-  <img src="../../../images/clients/dbs/DBS_lifting_Animation.GIF" alt="DBS_Pistol_Animation">
-  <img src="../../../images/animation/DBS_gun_Animation_Final.gif" alt="DBS_gun_Animation_final">
-  <img src="../../../images/clients/dbs/dbspanels.JPG" alt="DBS panels">
-  <img src="../../../images/clients/dbs/dbsdance.JPG" alt="DBS Dance">
-  <img src="../../../images/clients/dbs/dbsfalloff.JPG" alt="DBS falloff">
-  <img src="../../../images/clients/dbs/dbsrepeat.JPG" alt="DBS repeat">
-  <img src="../../../images/clients/dbs/dbsshadow.JPG" alt="DBS shadow">
-  <img src="../../../images/clients/dbs/dbsondbs.JPG" alt="DBS on DBS">
-  <img src="../../../images/clients/dbs/dbstie.JPG" alt="DBS tie">
-  <img src="../../../images/clients/dbs/dbsspotlight.JPG" alt="DBS spotlight">
-  <img src="../../../images/clients/dbs/dbsportrait.JPG" alt="DBS portrait">
-</main>
+<!-- SECTION 1: ARTWORK AND IDENTITY -->
 
-<a class="back" href="../../">← Back to Client Projects</a>
+<section class="gallery-section">
+
+  <h2 class="section-heading">Artwork & Identity</h2>
+
+  <div class="artwork-grid">
+
+    <figure class="artwork span-7">
+      <img src="../../../images/clients/dbs/dbsposter.JPG"
+           alt="DBS poster">
+    </figure>
+
+    <figure class="artwork span-5">
+      <img src="../../../images/clients/dbs/dbsrecord.jpg"
+           alt="DBS record">
+    </figure>
+
+    <figure class="artwork span-6">
+      <img src="../../../images/clients/dbs/dbspanels.JPG"
+           alt="DBS panels">
+    </figure>
+
+    <figure class="artwork span-3">
+      <img src="../../../images/clients/dbs/dbsportrait.JPG"
+           alt="DBS portrait">
+    </figure>
+
+    <figure class="artwork span-3">
+      <img src="../../../images/clients/dbs/dbsshadow.JPG"
+           alt="DBS shadow">
+    </figure>
+
+    <figure class="artwork span-4">
+      <img src="../../../images/clients/dbs/dbsondbs.JPG"
+           alt="DBS on DBS">
+    </figure>
+
+    <figure class="artwork span-4">
+      <img src="../../../images/clients/dbs/dbstie.JPG"
+           alt="DBS tie">
+    </figure>
+
+    <figure class="artwork span-4">
+      <img src="../../../images/clients/dbs/dbsspotlight.JPG"
+           alt="DBS spotlight">
+    </figure>
+
+  </div>
+</section>
+
+
+<!-- SECTION 2: DANCE AND MOVEMENT -->
+
+<section class="gallery-section">
+
+  <h2 class="section-heading">Dance & Movement</h2>
+
+  <div class="sequence-grid">
+
+    <figure class="artwork">
+      <img src="../../../images/clients/dbs/DBSdancewithfoid1.JPG"
+           alt="DBS dance sequence 1">
+    </figure>
+
+    <figure class="artwork">
+      <img src="../../../images/clients/dbs/DBSdancewithfoid2.JPG"
+           alt="DBS dance sequence 2">
+    </figure>
+
+    <figure class="artwork">
+      <img src="../../../images/clients/dbs/DBSdancewithfoid3.JPG"
+           alt="DBS dance sequence 3">
+    </figure>
+
+  </div>
+
+  <div class="artwork-grid" style="margin-top: 22px;">
+
+    <figure class="artwork span-12">
+      <img src="../../../images/clients/dbs/dbsdance.JPG"
+           alt="DBS dance">
+    </figure>
+
+    <figure class="artwork span-6">
+      <img src="../../../images/clients/dbs/dbsfalloff.JPG"
+           alt="DBS falloff">
+    </figure>
+
+    <figure class="artwork span-6">
+      <img src="../../../images/clients/dbs/dbsrepeat.JPG"
+           alt="DBS repeat">
+    </figure>
+
+  </div>
+</section>
+
+
+<!-- SECTION 3: ANIMATIONS -->
+
+<section class="gallery-section">
+
+  <h2 class="section-heading">Animations</h2>
+
+  <div class="animation-grid">
+
+    <figure class="artwork">
+      <img src="../../../images/clients/dbs/DBS_Pistol_Animation.GIF"
+           alt="DBS pistol animation">
+    </figure>
+
+    <figure class="artwork">
+      <img src="../../../images/clients/dbs/DBS_lifting_Animation.GIF"
+           alt="DBS lifting animation">
+    </figure>
+
+    <figure class="artwork">
+      <img src="../../../images/animation/DBS_gun_Animation_Final.gif"
+           alt="DBS gun animation">
+    </figure>
+
+  </div>
+</section>
+
+
+<a class="back" href="../../">
+  ← Back to Client Projects
+</a>
+
+
+<!-- LIGHTBOX -->
 
 <div class="lightbox" id="lightbox">
-  <button class="close" aria-label="Close image">&times;</button>
+
+  <button class="close" aria-label="Close image">
+    &times;
+  </button>
+
   <img src="" alt="Enlarged artwork">
+
 </div>
 
+
 <script>
+
 const lightbox = document.getElementById('lightbox');
 const enlarged = lightbox.querySelector('img');
 
-document.querySelectorAll('.gallery img').forEach(img => {
+document.querySelectorAll('.artwork img').forEach(img => {
+
   img.addEventListener('click', () => {
     enlarged.src = img.src;
     enlarged.alt = img.alt;
     lightbox.classList.add('active');
   });
+
 });
 
 lightbox.addEventListener('click', event => {
-  if (event.target === lightbox ||
-      event.target.classList.contains('close')) {
+
+  if (
+    event.target === lightbox ||
+    event.target.classList.contains('close')
+  ) {
     lightbox.classList.remove('active');
   }
+
 });
 
 document.addEventListener('keydown', event => {
-  if (event.key === 'Escape') lightbox.classList.remove('active');
+
+  if (event.key === 'Escape') {
+    lightbox.classList.remove('active');
+  }
+
 });
+
 </script>
 
 </body>
 </html>
-
