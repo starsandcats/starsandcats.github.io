@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DBS | starsandtigers</title>
+<title>DBS — starsandtigers</title>
 
 <style>
 * {
@@ -41,7 +41,7 @@ nav a {
     text-decoration: none;
     margin: 0 10px;
     font-size: 13px;
-    transition: color .3s;
+    transition: color 0.25s ease;
 }
 
 nav a:hover,
@@ -49,121 +49,139 @@ nav a:hover,
     color: #ffdc00;
 }
 
-/* PAGE TITLE */
+/* TITLE AND DESCRIPTION */
 
 h1 {
     text-align: center;
     color: #f5d742;
-    font-size: 58px;
-    margin: 55px 0 20px;
+    font-size: clamp(38px, 6vw, 68px);
+    margin: 60px 10px 25px;
 }
 
 .description {
-    max-width: 650px;
+    max-width: 680px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 22px;
     text-align: center;
     color: #f5d742;
     line-height: 1.8;
-    margin-bottom: 35px;
+    font-size: 15px;
+}
+
+/* SPACE BETWEEN DESCRIPTION AND GALLERY */
+
+.gallery-heading {
+    text-align: center;
+    color: #888;
+    font-size: 12px;
+    letter-spacing: 3px;
+    margin-top: 95px;
+    margin-bottom: 25px;
 }
 
 /* CIRCULAR GALLERY */
 
-.orbit {
-    position: relative;
-    width: min(900px, 95vw);
-    height: min(900px, 95vw);
-    margin: 20px auto 70px;
+.gallery-scroll {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 10px 0 70px;
 }
 
-/* ARTWORK POSITIONS */
+.orbit {
+    position: relative;
+    width: 1000px;
+    height: 1000px;
+    margin: 0 auto;
+    max-width: none;
+}
+
+/* ARTWORK AROUND THE CIRCLE */
 
 .orbit-item {
     position: absolute;
     left: 50%;
     top: 50%;
-
-    width: 150px;
-    height: auto;
-
-    transform:
-        translate(-50%, -50%)
-        rotate(var(--angle))
-        translateY(calc(var(--radius) * -1))
-        rotate(calc(var(--angle) * -1));
-
-    transition: transform .4s ease, z-index 0s;
-    z-index: 2;
+    width: 135px;
+    height: 135px;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    transition: z-index 0.2s;
 }
 
 .orbit-item img {
-    display: block;
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: contain;
+    display: block;
     cursor: zoom-in;
-    box-shadow: 0 5px 25px rgba(0,0,0,.6);
-    transition: filter .3s ease;
+    transition: transform 0.35s ease, filter 0.35s ease;
+    filter: drop-shadow(0 0 5px rgba(255,255,255,0.12));
 }
 
 .orbit-item:hover {
-    transform:
-        translate(-50%, -50%)
-        rotate(var(--angle))
-        translateY(calc(var(--radius) * -1))
-        rotate(calc(var(--angle) * -1))
-        scale(1.25);
-
     z-index: 20;
 }
 
 .orbit-item:hover img {
-    filter: brightness(1.15);
-}
-
-/* DIFFERENT SIZES */
-
-.orbit-item.large {
-    width: 185px;
-}
-
-.orbit-item.small {
-    width: 115px;
+    transform: scale(1.3);
+    filter: drop-shadow(0 0 12px rgba(245,215,66,0.5));
 }
 
 /* CENTER VIDEO */
 
 .center-video {
     position: absolute;
+    width: 310px;
+    height: 220px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
-    width: 310px;
-    max-width: 45%;
-
     z-index: 5;
-    border: 1px solid #444;
-    background: #080808;
+    background: #111;
+    border: 1px solid #333;
     padding: 5px;
 }
 
 .center-video video {
-    display: block;
     width: 100%;
-    height: auto;
-    max-height: 240px;
+    height: 100%;
     object-fit: contain;
+    display: block;
+    background: #000;
 }
 
-/* LIGHTBOX */
+.video-label {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -28px;
+    text-align: center;
+    color: #f5d742;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+/* BACK LINK */
+
+.back {
+    display: block;
+    width: fit-content;
+    margin: 10px auto 60px;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.25s ease;
+}
+
+/* IMAGE LIGHTBOX */
 
 .lightbox {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,.96);
     z-index: 100;
+    background: rgba(0,0,0,0.96);
     justify-content: center;
     align-items: center;
     padding: 25px;
@@ -181,73 +199,40 @@ h1 {
 
 .close {
     position: absolute;
-    top: 15px;
+    top: 20px;
     right: 28px;
     color: white;
     background: none;
-    border: none;
+    border: 0;
     font-size: 40px;
     cursor: pointer;
 }
 
-/* BACK LINK */
-
-.back {
-    display: block;
-    width: fit-content;
-    margin: 30px auto 60px;
-    color: white;
-    text-decoration: none;
-    transition: color .3s;
-}
-
-/* TABLET */
-
-@media (max-width: 700px) {
-    .orbit {
-        width: 95vw;
-        height: 95vw;
-        margin-bottom: 30px;
-    }
-
-    .orbit-item {
-        width: 100px;
-    }
-
-    .orbit-item.large {
-        width: 125px;
-    }
-
-    .orbit-item.small {
-        width: 80px;
-    }
-
-    .center-video {
-        width: 190px;
-    }
-}
-
 /* MOBILE */
 
-@media (max-width: 450px) {
+@media (max-width: 600px) {
+    nav a {
+        margin: 0 5px;
+        font-size: 12px;
+    }
+
+    .orbit {
+        width: 780px;
+        height: 780px;
+    }
+
     .orbit-item {
-        width: 75px;
-    }
-
-    .orbit-item.large {
         width: 95px;
-    }
-
-    .orbit-item.small {
-        width: 60px;
+        height: 95px;
     }
 
     .center-video {
-        width: 145px;
+        width: 230px;
+        height: 165px;
     }
 
-    h1 {
-        font-size: 42px;
+    .gallery-heading {
+        margin-top: 75px;
     }
 }
 </style>
@@ -271,149 +256,187 @@ h1 {
 
 <div class="description">
     <p>
-        Upon reading the letters D, B, and S you might be wondering
+        Upon reading the letters D, B, and S, you might be wondering
         "just what is DBS?" All I can tell you is my best interpretation
         of what DBS is to me. DBS simply put is a concept, an idea.
-        DBS is a brand, it's a character, it's a man, it's men,
-        it's action and violence, it's chaotic and dancing in the dark,
+        DBS is a brand, it's a character, it's a man, it's men, it's
+        action and violence, it's chaotic and dancing in the dark,
         with the one and only MR.DBS being the masked face of it all.
+    </p>
 
-        You may ask "just who is MR.DBS?" What does he want?
-        Where is he going? What is he doing? What will he do next?
-        Are we in danger? MR.DBS is the mysterious figure who will
-        answer NONE of these questions.
+    <p>
+        You may ask "just who is MR.DBS?" What does he want? Where is
+        he going? What is he doing? What will he do next? Are we in
+        danger? MR.DBS is the mysterious figure who will answer NONE
+        of these questions. Just who the hat selling, gun shooting,
+        suitcase carrying, man of the night in a trench coat and
+        balaclava is might remain one of the world's greatest mysteries,
+        but regardless of it all he will do what he wants and get what
+        he needs.
     </p>
 </div>
 
-<!-- CIRCULAR ARTWORK -->
+<div class="gallery-heading">THE DBS COLLECTION</div>
 
-<main class="orbit">
+<div class="gallery-scroll">
 
-    <!-- IMAGE 1 -->
-    <div class="orbit-item large"
-         style="--angle:0deg; --radius:365px;">
+<main class="orbit" id="orbit">
+
+    <!-- ARTWORK 1 -->
+    <div class="orbit-item">
         <img src="../../../images/clients/dbs/dbsposter.JPG"
              alt="DBS poster">
     </div>
 
-    <!-- IMAGE 2 -->
-    <div class="orbit-item"
-         style="--angle:30deg; --radius:365px;">
+    <!-- ARTWORK 2 -->
+    <div class="orbit-item">
         <img src="../../../images/clients/dbs/dbsrecord.jpg"
              alt="DBS record">
     </div>
 
-    <!-- IMAGE 3 -->
-    <div class="orbit-item small"
-         style="--angle:60deg; --radius:365px;">
+    <!-- ARTWORK 3 -->
+    <div class="orbit-item">
         <img src="../../../images/clients/dbs/DBSdancewithfoid2.JPG"
-             alt="DBS artwork">
+             alt="DBS dance with foid 2">
     </div>
 
-    <!-- IMAGE 4 -->
-    <div class="orbit-item large"
-         style="--angle:90deg; --radius:365px;">
+    <!-- ARTWORK 4 -->
+    <div class="orbit-item">
         <img src="../../../images/clients/dbs/DBSdancewithfoid3.JPG"
-             alt="DBS dance artwork">
+             alt="DBS dance with foid 3">
     </div>
 
-    <!-- IMAGE 5 -->
-    <div class="orbit-item"
-         style="--angle:120deg; --radius:365px;">
+    <!-- ARTWORK 5 -->
+    <div class="orbit-item">
         <img src="../../../images/clients/dbs/DBSdancewithfoid1.JPG"
-             alt="DBS dance artwork">
+             alt="DBS dance with foid 1">
     </div>
 
-    <!-- IMAGE 6 -->
-    <div class="orbit-item small"
-         style="--angle:150deg; --radius:365px;">
-        <img src="../../../images/clients/dbs/dbsdance.JPG"
-             alt="DBS dance">
+    <!-- GIF 1: PISTOL ANIMATION -->
+    <div class="orbit-item">
+        <img src="../../../images/clients/dbs/DBS_Pistol_Animation.GIF"
+             alt="DBS pistol animation">
     </div>
 
-    <!-- IMAGE 7 -->
-    <div class="orbit-item large"
-         style="--angle:180deg; --radius:365px;">
+    <!-- GIF 2: LIFTING ANIMATION -->
+    <div class="orbit-item">
+        <img src="../../../images/clients/dbs/DBS_lifting_Animation.GIF"
+             alt="DBS lifting animation">
+    </div>
+
+    <!-- GIF 3: GUN ANIMATION -->
+    <div class="orbit-item">
+        <img src="../../../images/animation/DBS_gun_Animation_Final.gif"
+             alt="DBS gun animation">
+    </div>
+
+    <!-- ARTWORK 9 -->
+    <div class="orbit-item">
         <img src="../../../images/clients/dbs/dbspanels.JPG"
              alt="DBS panels">
     </div>
 
-    <!-- IMAGE 8 -->
-    <div class="orbit-item"
-         style="--angle:210deg; --radius:365px;">
-        <img src="../../../images/clients/dbs/dbsfalloff.JPG"
-             alt="DBS artwork">
+    <!-- ARTWORK 10 -->
+    <div class="orbit-item">
+        <img src="../../../images/clients/dbs/dbsdance.JPG"
+             alt="DBS dance">
     </div>
 
-    <!-- IMAGE 9 -->
-    <div class="orbit-item small"
-         style="--angle:240deg; --radius:365px;">
+    <!-- ARTWORK 11 -->
+    <div class="orbit-item">
+        <img src="../../../images/clients/dbs/dbsfalloff.JPG"
+             alt="DBS falloff">
+    </div>
+
+    <!-- ARTWORK 12 -->
+    <div class="orbit-item">
+        <img src="../../../images/clients/dbs/dbsrepeat.JPG"
+             alt="DBS repeat">
+    </div>
+
+    <!-- ARTWORK 13 -->
+    <div class="orbit-item">
         <img src="../../../images/clients/dbs/dbsshadow.JPG"
              alt="DBS shadow">
     </div>
 
-    <!-- IMAGE 10 -->
-    <div class="orbit-item large"
-         style="--angle:270deg; --radius:365px;">
+    <!-- ARTWORK 14 -->
+    <div class="orbit-item">
         <img src="../../../images/clients/dbs/dbsondbs.JPG"
-             alt="DBS artwork">
+             alt="DBS on DBS">
     </div>
 
-    <!-- IMAGE 11 -->
-    <div class="orbit-item"
-         style="--angle:300deg; --radius:365px;">
+    <!-- ARTWORK 15 -->
+    <div class="orbit-item">
         <img src="../../../images/clients/dbs/dbstie.JPG"
              alt="DBS tie">
     </div>
 
-    <!-- IMAGE 12 -->
-    <div class="orbit-item small"
-         style="--angle:330deg; --radius:365px;">
+    <!-- ARTWORK 16 -->
+    <div class="orbit-item">
         <img src="../../../images/clients/dbs/dbsspotlight.JPG"
              alt="DBS spotlight">
-            <!-- DBS GIFS -->
-    <div class="orbit-item">
-        <img src="../../../images/clients/dbs/DBS_Pistol_Animation.GIF"
-             alt="DBS Pistol Animation">
     </div>
 
+    <!-- ARTWORK 17 -->
     <div class="orbit-item">
-        <img src="../../../images/clients/dbs/DBS_lifting_Animation.GIF"
-             alt="DBS Lifting Animation">
+        <img src="../../../images/clients/dbs/dbsportrait.JPG"
+             alt="DBS portrait">
     </div>
 
-    <div class="orbit-item">
-        <img src="../../../images/clients/dbs/DBS_gun_Animation_Final.gif"
-             alt="DBS Gun Animation">
-    </div>
-
-</div> <!-- END OF ORBIT -->
-    </div>
 
     <!-- CENTER VIDEO -->
-
     <div class="center-video">
-        <video controls autoplay muted loop playsinline>
-            <source src="../../../images/clients/dbs/DBS.mp4"
+        <video controls muted loop playsinline>
+            <!-- REPLACE DBS-video.mp4 WITH YOUR ACTUAL VIDEO FILENAME -->
+            <source src="../../../images/clients/dbs/DBS-video.mp4"
                     type="video/mp4">
-            Your browser does not support this video.
+            Your browser does not support video.
         </video>
+        <div class="video-label">MR. DBS</div>
     </div>
 
 </main>
+</div>
 
-<a class="back" href="../../">
-    ← Back to Client Projects
-</a>
+<a class="back" href="../../">← Back to Client Projects</a>
 
 <!-- IMAGE ENLARGEMENT -->
-
 <div class="lightbox" id="lightbox">
-    <button class="close" aria-label="Close">&times;</button>
+    <button class="close" aria-label="Close image">&times;</button>
     <img src="" alt="Enlarged DBS artwork">
 </div>
 
 <script>
+
+/* AUTOMATIC CIRCULAR IMAGE PLACEMENT */
+
+const orbit = document.getElementById("orbit");
+const items = document.querySelectorAll(".orbit-item");
+
+function arrangeGallery() {
+    const orbitWidth = orbit.clientWidth;
+    const radius = orbitWidth * 0.405;
+    const total = items.length;
+
+    items.forEach((item, index) => {
+        const angle = (360 / total) * index - 90;
+        const radians = angle * Math.PI / 180;
+
+        const x = Math.cos(radians) * radius;
+        const y = Math.sin(radians) * radius;
+
+        item.style.left = `calc(50% + ${x}px)`;
+        item.style.top = `calc(50% + ${y}px)`;
+    });
+}
+
+arrangeGallery();
+window.addEventListener("resize", arrangeGallery);
+
+
+/* IMAGE LIGHTBOX */
+
 const lightbox = document.getElementById("lightbox");
 const enlarged = lightbox.querySelector("img");
 
@@ -426,8 +449,10 @@ document.querySelectorAll(".orbit-item img").forEach(img => {
 });
 
 lightbox.addEventListener("click", event => {
-    if (event.target === lightbox ||
-        event.target.classList.contains("close")) {
+    if (
+        event.target === lightbox ||
+        event.target.classList.contains("close")
+    ) {
         lightbox.classList.remove("active");
     }
 });
@@ -437,6 +462,7 @@ document.addEventListener("keydown", event => {
         lightbox.classList.remove("active");
     }
 });
+
 </script>
 
 </body>
