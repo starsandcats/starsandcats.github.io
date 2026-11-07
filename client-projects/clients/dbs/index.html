@@ -1,12 +1,15 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title>DBS — starsandtigers</title>
 
 <style>
+
 * {
     box-sizing: border-box;
 }
@@ -17,6 +20,8 @@ body {
     color: white;
     font-family: Arial, sans-serif;
 }
+
+/* HEADER */
 
 header {
     background: #050505;
@@ -47,12 +52,16 @@ nav a:hover,
     color: #ffdc00;
 }
 
+/* TITLE */
+
 h1 {
     text-align: center;
     color: #f5d742;
     font-size: clamp(38px, 6vw, 68px);
     margin: 60px 10px 25px;
 }
+
+/* DESCRIPTION */
 
 .description {
     max-width: 680px;
@@ -64,6 +73,8 @@ h1 {
     font-size: 15px;
 }
 
+/* GALLERY HEADING */
+
 .gallery-heading {
     text-align: center;
     color: #888;
@@ -72,10 +83,13 @@ h1 {
     margin: 85px 0 35px;
 }
 
+/* SCATTERED GALLERY */
+
 .gallery {
     width: 90%;
     max-width: 1000px;
     margin: 0 auto 70px;
+
     column-count: 3;
     column-gap: 35px;
 }
@@ -93,7 +107,10 @@ h1 {
     width: 100%;
     height: auto;
     cursor: zoom-in;
-    transition: transform 0.35s ease, filter 0.35s ease;
+
+    transition: transform 0.35s ease,
+                filter 0.35s ease;
+
     filter: drop-shadow(0 0 3px rgba(255,255,255,0.1));
 }
 
@@ -105,6 +122,8 @@ h1 {
     transform: scale(1.07);
     filter: drop-shadow(0 0 12px rgba(245,215,66,0.4));
 }
+
+/* VIDEO */
 
 .video-item {
     background: #080808;
@@ -127,6 +146,8 @@ h1 {
     padding: 12px 0 5px;
 }
 
+/* BACK BUTTON */
+
 .back {
     display: block;
     width: fit-content;
@@ -137,12 +158,15 @@ h1 {
     transition: color 0.25s ease;
 }
 
+/* LIGHTBOX */
+
 .lightbox {
     display: none;
     position: fixed;
     inset: 0;
     z-index: 100;
     background: rgba(0,0,0,0.96);
+
     justify-content: center;
     align-items: center;
     padding: 25px;
@@ -169,7 +193,10 @@ h1 {
     cursor: pointer;
 }
 
+/* TABLET */
+
 @media (max-width: 750px) {
+
     .gallery {
         column-count: 2;
         column-gap: 22px;
@@ -178,9 +205,13 @@ h1 {
     .gallery-item {
         margin-bottom: 22px;
     }
+
 }
 
+/* MOBILE */
+
 @media (max-width: 480px) {
+
     .gallery {
         width: 92%;
         column-count: 1;
@@ -190,13 +221,18 @@ h1 {
         margin: 0 5px;
         font-size: 12px;
     }
+
 }
+
 </style>
 </head>
 
 <body>
 
+<!-- HEADER -->
+
 <header>
+
     <div class="brand">starsandtigers</div>
 
     <nav>
@@ -206,153 +242,302 @@ h1 {
         <a href="../../../client-projects/">Client Projects</a>
         <a href="../../../sketches/">Sketches</a>
     </nav>
+
 </header>
+
+<!-- TITLE -->
 
 <h1>DBS</h1>
 
+<!-- DESCRIPTION -->
+
 <div class="description">
+
     <p>
-        Upon reading the letters D, B, and S, you might be wondering
-        "just what is DBS?" All I can tell you is my best interpretation
-        of what DBS is to me. DBS simply put is a concept, an idea.
-        DBS is a brand, it's a character, it's a man, it's men, it's
-        action and violence, it's chaotic and dancing in the dark,
-        with the one and only MR.DBS being the masked face of it all.
+    Upon reading the letters D, B, and S, you might be wondering
+    "just what is DBS?" All I can tell you is my best interpretation
+    of what DBS is to me. DBS simply put is a concept, an idea.
+    DBS is a brand, it's a character, it's a man, it's men, it's
+    action and violence, it's chaotic and dancing in the dark,
+    with the one and only MR.DBS being the masked face of it all.
     </p>
 
     <p>
-        You may ask "just who is MR.DBS?" What does he want? Where is
-        he going? What is he doing? What will he do next? Are we in
-        danger? MR.DBS is the mysterious figure who will answer NONE
-        of these questions. Just who the hat selling, gun shooting,
-        suitcase carrying, man of the night in a trench coat and
-        balaclava is might remain one of the world's greatest mysteries,
-        but regardless of it all he will do what he wants and get what
-        he needs.
+    You may ask "just who is MR.DBS?" What does he want? Where is
+    he going? What is he doing? What will he do next? Are we in
+    danger? MR.DBS is the mysterious figure who will answer NONE
+    of these questions. Just who the hat selling, gun shooting,
+    suitcase carrying, man of the night in a trench coat and
+    balaclava is might remain one of the world's greatest mysteries,
+    but regardless of it all he will do what he wants and get what
+    he needs.
     </p>
+
 </div>
 
 <div class="gallery-heading">DOWN BAD SOCIETY</div>
 
+<!-- GALLERY -->
+
 <main class="gallery">
 
-    <div class="gallery-item">
-        <img src="../../../images/clients/dbs/dbsposter.JPG" alt="DBS poster">
-    </div>
+    <!-- POSTER -->
 
     <div class="gallery-item">
-        <img src="../../../images/clients/dbs/dbsrecord.jpg" alt="DBS record">
+        <img src="../../../images/clients/dbs/dbsposter.JPG"
+             alt="DBS poster">
     </div>
 
-    <div class="gallery-item">
-        <img src="../../../images/clients/dbs/DBSdancewithfoid2.JPG" alt="DBS dance">
-    </div>
+    <!-- RECORD -->
 
     <div class="gallery-item">
-        <img src="../../../images/clients/dbs/DBSdancewithfoid3.JPG" alt="DBS dance">
+        <img src="../../../images/clients/dbs/dbsrecord.jpg"
+             alt="DBS record">
     </div>
 
-    <div class="gallery-item">
-        <img src="../../../images/clients/dbs/DBSdancewithfoid1.JPG" alt="DBS dance">
-    </div>
+    <!-- RECORD SPIN GIF -->
 
     <div class="gallery-item">
-        <img src="../../../images/clients/dbs/DBS_Pistol_Animation.GIF" alt="DBS pistol animation">
+        <img src="../../../images/clients/dbs/dbsrecordspin.gif"
+             alt="DBS record spin">
     </div>
 
-    <div class="gallery-item">
-        <img src="../../../images/clients/dbs/DBS_lifting_Animation.GIF" alt="DBS lifting animation">
-    </div>
+    <!-- DANCE 2 -->
 
     <div class="gallery-item">
-        <img src="../../../images/animation/DBS_gun_Animation_Final.gif" alt="DBS gun animation">
+        <img src="../../../images/clients/dbs/DBSdancewithfoid2.JPG"
+             alt="DBS dance">
     </div>
 
-    <div class="gallery-item">
-        <img src="../../../images/clients/dbs/dbspanels.JPG" alt="DBS panels">
-    </div>
+    <!-- GLITCH GIF -->
 
     <div class="gallery-item">
-        <img src="../../../images/clients/dbs/dbsdance.JPG" alt="DBS dance">
+        <img src="../../../images/clients/dbs/dbsglitch.gif"
+             alt="DBS glitch">
     </div>
 
+    <!-- DANCE 3 -->
+
     <div class="gallery-item">
-        <img src="../../../images/clients/dbs/dbsfalloff.JPG" alt="DBS falloff">
+        <img src="../../../images/clients/dbs/DBSdancewithfoid3.JPG"
+             alt="DBS dance">
     </div>
+
+    <!-- HANDS GIF -->
+
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/dbshands.gif"
+             alt="DBS hands">
+    </div>
+
+    <!-- DANCE 1 -->
+
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/DBSdancewithfoid1.JPG"
+             alt="DBS dance">
+    </div>
+
+    <!-- BOOGIE GIF -->
+
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/dbsboogie.gif"
+             alt="DBS boogie">
+    </div>
+
+    <!-- PISTOL ANIMATION -->
+
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/DBS_Pistol_Animation.GIF"
+             alt="DBS pistol animation">
+    </div>
+
+    <!-- MOONWALK GIF -->
+
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/dbsmoonwalk.gif"
+             alt="DBS moonwalk">
+    </div>
+
+    <!-- LIFTING ANIMATION -->
+
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/DBS_lifting_Animation.GIF"
+             alt="DBS lifting animation">
+    </div>
+
+    <!-- SHOOT GIF -->
+
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/dbsshoot.gif"
+             alt="DBS shoot">
+    </div>
+
+    <!-- GUN ANIMATION -->
+
+    <div class="gallery-item">
+        <img src="../../../images/animation/DBS_gun_Animation_Final.gif"
+             alt="DBS gun animation">
+    </div>
+
+    <!-- PANELS -->
+
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/dbspanels.JPG"
+             alt="DBS panels">
+    </div>
+
+    <!-- RIPPLE GIF -->
+
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/dbsripple.gif"
+             alt="DBS ripple">
+    </div>
+
+    <!-- DANCE -->
+
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/dbsdance.JPG"
+             alt="DBS dance">
+    </div>
+
+    <!-- FALLOFF -->
+
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/dbsfalloff.JPG"
+             alt="DBS falloff">
+    </div>
+
+    <!-- VIDEO -->
 
     <div class="gallery-item video-item">
+
         <video controls muted loop playsinline>
-            <source src="../../../images/clients/dbs/DBS.mp4" type="video/mp4">
+            <source src="../../../images/clients/dbs/DBS.mp4"
+                    type="video/mp4">
         </video>
+
         <div class="video-label">MR. DBS</div>
+
     </div>
+
+    <!-- REPEAT -->
 
     <div class="gallery-item">
-        <img src="../../../images/clients/dbs/dbsrepeat.JPG" alt="DBS repeat">
+        <img src="../../../images/clients/dbs/dbsrepeat.JPG"
+             alt="DBS repeat">
     </div>
+
+    <!-- SHADOW -->
 
     <div class="gallery-item">
-        <img src="../../../images/clients/dbs/dbsshadow.JPG" alt="DBS shadow">
+        <img src="../../../images/clients/dbs/dbsshadow.JPG"
+             alt="DBS shadow">
     </div>
+
+    <!-- ON DBS -->
 
     <div class="gallery-item">
-        <img src="../../../images/clients/dbs/dbsondbs.JPG" alt="DBS on DBS">
+        <img src="../../../images/clients/dbs/dbsondbs.JPG"
+             alt="DBS on DBS">
     </div>
+
+    <!-- TIE -->
 
     <div class="gallery-item">
-        <img src="../../../images/clients/dbs/dbstie.JPG" alt="DBS tie">
+        <img src="../../../images/clients/dbs/dbstie.JPG"
+             alt="DBS tie">
     </div>
+
+    <!-- SPOTLIGHT -->
 
     <div class="gallery-item">
-        <img src="../../../images/clients/dbs/dbsspotlight.JPG" alt="DBS spotlight">
+        <img src="../../../images/clients/dbs/dbsspotlight.JPG"
+             alt="DBS spotlight">
     </div>
+
+    <!-- PORTRAIT -->
 
     <div class="gallery-item">
-        <img src="../../../images/clients/dbs/dbsportrait.JPG" alt="DBS portrait">
+        <img src="../../../images/clients/dbs/dbsportrait.JPG"
+             alt="DBS portrait">
     </div>
 
-  <div class="gallery-item">
-    <img src="/images/clients/dbs/dbswindy.GIF" alt="DBS Windy">
-</div>
+    <!-- WINDY GIF - PRESERVED POSITION -->
 
-<div class="gallery-item">
-    <img src="/images/clients/dbs/dbsyeah.JPG" alt="DBS Yeah">
-</div>
+    <div class="gallery-item">
+        <img src="/images/clients/dbs/dbswindy.GIF"
+             alt="DBS Windy">
+    </div>
+
+    <!-- YEAH IMAGE - PRESERVED POSITION -->
+
+    <div class="gallery-item">
+        <img src="/images/clients/dbs/dbsyeah.JPG"
+             alt="DBS Yeah">
+    </div>
+
 </main>
 
-<a class="back" href="../../">← Back to Client Projects</a>
+<!-- BACK TO CLIENT PROJECTS -->
+
+<a class="back" href="../../">
+    ← Back to Client Projects
+</a>
+
+<!-- LIGHTBOX -->
 
 <div class="lightbox" id="lightbox">
-    <button class="close" aria-label="Close image">&times;</button>
+
+    <button class="close" aria-label="Close image">
+        &times;
+    </button>
+
     <img src="" alt="Enlarged DBS artwork">
+
 </div>
 
+<!-- JAVASCRIPT -->
+
 <script>
+
 const lightbox = document.getElementById("lightbox");
+
 const enlarged = lightbox.querySelector("img");
 
 document.querySelectorAll(".gallery-item img").forEach(img => {
+
     img.addEventListener("click", () => {
+
         enlarged.src = img.src;
         enlarged.alt = img.alt;
+
         lightbox.classList.add("active");
+
     });
+
 });
 
 lightbox.addEventListener("click", event => {
+
     if (
         event.target === lightbox ||
         event.target.classList.contains("close")
     ) {
+
         lightbox.classList.remove("active");
+
     }
+
 });
 
 document.addEventListener("keydown", event => {
+
     if (event.key === "Escape") {
         lightbox.classList.remove("active");
     }
+
 });
+
 </script>
 
 </body>
