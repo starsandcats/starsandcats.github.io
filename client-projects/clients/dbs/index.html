@@ -1,15 +1,12 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <title>DBS — starsandtigers</title>
 
 <style>
-
 * {
     box-sizing: border-box;
 }
@@ -20,8 +17,6 @@ body {
     color: white;
     font-family: Arial, sans-serif;
 }
-
-/* HEADER */
 
 header {
     background: #050505;
@@ -52,16 +47,12 @@ nav a:hover,
     color: #ffdc00;
 }
 
-/* TITLE */
-
 h1 {
     text-align: center;
     color: #f5d742;
     font-size: clamp(38px, 6vw, 68px);
     margin: 60px 10px 25px;
 }
-
-/* DESCRIPTION */
 
 .description {
     max-width: 680px;
@@ -73,161 +64,78 @@ h1 {
     font-size: 15px;
 }
 
-/* GALLERY HEADING */
-
 .gallery-heading {
     text-align: center;
     color: #888;
     font-size: 12px;
     letter-spacing: 3px;
-    margin: 85px 0 55px;
+    margin: 85px 0 35px;
 }
 
-/* SCATTERED GALLERY */
+/* ORBIT GALLERY */
 
 .gallery {
-    width: 92%;
-    max-width: 1100px;
-    margin: 0 auto 90px;
-
-    display: grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    grid-auto-flow: dense;
-    align-items: start;
-
-    column-gap: 24px;
-    row-gap: 45px;
+    position: relative;
+    width: min(1000px, 94%);
+    height: 2150px;
+    margin: 0 auto 60px;
 }
 
 .gallery-item {
-    position: relative;
-    min-width: 0;
-    align-self: start;
+    position: absolute;
+    width: 19%;
+    transition: transform 0.4s ease, filter 0.4s ease;
 }
 
 .gallery-item img {
     display: block;
     width: 100%;
     height: auto;
-
     cursor: zoom-in;
-
-    transition:
-        transform 0.4s ease,
-        filter 0.4s ease;
-
-    filter: drop-shadow(0 0 3px rgba(255,255,255,0.1));
+    filter: drop-shadow(0 0 3px rgba(255,255,255,0.12));
 }
 
 .gallery-item:hover {
-    z-index: 10;
+    z-index: 20;
+    transform: scale(1.12);
+    filter: drop-shadow(0 0 12px rgba(245,215,66,0.35));
 }
 
-.gallery-item:hover img {
-    transform: scale(1.08);
-    filter: drop-shadow(0 0 14px rgba(245,215,66,0.4));
-}
+/* OUTER ORBIT */
 
-/* DIFFERENT IMAGE SIZES */
+.gallery-item:nth-child(1)  { top: 1%;  left: 39%; width: 21%; }
+.gallery-item:nth-child(2)  { top: 5%;  left: 65%; width: 17%; }
+.gallery-item:nth-child(3)  { top: 14%; left: 79%; width: 17%; }
+.gallery-item:nth-child(4)  { top: 27%; left: 81%; width: 16%; }
+.gallery-item:nth-child(5)  { top: 42%; left: 81%; width: 17%; }
+.gallery-item:nth-child(6)  { top: 57%; left: 78%; width: 18%; }
+.gallery-item:nth-child(7)  { top: 71%; left: 65%; width: 19%; }
+.gallery-item:nth-child(8)  { top: 83%; left: 43%; width: 20%; }
+.gallery-item:nth-child(9)  { top: 82%; left: 19%; width: 19%; }
+.gallery-item:nth-child(10) { top: 69%; left: 1%;  width: 19%; }
+.gallery-item:nth-child(11) { top: 54%; left: 1%;  width: 18%; }
+.gallery-item:nth-child(12) { top: 38%; left: 1%;  width: 21%; }
+.gallery-item:nth-child(13) { top: 23%; left: 3%;  width: 18%; }
+.gallery-item:nth-child(14) { top: 10%; left: 17%; width: 18%; }
+.gallery-item:nth-child(15) { top: 2%;  left: 25%; width: 17%; }
 
-.span-3 {
-    grid-column: span 3;
-}
+/* INNER ORBIT */
 
-.span-4 {
-    grid-column: span 4;
-}
+.gallery-item:nth-child(16) { top: 19%; left: 37%; width: 17%; }
+.gallery-item:nth-child(17) { top: 22%; left: 58%; width: 17%; }
+.gallery-item:nth-child(18) { top: 36%; left: 65%; width: 18%; }
+.gallery-item:nth-child(19) { top: 57%; left: 61%; width: 18%; }
+.gallery-item:nth-child(20) { top: 65%; left: 37%; width: 19%; }
 
-.span-5 {
-    grid-column: span 5;
-}
+/* NEW GIFS — INNER SCATTER */
 
-.span-6 {
-    grid-column: span 6;
-}
-
-/* SCATTERED POSITIONS */
-
-.start-1 {
-    grid-column-start: 1;
-}
-
-.start-2 {
-    grid-column-start: 2;
-}
-
-.start-3 {
-    grid-column-start: 3;
-}
-
-.start-4 {
-    grid-column-start: 4;
-}
-
-.start-5 {
-    grid-column-start: 5;
-}
-
-.start-6 {
-    grid-column-start: 6;
-}
-
-.start-7 {
-    grid-column-start: 7;
-}
-
-.start-8 {
-    grid-column-start: 8;
-}
-
-.start-9 {
-    grid-column-start: 9;
-}
-
-.start-10 {
-    grid-column-start: 10;
-}
-
-/* EXTRA MOVEMENT */
-
-.drift-down {
-    margin-top: 35px;
-}
-
-.drift-up {
-    margin-top: -15px;
-}
-
-.drift-right {
-    transform: translateX(12px);
-}
-
-.drift-left {
-    transform: translateX(-12px);
-}
-
-/* CIRCULAR IMAGE SHAPES */
-
-.circle img {
-    aspect-ratio: 1 / 1;
-    width: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-    overflow: hidden;
-
-    border: 1px solid rgba(245,215,66,0.35);
-}
-
-.circle {
-    border-radius: 50%;
-}
-
-/* CIRCULAR HOVER */
-
-.circle:hover img {
-    transform: scale(1.09);
-    filter: drop-shadow(0 0 18px rgba(245,215,66,0.5));
-}
+.gallery-item:nth-child(21) { top: 42%; left: 25%; width: 17%; }
+.gallery-item:nth-child(22) { top: 31%; left: 42%; width: 16%; }
+.gallery-item:nth-child(23) { top: 48%; left: 44%; width: 17%; }
+.gallery-item:nth-child(24) { top: 57%; left: 23%; width: 17%; }
+.gallery-item:nth-child(25) { top: 13%; left: 46%; width: 16%; }
+.gallery-item:nth-child(26) { top: 73%; left: 44%; width: 17%; }
+.gallery-item:nth-child(27) { top: 78%; left: 25%; width: 16%; }
 
 /* VIDEO */
 
@@ -252,15 +160,6 @@ h1 {
     padding: 12px 0 5px;
 }
 
-/* WINDY PLACEMENT REFERENCE */
-
-.windy-reference {
-    position: relative;
-    z-index: 2;
-}
-
-/* BACK BUTTON */
-
 .back {
     display: block;
     width: fit-content;
@@ -279,7 +178,6 @@ h1 {
     inset: 0;
     z-index: 100;
     background: rgba(0,0,0,0.96);
-
     justify-content: center;
     align-items: center;
     padding: 25px;
@@ -293,7 +191,6 @@ h1 {
     max-width: 90vw;
     max-height: 85vh;
     object-fit: contain;
-    border-radius: 0;
 }
 
 .close {
@@ -307,103 +204,57 @@ h1 {
     cursor: pointer;
 }
 
-/* TABLET */
+/* MOBILE LAYOUT */
 
-@media (max-width: 850px) {
-
+@media (max-width: 700px) {
     .gallery {
-        grid-template-columns: repeat(8, minmax(0, 1fr));
-        column-gap: 18px;
-        row-gap: 35px;
-    }
-
-    .span-5,
-    .span-6 {
-        grid-column: span 5;
-    }
-
-    .start-9,
-    .start-10 {
-        grid-column-start: auto;
-    }
-
-}
-
-/* MOBILE */
-
-@media (max-width: 550px) {
-
-    .gallery {
+        position: static;
         width: 92%;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        column-gap: 14px;
-        row-gap: 28px;
+        height: auto;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 28px 18px;
+        align-items: center;
     }
 
-    .span-3 {
+    .gallery-item {
+        position: static;
+        width: 100% !important;
+    }
+
+    .gallery-item:hover {
+        transform: scale(1.04);
+    }
+
+    .video-item {
         grid-column: span 2;
-    }
-
-    .span-4,
-    .span-5,
-    .span-6 {
-        grid-column: span 4;
-    }
-
-    .start-1,
-    .start-2,
-    .start-3,
-    .start-4,
-    .start-5,
-    .start-6,
-    .start-7,
-    .start-8,
-    .start-9,
-    .start-10 {
-        grid-column-start: auto;
-    }
-
-    .drift-down {
-        margin-top: 12px;
-    }
-
-    .drift-up {
-        margin-top: 0;
-    }
-
-    .drift-left,
-    .drift-right {
-        transform: none;
+        max-width: 85%;
+        justify-self: center;
     }
 
     nav a {
         margin: 0 5px;
         font-size: 12px;
     }
-
 }
-
-/* SMALL PHONES */
 
 @media (max-width: 380px) {
-
     .gallery {
-        column-gap: 10px;
+        grid-template-columns: 1fr;
     }
 
+    .video-item {
+        grid-column: span 1;
+        max-width: 100%;
+    }
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-
 <header>
-
     <div class="brand">starsandtigers</div>
-
     <nav>
         <a href="../../../">Home</a>
         <a href="../../../illustrations/">Illustrations</a>
@@ -411,301 +262,188 @@ h1 {
         <a href="../../../client-projects/">Client Projects</a>
         <a href="../../../sketches/">Sketches</a>
     </nav>
-
 </header>
-
-<!-- TITLE -->
 
 <h1>DBS</h1>
 
-<!-- DESCRIPTION -->
-
 <div class="description">
-
     <p>
-    Upon reading the letters D, B, and S, you might be wondering
-    "just what is DBS?" All I can tell you is my best interpretation
-    of what DBS is to me. DBS simply put is a concept, an idea.
-    DBS is a brand, it's a character, it's a man, it's men, it's
-    action and violence, it's chaotic and dancing in the dark,
-    with the one and only MR.DBS being the masked face of it all.
+        Upon reading the letters D, B, and S, you might be wondering
+        "just what is DBS?" All I can tell you is my best interpretation
+        of what DBS is to me. DBS simply put is a concept, an idea.
+        DBS is a brand, it's a character, it's a man, it's men, it's
+        action and violence, it's chaotic and dancing in the dark,
+        with the one and only MR.DBS being the masked face of it all.
     </p>
 
     <p>
-    You may ask "just who is MR.DBS?" What does he want? Where is
-    he going? What is he doing? What will he do next? Are we in
-    danger? MR.DBS is the mysterious figure who will answer NONE
-    of these questions. Just who the hat selling, gun shooting,
-    suitcase carrying, man of the night in a trench coat and
-    balaclava is might remain one of the world's greatest mysteries,
-    but regardless of it all he will do what he wants and get what
-    he needs.
+        You may ask "just who is MR.DBS?" What does he want? Where is
+        he going? What is he doing? What will he do next? Are we in
+        danger? MR.DBS is the mysterious figure who will answer NONE
+        of these questions. Just who the hat selling, gun shooting,
+        suitcase carrying, man of the night in a trench coat and
+        balaclava is might remain one of the world's greatest mysteries,
+        but regardless of it all he will do what he wants and get what
+        he needs.
     </p>
-
 </div>
 
 <div class="gallery-heading">DOWN BAD SOCIETY</div>
 
-<!-- SCATTERED GALLERY -->
-
 <main class="gallery">
 
-    <!-- POSTER -->
+    <!-- EXISTING ARTWORK -->
 
-    <div class="gallery-item span-4 start-2 drift-down">
-        <img src="../../../images/clients/dbs/dbsposter.JPG"
-             alt="DBS poster">
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/dbsposter.JPG" alt="DBS poster">
     </div>
 
-    <!-- RECORD -->
-
-    <div class="gallery-item span-3 start-8 drift-up">
-        <img src="../../../images/clients/dbs/dbsrecord.jpg"
-             alt="DBS record">
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/dbsrecord.jpg" alt="DBS record">
     </div>
 
-    <!-- RECORD SPIN - CIRCLE -->
-
-    <div class="gallery-item span-3 start-1 circle drift-down">
-        <img src="../../../images/clients/dbs/dbsrecordspin.gif"
-             alt="DBS record spin">
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/DBSdancewithfoid2.JPG" alt="DBS dance">
     </div>
 
-    <!-- DANCE 2 -->
-
-    <div class="gallery-item span-4 start-5">
-        <img src="../../../images/clients/dbs/DBSdancewithfoid2.JPG"
-             alt="DBS dance">
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/DBSdancewithfoid3.JPG" alt="DBS dance">
     </div>
 
-    <!-- GLITCH - CIRCLE -->
-
-    <div class="gallery-item span-3 start-10 circle drift-down">
-        <img src="../../../images/clients/dbs/dbsglitch.gif"
-             alt="DBS glitch">
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/DBSdancewithfoid1.JPG" alt="DBS dance">
     </div>
 
-    <!-- DANCE 3 -->
-
-    <div class="gallery-item span-3 start-2 drift-up">
-        <img src="../../../images/clients/dbs/DBSdancewithfoid3.JPG"
-             alt="DBS dance">
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/DBS_Pistol_Animation.GIF" alt="DBS pistol animation">
     </div>
 
-    <!-- HANDS - CIRCLE -->
-
-    <div class="gallery-item span-3 start-7 circle drift-down">
-        <img src="../../../images/clients/dbs/dbshands.gif"
-             alt="DBS hands">
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/DBS_lifting_Animation.GIF" alt="DBS lifting animation">
     </div>
 
-    <!-- DANCE 1 -->
-
-    <div class="gallery-item span-4 start-4">
-        <img src="../../../images/clients/dbs/DBSdancewithfoid1.JPG"
-             alt="DBS dance">
+    <div class="gallery-item">
+        <img src="../../../images/animation/DBS_gun_Animation_Final.gif" alt="DBS gun animation">
     </div>
 
-    <!-- BOOGIE - CIRCLE -->
-
-    <div class="gallery-item span-3 start-9 circle drift-up">
-        <img src="../../../images/clients/dbs/dbsboogie.gif"
-             alt="DBS boogie">
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/dbspanels.JPG" alt="DBS panels">
     </div>
 
-    <!-- PISTOL ANIMATION -->
-
-    <div class="gallery-item span-4 start-1 drift-down">
-        <img src="../../../images/clients/dbs/DBS_Pistol_Animation.GIF"
-             alt="DBS pistol animation">
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/dbsdance.JPG" alt="DBS dance">
     </div>
 
-    <!-- MOONWALK - CIRCLE -->
-
-    <div class="gallery-item span-3 start-6 circle drift-down">
-        <img src="../../../images/clients/dbs/dbsmoonwalk.gif"
-             alt="DBS moonwalk">
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/dbsfalloff.JPG" alt="DBS falloff">
     </div>
 
-    <!-- LIFTING ANIMATION -->
-
-    <div class="gallery-item span-4 start-9">
-        <img src="../../../images/clients/dbs/DBS_lifting_Animation.GIF"
-             alt="DBS lifting animation">
-    </div>
-
-    <!-- SHOOT -->
-
-    <div class="gallery-item span-3 start-3 circle drift-down">
-        <img src="../../../images/clients/dbs/dbsshoot.gif"
-             alt="DBS shoot">
-    </div>
-
-    <!-- GUN ANIMATION -->
-
-    <div class="gallery-item span-4 start-7 drift-up">
-        <img src="../../../images/animation/DBS_gun_Animation_Final.gif"
-             alt="DBS gun animation">
-    </div>
-
-    <!-- PANELS -->
-
-    <div class="gallery-item span-4 start-2">
-        <img src="../../../images/clients/dbs/dbspanels.JPG"
-             alt="DBS panels">
-    </div>
-
-    <!-- RIPPLE - CIRCLE -->
-
-    <div class="gallery-item span-3 start-9 circle drift-down">
-        <img src="../../../images/clients/dbs/dbsripple.gif"
-             alt="DBS ripple">
-    </div>
-
-    <!-- DANCE -->
-
-    <div class="gallery-item span-4 start-5 drift-down">
-        <img src="../../../images/clients/dbs/dbsdance.JPG"
-             alt="DBS dance">
-    </div>
-
-    <!-- FALLOFF -->
-
-    <div class="gallery-item span-3 start-1 drift-up">
-        <img src="../../../images/clients/dbs/dbsfalloff.JPG"
-             alt="DBS falloff">
-    </div>
-
-    <!-- VIDEO -->
-
-    <div class="gallery-item span-5 start-7 video-item">
-
+    <div class="gallery-item video-item">
         <video controls muted loop playsinline>
-            <source src="../../../images/clients/dbs/DBS.mp4"
-                    type="video/mp4">
+            <source src="../../../images/clients/dbs/DBS.mp4" type="video/mp4">
         </video>
-
         <div class="video-label">MR. DBS</div>
-
     </div>
 
-    <!-- REPEAT -->
-
-    <div class="gallery-item span-3 start-3">
-        <img src="../../../images/clients/dbs/dbsrepeat.JPG"
-             alt="DBS repeat">
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/dbsrepeat.JPG" alt="DBS repeat">
     </div>
 
-    <!-- SHADOW -->
-
-    <div class="gallery-item span-4 start-8 drift-down">
-        <img src="../../../images/clients/dbs/dbsshadow.JPG"
-             alt="DBS shadow">
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/dbsshadow.JPG" alt="DBS shadow">
     </div>
 
-    <!-- ON DBS -->
-
-    <div class="gallery-item span-3 start-1">
-        <img src="../../../images/clients/dbs/dbsondbs.JPG"
-             alt="DBS on DBS">
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/dbsondbs.JPG" alt="DBS on DBS">
     </div>
 
-    <!-- TIE -->
-
-    <div class="gallery-item span-3 start-5 drift-down">
-        <img src="../../../images/clients/dbs/dbstie.JPG"
-             alt="DBS tie">
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/dbstie.JPG" alt="DBS tie">
     </div>
 
-    <!-- SPOTLIGHT -->
-
-    <div class="gallery-item span-4 start-9">
-        <img src="../../../images/clients/dbs/dbsspotlight.JPG"
-             alt="DBS spotlight">
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/dbsspotlight.JPG" alt="DBS spotlight">
     </div>
 
-    <!-- PORTRAIT -->
-
-    <div class="gallery-item span-3 start-4 drift-down">
-        <img src="../../../images/clients/dbs/dbsportrait.JPG"
-             alt="DBS portrait">
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/dbsportrait.JPG" alt="DBS portrait">
     </div>
 
-    <!-- WINDY - ORIGINAL REFERENCE POSITION -->
+    <!-- KEEPING THE WINDY IMAGE IN ITS EXISTING GALLERY SEQUENCE -->
 
-    <div class="gallery-item span-4 start-8 windy-reference">
-        <img src="/images/clients/dbs/dbswindy.GIF"
-             alt="DBS Windy">
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/dbswindy.GIF" alt="DBS Windy">
     </div>
 
-    <!-- YEAH -->
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/dbsyeah.JPG" alt="DBS Yeah">
+    </div>
 
-    <div class="gallery-item span-3 start-2 drift-down">
-        <img src="/images/clients/dbs/dbsyeah.JPG"
-             alt="DBS Yeah">
+    <!-- SEVEN NEW GIFS -->
+
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/dbsrecordspin.gif" alt="DBS record spin">
+    </div>
+
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/dbsglitch.gif" alt="DBS glitch">
+    </div>
+
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/dbshands.gif" alt="DBS hands">
+    </div>
+
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/dbsboogie.gif" alt="DBS boogie">
+    </div>
+
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/dbsmoonwalk.gif" alt="DBS moonwalk">
+    </div>
+
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/dbsshoot.gif" alt="DBS shoot">
+    </div>
+
+    <div class="gallery-item">
+        <img src="../../../images/clients/dbs/dbsripple.gif" alt="DBS ripple">
     </div>
 
 </main>
 
-<!-- BACK TO CLIENT PROJECTS -->
-
-<a class="back" href="../../">
-    ← Back to Client Projects
-</a>
-
-<!-- LIGHTBOX -->
+<a class="back" href="../../">← Back to Client Projects</a>
 
 <div class="lightbox" id="lightbox">
-
-    <button class="close" aria-label="Close image">
-        &times;
-    </button>
-
+    <button class="close" aria-label="Close image">&times;</button>
     <img src="" alt="Enlarged DBS artwork">
-
 </div>
 
-<!-- JAVASCRIPT -->
-
 <script>
-
 const lightbox = document.getElementById("lightbox");
 const enlarged = lightbox.querySelector("img");
 
 document.querySelectorAll(".gallery-item img").forEach(img => {
-
     img.addEventListener("click", () => {
-
         enlarged.src = img.src;
         enlarged.alt = img.alt;
-
         lightbox.classList.add("active");
-
     });
-
 });
 
 lightbox.addEventListener("click", event => {
-
     if (
         event.target === lightbox ||
         event.target.classList.contains("close")
     ) {
-
         lightbox.classList.remove("active");
-
     }
-
 });
 
 document.addEventListener("keydown", event => {
-
     if (event.key === "Escape") {
         lightbox.classList.remove("active");
     }
-
 });
-
 </script>
 
 </body>
