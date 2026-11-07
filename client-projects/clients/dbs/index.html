@@ -80,36 +80,41 @@ h1 {
     color: #888;
     font-size: 12px;
     letter-spacing: 3px;
-    margin: 85px 0 35px;
+    margin: 85px 0 55px;
 }
 
 /* SCATTERED GALLERY */
 
 .gallery {
-    width: 90%;
-    max-width: 1000px;
-    margin: 0 auto 70px;
+    width: 92%;
+    max-width: 1100px;
+    margin: 0 auto 90px;
 
-    column-count: 3;
-    column-gap: 35px;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-auto-flow: dense;
+    align-items: start;
+
+    column-gap: 24px;
+    row-gap: 45px;
 }
 
 .gallery-item {
-    display: inline-block;
-    width: 100%;
-    margin-bottom: 35px;
-    break-inside: avoid;
     position: relative;
+    min-width: 0;
+    align-self: start;
 }
 
 .gallery-item img {
     display: block;
     width: 100%;
     height: auto;
+
     cursor: zoom-in;
 
-    transition: transform 0.35s ease,
-                filter 0.35s ease;
+    transition:
+        transform 0.4s ease,
+        filter 0.4s ease;
 
     filter: drop-shadow(0 0 3px rgba(255,255,255,0.1));
 }
@@ -119,8 +124,109 @@ h1 {
 }
 
 .gallery-item:hover img {
-    transform: scale(1.07);
-    filter: drop-shadow(0 0 12px rgba(245,215,66,0.4));
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 14px rgba(245,215,66,0.4));
+}
+
+/* DIFFERENT IMAGE SIZES */
+
+.span-3 {
+    grid-column: span 3;
+}
+
+.span-4 {
+    grid-column: span 4;
+}
+
+.span-5 {
+    grid-column: span 5;
+}
+
+.span-6 {
+    grid-column: span 6;
+}
+
+/* SCATTERED POSITIONS */
+
+.start-1 {
+    grid-column-start: 1;
+}
+
+.start-2 {
+    grid-column-start: 2;
+}
+
+.start-3 {
+    grid-column-start: 3;
+}
+
+.start-4 {
+    grid-column-start: 4;
+}
+
+.start-5 {
+    grid-column-start: 5;
+}
+
+.start-6 {
+    grid-column-start: 6;
+}
+
+.start-7 {
+    grid-column-start: 7;
+}
+
+.start-8 {
+    grid-column-start: 8;
+}
+
+.start-9 {
+    grid-column-start: 9;
+}
+
+.start-10 {
+    grid-column-start: 10;
+}
+
+/* EXTRA MOVEMENT */
+
+.drift-down {
+    margin-top: 35px;
+}
+
+.drift-up {
+    margin-top: -15px;
+}
+
+.drift-right {
+    transform: translateX(12px);
+}
+
+.drift-left {
+    transform: translateX(-12px);
+}
+
+/* CIRCULAR IMAGE SHAPES */
+
+.circle img {
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    overflow: hidden;
+
+    border: 1px solid rgba(245,215,66,0.35);
+}
+
+.circle {
+    border-radius: 50%;
+}
+
+/* CIRCULAR HOVER */
+
+.circle:hover img {
+    transform: scale(1.09);
+    filter: drop-shadow(0 0 18px rgba(245,215,66,0.5));
 }
 
 /* VIDEO */
@@ -144,6 +250,13 @@ h1 {
     font-size: 11px;
     letter-spacing: 2px;
     padding: 12px 0 5px;
+}
+
+/* WINDY PLACEMENT REFERENCE */
+
+.windy-reference {
+    position: relative;
+    z-index: 2;
 }
 
 /* BACK BUTTON */
@@ -180,6 +293,7 @@ h1 {
     max-width: 90vw;
     max-height: 85vh;
     object-fit: contain;
+    border-radius: 0;
 }
 
 .close {
@@ -195,31 +309,86 @@ h1 {
 
 /* TABLET */
 
-@media (max-width: 750px) {
+@media (max-width: 850px) {
 
     .gallery {
-        column-count: 2;
-        column-gap: 22px;
+        grid-template-columns: repeat(8, minmax(0, 1fr));
+        column-gap: 18px;
+        row-gap: 35px;
     }
 
-    .gallery-item {
-        margin-bottom: 22px;
+    .span-5,
+    .span-6 {
+        grid-column: span 5;
+    }
+
+    .start-9,
+    .start-10 {
+        grid-column-start: auto;
     }
 
 }
 
 /* MOBILE */
 
-@media (max-width: 480px) {
+@media (max-width: 550px) {
 
     .gallery {
         width: 92%;
-        column-count: 1;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        column-gap: 14px;
+        row-gap: 28px;
+    }
+
+    .span-3 {
+        grid-column: span 2;
+    }
+
+    .span-4,
+    .span-5,
+    .span-6 {
+        grid-column: span 4;
+    }
+
+    .start-1,
+    .start-2,
+    .start-3,
+    .start-4,
+    .start-5,
+    .start-6,
+    .start-7,
+    .start-8,
+    .start-9,
+    .start-10 {
+        grid-column-start: auto;
+    }
+
+    .drift-down {
+        margin-top: 12px;
+    }
+
+    .drift-up {
+        margin-top: 0;
+    }
+
+    .drift-left,
+    .drift-right {
+        transform: none;
     }
 
     nav a {
         margin: 0 5px;
         font-size: 12px;
+    }
+
+}
+
+/* SMALL PHONES */
+
+@media (max-width: 380px) {
+
+    .gallery {
+        column-gap: 10px;
     }
 
 }
@@ -277,139 +446,139 @@ h1 {
 
 <div class="gallery-heading">DOWN BAD SOCIETY</div>
 
-<!-- GALLERY -->
+<!-- SCATTERED GALLERY -->
 
 <main class="gallery">
 
     <!-- POSTER -->
 
-    <div class="gallery-item">
+    <div class="gallery-item span-4 start-2 drift-down">
         <img src="../../../images/clients/dbs/dbsposter.JPG"
              alt="DBS poster">
     </div>
 
     <!-- RECORD -->
 
-    <div class="gallery-item">
+    <div class="gallery-item span-3 start-8 drift-up">
         <img src="../../../images/clients/dbs/dbsrecord.jpg"
              alt="DBS record">
     </div>
 
-    <!-- RECORD SPIN GIF -->
+    <!-- RECORD SPIN - CIRCLE -->
 
-    <div class="gallery-item">
+    <div class="gallery-item span-3 start-1 circle drift-down">
         <img src="../../../images/clients/dbs/dbsrecordspin.gif"
              alt="DBS record spin">
     </div>
 
     <!-- DANCE 2 -->
 
-    <div class="gallery-item">
+    <div class="gallery-item span-4 start-5">
         <img src="../../../images/clients/dbs/DBSdancewithfoid2.JPG"
              alt="DBS dance">
     </div>
 
-    <!-- GLITCH GIF -->
+    <!-- GLITCH - CIRCLE -->
 
-    <div class="gallery-item">
+    <div class="gallery-item span-3 start-10 circle drift-down">
         <img src="../../../images/clients/dbs/dbsglitch.gif"
              alt="DBS glitch">
     </div>
 
     <!-- DANCE 3 -->
 
-    <div class="gallery-item">
+    <div class="gallery-item span-3 start-2 drift-up">
         <img src="../../../images/clients/dbs/DBSdancewithfoid3.JPG"
              alt="DBS dance">
     </div>
 
-    <!-- HANDS GIF -->
+    <!-- HANDS - CIRCLE -->
 
-    <div class="gallery-item">
+    <div class="gallery-item span-3 start-7 circle drift-down">
         <img src="../../../images/clients/dbs/dbshands.gif"
              alt="DBS hands">
     </div>
 
     <!-- DANCE 1 -->
 
-    <div class="gallery-item">
+    <div class="gallery-item span-4 start-4">
         <img src="../../../images/clients/dbs/DBSdancewithfoid1.JPG"
              alt="DBS dance">
     </div>
 
-    <!-- BOOGIE GIF -->
+    <!-- BOOGIE - CIRCLE -->
 
-    <div class="gallery-item">
+    <div class="gallery-item span-3 start-9 circle drift-up">
         <img src="../../../images/clients/dbs/dbsboogie.gif"
              alt="DBS boogie">
     </div>
 
     <!-- PISTOL ANIMATION -->
 
-    <div class="gallery-item">
+    <div class="gallery-item span-4 start-1 drift-down">
         <img src="../../../images/clients/dbs/DBS_Pistol_Animation.GIF"
              alt="DBS pistol animation">
     </div>
 
-    <!-- MOONWALK GIF -->
+    <!-- MOONWALK - CIRCLE -->
 
-    <div class="gallery-item">
+    <div class="gallery-item span-3 start-6 circle drift-down">
         <img src="../../../images/clients/dbs/dbsmoonwalk.gif"
              alt="DBS moonwalk">
     </div>
 
     <!-- LIFTING ANIMATION -->
 
-    <div class="gallery-item">
+    <div class="gallery-item span-4 start-9">
         <img src="../../../images/clients/dbs/DBS_lifting_Animation.GIF"
              alt="DBS lifting animation">
     </div>
 
-    <!-- SHOOT GIF -->
+    <!-- SHOOT -->
 
-    <div class="gallery-item">
+    <div class="gallery-item span-3 start-3 circle drift-down">
         <img src="../../../images/clients/dbs/dbsshoot.gif"
              alt="DBS shoot">
     </div>
 
     <!-- GUN ANIMATION -->
 
-    <div class="gallery-item">
+    <div class="gallery-item span-4 start-7 drift-up">
         <img src="../../../images/animation/DBS_gun_Animation_Final.gif"
              alt="DBS gun animation">
     </div>
 
     <!-- PANELS -->
 
-    <div class="gallery-item">
+    <div class="gallery-item span-4 start-2">
         <img src="../../../images/clients/dbs/dbspanels.JPG"
              alt="DBS panels">
     </div>
 
-    <!-- RIPPLE GIF -->
+    <!-- RIPPLE - CIRCLE -->
 
-    <div class="gallery-item">
+    <div class="gallery-item span-3 start-9 circle drift-down">
         <img src="../../../images/clients/dbs/dbsripple.gif"
              alt="DBS ripple">
     </div>
 
     <!-- DANCE -->
 
-    <div class="gallery-item">
+    <div class="gallery-item span-4 start-5 drift-down">
         <img src="../../../images/clients/dbs/dbsdance.JPG"
              alt="DBS dance">
     </div>
 
     <!-- FALLOFF -->
 
-    <div class="gallery-item">
+    <div class="gallery-item span-3 start-1 drift-up">
         <img src="../../../images/clients/dbs/dbsfalloff.JPG"
              alt="DBS falloff">
     </div>
 
     <!-- VIDEO -->
 
-    <div class="gallery-item video-item">
+    <div class="gallery-item span-5 start-7 video-item">
 
         <video controls muted loop playsinline>
             <source src="../../../images/clients/dbs/DBS.mp4"
@@ -422,56 +591,56 @@ h1 {
 
     <!-- REPEAT -->
 
-    <div class="gallery-item">
+    <div class="gallery-item span-3 start-3">
         <img src="../../../images/clients/dbs/dbsrepeat.JPG"
              alt="DBS repeat">
     </div>
 
     <!-- SHADOW -->
 
-    <div class="gallery-item">
+    <div class="gallery-item span-4 start-8 drift-down">
         <img src="../../../images/clients/dbs/dbsshadow.JPG"
              alt="DBS shadow">
     </div>
 
     <!-- ON DBS -->
 
-    <div class="gallery-item">
+    <div class="gallery-item span-3 start-1">
         <img src="../../../images/clients/dbs/dbsondbs.JPG"
              alt="DBS on DBS">
     </div>
 
     <!-- TIE -->
 
-    <div class="gallery-item">
+    <div class="gallery-item span-3 start-5 drift-down">
         <img src="../../../images/clients/dbs/dbstie.JPG"
              alt="DBS tie">
     </div>
 
     <!-- SPOTLIGHT -->
 
-    <div class="gallery-item">
+    <div class="gallery-item span-4 start-9">
         <img src="../../../images/clients/dbs/dbsspotlight.JPG"
              alt="DBS spotlight">
     </div>
 
     <!-- PORTRAIT -->
 
-    <div class="gallery-item">
+    <div class="gallery-item span-3 start-4 drift-down">
         <img src="../../../images/clients/dbs/dbsportrait.JPG"
              alt="DBS portrait">
     </div>
 
-    <!-- WINDY GIF - PRESERVED POSITION -->
+    <!-- WINDY - ORIGINAL REFERENCE POSITION -->
 
-    <div class="gallery-item">
+    <div class="gallery-item span-4 start-8 windy-reference">
         <img src="/images/clients/dbs/dbswindy.GIF"
              alt="DBS Windy">
     </div>
 
-    <!-- YEAH IMAGE - PRESERVED POSITION -->
+    <!-- YEAH -->
 
-    <div class="gallery-item">
+    <div class="gallery-item span-3 start-2 drift-down">
         <img src="/images/clients/dbs/dbsyeah.JPG"
              alt="DBS Yeah">
     </div>
@@ -501,7 +670,6 @@ h1 {
 <script>
 
 const lightbox = document.getElementById("lightbox");
-
 const enlarged = lightbox.querySelector("img");
 
 document.querySelectorAll(".gallery-item img").forEach(img => {
