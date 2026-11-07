@@ -47,17 +47,12 @@ nav a:hover,
     color: #ffdc00;
 }
 
-/* PAGE TITLE */
-
 h1 {
     text-align: center;
     color: #f5d742;
-    font-size: clamp(42px, 6vw, 72px);
-    letter-spacing: 3px;
-    margin: 38px 10px 20px;
+    font-size: clamp(38px, 6vw, 68px);
+    margin: 60px 10px 25px;
 }
-
-/* DESCRIPTION */
 
 .description {
     max-width: 680px;
@@ -69,13 +64,13 @@ h1 {
     font-size: 15px;
 }
 
-/* CIRCULAR GALLERY */
+/* WIDER GALLERY */
 
 .gallery {
     position: relative;
-    width: min(94vw, 1050px);
-    aspect-ratio: 1 / 1;
-    margin: 55px auto 70px;
+    width: min(98vw, 1600px);
+    aspect-ratio: 1.45 / 1;
+    margin: 45px auto 70px;
 }
 
 .gallery-item {
@@ -84,9 +79,8 @@ h1 {
     top: var(--y);
     width: var(--w);
     transform: translate(-50%, -50%);
-    transition:
-        transform .35s ease,
-        filter .35s ease;
+    transition: transform .35s ease, filter .35s ease;
+    z-index: 1;
 }
 
 .gallery-item img {
@@ -94,30 +88,27 @@ h1 {
     width: 100%;
     height: auto;
     cursor: zoom-in;
-    filter: drop-shadow(0 0 3px rgba(255,255,255,.12));
+    filter: drop-shadow(0 0 4px rgba(255,255,255,.15));
 }
 
 .gallery-item:hover {
-    z-index: 30;
+    z-index: 20;
     transform: translate(-50%, -50%) scale(1.18);
-    filter: drop-shadow(0 0 12px rgba(245,215,66,.4));
+    filter: drop-shadow(0 0 12px rgba(245,215,66,.45));
 }
 
 /* CENTER VIDEO */
 
 .video-item {
-    z-index: 20;
+    position: absolute;
     left: 50%;
     top: 50%;
-    width: 36%;
-    padding: 6px;
-    background: #080808;
-    border: 1px solid #444;
+    width: clamp(260px, 27%, 430px);
     transform: translate(-50%, -50%);
-}
-
-.video-item:hover {
-    transform: translate(-50%, -50%) scale(1.04);
+    z-index: 10;
+    background: #080808;
+    padding: 6px;
+    border: 1px solid #444;
 }
 
 .video-item video {
@@ -130,7 +121,7 @@ h1 {
 .video-label {
     text-align: center;
     color: #f5d742;
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 3px;
     padding: 10px 0 5px;
 }
@@ -147,7 +138,7 @@ h1 {
     transition: color .25s ease;
 }
 
-/* IMAGE VIEWER */
+/* LIGHTBOX */
 
 .lightbox {
     display: none;
@@ -157,101 +148,83 @@ h1 {
     background: rgba(0,0,0,.97);
     justify-content: center;
     align-items: center;
-    padding: 55px 75px;
+    padding: 25px 70px;
 }
 
 .lightbox.active {
     display: flex;
 }
 
-.lightbox-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-}
-
 .lightbox img {
-    max-width: 85vw;
+    max-width: 88vw;
     max-height: 85vh;
-    width: auto;
-    height: auto;
     object-fit: contain;
-    user-select: none;
 }
 
-/* VIEWER BUTTONS */
-
-.viewer-button {
+.lightbox-arrow,
+.close {
     position: absolute;
+    color: white;
+    background: rgba(20,20,20,.7);
+    border: 1px solid #555;
+    cursor: pointer;
+    transition: color .2s ease, background .2s ease;
+}
+
+.lightbox-arrow:hover,
+.close:hover {
+    color: #f5d742;
+    background: #222;
+}
+
+.lightbox-arrow {
     top: 50%;
     transform: translateY(-50%);
-    width: 52px;
-    height: 68px;
-    border: 1px solid #555;
-    border-radius: 4px;
-    background: rgba(10,10,10,.75);
-    color: #f5d742;
     font-size: 38px;
-    line-height: 1;
-    cursor: pointer;
-    transition:
-        background .2s ease,
-        color .2s ease,
-        border-color .2s ease;
-    z-index: 102;
+    width: 52px;
+    height: 65px;
 }
 
-.viewer-button:hover {
-    background: #f5d742;
-    color: #000;
-    border-color: #f5d742;
+.lightbox-prev {
+    left: 15px;
 }
 
-.viewer-prev {
-    left: 18px;
-}
-
-.viewer-next {
-    right: 18px;
+.lightbox-next {
+    right: 15px;
 }
 
 .close {
-    position: absolute;
-    top: 14px;
+    top: 18px;
     right: 25px;
-    color: white;
-    background: none;
-    border: 0;
-    font-size: 42px;
-    cursor: pointer;
-    z-index: 103;
+    font-size: 36px;
+    width: 48px;
+    height: 48px;
 }
 
-.close:hover {
-    color: #f5d742;
-}
-
-.viewer-counter {
+.image-counter {
     position: absolute;
     bottom: 18px;
     left: 50%;
     transform: translateX(-50%);
-    color: #aaa;
-    font-size: 12px;
+    color: #ccc;
+    font-size: 13px;
     letter-spacing: 2px;
 }
 
-/* MOBILE */
+/* MOBILE GALLERY */
 
 @media (max-width: 700px) {
+    h1 {
+        margin-top: 40px;
+    }
+
     .gallery {
-        width: 92%;
+        width: 94%;
         aspect-ratio: auto;
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 25px 18px;
+        gap: 22px 14px;
+        align-items: center;
     }
 
     .gallery-item {
@@ -265,14 +238,12 @@ h1 {
     }
 
     .video-item {
+        position: static;
         grid-column: span 2;
-        width: 75% !important;
-        justify-self: center;
+        width: 85%;
         transform: none;
-    }
-
-    .video-item:hover {
-        transform: scale(1.04);
+        justify-self: center;
+        margin: 15px 0;
     }
 
     nav a {
@@ -281,31 +252,26 @@ h1 {
     }
 
     .lightbox {
-        padding: 55px 48px;
+        padding: 20px 48px;
     }
 
     .lightbox img {
-        max-width: 82vw;
+        max-width: 100%;
         max-height: 78vh;
     }
 
-    .viewer-button {
+    .lightbox-arrow {
         width: 38px;
-        height: 54px;
-        font-size: 29px;
+        height: 52px;
+        font-size: 28px;
     }
 
-    .viewer-prev {
+    .lightbox-prev {
         left: 5px;
     }
 
-    .viewer-next {
+    .lightbox-next {
         right: 5px;
-    }
-
-    .close {
-        right: 12px;
-        top: 8px;
     }
 }
 
@@ -316,7 +282,7 @@ h1 {
 
     .video-item {
         grid-column: span 1;
-        width: 100% !important;
+        width: 100%;
     }
 }
 </style>
@@ -326,7 +292,6 @@ h1 {
 
 <header>
     <div class="brand">starsandtigers</div>
-
     <nav>
         <a href="../../../">Home</a>
         <a href="../../../illustrations/">Illustrations</a>
@@ -336,11 +301,7 @@ h1 {
     </nav>
 </header>
 
-<!-- DBS TITLE AT THE TOP -->
-
 <h1>DBS</h1>
-
-<!-- FULL DESCRIPTION -->
 
 <div class="description">
     <p>
@@ -363,8 +324,6 @@ h1 {
         he needs.
     </p>
 </div>
-
-<!-- CIRCULAR ARTWORK GALLERY -->
 
 <main class="gallery" id="gallery">
 
@@ -412,13 +371,10 @@ h1 {
         <img src="../../../images/clients/dbs/dbsfalloff.JPG" alt="DBS falloff">
     </div>
 
-    <!-- CENTER VIDEO -->
-
     <div class="gallery-item video-item">
         <video controls muted loop playsinline>
             <source src="../../../images/clients/dbs/DBS.mp4" type="video/mp4">
         </video>
-
         <div class="video-label">DOWN BAD SOCIETY</div>
     </div>
 
@@ -446,8 +402,6 @@ h1 {
         <img src="../../../images/clients/dbs/dbsportrait.JPG" alt="DBS portrait">
     </div>
 
-    <!-- WINDY STAYS INCLUDED -->
-
     <div class="gallery-item">
         <img src="/images/clients/dbs/dbswindy.GIF" alt="DBS Windy">
     </div>
@@ -455,8 +409,6 @@ h1 {
     <div class="gallery-item">
         <img src="/images/clients/dbs/dbsyeah.JPG" alt="DBS Yeah">
     </div>
-
-    <!-- NEW GIFS -->
 
     <div class="gallery-item">
         <img src="../../../images/clients/dbs/dbsrecordspin.gif" alt="DBS record spin">
@@ -490,210 +442,156 @@ h1 {
 
 <a class="back" href="../../">← Back to Client Projects</a>
 
-<!-- IMAGE VIEWER WITH NAVIGATION -->
-
 <div class="lightbox" id="lightbox">
-
-    <button class="close" id="closeViewer" aria-label="Close viewer">
-        &times;
-    </button>
-
-    <button class="viewer-button viewer-prev"
-            id="previousImage"
-            aria-label="Previous image">
-        &#8249;
-    </button>
-
-    <div class="lightbox-content">
-        <img id="lightboxImage" src="" alt="Enlarged DBS artwork">
-    </div>
-
-    <button class="viewer-button viewer-next"
-            id="nextImage"
-            aria-label="Next image">
-        &#8250;
-    </button>
-
-    <div class="viewer-counter" id="viewerCounter"></div>
-
+    <button class="close" aria-label="Close image">&times;</button>
+    <button class="lightbox-arrow lightbox-prev" aria-label="Previous image">&#10094;</button>
+    <img src="" alt="Enlarged DBS artwork">
+    <button class="lightbox-arrow lightbox-next" aria-label="Next image">&#10095;</button>
+    <div class="image-counter" id="imageCounter"></div>
 </div>
 
 <script>
-
-/* --------------------------------
-   RANDOMIZED CIRCULAR GALLERY
--------------------------------- */
-
 const gallery = document.getElementById("gallery");
+const artworkItems = [...gallery.querySelectorAll(".gallery-item:not(.video-item)")];
+const artworkImages = artworkItems.map(item => item.querySelector("img"));
 
-const artwork = Array.from(
-    gallery.querySelectorAll(".gallery-item:not(.video-item)")
-);
-
-/* Shuffle artwork order */
+/* RANDOMIZE THE ARTWORK POSITIONS AND SIZES */
 
 function shuffle(array) {
-    for (let i = array.length - 1; i > 0; i--) {
+    const result = [...array];
+
+    for (let i = result.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
+        [result[i], result[j]] = [result[j], result[i]];
     }
 
-    return array;
+    return result;
 }
 
-/* Create two rings of positions */
+function createPositions() {
+    const positions = [];
 
-const positions = [];
-
-function createRing(count, radius, minWidth, maxWidth) {
-    const rotation = Math.random() * Math.PI * 2;
-
-    for (let i = 0; i < count; i++) {
-        const angle = rotation + (Math.PI * 2 * i / count);
-
-        const radiusVariation = (Math.random() - 0.5) * 2;
-        const adjustedRadius = radius + radiusVariation;
-
-        const x = 50 + Math.cos(angle) * adjustedRadius;
-        const y = 50 + Math.sin(angle) * adjustedRadius;
-
-        /* Each artwork gets its own randomized size */
-
-        const width =
-            minWidth + Math.random() * (maxWidth - minWidth);
+    // Wider outer ring
+    for (let i = 0; i < 18; i++) {
+        const angle = (i / 18) * Math.PI * 2;
+        const rotation = Math.random() * 0.12;
 
         positions.push({
-            x: x,
-            y: y,
-            width: width
+            x: 50 + Math.cos(angle + rotation) * 44,
+            y: 50 + Math.sin(angle + rotation) * 41,
+            width: 10 + Math.random() * 5.5
         });
     }
+
+    // Inner ring around the video
+    for (let i = 0; i < 8; i++) {
+        const angle = (i / 8) * Math.PI * 2 + Math.random() * 0.15;
+
+        positions.push({
+            x: 50 + Math.cos(angle) * 28,
+            y: 50 + Math.sin(angle) * 27,
+            width: 8.5 + Math.random() * 4
+        });
+    }
+
+    return shuffle(positions);
 }
 
-/* Outer ring: 18 positions */
-/* Inner ring: 8 positions */
+function arrangeGallery() {
+    if (window.innerWidth <= 700) return;
 
-createRing(18, 42, 9, 15);
-createRing(8, 28, 8, 12);
+    const positions = createPositions();
+    const shuffledItems = shuffle(artworkItems);
 
-/* Randomize the order of positions */
+    shuffledItems.forEach((item, index) => {
+        const position = positions[index];
 
-shuffle(artwork);
-shuffle(positions);
+        item.style.setProperty("--x", position.x + "%");
+        item.style.setProperty("--y", position.y + "%");
+        item.style.setProperty("--w", position.width + "%");
+    });
+}
 
-/* Apply randomized positions and sizes */
+arrangeGallery();
 
-artwork.forEach((item, index) => {
-    const position = positions[index];
+let resizeTimer;
 
-    item.style.setProperty("--x", position.x + "%");
-    item.style.setProperty("--y", position.y + "%");
-    item.style.setProperty("--w", position.width + "%");
+window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(arrangeGallery, 150);
 });
 
-
-/* --------------------------------
-   IMAGE VIEWER / GALLERY NAVIGATION
--------------------------------- */
+/* LIGHTBOX AND IMAGE NAVIGATION */
 
 const lightbox = document.getElementById("lightbox");
-const lightboxImage = document.getElementById("lightboxImage");
-const viewerCounter = document.getElementById("viewerCounter");
+const enlarged = lightbox.querySelector("img");
+const counter = document.getElementById("imageCounter");
+const closeButton = lightbox.querySelector(".close");
+const previousButton = lightbox.querySelector(".lightbox-prev");
+const nextButton = lightbox.querySelector(".lightbox-next");
 
-const previousButton = document.getElementById("previousImage");
-const nextButton = document.getElementById("nextImage");
-const closeButton = document.getElementById("closeViewer");
-
-/* Collect all artwork images and GIFs */
-
-const galleryImages = Array.from(
-    gallery.querySelectorAll(".gallery-item img")
-);
-
-let currentImageIndex = 0;
-
-/* Display the selected image */
+let currentImage = 0;
 
 function showImage(index) {
-    if (!galleryImages.length) return;
+    currentImage = (index + artworkImages.length) % artworkImages.length;
 
-    /* Wrap around at either end */
+    const image = artworkImages[currentImage];
 
-    currentImageIndex =
-        (index + galleryImages.length) % galleryImages.length;
+    enlarged.src = image.src;
+    enlarged.alt = image.alt;
 
-    const selectedImage = galleryImages[currentImageIndex];
-
-    lightboxImage.src = selectedImage.src;
-    lightboxImage.alt = selectedImage.alt;
-
-    viewerCounter.textContent =
-        (currentImageIndex + 1) + " / " + galleryImages.length;
+    counter.textContent =
+        (currentImage + 1) + " / " + artworkImages.length;
 }
 
-/* Open viewer when artwork is clicked */
-
-galleryImages.forEach((img, index) => {
-    img.addEventListener("click", () => {
-        currentImageIndex = index;
-        showImage(currentImageIndex);
-        lightbox.classList.add("active");
-        document.body.style.overflow = "hidden";
-    });
-});
-
-/* Previous image */
-
-function previousImage() {
-    showImage(currentImageIndex - 1);
+function openLightbox(index) {
+    showImage(index);
+    lightbox.classList.add("active");
+    document.body.style.overflow = "hidden";
 }
 
-/* Next image */
-
-function nextImage() {
-    showImage(currentImageIndex + 1);
-}
-
-previousButton.addEventListener("click", previousImage);
-nextButton.addEventListener("click", nextImage);
-
-/* Close viewer */
-
-function closeViewer() {
+function closeLightbox() {
     lightbox.classList.remove("active");
     document.body.style.overflow = "";
 }
 
-closeButton.addEventListener("click", closeViewer);
+artworkImages.forEach((image, index) => {
+    image.addEventListener("click", () => {
+        openLightbox(index);
+    });
+});
 
-/* Clicking the dark background also closes it */
+previousButton.addEventListener("click", () => {
+    showImage(currentImage - 1);
+});
+
+nextButton.addEventListener("click", () => {
+    showImage(currentImage + 1);
+});
+
+closeButton.addEventListener("click", closeLightbox);
 
 lightbox.addEventListener("click", event => {
     if (event.target === lightbox) {
-        closeViewer();
+        closeLightbox();
     }
 });
-
-/* Keyboard controls */
 
 document.addEventListener("keydown", event => {
     if (!lightbox.classList.contains("active")) return;
 
     if (event.key === "ArrowLeft") {
-        event.preventDefault();
-        previousImage();
+        showImage(currentImage - 1);
     }
 
     if (event.key === "ArrowRight") {
-        event.preventDefault();
-        nextImage();
+        showImage(currentImage + 1);
     }
 
     if (event.key === "Escape") {
-        closeViewer();
+        closeLightbox();
     }
 });
-
 </script>
 
 </body>
