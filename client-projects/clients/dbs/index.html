@@ -7,7 +7,9 @@
 <title>DBS — starsandtigers</title>
 
 <style>
-* { box-sizing: border-box; }
+* {
+    box-sizing: border-box;
+}
 
 body {
     margin: 0;
@@ -40,18 +42,16 @@ nav a {
     transition: color .25s ease;
 }
 
-nav a:hover, .back:hover { color: #ffdc00; }
-
-h1 {
-    text-align: center;
-    color: #f5d742;
-    font-size: clamp(38px, 6vw, 68px);
-    margin: 60px 10px 25px;
+nav a:hover,
+.back:hover {
+    color: #ffdc00;
 }
+
+/* DESCRIPTION */
 
 .description {
     max-width: 680px;
-    margin: 0 auto;
+    margin: 55px auto 0;
     padding: 0 22px;
     text-align: center;
     color: #f5d742;
@@ -59,12 +59,13 @@ h1 {
     font-size: 15px;
 }
 
-.gallery-heading {
+/* MR.DBS TITLE — UNDER DESCRIPTION */
+
+h1 {
     text-align: center;
-    color: #888;
-    font-size: 12px;
-    letter-spacing: 3px;
-    margin: 65px 0 25px;
+    color: #f5d742;
+    font-size: clamp(38px, 6vw, 68px);
+    margin: 30px 10px 35px;
 }
 
 /* CIRCULAR GALLERY */
@@ -80,7 +81,7 @@ h1 {
     position: absolute;
     left: var(--x);
     top: var(--y);
-    width: var(--w, 14%);
+    width: var(--w);
     transform: translate(-50%, -50%);
     transition: transform .35s ease, filter .35s ease;
 }
@@ -95,49 +96,25 @@ h1 {
 
 .gallery-item:hover {
     z-index: 30;
-    transform: translate(-50%, -50%) scale(1.16);
+    transform: translate(-50%, -50%) scale(1.18);
     filter: drop-shadow(0 0 12px rgba(245,215,66,.4));
 }
 
-/* OUTER RING — 18 POSITIONS */
-
-.gallery-item:nth-child(1)  { --x:50%; --y:7%;  --w:15%; }
-.gallery-item:nth-child(2)  { --x:65%; --y:10%; --w:14%; }
-.gallery-item:nth-child(3)  { --x:78%; --y:19%; --w:14%; }
-.gallery-item:nth-child(4)  { --x:88%; --y:31%; --w:14%; }
-.gallery-item:nth-child(5)  { --x:92%; --y:45%; --w:14%; }
-.gallery-item:nth-child(6)  { --x:90%; --y:60%; --w:14%; }
-.gallery-item:nth-child(7)  { --x:83%; --y:74%; --w:14%; }
-.gallery-item:nth-child(8)  { --x:71%; --y:85%; --w:14%; }
-.gallery-item:nth-child(9)  { --x:56%; --y:92%; --w:14%; }
-.gallery-item:nth-child(10) { --x:41%; --y:91%; --w:14%; }
-.gallery-item:nth-child(11) { --x:27%; --y:84%; --w:14%; }
-.gallery-item:nth-child(12) { --x:15%; --y:73%; --w:16%; }
-.gallery-item:nth-child(13) { --x:8%;  --y:59%; --w:14%; }
-.gallery-item:nth-child(14) { --x:8%;  --y:44%; --w:14%; }
-.gallery-item:nth-child(15) { --x:14%; --y:30%; --w:14%; }
-.gallery-item:nth-child(16) { --x:24%; --y:19%; --w:14%; }
-.gallery-item:nth-child(17) { --x:37%; --y:10%; --w:14%; }
-.gallery-item:nth-child(18) { --x:44%; --y:6%;  --w:13%; }
-
-/* INNER RING — 9 POSITIONS */
-
-.gallery-item:nth-child(19) { --x:50%; --y:27%; --w:12%; }
-.gallery-item:nth-child(20) { --x:66%; --y:32%; --w:12%; }
-.gallery-item:nth-child(21) { --x:73%; --y:48%; --w:12%; }
-.gallery-item:nth-child(22) { --x:68%; --y:65%; --w:12%; }
-.gallery-item:nth-child(23) { --x:52%; --y:74%; --w:12%; }
-.gallery-item:nth-child(24) { --x:35%; --y:68%; --w:12%; }
-.gallery-item:nth-child(25) { --x:27%; --y:52%; --w:12%; }
-.gallery-item:nth-child(26) { --x:33%; --y:35%; --w:12%; }
-.gallery-item:nth-child(27) { --x:49%; --y:49%; --w:12%; }
-
-/* VIDEO */
+/* CENTER VIDEO */
 
 .video-item {
+    z-index: 20;
+    left: 50%;
+    top: 50%;
+    width: 34%;
+    padding: 6px;
     background: #080808;
-    padding: 5px;
-    border: 1px solid #333;
+    border: 1px solid #444;
+    transform: translate(-50%, -50%);
+}
+
+.video-item:hover {
+    transform: translate(-50%, -50%) scale(1.04);
 }
 
 .video-item video {
@@ -150,9 +127,9 @@ h1 {
 .video-label {
     text-align: center;
     color: #f5d742;
-    font-size: 10px;
-    letter-spacing: 2px;
-    padding: 8px 0 3px;
+    font-size: 11px;
+    letter-spacing: 3px;
+    padding: 10px 0 5px;
 }
 
 /* BACK LINK */
@@ -180,7 +157,9 @@ h1 {
     padding: 25px;
 }
 
-.lightbox.active { display: flex; }
+.lightbox.active {
+    display: flex;
+}
 
 .lightbox img {
     max-width: 90vw;
@@ -199,7 +178,7 @@ h1 {
     cursor: pointer;
 }
 
-/* MOBILE: CLEAN TWO-COLUMN GALLERY */
+/* MOBILE GALLERY */
 
 @media (max-width: 700px) {
     .gallery {
@@ -212,7 +191,7 @@ h1 {
 
     .gallery-item {
         position: static;
-        width: 100% !important;
+        width: 100%;
         transform: none;
     }
 
@@ -222,8 +201,13 @@ h1 {
 
     .video-item {
         grid-column: span 2;
-        width: 75% !important;
+        width: 75%;
         justify-self: center;
+        transform: none;
+    }
+
+    .video-item:hover {
+        transform: scale(1.04);
     }
 
     nav a {
@@ -239,7 +223,7 @@ h1 {
 
     .video-item {
         grid-column: span 1;
-        width: 100% !important;
+        width: 100%;
     }
 }
 </style>
@@ -249,6 +233,7 @@ h1 {
 
 <header>
     <div class="brand">starsandtigers</div>
+
     <nav>
         <a href="../../../">Home</a>
         <a href="../../../illustrations/">Illustrations</a>
@@ -258,7 +243,7 @@ h1 {
     </nav>
 </header>
 
-<h1>DBS</h1>
+<!-- DESCRIPTION FIRST -->
 
 <div class="description">
     <p>
@@ -282,11 +267,13 @@ h1 {
     </p>
 </div>
 
-<div class="gallery-heading">DOWN BAD SOCIETY</div>
+<!-- MR.DBS TITLE UNDER THE DESCRIPTION -->
 
-<main class="gallery">
+<h1>MR.DBS</h1>
 
-    <!-- EXISTING ARTWORK -->
+<!-- CIRCULAR GALLERY -->
+
+<main class="gallery" id="gallery">
 
     <div class="gallery-item">
         <img src="../../../images/clients/dbs/dbsposter.JPG" alt="DBS poster">
@@ -332,11 +319,14 @@ h1 {
         <img src="../../../images/clients/dbs/dbsfalloff.JPG" alt="DBS falloff">
     </div>
 
+    <!-- CENTER VIDEO -->
+
     <div class="gallery-item video-item">
         <video controls muted loop playsinline>
             <source src="../../../images/clients/dbs/DBS.mp4" type="video/mp4">
         </video>
-        <div class="video-label">MR. DBS</div>
+
+        <div class="video-label">DOWN BAD SOCIETY</div>
     </div>
 
     <div class="gallery-item">
@@ -363,14 +353,14 @@ h1 {
         <img src="../../../images/clients/dbs/dbsportrait.JPG" alt="DBS portrait">
     </div>
 
-    <!-- WINDY STAYS IN THE EXISTING GALLERY SEQUENCE -->
+    <!-- WINDY REMAINS INCLUDED -->
 
     <div class="gallery-item">
-        <img src="/images/clients/dbs/dbswindy.GIF" alt="DBS Windy">
+        <img src="../../../images/clients/dbs/dbswindy.GIF" alt="DBS Windy">
     </div>
 
     <div class="gallery-item">
-        <img src="/images/clients/dbs/dbsyeah.JPG" alt="DBS Yeah">
+        <img src="../../../images/clients/dbs/dbsyeah.JPG" alt="DBS Yeah">
     </div>
 
     <!-- NEW GIFS -->
@@ -407,12 +397,71 @@ h1 {
 
 <a class="back" href="../../">← Back to Client Projects</a>
 
+<!-- IMAGE LIGHTBOX -->
+
 <div class="lightbox" id="lightbox">
     <button class="close" aria-label="Close image">&times;</button>
     <img src="" alt="Enlarged DBS artwork">
 </div>
 
 <script>
+
+/* RANDOMIZE ARTWORK AROUND TWO CIRCULAR RINGS */
+
+const gallery = document.getElementById("gallery");
+const artwork = Array.from(
+    gallery.querySelectorAll(".gallery-item:not(.video-item)")
+);
+
+/* Shuffle the artwork order */
+
+for (let i = artwork.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [artwork[i], artwork[j]] = [artwork[j], artwork[i]];
+}
+
+/* Create 18 outer-ring positions and 8 inner-ring positions */
+
+const positions = [];
+
+function makeRing(count, radius, startAngle, widthMin, widthMax) {
+    for (let i = 0; i < count; i++) {
+        const angle = startAngle + (Math.PI * 2 * i / count);
+
+        const x = 50 + Math.cos(angle) * radius;
+        const y = 50 + Math.sin(angle) * radius;
+        const width = widthMin + Math.random() * (widthMax - widthMin);
+
+        positions.push({
+            x,
+            y,
+            width
+        });
+    }
+}
+
+makeRing(18, 43, -Math.PI / 2, 10, 13);
+makeRing(8, 29, -Math.PI / 2, 8, 10);
+
+/* Shuffle the positions too */
+
+for (let i = positions.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [positions[i], positions[j]] = [positions[j], positions[i]];
+}
+
+/* Give each artwork a randomized position */
+
+artwork.forEach((item, index) => {
+    const position = positions[index];
+
+    item.style.setProperty("--x", position.x + "%");
+    item.style.setProperty("--y", position.y + "%");
+    item.style.setProperty("--w", position.width + "%");
+});
+
+/* IMAGE LIGHTBOX */
+
 const lightbox = document.getElementById("lightbox");
 const enlarged = lightbox.querySelector("img");
 
@@ -438,6 +487,7 @@ document.addEventListener("keydown", event => {
         lightbox.classList.remove("active");
     }
 });
+
 </script>
 
 </body>
