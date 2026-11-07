@@ -7,9 +7,7 @@
 <title>DBS — starsandtigers</title>
 
 <style>
-* {
-    box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
     margin: 0;
@@ -39,13 +37,10 @@ nav a {
     text-decoration: none;
     margin: 0 10px;
     font-size: 13px;
-    transition: color 0.25s ease;
+    transition: color .25s ease;
 }
 
-nav a:hover,
-.back:hover {
-    color: #ffdc00;
-}
+nav a:hover, .back:hover { color: #ffdc00; }
 
 h1 {
     text-align: center;
@@ -69,22 +64,25 @@ h1 {
     color: #888;
     font-size: 12px;
     letter-spacing: 3px;
-    margin: 85px 0 35px;
+    margin: 65px 0 25px;
 }
 
-/* ORBIT GALLERY */
+/* CIRCULAR GALLERY */
 
 .gallery {
     position: relative;
-    width: min(1000px, 94%);
-    height: 2150px;
-    margin: 0 auto 60px;
+    width: min(94vw, 1050px);
+    aspect-ratio: 1 / 1;
+    margin: 0 auto 70px;
 }
 
 .gallery-item {
     position: absolute;
-    width: 19%;
-    transition: transform 0.4s ease, filter 0.4s ease;
+    left: var(--x);
+    top: var(--y);
+    width: var(--w, 14%);
+    transform: translate(-50%, -50%);
+    transition: transform .35s ease, filter .35s ease;
 }
 
 .gallery-item img {
@@ -92,56 +90,53 @@ h1 {
     width: 100%;
     height: auto;
     cursor: zoom-in;
-    filter: drop-shadow(0 0 3px rgba(255,255,255,0.12));
+    filter: drop-shadow(0 0 3px rgba(255,255,255,.12));
 }
 
 .gallery-item:hover {
-    z-index: 20;
-    transform: scale(1.12);
-    filter: drop-shadow(0 0 12px rgba(245,215,66,0.35));
+    z-index: 30;
+    transform: translate(-50%, -50%) scale(1.16);
+    filter: drop-shadow(0 0 12px rgba(245,215,66,.4));
 }
 
-/* OUTER ORBIT */
+/* OUTER RING — 18 POSITIONS */
 
-.gallery-item:nth-child(1)  { top: 1%;  left: 39%; width: 21%; }
-.gallery-item:nth-child(2)  { top: 5%;  left: 65%; width: 17%; }
-.gallery-item:nth-child(3)  { top: 14%; left: 79%; width: 17%; }
-.gallery-item:nth-child(4)  { top: 27%; left: 81%; width: 16%; }
-.gallery-item:nth-child(5)  { top: 42%; left: 81%; width: 17%; }
-.gallery-item:nth-child(6)  { top: 57%; left: 78%; width: 18%; }
-.gallery-item:nth-child(7)  { top: 71%; left: 65%; width: 19%; }
-.gallery-item:nth-child(8)  { top: 83%; left: 43%; width: 20%; }
-.gallery-item:nth-child(9)  { top: 82%; left: 19%; width: 19%; }
-.gallery-item:nth-child(10) { top: 69%; left: 1%;  width: 19%; }
-.gallery-item:nth-child(11) { top: 54%; left: 1%;  width: 18%; }
-.gallery-item:nth-child(12) { top: 38%; left: 1%;  width: 21%; }
-.gallery-item:nth-child(13) { top: 23%; left: 3%;  width: 18%; }
-.gallery-item:nth-child(14) { top: 10%; left: 17%; width: 18%; }
-.gallery-item:nth-child(15) { top: 2%;  left: 25%; width: 17%; }
+.gallery-item:nth-child(1)  { --x:50%; --y:7%;  --w:15%; }
+.gallery-item:nth-child(2)  { --x:65%; --y:10%; --w:14%; }
+.gallery-item:nth-child(3)  { --x:78%; --y:19%; --w:14%; }
+.gallery-item:nth-child(4)  { --x:88%; --y:31%; --w:14%; }
+.gallery-item:nth-child(5)  { --x:92%; --y:45%; --w:14%; }
+.gallery-item:nth-child(6)  { --x:90%; --y:60%; --w:14%; }
+.gallery-item:nth-child(7)  { --x:83%; --y:74%; --w:14%; }
+.gallery-item:nth-child(8)  { --x:71%; --y:85%; --w:14%; }
+.gallery-item:nth-child(9)  { --x:56%; --y:92%; --w:14%; }
+.gallery-item:nth-child(10) { --x:41%; --y:91%; --w:14%; }
+.gallery-item:nth-child(11) { --x:27%; --y:84%; --w:14%; }
+.gallery-item:nth-child(12) { --x:15%; --y:73%; --w:16%; }
+.gallery-item:nth-child(13) { --x:8%;  --y:59%; --w:14%; }
+.gallery-item:nth-child(14) { --x:8%;  --y:44%; --w:14%; }
+.gallery-item:nth-child(15) { --x:14%; --y:30%; --w:14%; }
+.gallery-item:nth-child(16) { --x:24%; --y:19%; --w:14%; }
+.gallery-item:nth-child(17) { --x:37%; --y:10%; --w:14%; }
+.gallery-item:nth-child(18) { --x:44%; --y:6%;  --w:13%; }
 
-/* INNER ORBIT */
+/* INNER RING — 9 POSITIONS */
 
-.gallery-item:nth-child(16) { top: 19%; left: 37%; width: 17%; }
-.gallery-item:nth-child(17) { top: 22%; left: 58%; width: 17%; }
-.gallery-item:nth-child(18) { top: 36%; left: 65%; width: 18%; }
-.gallery-item:nth-child(19) { top: 57%; left: 61%; width: 18%; }
-.gallery-item:nth-child(20) { top: 65%; left: 37%; width: 19%; }
-
-/* NEW GIFS — INNER SCATTER */
-
-.gallery-item:nth-child(21) { top: 42%; left: 25%; width: 17%; }
-.gallery-item:nth-child(22) { top: 31%; left: 42%; width: 16%; }
-.gallery-item:nth-child(23) { top: 48%; left: 44%; width: 17%; }
-.gallery-item:nth-child(24) { top: 57%; left: 23%; width: 17%; }
-.gallery-item:nth-child(25) { top: 13%; left: 46%; width: 16%; }
-.gallery-item:nth-child(26) { top: 73%; left: 44%; width: 17%; }
-.gallery-item:nth-child(27) { top: 78%; left: 25%; width: 16%; }
+.gallery-item:nth-child(19) { --x:50%; --y:27%; --w:12%; }
+.gallery-item:nth-child(20) { --x:66%; --y:32%; --w:12%; }
+.gallery-item:nth-child(21) { --x:73%; --y:48%; --w:12%; }
+.gallery-item:nth-child(22) { --x:68%; --y:65%; --w:12%; }
+.gallery-item:nth-child(23) { --x:52%; --y:74%; --w:12%; }
+.gallery-item:nth-child(24) { --x:35%; --y:68%; --w:12%; }
+.gallery-item:nth-child(25) { --x:27%; --y:52%; --w:12%; }
+.gallery-item:nth-child(26) { --x:33%; --y:35%; --w:12%; }
+.gallery-item:nth-child(27) { --x:49%; --y:49%; --w:12%; }
 
 /* VIDEO */
 
 .video-item {
     background: #080808;
-    padding: 8px;
+    padding: 5px;
     border: 1px solid #333;
 }
 
@@ -155,10 +150,12 @@ h1 {
 .video-label {
     text-align: center;
     color: #f5d742;
-    font-size: 11px;
+    font-size: 10px;
     letter-spacing: 2px;
-    padding: 12px 0 5px;
+    padding: 8px 0 3px;
 }
+
+/* BACK LINK */
 
 .back {
     display: block;
@@ -167,7 +164,7 @@ h1 {
     color: white;
     text-decoration: none;
     font-size: 14px;
-    transition: color 0.25s ease;
+    transition: color .25s ease;
 }
 
 /* LIGHTBOX */
@@ -177,15 +174,13 @@ h1 {
     position: fixed;
     inset: 0;
     z-index: 100;
-    background: rgba(0,0,0,0.96);
+    background: rgba(0,0,0,.96);
     justify-content: center;
     align-items: center;
     padding: 25px;
 }
 
-.lightbox.active {
-    display: flex;
-}
+.lightbox.active { display: flex; }
 
 .lightbox img {
     max-width: 90vw;
@@ -204,22 +199,21 @@ h1 {
     cursor: pointer;
 }
 
-/* MOBILE LAYOUT */
+/* MOBILE: CLEAN TWO-COLUMN GALLERY */
 
 @media (max-width: 700px) {
     .gallery {
-        position: static;
         width: 92%;
-        height: auto;
+        aspect-ratio: auto;
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 28px 18px;
-        align-items: center;
+        gap: 24px 18px;
     }
 
     .gallery-item {
         position: static;
         width: 100% !important;
+        transform: none;
     }
 
     .gallery-item:hover {
@@ -228,7 +222,7 @@ h1 {
 
     .video-item {
         grid-column: span 2;
-        max-width: 85%;
+        width: 75% !important;
         justify-self: center;
     }
 
@@ -245,7 +239,7 @@ h1 {
 
     .video-item {
         grid-column: span 1;
-        max-width: 100%;
+        width: 100% !important;
     }
 }
 </style>
@@ -369,17 +363,17 @@ h1 {
         <img src="../../../images/clients/dbs/dbsportrait.JPG" alt="DBS portrait">
     </div>
 
-    <!-- KEEPING THE WINDY IMAGE IN ITS EXISTING GALLERY SEQUENCE -->
+    <!-- WINDY STAYS IN THE EXISTING GALLERY SEQUENCE -->
 
     <div class="gallery-item">
-        <img src="../../../images/clients/dbs/dbswindy.GIF" alt="DBS Windy">
+        <img src="/images/clients/dbs/dbswindy.GIF" alt="DBS Windy">
     </div>
 
     <div class="gallery-item">
-        <img src="../../../images/clients/dbs/dbsyeah.JPG" alt="DBS Yeah">
+        <img src="/images/clients/dbs/dbsyeah.JPG" alt="DBS Yeah">
     </div>
 
-    <!-- SEVEN NEW GIFS -->
+    <!-- NEW GIFS -->
 
     <div class="gallery-item">
         <img src="../../../images/clients/dbs/dbsrecordspin.gif" alt="DBS record spin">
