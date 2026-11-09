@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,112 +8,164 @@
 
 <style>
   body {
-  background: #000000;
-  color: white;
-  font-family: Arial, sans-serif;
-  margin: 0;
-}
-
-header {
-  background: #050505;
-  padding: 28px 5%;
-  border-bottom: 1px solid #777;
-}
-
-.brand {
-  font-size: 16px;
-  font-weight: bold;
-}
-
-nav {
-  text-align: center;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  margin: 0 12px;
-}
-
-nav a:hover {
-  color: #ffdc00;
-}
-
-h1 {
-  text-align: center;
-  font-size: 42px;
-  text-transform: uppercase;
-  margin-top: 45px;
-}
-
-.description {
-  text-align: center;
-  margin: 15px auto 40px;
-  max-width: 700px;
-}
-
-/* Artwork gallery */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  max-width: 1100px;
-  margin: 40px auto;
-  padding: 0 20px;
-}
-
-.gallery img {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  cursor: zoom-in;
-  transition: transform 0.3s ease;
-}
-
-.gallery img:hover {
-  transform: scale(1.03);
-}
-
-/* Enlarged artwork */
-.lightbox {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.9);
-  z-index: 9999;
-  justify-content: center;
-  align-items: center;
-  padding: 30px;
-}
-
-.lightbox.active {
-  display: flex;
-}
-
-.lightbox img {
-  max-width: 90%;
-  max-height: 85vh;
-  object-fit: contain;
-}
-
-.lightbox-close {
-  position: absolute;
-  top: 15px;
-  right: 25px;
-  color: white;
-  background: none;
-  border: none;
-  font-size: 40px;
-  cursor: pointer;
-}
-
-@media (max-width: 600px) {
-  .gallery {
-    grid-template-columns: 1fr;
+    background: #000000;
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
   }
-}
-  </style> 
-  </head>
+
+  header {
+    background: #050505;
+    padding: 28px 5%;
+    border-bottom: 1px solid #777;
+  }
+
+  .brand {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  nav {
+    text-align: center;
+  }
+
+  nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 12px;
+  }
+
+  nav a:hover {
+    color: #ffdc00;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 42px;
+    text-transform: uppercase;
+    margin-top: 45px;
+  }
+
+  .description {
+    text-align: center;
+    margin: 15px auto 40px;
+    max-width: 700px;
+  }
+
+  .section-title {
+    text-align: center;
+    font-size: 26px;
+    text-transform: uppercase;
+    margin: 58px 20px 20px;
+    letter-spacing: 2px;
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 1100px;
+    margin: 30px auto 40px;
+    padding: 0 20px;
+    align-items: center;
+  }
+
+  .gallery img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    cursor: zoom-in;
+    transition: transform 0.3s ease;
+    display: block;
+  }
+
+  .gallery img:hover {
+    transform: scale(1.03);
+  }
+
+  .featured-video {
+    max-width: 900px;
+    margin: 20px auto 50px;
+    padding: 0 20px;
+  }
+
+  .featured-video video {
+    display: block;
+    width: 100%;
+    background: #111;
+  }
+
+  .video-caption {
+    text-align: center;
+    margin-top: 12px;
+    font-size: 14px;
+  }
+
+  /* IMAGE LIGHTBOX */
+
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+  }
+
+  .lightbox.active {
+    display: flex;
+  }
+
+  .lightbox img {
+    max-width: 90%;
+    max-height: 85vh;
+    object-fit: contain;
+  }
+
+  .lightbox button {
+    position: absolute;
+    color: white;
+    background: none;
+    border: none;
+    font-size: 40px;
+    cursor: pointer;
+  }
+
+  .lightbox-close {
+    top: 15px;
+    right: 25px;
+  }
+
+  .lightbox-prev {
+    left: 15px;
+  }
+
+  .lightbox-next {
+    right: 15px;
+  }
+
+  @media (max-width: 600px) {
+    .gallery {
+      grid-template-columns: 1fr;
+    }
+
+    nav a {
+      display: inline-block;
+      margin: 6px;
+    }
+
+    .lightbox {
+      padding: 15px;
+    }
+
+    .lightbox img {
+      max-width: 78%;
+    }
+  }
+</style>
+</head>
 
 <body>
 
@@ -136,56 +189,296 @@ h1 {
     Promotional artwork and creative work for Fishtank.
   </p>
 
-  <section class="gallery">
 
-    <img
-      src="../../../images/clients/fishtank/fishtankseason1poster.jpg"
-      alt="Fishtank Season 1 Poster">
+  <!-- SEASON ONE ANIMATIONS -->
+
+  <h2 class="section-title">Season One Animations</h2>
+
+  <section class="gallery" aria-label="Season One animations">
+
+    <img src="../../../images/clients/fishtank/fish1tvcast.gif"
+         alt="Fishtank TV animation" loading="lazy">
+
+    <img src="../../../images/clients/fishtank/fish1cast.gif"
+         alt="Fishtank cast animation" loading="lazy">
+
+  </section>
+
+
+  <!-- FEATURED VIDEO -->
+
+  <h2 class="section-title">Season One / The End</h2>
+
+  <div class="featured-video">
+
+    <video controls preload="metadata">
+      <source
+        src="../../../images/clients/fishtank/Fishtankseason1%20THE%20END%20.mp4"
+        type="video/mp4">
+
+      Your browser does not support this video.
+    </video>
+
+    <p class="video-caption">
+      Fishtank Season 1 — The End
+    </p>
+
+  </div>
+
+
+  <!-- PRODUCTION -->
+
+  <h2 class="section-title">Production</h2>
+
+  <section class="gallery" aria-label="Production">
+
+    <img src="../../../images/clients/fishtank/fish1jet.jpeg"
+         alt="Jet" loading="lazy">
+
+    <img src="../../../images/clients/fishtank/fish1goldstriker.jpeg"
+         alt="Goldstriker" loading="lazy">
+
+    <img src="../../../images/clients/fishtank/fish1ben.jpeg"
+         alt="Ben" loading="lazy">
+
+    <img src="../../../images/clients/fishtank/fish1tax.jpeg"
+         alt="Tax" loading="lazy">
+
+  </section>
+
+
+  <!-- THE FREELOADERS -->
+
+  <h2 class="section-title">The Freeloaders</h2>
+
+  <section class="gallery" aria-label="The Freeloaders">
+
+    <img src="../../../images/clients/fishtank/fish1alex.jpeg"
+         alt="Alex" loading="lazy">
+
+    <img src="../../../images/clients/fishtank/fish1betty.jpeg"
+         alt="Betty" loading="lazy">
+
+    <img src="../../../images/clients/fishtank/fish1chip.jpeg"
+         alt="Chip" loading="lazy">
+
+    <img src="../../../images/clients/fishtank/fish1chris.jpeg"
+         alt="Chris" loading="lazy">
+
+    <img src="../../../images/clients/fishtank/fish1dontarious.jpeg"
+         alt="Dontarious" loading="lazy">
+
+    <img src="../../../images/clients/fishtank/fish1ella.jpeg"
+         alt="Ella" loading="lazy">
+
+    <img src="../../../images/clients/fishtank/fish1frank.jpeg"
+         alt="Frank" loading="lazy">
+
+    <img src="../../../images/clients/fishtank/fish1lance.jpeg"
+         alt="Lance" loading="lazy">
+
+    <img src="../../../images/clients/fishtank/fish1tai.jpeg"
+         alt="Tai" loading="lazy">
+
+  </section>
+
+
+  <!-- THE FISH -->
+
+  <h2 class="section-title">The Fish</h2>
+
+  <section class="gallery" aria-label="The Fish">
+
+    <img src="../../../images/clients/fishtank/fish1josie.jpeg"
+         alt="Josie" loading="lazy">
+
+    <img src="../../../images/clients/fishtank/fish1jonathan.jpeg"
+         alt="Jon" loading="lazy">
+
+    <img src="../../../images/clients/fishtank/fish1vance.jpeg"
+         alt="Vance" loading="lazy">
+
+    <img src="../../../images/clients/fishtank/fish1sylvia.jpeg"
+         alt="Sylvia" loading="lazy">
+
+    <img src="../../../images/clients/fishtank/fish1damiel.jpeg"
+         alt="Damiel" loading="lazy">
+
+    <img src="../../../images/clients/fishtank/fish1letty.jpeg"
+         alt="Letty" loading="lazy">
+
+    <img src="../../../images/clients/fishtank/fish1simmons.jpeg"
+         alt="Simmons" loading="lazy">
+
+    <img src="../../../images/clients/fishtank/fish1mauro.jpeg"
+         alt="Mauro" loading="lazy">
+
+    <img src="../../../images/clients/fishtank/fish1baldvance.jpeg"
+         alt="Bald Vance" loading="lazy">
+
+  </section>
+
+
+  <!-- SKETCHBOOK -->
+
+  <h2 class="section-title">Sketchbook</h2>
+
+  <section class="gallery" aria-label="Sketchbook">
+
+    <img src="../../../images/clients/fishtank/fish1alexsketch.jpeg"
+         alt="Alex sketch" loading="lazy">
+
+    <img src="../../../images/clients/fishtank/fish1bensketch.jpeg"
+         alt="Ben sketch" loading="lazy">
+
+    <img src="../../../images/clients/fishtank/fish1bettysketch.jpeg"
+         alt="Betty sketch" loading="lazy">
+
+    <img src="../../../images/clients/fishtank/fish1chipsketch.jpeg"
+         alt="Chip sketch" loading="lazy">
+
+    <img src="../../../images/clients/fishtank/fish1chrissketch.jpeg"
+         alt="Chris sketch" loading="lazy">
+
+    <img src="../../../images/clients/fishtank/fish1dontarioussketch.jpeg"
+         alt="Dontarious sketch" loading="lazy">
+
+    <img src="../../../images/clients/fishtank/fish1ellasketch.jpeg"
+         alt="Ella sketch" loading="lazy">
+
+    <img src="../../../images/clients/fishtank/fish1franksketch.jpeg"
+         alt="Frank sketch" loading="lazy">
+
+    <img src="../../../images/clients/fishtank/fish1goldstrikersketch.jpeg"
+         alt="Goldstriker sketch" loading="lazy">
+
+    <img src="../../../images/clients/fishtank/fish1jetsketch.jpeg"
+         alt="Jet sketch" loading="lazy">
+
+    <img src="../../../images/clients/fishtank/fish1lancesketch.jpeg"
+         alt="Lance sketch" loading="lazy">
+
+    <img src="../../../images/clients/fishtank/fish1taisketch.jpeg"
+         alt="Tai sketch" loading="lazy">
+
+    <img src="../../../images/clients/fishtank/fish1taxsketch.jpeg"
+         alt="Tax sketch" loading="lazy">
+
+  </section>
+
+
+  <!-- SPECIAL COLLECTION -->
+
+  <h2 class="section-title">Special Collection</h2>
+
+  <section class="gallery" aria-label="Special Collection">
+
+    <img src="../../../images/clients/fishtank/fishtankseason1poster.jpeg"
+         alt="Season 1 poster" loading="lazy">
+
+    <img src="../../../images/clients/fishtank/fish1winner.jpeg"
+         alt="Season 1 winner" loading="lazy">
+
+    <img src="../../../images/clients/fishtank/fishtv1_.jpeg"
+         alt="Fishtank TV" loading="lazy">
+
+    <img src="../../../images/clients/fishtank/josiejonbubbles.jpeg"
+         alt="Josie and Jon" loading="lazy">
+
+    <img src="../../../images/clients/fishtank/peppasylvia.jpeg"
+         alt="Peppa and Sylvia" loading="lazy">
 
   </section>
 
 </main>
 
-<!-- Image enlargement -->
-<div class="lightbox" id="lightbox">
 
-  <button class="lightbox-close" id="closeLightbox">
-    &times;
-  </button>
+<!-- LIGHTBOX -->
+
+<div class="lightbox"
+     id="lightbox"
+     role="dialog"
+     aria-modal="true"
+     aria-label="Artwork viewer">
+
+  <button class="lightbox-close"
+          id="closeLightbox"
+          aria-label="Close image">&times;</button>
+
+  <button class="lightbox-prev"
+          id="prevLightbox"
+          aria-label="Previous image">&#10094;</button>
 
   <img id="lightboxImage" src="" alt="">
 
+  <button class="lightbox-next"
+          id="nextLightbox"
+          aria-label="Next image">&#10095;</button>
+
 </div>
 
+
 <script>
+  const images = Array.from(
+    document.querySelectorAll('.gallery img')
+  );
+
   const lightbox = document.getElementById('lightbox');
   const lightboxImage = document.getElementById('lightboxImage');
 
-  document.querySelectorAll('.gallery img').forEach(img => {
+  let currentIndex = 0;
+
+  function showImage(index) {
+    currentIndex = (index + images.length) % images.length;
+
+    lightboxImage.src = images[currentIndex].src;
+    lightboxImage.alt = images[currentIndex].alt;
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    lightboxImage.removeAttribute('src');
+  }
+
+  images.forEach((img, index) => {
     img.addEventListener('click', () => {
-      lightboxImage.src = img.src;
-      lightboxImage.alt = img.alt;
+      showImage(index);
       lightbox.classList.add('active');
     });
   });
 
   document.getElementById('closeLightbox')
+    .addEventListener('click', closeLightbox);
+
+  document.getElementById('prevLightbox')
     .addEventListener('click', () => {
-      lightbox.classList.remove('active');
-      lightboxImage.src = '';
+      showImage(currentIndex - 1);
+    });
+
+  document.getElementById('nextLightbox')
+    .addEventListener('click', () => {
+      showImage(currentIndex + 1);
     });
 
   lightbox.addEventListener('click', event => {
     if (event.target === lightbox) {
-      lightbox.classList.remove('active');
-      lightboxImage.src = '';
+      closeLightbox();
     }
   });
 
   document.addEventListener('keydown', event => {
+    if (!lightbox.classList.contains('active')) return;
+
     if (event.key === 'Escape') {
-      lightbox.classList.remove('active');
-      lightboxImage.src = '';
+      closeLightbox();
+    }
+
+    if (event.key === 'ArrowLeft') {
+      showImage(currentIndex - 1);
+    }
+
+    if (event.key === 'ArrowRight') {
+      showImage(currentIndex + 1);
     }
   });
 </script>
