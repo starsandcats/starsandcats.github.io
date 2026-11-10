@@ -7,18 +7,12 @@
 <title>Fishtank | starsandtigers</title>
 
 <style>
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
   background: #000;
-  color: #fff;
+  color: white;
   font-family: Arial, sans-serif;
 }
 
@@ -31,238 +25,222 @@ header {
 .brand {
   font-size: 16px;
   font-weight: bold;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 nav {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 12px 24px;
+  gap: 14px 25px;
 }
 
-nav a {
+nav a, .back {
   color: white;
   text-decoration: none;
 }
 
-nav a:hover,
-.back:hover {
+nav a:hover, .back:hover {
   color: #ffdc00;
 }
 
 .back {
   display: inline-block;
-  margin: 25px 5%;
-  color: white;
-  text-decoration: none;
+  margin: 28px 5%;
   font-size: 14px;
 }
 
 .intro {
   text-align: center;
-  padding: 20px 20px 55px;
+  padding: 20px 20px 60px;
 }
 
 h1 {
-  font-size: clamp(45px, 8vw, 90px);
+  font-size: clamp(45px, 8vw, 85px);
   letter-spacing: 5px;
   margin: 15px 0;
 }
 
 .description {
-  max-width: 650px;
+  max-width: 680px;
   margin: auto;
   line-height: 1.7;
   color: #ccc;
 }
 
-/* SCRAPBOOK COVER */
+/* SCRAPBOOK FEATURE */
 
 .cover {
   position: relative;
   max-width: 1250px;
-  min-height: 740px;
-  margin: 0 auto 90px;
-  padding: 35px;
-  background: radial-gradient(
-    ellipse at center,
-    #24211c 0%,
-    #111 55%,
-    #000 85%
-  );
+  min-height: 720px;
+  margin: 0 auto 110px;
+  background:
+    radial-gradient(
+      ellipse at center,
+      #24201b 0%,
+      #101010 65%,
+      #000 100%
+    );
+  border: 1px dashed #444;
 }
 
-.cover::before {
-  content: "";
+.cover-piece {
   position: absolute;
-  inset: 15px;
-  border: 1px dashed #555;
-  pointer-events: none;
-}
-
-.cover-art {
-  position: absolute;
-  width: clamp(130px, 23%, 280px);
+  width: 27%;
   z-index: 2;
   cursor: zoom-in;
   transition: transform .3s ease;
 }
 
-.cover-art img {
-  width: 100%;
+.cover-piece img {
   display: block;
-  box-shadow: 0 12px 30px #000a;
+  width: 100%;
+  box-shadow: 0 12px 35px #000a;
 }
 
-.cover-art:hover {
+.cover-piece:hover {
   transform: rotate(0deg) scale(1.1) !important;
-  z-index: 10;
+  z-index: 8;
 }
 
-.cover-art:nth-child(1) {
-  top: 3%;
+.piece-one {
+  top: 5%;
   left: 3%;
-  transform: rotate(-9deg);
-}
-
-.cover-art:nth-child(2) {
-  top: 6%;
-  right: 4%;
-  transform: rotate(8deg);
-}
-
-.cover-art:nth-child(3) {
-  bottom: 7%;
-  left: 5%;
-  transform: rotate(7deg);
-}
-
-.cover-art:nth-child(4) {
-  bottom: 5%;
-  right: 5%;
   transform: rotate(-8deg);
 }
 
-.cover-center {
+.piece-two {
+  top: 5%;
+  right: 3%;
+  transform: rotate(7deg);
+}
+
+.piece-three {
+  bottom: 5%;
+  left: 4%;
+  transform: rotate(5deg);
+}
+
+.piece-four {
+  bottom: 5%;
+  right: 4%;
+  transform: rotate(-7deg);
+}
+
+.featured-video {
   position: absolute;
-  width: 52%;
   top: 50%;
   left: 50%;
+  width: 55%;
   transform: translate(-50%, -50%);
-  z-index: 4;
+  z-index: 5;
   text-align: center;
 }
 
-.cover-center video {
-  width: 100%;
+.featured-video video {
   display: block;
+  width: 100%;
   background: #000;
-  border: 9px solid #ddd6c4;
-  box-shadow: 0 15px 50px #000;
+  border: 9px solid #ded5c2;
+  box-shadow: 0 15px 45px #000;
 }
 
 .video-caption {
   display: inline-block;
-  padding: 12px 22px;
-  background: #d7c8a3;
-  color: #17130e;
+  margin-top: -2px;
+  padding: 12px 24px;
+  background: #ded0ae;
+  color: #191919;
   font-family: Georgia, serif;
   font-style: italic;
-  font-size: 18px;
   transform: rotate(-2deg);
-  margin-top: -3px;
 }
 
-/* SECTIONS */
+/* SCRAPBOOK SECTIONS */
 
 .scrap-section {
   max-width: 1350px;
-  margin: 0 auto 110px;
-  padding: 0 25px;
+  margin: 0 auto 115px;
+  padding: 0 30px;
 }
 
-.section-heading {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  margin-bottom: 45px;
-}
-
-.section-heading h2 {
-  font-size: clamp(28px, 5vw, 50px);
+.section-title {
+  font-size: clamp(30px, 5vw, 50px);
   letter-spacing: 3px;
-  margin: 0;
+  margin: 0 0 15px;
+  text-align: center;
 }
 
-.section-heading::after {
-  content: "";
-  height: 1px;
-  background: #777;
-  flex: 1;
-}
-
-.section-note {
+.section-subtitle {
   color: #999;
+  text-align: center;
   font-size: 13px;
   letter-spacing: 2px;
-  margin-bottom: 30px;
-  text-transform: uppercase;
+  margin-bottom: 55px;
+  line-height: 1.8;
 }
-
-/* SCATTERED SCRAPBOOK GALLERY */
 
 .scrap-gallery {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
   justify-content: center;
-  gap: 40px 35px;
-  padding: 30px 10px 55px;
+  align-items: center;
+  gap: 50px 35px;
+  padding: 25px 10px 60px;
 }
+
+/* INDIVIDUAL SCRAPBOOK PIECES */
 
 .scrap {
   position: relative;
-  width: var(--w, 230px);
-  max-width: 100%;
   margin: 0;
-  padding: 9px 9px 32px;
-  background: #e5ddcb;
-  box-shadow: 8px 13px 25px #000;
-  transform: rotate(var(--r, 0deg))
-             translateY(var(--y, 0px));
-  transition: transform .3s ease,
-              box-shadow .3s ease;
+  width: var(--width, 240px);
+  max-width: 100%;
+  padding: 9px 9px 30px;
+  background: #e4dccb;
+  box-shadow: 8px 12px 28px #000;
+  transform:
+    rotate(var(--rotate, 0deg))
+    translateY(var(--offset, 0px));
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease;
   cursor: zoom-in;
 }
 
 .scrap:nth-child(3n) {
-  background: #c6c0b2;
+  background: #c9c2b5;
 }
 
 .scrap:nth-child(5n) {
-  padding: 6px;
-  background: #222;
+  background: #242424;
+  padding: 7px;
 }
 
-.scrap:hover {
-  transform: rotate(0deg)
-             translateY(-12px)
-             scale(1.09);
-  box-shadow: 12px 20px 40px #000;
-  z-index: 20;
+.scrap:nth-child(4n)::before {
+  content: "";
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  width: 78px;
+  height: 25px;
+  background: #d7c59b99;
+  transform: translateX(-50%) rotate(-8deg);
+  z-index: 2;
+  pointer-events: none;
 }
 
 .scrap img {
   display: block;
   width: 100%;
   height: auto;
-  max-height: 350px;
+  max-height: 390px;
   object-fit: contain;
 }
 
 .scrap figcaption {
-  color: #29241e;
+  color: #252019;
   text-align: center;
   font-family: Georgia, serif;
   font-size: 14px;
@@ -273,25 +251,21 @@ h1 {
   color: white;
 }
 
-.scrap:nth-child(4n)::before {
-  content: "";
-  position: absolute;
-  width: 75px;
-  height: 24px;
-  background: #d8c69a99;
-  top: -13px;
-  left: 50%;
-  transform: translateX(-50%) rotate(-8deg);
-  z-index: 3;
+.scrap:hover {
+  transform: rotate(0deg)
+             translateY(-12px)
+             scale(1.1);
+  box-shadow: 10px 20px 45px #000;
+  z-index: 20;
 }
 
-/* DECORATIVE DIVIDER */
+/* DIVIDERS */
 
 .divider {
   text-align: center;
   color: #777;
-  letter-spacing: 15px;
-  margin: 60px 0 90px;
+  letter-spacing: 12px;
+  margin: 20px 0 100px;
 }
 
 /* LIGHTBOX */
@@ -304,7 +278,7 @@ h1 {
   z-index: 9999;
   align-items: center;
   justify-content: center;
-  padding: 55px 65px;
+  padding: 60px;
 }
 
 .lightbox.active {
@@ -312,89 +286,76 @@ h1 {
 }
 
 .lightbox img {
-  max-width: 100%;
+  max-width: 90%;
   max-height: 85vh;
   object-fit: contain;
 }
 
-.close,
-.arrow {
+.lightbox button {
   position: absolute;
   background: none;
   border: none;
   color: white;
-  cursor: pointer;
   font-size: 38px;
+  cursor: pointer;
 }
 
-.close {
-  top: 15px;
-  right: 25px;
-}
-
-.arrow.left {
-  left: 15px;
-}
-
-.arrow.right {
-  right: 15px;
-}
-
-.close:hover,
-.arrow:hover {
+.lightbox button:hover {
   color: #ffdc00;
 }
 
-/* FOOTER */
+.close { top: 15px; right: 25px; }
+.prev { left: 15px; }
+.next { right: 15px; }
 
 footer {
-  text-align: center;
-  padding: 45px 20px;
   border-top: 1px solid #444;
+  padding: 45px 20px;
+  text-align: center;
   color: #888;
 }
 
-/* MOBILE */
+/* RESPONSIVE */
 
 @media (max-width: 700px) {
   .cover {
-    min-height: auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 18px;
+    gap: 20px;
+    min-height: auto;
     padding: 25px;
   }
 
-  .cover-art,
-  .cover-center {
+  .cover-piece,
+  .featured-video {
     position: static;
     width: 100%;
     transform: none !important;
   }
 
-  .cover-center {
+  .featured-video {
     grid-column: 1 / -1;
     grid-row: 1;
   }
 
-  .cover-art:hover {
-    transform: scale(1.04) !important;
+  .cover-piece:hover {
+    transform: scale(1.05) !important;
   }
 
   .scrap-gallery {
-    gap: 25px;
+    gap: 30px;
   }
 
   .scrap {
-    width: min(75vw, var(--w));
+    width: min(75vw, var(--width));
   }
 
   .lightbox {
-    padding: 60px 45px;
+    padding: 50px 35px;
   }
 
-  .arrow {
-    font-size: 28px;
+  .lightbox img {
+    max-width: 100%;
   }
 }
 </style>
@@ -404,7 +365,6 @@ footer {
 
 <header>
   <div class="brand">starsandtigers</div>
-
   <nav>
     <a href="/">Home</a>
     <a href="/illustrations/">Illustrations</a>
@@ -422,50 +382,46 @@ footer {
 
 <section class="intro">
   <h1>FISHTANK</h1>
-
   <p class="description">
-    A collection of illustrations, sketches,
-    animations, and artwork inspired by
-    Fishtank Season 1.
+    Promotional artwork and creative work for Fishtank.
   </p>
 </section>
 
-<!-- SCRAPBOOK COVER -->
+<!-- FEATURED SCRAPBOOK COVER -->
 
 <section class="cover">
 
-  <div class="cover-art">
+  <div class="cover-piece piece-one">
     <img
-      src="/images/clients/fishtank/fishtankseason1poster.jpg"
-      alt="Fishtank Season 1 Poster">
+      src="/images/clients/fishtank/fish1tvcast.gif"
+      alt="Fishtank TV animation">
   </div>
 
-  <div class="cover-art">
+  <div class="cover-piece piece-two">
     <img
-      src="/images/clients/fishtank/fish1baldvance.jpeg"
-      alt="Bald Vance">
+      src="/images/clients/fishtank/fish1cast.gif"
+      alt="Fishtank cast animation">
   </div>
 
-  <div class="cover-art">
+  <div class="cover-piece piece-three">
     <img
-      src="/images/clients/fishtank/fish1alexsketch.jpeg"
-      alt="Alex Sketch">
+      src="/images/clients/fishtank/fishtankseason1poster.jpeg"
+      alt="Season 1 poster">
   </div>
 
-  <div class="cover-art">
+  <div class="cover-piece piece-four">
     <img
-      src="/images/clients/fishtank/fish1bensketch.jpeg"
-      alt="Ben Sketch">
+      src="/images/clients/fishtank/fish1winner.jpeg"
+      alt="Season 1 winner">
   </div>
 
-  <div class="cover-center">
+  <div class="featured-video">
     <video controls playsinline preload="metadata">
       <source
         src="/images/clients/fishtank/Fishtankseason1%20THE%20END%20.mp4"
         type="video/mp4">
-      Your browser does not support video.
+      Your browser does not support this video.
     </video>
-
     <div class="video-caption">
       Fishtank Season 1 — THE END
     </div>
@@ -476,15 +432,24 @@ footer {
 <!-- PRODUCTION -->
 
 <section class="scrap-section">
-  <div class="section-heading">
-    <h2>PRODUCTION</h2>
-  </div>
-
-  <p class="section-note">
-    Jet / Goldstriker / Ben / Tax
+  <h2 class="section-title">PRODUCTION</h2>
+  <p class="section-subtitle">
+    JET / GOLDSTRIKER / BEN / TAX
   </p>
-
   <div class="scrap-gallery" id="production"></div>
+</section>
+
+<div class="divider">✦ ✦ ✦</div>
+
+<!-- THE FREELOADERS -->
+
+<section class="scrap-section">
+  <h2 class="section-title">THE FREELOADERS</h2>
+  <p class="section-subtitle">
+    ALEX / BETTY / CHIP / CHRIS /
+    DONTARIOUS / ELLA / FRANK / LANCE / TAI
+  </p>
+  <div class="scrap-gallery" id="freeloaders"></div>
 </section>
 
 <div class="divider">✦ ✦ ✦</div>
@@ -492,15 +457,11 @@ footer {
 <!-- THE FISH -->
 
 <section class="scrap-section">
-  <div class="section-heading">
-    <h2>THE FISH</h2>
-  </div>
-
-  <p class="section-note">
-    Josie / Jon / Vance / Sylvia / Damiel /
-    Letty / Simmons / Mauro
+  <h2 class="section-title">THE FISH</h2>
+  <p class="section-subtitle">
+    JOSIE / JON / VANCE / SYLVIA /
+    DAMIEL / LETTY / SIMMONS / MAURO
   </p>
-
   <div class="scrap-gallery" id="fish"></div>
 </section>
 
@@ -509,68 +470,102 @@ footer {
 <!-- EVERYTHING ELSE -->
 
 <section class="scrap-section">
-  <div class="section-heading">
-    <h2>EVERYTHING ELSE</h2>
-  </div>
-
-  <p class="section-note">
-    Sketches, additional artwork, and experiments
+  <h2 class="section-title">EVERYTHING ELSE</h2>
+  <p class="section-subtitle">
+    SKETCHBOOK / SPECIAL COLLECTION
   </p>
-
   <div class="scrap-gallery" id="extras"></div>
 </section>
 
 </main>
 
-<footer>
-  starsandtigers © 2026
-</footer>
+<footer>starsandtigers © 2026</footer>
 
 <!-- LIGHTBOX -->
 
-<div class="lightbox" id="lightbox">
+<div class="lightbox" id="lightbox"
+     role="dialog" aria-modal="true"
+     aria-label="Artwork viewer">
 
   <button class="close" id="close"
-    aria-label="Close image viewer">
-    &times;
-  </button>
+          aria-label="Close">×</button>
 
-  <button class="arrow left" id="prev"
-    aria-label="Previous image">❮</button>
+  <button class="prev" id="prev"
+          aria-label="Previous">❮</button>
 
   <img id="lightboxImage" alt="">
 
-  <button class="arrow right" id="next"
-    aria-label="Next image">❯</button>
+  <button class="next" id="next"
+          aria-label="Next">❯</button>
 
 </div>
 
 <script>
 const base = "/images/clients/fishtank/";
 
-/* ARTWORK */
+/* PRODUCTION */
 
 const production = [
-  ["fish1bensketch.jpeg", "Ben Sketch"]
+  ["fish1jet.jpeg", "Jet"],
+  ["fish1goldstriker.jpeg", "Goldstriker"],
+  ["fish1ben.jpeg", "Ben"],
+  ["fish1tax.jpeg", "Tax"]
 ];
 
-const fish = [
-  ["fish1baldvance.jpeg", "Bald Vance"],
-  ["fish1bettysketch.jpeg", "Betty Sketch"]
+/* THE FREELOADERS */
+
+const freeloaders = [
+  ["fish1alex.jpeg", "Alex"],
+  ["fish1betty.jpeg", "Betty"],
+  ["fish1chip.jpeg", "Chip"],
+  ["fish1chris.jpeg", "Chris"],
+  ["fish1dontarious.jpeg", "Dontarious"],
+  ["fish1ella.jpeg", "Ella"],
+  ["fish1frank.jpeg", "Frank"],
+  ["fish1lance.jpeg", "Lance"],
+  ["fish1tai.jpeg", "Tai"]
 ];
+
+/* THE FISH */
+
+const fish = [
+  ["fish1josie.jpeg", "Josie"],
+  ["fish1jonathan.jpeg", "Jon"],
+  ["fish1vance.jpeg", "Vance"],
+  ["fish1sylvia.jpeg", "Sylvia"],
+  ["fish1damiel.jpeg", "Damiel"],
+  ["fish1letty.jpeg", "Letty"],
+  ["fish1simmons.jpeg", "Simmons"],
+  ["fish1mauro.jpeg", "Mauro"],
+  ["fish1baldvance.jpeg", "Bald Vance"]
+];
+
+/* EVERYTHING ELSE */
 
 const extras = [
   ["fish1alexsketch.jpeg", "Alex Sketch"],
+  ["fish1bensketch.jpeg", "Ben Sketch"],
+  ["fish1bettysketch.jpeg", "Betty Sketch"],
   ["fish1chipsketch.jpeg", "Chip Sketch"],
   ["fish1chrissketch.jpeg", "Chris Sketch"],
-  ["fish1dontarioussketch.jpeg", "Dontarious Sketch"]
+  ["fish1dontarioussketch.jpeg", "Dontarious Sketch"],
+  ["fish1ellasketch.jpeg", "Ella Sketch"],
+  ["fish1franksketch.jpeg", "Frank Sketch"],
+  ["fish1goldstrikersketch.jpeg", "Goldstriker Sketch"],
+  ["fish1jetsketch.jpeg", "Jet Sketch"],
+  ["fish1lancesketch.jpeg", "Lance Sketch"],
+  ["fish1taisketch.jpeg", "Tai Sketch"],
+  ["fish1taxsketch.jpeg", "Tax Sketch"],
+  ["fishtv1_.jpeg", "Fishtank TV"],
+  ["josiejonbubbles.jpeg", "Josie and Jon"],
+  ["peppasylvia.jpeg", "Peppa and Sylvia"]
 ];
 
-/* SCATTER SETTINGS */
+/* SCRAPBOOK POSITION SETTINGS */
 
-const sizes = [220, 270, 195, 245, 300, 210];
-const rotations = [-6, 4, -3, 7, -5, 3];
-const offsets = [15, -18, 28, -10, 5, -25];
+const sizes = [225, 275, 195, 255, 305, 215];
+const rotations = [-7, 5, -3, 8, -5, 4];
+const offsets = [15, -20, 28, -12, 8, -25];
 
 /* BUILD GALLERIES */
 
@@ -583,15 +578,13 @@ function buildGallery(id, artworks) {
     figure.className = "scrap";
 
     figure.style.setProperty(
-      "--w", sizes[index % sizes.length] + "px"
+      "--width", sizes[index % sizes.length] + "px"
     );
-
     figure.style.setProperty(
-      "--r", rotations[index % rotations.length] + "deg"
+      "--rotate", rotations[index % rotations.length] + "deg"
     );
-
     figure.style.setProperty(
-      "--y", offsets[index % offsets.length] + "px"
+      "--offset", offsets[index % offsets.length] + "px"
     );
 
     const img = document.createElement("img");
@@ -612,8 +605,9 @@ function buildGallery(id, artworks) {
 }
 
 buildGallery("production", production);
+buildGallery("freeloaders", freeloaders);
 buildGallery("fish", fish);
-buildGallery("extras");
+buildGallery("extras", extras);
 
 /* LIGHTBOX */
 
@@ -624,21 +618,21 @@ let images = [];
 let currentIndex = 0;
 
 function refreshImages() {
-  images = [...document.querySelectorAll(
-    ".cover-art img, .scrap-gallery img"
-  )].filter(img => img.complete && img.naturalWidth > 0);
+  images = Array.from(document.querySelectorAll(
+    ".cover-piece img, .scrap-gallery img"
+  )).filter(img =>
+    img.complete && img.naturalWidth > 0
+  );
 }
 
 function showImage() {
   if (!images.length) return;
-
   lightboxImage.src = images[currentIndex].src;
   lightboxImage.alt = images[currentIndex].alt;
 }
 
 function openLightbox(img) {
   refreshImages();
-
   currentIndex = images.indexOf(img);
   if (currentIndex < 0) return;
 
@@ -663,11 +657,11 @@ function moveImage(direction) {
   showImage();
 }
 
-/* IMAGE CLICK */
+/* IMAGE CLICKS */
 
 document.addEventListener("click", event => {
   const img = event.target.closest(
-    ".cover-art img, .scrap-gallery img"
+    ".cover-piece img, .scrap-gallery img"
   );
 
   if (img) openLightbox(img);
@@ -688,7 +682,7 @@ lightbox.addEventListener("click", event => {
   if (event.target === lightbox) closeLightbox();
 });
 
-/* KEYBOARD NAVIGATION */
+/* KEYBOARD */
 
 document.addEventListener("keydown", event => {
   if (!lightbox.classList.contains("active")) return;
