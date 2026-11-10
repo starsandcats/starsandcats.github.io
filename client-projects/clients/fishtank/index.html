@@ -105,6 +105,32 @@ main {
   margin: 15px 0 35px;
 }
 
+/* VIDEO — FIXED */
+
+.video-feature {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto 75px;
+}
+
+.video-feature video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  background: #000;
+  border: 3px solid white;
+}
+
+.video-caption {
+  text-align: center;
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+  margin-top: 14px;
+  letter-spacing: 1px;
+}
+
 .back {
   display: inline-block;
   color: #aaa;
@@ -115,28 +141,6 @@ main {
 
 .back:hover {
   color: #ffdc00;
-}
-
-/* VIDEO */
-
-.video-feature {
-  max-width: 760px;
-  margin: 0 auto 75px;
-}
-
-.video-feature video {
-  width: 100%;
-  display: block;
-  background: #111;
-  border: 3px solid white;
-}
-
-.video-caption {
-  text-align: center;
-  font-family: "Courier New", monospace;
-  font-size: 13px;
-  margin-top: 14px;
-  letter-spacing: 1px;
 }
 
 /* SECTIONS */
@@ -444,17 +448,22 @@ footer {
 
   <div class="stars">★★★★★</div>
 
-  <div class="video-feature">
-  <video
-  controls
-  playsinline
-  preload="auto"
-  poster="/images/clients/fishtank/fishtankthumbnail.jpg">
+  <!-- VIDEO WITH THUMBNAIL AND CORRECT DIMENSIONS -->
 
-  <source
-    src="/images/clients/fishtank/Fishtankseason1%20THE%20END%20.mp4"
-    type="video/mp4">
-</video>
+  <div class="video-feature">
+    <video
+      controls
+      playsinline
+      preload="metadata"
+      poster="/images/clients/fishtank/fishtankthumbnail.jpg">
+
+      <source
+        src="/images/clients/fishtank/Fishtankseason1%20THE%20END%20.mp4"
+        type="video/mp4">
+
+      Your browser does not support video playback.
+    </video>
+
     <p class="video-caption">
       FISHTANK SEASON 1 — THE END
     </p>
@@ -474,7 +483,7 @@ footer {
 
 <section class="gallery-section">
   <div class="section-heading">
-    <h2>FREELOADERS</h2>
+    <h2>THE FREELOADERS</h2>
   </div>
   <div class="portrait-grid" id="freeloaders"></div>
 </section>
