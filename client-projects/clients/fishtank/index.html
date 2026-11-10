@@ -4,15 +4,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fishtank — Evidence Board | starsandtigers</title>
+<title>Fishtank | starsandtigers</title>
 
 <style>
-:root {
-  --red: #d02a30;
-  --paper: #d7c8a8;
+* {
+  box-sizing: border-box;
 }
-
-* { box-sizing: border-box; }
 
 html, body {
   margin: 0;
@@ -20,51 +17,54 @@ html, body {
   height: 100%;
   overflow: hidden;
   background: #050505;
-  color: #f5f1e8;
+  color: white;
   font-family: Arial, sans-serif;
 }
 
 header {
-  height: 64px;
-  padding: 10px 3%;
-  border-bottom: 1px solid #666;
+  height: 62px;
   background: #050505;
+  border-bottom: 1px solid #777;
+  padding: 10px 3%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 15px;
 }
 
-.brand { font-weight: 800; }
+.brand {
+  font-weight: 800;
+  font-size: 17px;
+}
 
 nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 14px;
+  gap: 16px;
 }
 
-a {
+nav a, .back {
   color: white;
   text-decoration: none;
   font-size: 13px;
 }
 
-a:hover { color: #ffdc00; }
+nav a:hover, .back:hover {
+  color: #ffdc00;
+}
 
 /* LANDSCAPE BOARD */
 
 .board {
-  height: calc(100dvh - 64px);
-  width: 100%;
   position: relative;
+  width: 100%;
+  height: calc(100dvh - 62px);
   overflow: hidden;
   background:
-    radial-gradient(
-      ellipse at 50% 45%,
-      #24211d,
-      #0d0d0d 75%,
-      #050505
-    );
+    radial-gradient(ellipse at center,
+      #29231e 0%,
+      #12100f 55%,
+      #050505 100%);
 }
 
 .board::after {
@@ -74,21 +74,20 @@ a:hover { color: #ffdc00; }
   pointer-events: none;
   opacity: .16;
   background-image:
-    radial-gradient(#bbb .6px, transparent .8px);
+    radial-gradient(#aaa .6px, transparent .8px);
   background-size: 8px 8px;
 }
 
 .stage {
   position: absolute;
-  width: 1600px;
-  height: 900px;
-  left: 50%;
+  width: 1800px;
+  height: 1000px;
   top: 50%;
+  left: 50%;
   transform:
     translate(-50%, -50%)
     scale(var(--scale, 1));
   transform-origin: center;
-  isolation: isolate;
 }
 
 /* RED STRINGS */
@@ -96,156 +95,137 @@ a:hover { color: #ffdc00; }
 .strings {
   position: absolute;
   inset: 0;
-  width: 1600px;
-  height: 900px;
+  width: 1800px;
+  height: 1000px;
   z-index: 0;
   pointer-events: none;
 }
 
 .strings line {
-  stroke: var(--red);
-  stroke-width: 2.5;
-  opacity: .83;
+  stroke: #bd252b;
+  stroke-width: 1.8;
+  opacity: .7;
 }
 
 /* TITLE */
 
-.heading {
+.title {
   position: absolute;
-  left: 520px;
-  top: 30px;
-  width: 560px;
+  top: 12px;
+  left: 690px;
+  width: 420px;
   text-align: center;
-  z-index: 4;
+  z-index: 6;
 }
 
-.heading h1 {
+.title h1 {
   position: relative;
-  font-size: 76px;
-  letter-spacing: 5px;
+  display: inline-block;
   margin: 0;
-  transform: rotate(-2deg);
-  text-shadow: 3px 4px #111;
+  font-size: 55px;
+  letter-spacing: 4px;
+  transform: rotate(-3deg);
 }
 
-.heading h1::after {
+.title h1::after {
   content: "";
   position: absolute;
-  inset: -8px 20px;
-  border: 4px solid var(--red);
+  inset: -5px -18px;
+  border: 3px solid #ce272d;
   border-radius: 50%;
   transform: rotate(-5deg);
 }
 
-.heading p {
-  display: inline-block;
-  background: var(--paper);
-  color: #211c15;
-  font: 700 13px "Courier New", monospace;
-  padding: 10px 16px;
-  transform: rotate(-1deg);
-}
-
-/* PINNED EVIDENCE */
-
-.paper {
-  background: var(--paper);
-  color: #211a13;
-  box-shadow: 7px 12px 20px #000a;
-  padding: 9px 9px 24px;
+.back {
   position: absolute;
-  z-index: 3;
-  transform: rotate(var(--rot, 0deg));
-  transition: transform .2s;
-  cursor: pointer;
-  border: 0;
-  text-align: center;
+  top: 24px;
+  left: 30px;
+  z-index: 8;
 }
 
-.paper:hover {
-  transform: rotate(0deg) scale(1.05);
-  z-index: 10;
-}
+/* CENTRAL VIDEO AND GIFS */
 
-.paper::before,
-.video-card::before {
-  content: "";
+.center {
   position: absolute;
-  top: -10px;
-  left: 50%;
-  width: 19px;
-  height: 19px;
-  transform: translateX(-50%);
-  border-radius: 50%;
-  background:
-    radial-gradient(
-      circle at 30% 25%,
-      #ff8585,
-      #b00d15 65%,
-      #570508
-    );
-  box-shadow: 2px 3px 5px #000b;
+  left: 700px;
+  top: 95px;
+  width: 400px;
+  height: 850px;
   z-index: 5;
 }
 
-.paper img {
+.feature-gif {
+  position: absolute;
+  left: 95px;
+  width: 210px;
+  height: 170px;
+  padding: 7px 7px 24px;
+  border: 0;
+  background: #c8bba5;
+  box-shadow: 6px 9px 20px #000b;
+  cursor: zoom-in;
+  transition: transform .2s;
+}
+
+.feature-gif:hover {
+  transform: scale(1.08) rotate(0deg) !important;
+}
+
+.feature-gif img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: contain;
-  display: block;
 }
 
-.paper small {
-  display: block;
-  font: 700 13px "Courier New", monospace;
-  margin-top: 8px;
+.feature-gif::before,
+.video-card::before,
+.photo::before,
+.section-label::before {
+  content: "";
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 25%,
+    #ff7777, #b31319 65%, #540608);
+  box-shadow: 2px 3px 5px #0009;
+  z-index: 7;
 }
 
-/* FEATURED IMAGE POSITIONS */
-
-.gif-left {
-  left: 175px;
-  top: 115px;
-  width: 245px;
-  height: 210px;
-  --rot: -7deg;
+.cast-gif {
+  top: 15px;
+  transform: rotate(5deg);
 }
 
-.gif-right {
-  left: 1175px;
-  top: 110px;
-  width: 245px;
-  height: 210px;
-  --rot: 6deg;
+.tv-gif {
+  top: 630px;
+  transform: rotate(-5deg);
 }
 
-.poster {
-  left: 240px;
-  top: 380px;
-  width: 210px;
-  height: 255px;
-  --rot: 5deg;
+.feature-label {
+  position: absolute;
+  left: 85px;
+  width: 230px;
+  color: #d6c8b4;
+  text-align: center;
+  font: bold 12px "Courier New", monospace;
 }
 
-.winner {
-  left: 1150px;
-  top: 390px;
-  width: 210px;
-  height: 255px;
-  --rot: -5deg;
-}
-
-/* CENTER VIDEO */
+.cast-label { top: 195px; }
+.tv-label { top: 812px; }
 
 .video-card {
   position: absolute;
-  left: 505px;
-  top: 275px;
-  width: 590px;
-  padding: 12px 12px 17px;
-  background: var(--paper);
-  box-shadow: 10px 16px 35px #000d;
-  z-index: 5;
+  top: 250px;
+  left: 0;
+  width: 400px;
+  padding: 10px 10px 15px;
+  background: #d7c8a8;
+  box-shadow: 9px 14px 30px #000d;
   text-align: center;
 }
 
@@ -258,148 +238,166 @@ a:hover { color: #ffdc00; }
 
 .video-card strong {
   display: block;
-  color: #1a1713;
-  font: 700 17px "Courier New", monospace;
-  margin-top: 10px;
+  margin-top: 12px;
+  color: #211910;
+  font: bold 14px "Courier New", monospace;
 }
 
-/* CATEGORY EVIDENCE STACKS */
+.video-card p {
+  margin: 8px 0 0;
+  color: #433629;
+  font: 11px "Courier New", monospace;
+}
 
-.category {
+/* FOUR EVIDENCE AREAS */
+
+.zone {
   position: absolute;
-  width: 290px;
-  z-index: 4;
-  text-align: center;
+  width: 635px;
+  height: 425px;
+  z-index: 3;
 }
-
-.category .tag {
-  position: relative;
-  background: var(--paper);
-  color: #19140f;
-  padding: 14px 12px;
-  box-shadow: 5px 7px #0008;
-  transform: rotate(-2deg);
-}
-
-.category .tag::before {
-  content: "";
-  position: absolute;
-  top: -10px;
-  left: 50%;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background:
-    radial-gradient(
-      circle at 30% 25%,
-      #ff8585,
-      #b00d15 65%,
-      #570508
-    );
-  box-shadow: 2px 3px 5px #0009;
-}
-
-.category h2 {
-  font: 800 26px "Courier New", monospace;
-  margin: 0;
-  text-decoration: underline;
-}
-
-.category p {
-  font: 12px "Courier New", monospace;
-  margin: 7px 0 0;
-}
-
-.stack {
-  margin: 18px auto 0;
-  width: 180px;
-  height: 125px;
-  position: relative;
-  border: 0;
-  background: transparent;
-  cursor: pointer;
-}
-
-.stack img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  background: #c3b9a9;
-  border: 7px solid #c3b9a9;
-  box-shadow: 4px 8px 13px #000b;
-  transform: rotate(-6deg);
-}
-
-.stack img:nth-child(2) {
-  transform: translate(10px, 2px) rotate(6deg);
-}
-
-.stack img:nth-child(3) {
-  transform: translate(3px, -5px) rotate(-2deg);
-}
-
-.stack:hover { filter: brightness(1.15); }
-
-.count {
-  display: block;
-  font: 12px "Courier New", monospace;
-  color: #e7ded1;
-  margin-top: 8px;
-}
-
-/* CATEGORY POSITIONS */
 
 .production {
-  left: 30px;
-  top: 405px;
+  left: 35px;
+  top: 85px;
 }
 
 .fish {
-  right: 30px;
-  top: 405px;
+  right: 35px;
+  top: 85px;
 }
 
 .freeloaders {
-  left: 380px;
-  top: 705px;
+  left: 35px;
+  bottom: 20px;
 }
 
 .extras {
-  right: 380px;
-  top: 705px;
+  right: 35px;
+  bottom: 20px;
 }
 
-.freeloaders .stack,
-.extras .stack {
-  display: none;
+/* PAPER HEADINGS */
+
+.section-label {
+  position: relative;
+  display: table;
+  margin: 0 auto 18px;
+  padding: 10px 25px;
+  background: #d7c8a8;
+  color: #201910;
+  text-align: center;
+  box-shadow: 4px 6px 12px #0009;
+  transform: rotate(-2deg);
 }
 
-.freeloaders .tag,
-.extras .tag {
-  cursor: pointer;
+.section-label h2 {
+  margin: 0;
+  font: bold 23px "Courier New", monospace;
+  text-decoration: underline;
+  text-underline-offset: 5px;
 }
 
-.freeloaders .count,
-.extras .count {
-  margin-top: 14px;
+.section-label p {
+  margin: 6px 0 0;
+  font: 10px "Courier New", monospace;
 }
 
-.back {
-  position: absolute;
-  left: 25px;
-  top: 20px;
-  z-index: 7;
-  font: 13px "Courier New", monospace;
+/* ALL IMAGES DISPLAYED */
+
+.gallery {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 76px);
+  gap: 10px 12px;
+  justify-items: center;
+  align-items: center;
+  padding: 12px 14px;
 }
 
-.doodle {
-  position: absolute;
-  z-index: 1;
-  font: 45px "Courier New", monospace;
-  color: #7778;
-  pointer-events: none;
+.photo {
+  position: relative;
+  width: 100%;
+  height: 76px;
+  margin: 0;
+  padding: 5px 5px 15px;
+  border: 0;
+  background: #c9beac;
+  box-shadow: 3px 5px 9px #000b;
+  transform: rotate(var(--angle, 0deg));
+  transition: transform .2s ease;
+  cursor: zoom-in;
+}
+
+.photo:nth-child(3n) {
+  background: #a99e8d;
+}
+
+.photo:nth-child(5n) {
+  background: #e0d0b2;
+}
+
+.photo:hover {
+  transform: rotate(0deg) scale(1.6);
+  z-index: 20;
+}
+
+.photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.photo::before {
+  width: 9px;
+  height: 9px;
+  top: -5px;
+}
+
+/* PRODUCTION: LARGER IMAGES */
+
+.production .gallery {
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 130px);
+  max-width: 480px;
+  margin: 0 auto;
+  gap: 23px 35px;
+}
+
+.production .photo {
+  height: 130px;
+  padding-bottom: 16px;
+}
+
+/* THE FISH: THREE COLUMNS */
+
+.fish .gallery,
+.freeloaders .gallery {
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 94px);
+  max-width: 530px;
+  margin: 0 auto;
+  gap: 14px 24px;
+}
+
+.fish .photo,
+.freeloaders .photo {
+  height: 94px;
+}
+
+/* EVERYTHING ELSE: 4 x 4 */
+
+.extras .gallery {
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 72px);
+  gap: 10px 12px;
+}
+
+.extras .photo {
+  height: 72px;
 }
 
 /* ARTWORK VIEWER */
@@ -407,24 +405,26 @@ a:hover { color: #ffdc00; }
 .viewer {
   position: fixed;
   inset: 0;
-  display: none;
   z-index: 100;
-  background: #000f;
+  display: none;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 55px 80px;
+  padding: 55px 75px;
+  background: rgba(0,0,0,.97);
 }
 
-.viewer.open { display: flex; }
+.viewer.open {
+  display: flex;
+}
 
 .viewer img {
-  max-width: 85vw;
-  max-height: 75vh;
+  max-width: 88vw;
+  max-height: 78vh;
   object-fit: contain;
 }
 
-.viewer .caption {
+.viewer-caption {
   margin-top: 15px;
   font: 15px "Courier New", monospace;
 }
@@ -434,44 +434,23 @@ a:hover { color: #ffdc00; }
   border: 0;
   background: none;
   color: white;
-  font-size: 42px;
+  font-size: 40px;
   cursor: pointer;
 }
 
-.viewer button:hover { color: #ffdc00; }
-
-.close {
-  right: 25px;
-  top: 15px;
+.viewer button:hover {
+  color: #ffdc00;
 }
 
-.prev {
-  left: 20px;
-  top: 50%;
-}
-
-.next {
-  right: 20px;
-  top: 50%;
-}
-
-.hint {
-  position: absolute;
-  bottom: 13px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 5;
-  font: 12px "Courier New", monospace;
-  color: #b6aea0;
-}
-
-/* SMALL SCREENS */
+.close { top: 15px; right: 25px; }
+.prev { top: 50%; left: 20px; }
+.next { top: 50%; right: 20px; }
 
 @media (max-width: 700px) {
   header {
-    height: 86px;
+    height: 88px;
     display: block;
-    padding: 10px 15px;
+    padding: 9px 14px;
   }
 
   nav {
@@ -480,16 +459,7 @@ a:hover { color: #ffdc00; }
   }
 
   .board {
-    height: calc(100dvh - 86px);
-  }
-
-  .viewer {
-    padding: 55px 45px;
-  }
-
-  .viewer img {
-    max-width: 100%;
-    max-height: 70vh;
+    height: calc(100dvh - 88px);
   }
 }
 </style>
@@ -509,9 +479,10 @@ a:hover { color: #ffdc00; }
 </header>
 
 <main class="board" id="board">
+
 <div class="stage" id="stage">
 
-  <svg class="strings" viewBox="0 0 1600 900"
+  <svg class="strings" viewBox="0 0 1800 1000"
        aria-hidden="true">
     <g id="lines"></g>
   </svg>
@@ -520,346 +491,380 @@ a:hover { color: #ffdc00; }
     ← BACK TO CLIENT PROJECTS
   </a>
 
-  <div class="heading">
+  <div class="title">
     <h1>FISHTANK</h1>
-    <p>
-      PROMOTIONAL ARTWORK AND CREATIVE WORK FOR FISHTANK
-    </p>
   </div>
 
-  <!-- FEATURED ARTWORK -->
+  <!-- CENTER: CAST GIF / VIDEO / TV GIF -->
 
-  <button class="paper gif-left" data-feature="0">
-    <img src="/images/clients/fishtank/fish1tvcast.gif"
-         alt="Fishtank TV cast">
-    <small>FISHTANK TV</small>
-  </button>
+  <div class="center">
 
-  <button class="paper gif-right" data-feature="1">
-    <img src="/images/clients/fishtank/fish1cast.gif"
-         alt="Fishtank cast">
-    <small>THE CAST</small>
-  </button>
+    <button class="feature-gif cast-gif"
+            data-feature="0"
+            aria-label="Enlarge cast animation">
+      <img
+        src="/images/clients/fishtank/fish1cast.gif"
+        alt="Fishtank cast">
+    </button>
 
-  <button class="paper poster" data-feature="2">
-    <img
-      src="/images/clients/fishtank/fishtankseason1poster.jpeg"
-      alt="Season 1 poster">
-    <small>SEASON 1</small>
-  </button>
+    <div class="feature-label cast-label">
+      THE CAST
+    </div>
 
-  <button class="paper winner" data-feature="3">
-    <img src="/images/clients/fishtank/fish1winner.jpeg"
-         alt="Season 1 winner">
-    <small>THE WINNER</small>
-  </button>
+    <div class="video-card" id="videoCard">
+      <video controls playsinline preload="metadata">
+        <source
+          src="/images/clients/fishtank/Fishtankseason1%20THE%20END%20.mp4"
+          type="video/mp4">
+        Your browser does not support video.
+      </video>
 
-  <!-- CENTER VIDEO -->
+      <strong>FISHTANK SEASON 1 — THE END</strong>
+      <p>THE FINAL RECORDING</p>
+    </div>
 
-  <div class="video-card" id="video">
-    <video controls playsinline preload="metadata">
-      <source
-        src="/images/clients/fishtank/Fishtankseason1%20THE%20END%20.mp4"
-        type="video/mp4">
-      Your browser does not support video.
-    </video>
-    <strong>FISHTANK SEASON 1 — THE END</strong>
+    <button class="feature-gif tv-gif"
+            data-feature="1"
+            aria-label="Enlarge Fishtank TV animation">
+      <img
+        src="/images/clients/fishtank/fish1tvcast.gif"
+        alt="Fishtank TV">
+    </button>
+
+    <div class="feature-label tv-label">
+      FISHTANK TV
+    </div>
+
   </div>
 
   <!-- PRODUCTION -->
 
-  <div class="category production" id="cat-production">
-    <div class="tag">
+  <section class="zone production" id="productionZone">
+    <div class="section-label">
       <h2>PRODUCTION</h2>
       <p>JET / GOLDSTRIKER / BEN / TAX</p>
     </div>
-
-    <button class="stack" data-gallery="production"
-            aria-label="Open Production artwork"></button>
-    <span class="count"></span>
-  </div>
+    <div class="gallery" id="productionGallery"></div>
+  </section>
 
   <!-- THE FISH -->
 
-  <div class="category fish" id="cat-fish">
-    <div class="tag">
+  <section class="zone fish" id="fishZone">
+    <div class="section-label">
       <h2>THE FISH</h2>
       <p>
         JOSIE / JON / VANCE / SYLVIA /
         DAMIEL / LETTY / SIMMONS / MAURO
       </p>
     </div>
-
-    <button class="stack" data-gallery="fish"
-            aria-label="Open The Fish artwork"></button>
-    <span class="count"></span>
-  </div>
+    <div class="gallery" id="fishGallery"></div>
+  </section>
 
   <!-- THE FREELOADERS -->
 
-  <div class="category freeloaders" id="cat-freeloaders">
-    <div class="tag" role="button" tabindex="0"
-         data-gallery="freeloaders">
+  <section class="zone freeloaders" id="freeloadersZone">
+    <div class="section-label">
       <h2>THE FREELOADERS</h2>
       <p>
         ALEX / BETTY / CHIP / CHRIS /
         DONTARIOUS / ELLA / FRANK / LANCE / TAI
       </p>
     </div>
-    <span class="count"></span>
-  </div>
+    <div class="gallery" id="freeloadersGallery"></div>
+  </section>
 
   <!-- EVERYTHING ELSE -->
 
-  <div class="category extras" id="cat-extras">
-    <div class="tag" role="button" tabindex="0"
-         data-gallery="extras">
+  <section class="zone extras" id="extrasZone">
+    <div class="section-label">
       <h2>EVERYTHING ELSE</h2>
       <p>SKETCHBOOK / SPECIAL COLLECTION</p>
     </div>
-    <span class="count"></span>
-  </div>
-
-  <div class="doodle" style="left:70px;top:160px">???</div>
-  <div class="doodle" style="right:70px;top:230px">////</div>
-
-  <div class="hint">
-    CLICK PINNED EVIDENCE TO EXPLORE • ESC TO CLOSE
-  </div>
+    <div class="gallery" id="extrasGallery"></div>
+  </section>
 
 </div>
 </main>
 
-<!-- IMAGE VIEWER -->
+<!-- FULL SIZE VIEWER -->
 
 <div class="viewer" id="viewer"
-     role="dialog" aria-modal="true"
+     role="dialog"
+     aria-modal="true"
      aria-label="Artwork viewer">
 
   <button class="close" id="close"
           aria-label="Close">×</button>
 
   <button class="prev" id="prev"
-          aria-label="Previous">❮</button>
+          aria-label="Previous artwork">❮</button>
 
-  <img id="viewerImg" alt="">
-  <div class="caption" id="viewerCaption"></div>
+  <img id="viewerImage" alt="">
+
+  <div class="viewer-caption" id="viewerCaption"></div>
 
   <button class="next" id="next"
-          aria-label="Next">❯</button>
+          aria-label="Next artwork">❯</button>
+
 </div>
 
 <script>
-const root = "/images/clients/fishtank/";
+const base = "/images/clients/fishtank/";
 
-/* COMPLETE ARTWORK COLLECTIONS */
+/* ARTWORK */
 
-const galleries = {
-  production: [
-    ["fish1jet.jpeg", "Jet"],
-    ["fish1goldstriker.jpeg", "Goldstriker"],
-    ["fish1ben.jpeg", "Ben"],
-    ["fish1tax.jpeg", "Tax"]
-  ],
-
-  fish: [
-    ["fish1josie.jpeg", "Josie"],
-    ["fish1jonathan.jpeg", "Jon"],
-    ["fish1vance.jpeg", "Vance"],
-    ["fish1sylvia.jpeg", "Sylvia"],
-    ["fish1damiel.jpeg", "Damiel"],
-    ["fish1letty.jpeg", "Letty"],
-    ["fish1simmons.jpeg", "Simmons"],
-    ["fish1mauro.jpeg", "Mauro"],
-    ["fish1baldvance.jpeg", "Bald Vance"]
-  ],
-
-  freeloaders: [
-    ["fish1alex.jpeg", "Alex"],
-    ["fish1betty.jpeg", "Betty"],
-    ["fish1chip.jpeg", "Chip"],
-    ["fish1chris.jpeg", "Chris"],
-    ["fish1dontarious.jpeg", "Dontarious"],
-    ["fish1ella.jpeg", "Ella"],
-    ["fish1frank.jpeg", "Frank"],
-    ["fish1lance.jpeg", "Lance"],
-    ["fish1tai.jpeg", "Tai"]
-  ],
-
-  extras: [
-    ["fish1alexsketch.jpeg", "Alex Sketch"],
-    ["fish1bensketch.jpeg", "Ben Sketch"],
-    ["fish1bettysketch.jpeg", "Betty Sketch"],
-    ["fish1chipsketch.jpeg", "Chip Sketch"],
-    ["fish1chrissketch.jpeg", "Chris Sketch"],
-    ["fish1dontarioussketch.jpeg", "Dontarious Sketch"],
-    ["fish1ellasketch.jpeg", "Ella Sketch"],
-    ["fish1franksketch.jpeg", "Frank Sketch"],
-    ["fish1goldstrikersketch.jpeg", "Goldstriker Sketch"],
-    ["fish1jetsketch.jpeg", "Jet Sketch"],
-    ["fish1lancesketch.jpeg", "Lance Sketch"],
-    ["fish1taisketch.jpeg", "Tai Sketch"],
-    ["fish1taxsketch.jpeg", "Tax Sketch"],
-    ["fishtv1_.jpeg", "Fishtank TV"],
-    ["josiejonbubbles.jpeg", "Josie and Jon"],
-    ["peppasylvia.jpeg", "Peppa and Sylvia"]
-  ]
-};
-
-const features = [
-  ["fish1tvcast.gif", "Fishtank TV"],
-  ["fish1cast.gif", "The Cast"],
-  ["fishtankseason1poster.jpeg", "Season 1 Poster"],
-  ["fish1winner.jpeg", "Season 1 Winner"]
+const production = [
+  ["fish1jet.jpeg", "Jet"],
+  ["fish1goldstriker.jpeg", "Goldstriker"],
+  ["fish1ben.jpeg", "Ben"],
+  ["fish1tax.jpeg", "Tax"]
 ];
 
-/* IMAGE VIEWER */
+const fish = [
+  ["fish1josie.jpeg", "Josie"],
+  ["fish1jonathan.jpeg", "Jon"],
+  ["fish1vance.jpeg", "Vance"],
+  ["fish1sylvia.jpeg", "Sylvia"],
+  ["fish1damiel.jpeg", "Damiel"],
+  ["fish1letty.jpeg", "Letty"],
+  ["fish1simmons.jpeg", "Simmons"],
+  ["fish1mauro.jpeg", "Mauro"],
+  ["fish1baldvance.jpeg", "Bald Vance"]
+];
 
-const viewer = document.getElementById("viewer");
-const viewerImg = document.getElementById("viewerImg");
-const viewerCaption = document.getElementById("viewerCaption");
+const freeloaders = [
+  ["fish1alex.jpeg", "Alex"],
+  ["fish1betty.jpeg", "Betty"],
+  ["fish1chip.jpeg", "Chip"],
+  ["fish1chris.jpeg", "Chris"],
+  ["fish1dontarious.jpeg", "Dontarious"],
+  ["fish1ella.jpeg", "Ella"],
+  ["fish1frank.jpeg", "Frank"],
+  ["fish1lance.jpeg", "Lance"],
+  ["fish1tai.jpeg", "Tai"]
+];
 
-let active = [];
-let index = 0;
+const extras = [
+  ["fish1alexsketch.jpeg", "Alex Sketch"],
+  ["fish1bensketch.jpeg", "Ben Sketch"],
+  ["fish1bettysketch.jpeg", "Betty Sketch"],
+  ["fish1chipsketch.jpeg", "Chip Sketch"],
+  ["fish1chrissketch.jpeg", "Chris Sketch"],
+  ["fish1dontarioussketch.jpeg", "Dontarious Sketch"],
+  ["fish1ellasketch.jpeg", "Ella Sketch"],
+  ["fish1franksketch.jpeg", "Frank Sketch"],
+  ["fish1goldstrikersketch.jpeg", "Goldstriker Sketch"],
+  ["fish1jetsketch.jpeg", "Jet Sketch"],
+  ["fish1lancesketch.jpeg", "Lance Sketch"],
+  ["fish1taisketch.jpeg", "Tai Sketch"],
+  ["fish1taxsketch.jpeg", "Tax Sketch"],
+  ["fishtv1_.jpeg", "Fishtank TV"],
+  ["josiejonbubbles.jpeg", "Josie and Jon"],
+  ["peppasylvia.jpeg", "Peppa and Sylvia"]
+];
 
-function show() {
-  const [file, label] = active[index];
+const featured = [
+  ["fish1cast.gif", "The Cast"],
+  ["fish1tvcast.gif", "Fishtank TV"]
+];
 
-  viewerImg.src = root + encodeURIComponent(file);
-  viewerImg.alt = label;
+/* BUILD INDIVIDUAL PHOTOS */
 
-  viewerCaption.textContent =
-    `${label} — ${index + 1} / ${active.length}`;
+const angles = [-5, 3, -2, 5, -4, 2, 4, -3];
+
+function buildGallery(id, items) {
+  const container = document.getElementById(id);
+
+  items.forEach(([file, label], i) => {
+    const button = document.createElement("button");
+    button.className = "photo";
+    button.type = "button";
+    button.title = label;
+    button.setAttribute("aria-label", "Enlarge " + label);
+    button.style.setProperty(
+      "--angle",
+      angles[i % angles.length] + "deg"
+    );
+
+    const img = document.createElement("img");
+    img.src = base + encodeURIComponent(file);
+    img.alt = label;
+    img.loading = "eager";
+
+    button.appendChild(img);
+    container.appendChild(button);
+
+    button.addEventListener("click", () => {
+      openViewer(items, i);
+    });
+  });
 }
 
-function open(items, i = 0) {
-  active = items;
-  index = i;
-  show();
-  viewer.classList.add("open");
-}
+buildGallery("productionGallery", production);
+buildGallery("fishGallery", fish);
+buildGallery("freeloadersGallery", freeloaders);
+buildGallery("extrasGallery", extras);
 
-function close() {
-  viewer.classList.remove("open");
-  viewerImg.removeAttribute("src");
-}
-
-function move(direction) {
-  if (!active.length) return;
-
-  index =
-    (index + direction + active.length) % active.length;
-
-  show();
-}
-
-document.getElementById("close").onclick = close;
-document.getElementById("prev").onclick = () => move(-1);
-document.getElementById("next").onclick = () => move(1);
-
-viewer.addEventListener("click", event => {
-  if (event.target === viewer) close();
-});
-
-document.addEventListener("keydown", event => {
-  if (viewer.classList.contains("open")) {
-    if (event.key === "Escape") close();
-    if (event.key === "ArrowLeft") move(-1);
-    if (event.key === "ArrowRight") move(1);
-  } else if (
-    (event.key === "Enter" || event.key === " ") &&
-    event.target.dataset.gallery
-  ) {
-    event.preventDefault();
-    open(galleries[event.target.dataset.gallery]);
-  }
-});
-
-/* FEATURED IMAGES */
+/* FEATURED GIF VIEWER */
 
 document.querySelectorAll("[data-feature]").forEach(el => {
-  el.onclick = () => open(
-    features,
-    Number(el.dataset.feature)
-  );
-});
-
-/* CATEGORY BUTTONS */
-
-document.querySelectorAll("[data-gallery]").forEach(el => {
   el.addEventListener("click", () => {
-    open(galleries[el.dataset.gallery]);
+    openViewer(featured, Number(el.dataset.feature));
   });
 });
 
-/* BUILD EVIDENCE STACKS */
+/* LIGHTBOX */
 
-Object.entries(galleries).forEach(([key, items]) => {
-  const el = document.getElementById("cat-" + key);
+const viewer = document.getElementById("viewer");
+const viewerImage = document.getElementById("viewerImage");
+const viewerCaption = document.getElementById("viewerCaption");
 
-  el.querySelector(".count").textContent =
-    `${items.length} FILES • OPEN EVIDENCE`;
+let activeItems = [];
+let activeIndex = 0;
 
-  const stack = el.querySelector(".stack");
+function openViewer(items, index) {
+  activeItems = items;
+  activeIndex = index;
+  showImage();
+  viewer.classList.add("open");
+}
 
-  if (stack) {
-    items.slice(0, 3).forEach(([file, label]) => {
-      const img = document.createElement("img");
-      img.src = root + encodeURIComponent(file);
-      img.alt = label;
+function showImage() {
+  const [file, label] = activeItems[activeIndex];
 
-      img.onerror = () => img.remove();
+  viewerImage.src = base + encodeURIComponent(file);
+  viewerImage.alt = label;
+  viewerCaption.textContent =
+    `${label} — ${activeIndex + 1} / ${activeItems.length}`;
+}
 
-      stack.appendChild(img);
-    });
-  }
+function closeViewer() {
+  viewer.classList.remove("open");
+  viewerImage.removeAttribute("src");
+}
+
+function changeImage(direction) {
+  activeIndex =
+    (activeIndex + direction + activeItems.length)
+    % activeItems.length;
+
+  showImage();
+}
+
+document.getElementById("close")
+  .addEventListener("click", closeViewer);
+
+document.getElementById("prev")
+  .addEventListener("click", () => changeImage(-1));
+
+document.getElementById("next")
+  .addEventListener("click", () => changeImage(1));
+
+viewer.addEventListener("click", e => {
+  if (e.target === viewer) closeViewer();
 });
 
-/* RED EVIDENCE STRINGS */
+document.addEventListener("keydown", e => {
+  if (!viewer.classList.contains("open")) return;
 
-const connections = [
-  [[800, 440], [295, 125]],
-  [[800, 440], [1295, 125]],
-  [[800, 440], [345, 400]],
-  [[800, 440], [1255, 400]],
-  [[800, 440], [175, 425]],
-  [[800, 440], [1425, 425]],
-  [[800, 440], [525, 725]],
-  [[800, 440], [1075, 725]]
-];
+  if (e.key === "Escape") closeViewer();
+  if (e.key === "ArrowLeft") changeImage(-1);
+  if (e.key === "ArrowRight") changeImage(1);
+});
+
+/* RED STRING CONNECTIONS */
 
 const lines = document.getElementById("lines");
+const stage = document.getElementById("stage");
 
-connections.forEach(([a, b]) => {
+function connect(a, b) {
   const line = document.createElementNS(
     "http://www.w3.org/2000/svg",
     "line"
   );
 
-  line.setAttribute("x1", a[0]);
-  line.setAttribute("y1", a[1]);
-  line.setAttribute("x2", b[0]);
-  line.setAttribute("y2", b[1]);
+  line.setAttribute("x1", a.x);
+  line.setAttribute("y1", a.y);
+  line.setAttribute("x2", b.x);
+  line.setAttribute("y2", b.y);
 
   lines.appendChild(line);
-});
+}
 
-/* SCALE ENTIRE BOARD TO SCREEN */
+function pinPoint(element) {
+  const stageRect = stage.getBoundingClientRect();
+  const rect = element.getBoundingClientRect();
 
-function fit() {
+  const scale = parseFloat(
+    stage.style.getPropertyValue("--scale")
+  ) || 1;
+
+  return {
+    x: (rect.left - stageRect.left + rect.width / 2) / scale,
+    y: (rect.top - stageRect.top + 2) / scale
+  };
+}
+
+function drawStrings() {
+  lines.replaceChildren();
+
+  const video = document.getElementById("videoCard");
+  const videoPoint = pinPoint(video);
+
+  const zoneIds = [
+    "productionZone",
+    "fishZone",
+    "freeloadersZone",
+    "extrasZone"
+  ];
+
+  zoneIds.forEach(id => {
+    const zone = document.getElementById(id);
+    const label = zone.querySelector(".section-label");
+    const photos = [...zone.querySelectorAll(".photo")];
+
+    const labelPoint = pinPoint(label);
+
+    connect(videoPoint, labelPoint);
+
+    photos.forEach((photo, i) => {
+      connect(labelPoint, pinPoint(photo));
+
+      if (i > 0 && i % 3 === 0) {
+        connect(
+          pinPoint(photos[i - 1]),
+          pinPoint(photo)
+        );
+      }
+    });
+  });
+
+  const cast = document.querySelector(".cast-gif");
+  const tv = document.querySelector(".tv-gif");
+
+  connect(videoPoint, pinPoint(cast));
+  connect(videoPoint, pinPoint(tv));
+}
+
+/* FIT EVERYTHING ON ONE SCREEN */
+
+function fitBoard() {
   const board = document.getElementById("board");
 
   const scale = Math.min(
-    board.clientWidth / 1600,
-    board.clientHeight / 900
+    board.clientWidth / 1800,
+    board.clientHeight / 1000
   );
 
-  document.getElementById("stage")
-    .style.setProperty("--scale", scale);
+  stage.style.setProperty("--scale", scale);
+
+  requestAnimationFrame(drawStrings);
 }
 
-window.addEventListener("resize", fit);
-fit();
+window.addEventListener("resize", fitBoard);
+window.addEventListener("load", fitBoard);
+
+fitBoard();
 </script>
 
 </body>
