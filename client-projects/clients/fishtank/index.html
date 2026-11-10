@@ -10,10 +10,12 @@
 :root {
   --red: #c9272c;
   --paper: #d7c8a8;
-  --paper-dark: #b4a484;
 }
+
 * { box-sizing: border-box; }
+
 html { scroll-behavior: smooth; }
+
 body {
   margin: 0;
   background: #050505;
@@ -21,7 +23,7 @@ body {
   font-family: Arial, sans-serif;
   overflow-x: hidden;
 }
-button, a { -webkit-tap-highlight-color: transparent; }
+
 header {
   position: relative;
   z-index: 30;
@@ -29,32 +31,45 @@ header {
   padding: 25px 5%;
   border-bottom: 1px solid #666;
 }
+
 .brand {
   font-weight: 800;
   font-size: 17px;
   margin-bottom: 12px;
 }
+
 nav {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 12px 25px;
 }
-nav a, .back {
+
+nav a,
+.back {
   color: white;
   text-decoration: none;
 }
-nav a:hover, .back:hover { color: #ffdc00; }
+
+nav a:hover,
+.back:hover {
+  color: #ffdc00;
+}
+
 .back {
   display: inline-block;
   margin: 24px 5%;
   font-size: 14px;
 }
+
+/* WIDE DETECTIVE BOARD */
+
 .board {
   position: relative;
-  max-width: 1400px;
+  max-width: 1800px;
+  width: 98%;
   margin: 0 auto;
-  padding: 15px 25px 100px;
+  padding: 20px 35px 90px;
   isolation: isolate;
   background:
     repeating-linear-gradient(
@@ -64,9 +79,14 @@ nav a:hover, .back:hover { color: #ffdc00; }
       #ffffff04 106px,
       transparent 108px
     ),
-    radial-gradient(ellipse at 50% 20%,
-      #191919 0%, #080808 55%, #030303 100%);
+    radial-gradient(
+      ellipse at 50% 20%,
+      #191919 0%,
+      #080808 55%,
+      #030303 100%
+    );
 }
+
 .board::before {
   content: "";
   position: absolute;
@@ -78,21 +98,26 @@ nav a:hover, .back:hover { color: #ffdc00; }
   background-size: 7px 7px;
   z-index: -1;
 }
+
+/* TITLE */
+
 .board-heading {
   position: relative;
   text-align: center;
-  padding: 15px 0 45px;
+  padding: 10px 0 35px;
 }
+
 .board-heading h1 {
   display: inline-block;
   position: relative;
   margin: 0;
-  font-size: clamp(55px, 10vw, 115px);
+  font-size: clamp(55px, 8vw, 105px);
   letter-spacing: 5px;
   font-weight: 900;
   transform: rotate(-2deg);
   text-shadow: 3px 4px #222;
 }
+
 .board-heading h1::after {
   content: "";
   position: absolute;
@@ -102,6 +127,7 @@ nav a:hover, .back:hover { color: #ffdc00; }
   transform: rotate(-5deg);
   pointer-events: none;
 }
+
 .description {
   display: table;
   max-width: 90%;
@@ -116,7 +142,7 @@ nav a:hover, .back:hover { color: #ffdc00; }
   box-shadow: 3px 5px 0 #0007;
 }
 
-/* CONNECTING RED STRINGS */
+/* RED STRINGS */
 
 .strings {
   position: absolute;
@@ -127,19 +153,22 @@ nav a:hover, .back:hover { color: #ffdc00; }
   pointer-events: none;
   z-index: 1;
 }
+
 .strings line {
   stroke: var(--red);
   stroke-width: 2;
   opacity: .8;
 }
 
-/* FEATURED CASE */
+/* HORIZONTAL FEATURE */
 
 .case-feature {
   position: relative;
-  min-height: 690px;
-  margin: 0 auto 85px;
+  min-height: 550px;
+  max-width: 1650px;
+  margin: 0 auto 70px;
 }
+
 .evidence {
   position: absolute;
   z-index: 3;
@@ -149,16 +178,19 @@ nav a:hover, .back:hover { color: #ffdc00; }
   cursor: zoom-in;
   transition: transform .25s ease;
 }
+
 .evidence img {
   display: block;
   width: 100%;
   max-height: 220px;
   object-fit: contain;
 }
+
 .evidence:hover {
   transform: rotate(0deg) scale(1.09) !important;
   z-index: 12;
 }
+
 .evidence::before,
 .paper-label::before,
 .video-frame::before {
@@ -170,52 +202,67 @@ nav a:hover, .back:hover { color: #ffdc00; }
   height: 18px;
   transform: translateX(-50%);
   border-radius: 50%;
-  background: radial-gradient(circle at 30% 25%,
-    #ff7777, #b4141a 65%, #570707);
+  background: radial-gradient(
+    circle at 30% 25%,
+    #ff7777,
+    #b4141a 65%,
+    #570707
+  );
   box-shadow: 2px 4px 5px #000b;
   z-index: 15;
 }
+
+/* FOUR SURROUNDING IMAGES */
+
 .ev-one {
-  width: 23%;
-  top: 5%;
-  left: 2%;
-  transform: rotate(-7deg);
-}
-.ev-two {
-  width: 23%;
-  top: 5%;
-  right: 2%;
-  transform: rotate(7deg);
-}
-.ev-three {
   width: 20%;
-  bottom: 4%;
-  left: 4%;
-  transform: rotate(5deg);
-}
-.ev-four {
-  width: 20%;
-  bottom: 4%;
-  right: 4%;
+  top: 4%;
+  left: 1%;
   transform: rotate(-6deg);
 }
+
+.ev-two {
+  width: 20%;
+  top: 4%;
+  right: 1%;
+  transform: rotate(6deg);
+}
+
+.ev-three {
+  width: 18%;
+  bottom: 3%;
+  left: 4%;
+  transform: rotate(4deg);
+}
+
+.ev-four {
+  width: 18%;
+  bottom: 3%;
+  right: 4%;
+  transform: rotate(-5deg);
+}
+
+/* CENTRAL VIDEO */
+
 .video-frame {
   position: absolute;
-  width: 52%;
+  width: 46%;
   left: 50%;
-  top: 49%;
+  top: 50%;
   transform: translate(-50%, -50%);
   z-index: 6;
   padding: 10px;
   background: var(--paper);
   box-shadow: 8px 15px 35px #000e;
 }
+
 .video-frame video {
   display: block;
   width: 100%;
   background: #000;
   aspect-ratio: 16 / 9;
 }
+
 .video-caption {
   padding: 12px 5px 5px;
   text-align: center;
@@ -226,18 +273,24 @@ nav a:hover, .back:hover { color: #ffdc00; }
   letter-spacing: 1px;
 }
 
-/* INVESTIGATION SECTIONS */
+/* TWO-COLUMN SECTIONS */
 
 .case-section {
   position: relative;
-  margin: 0 auto 100px;
-  padding: 0 10px;
+  display: inline-block;
+  width: 48%;
+  vertical-align: top;
+  margin: 0 0 85px;
+  padding: 0 20px;
 }
+
+/* SECTION LABELS */
+
 .paper-label {
   position: relative;
   display: table;
-  margin: 0 auto 55px;
-  padding: 18px 35px;
+  margin: 0 auto 35px;
+  padding: 15px 25px;
   background: var(--paper);
   color: #17130d;
   text-align: center;
@@ -245,15 +298,17 @@ nav a:hover, .back:hover { color: #ffdc00; }
   transform: rotate(-2deg);
   z-index: 3;
 }
+
 .paper-label h2 {
   margin: 0 0 8px;
   font-family: "Courier New", monospace;
-  font-size: clamp(23px, 4vw, 38px);
+  font-size: clamp(22px, 3vw, 32px);
   text-transform: uppercase;
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 6px;
 }
+
 .paper-label p {
   max-width: 500px;
   margin: 12px auto 0;
@@ -261,31 +316,43 @@ nav a:hover, .back:hover { color: #ffdc00; }
   font-size: 12px;
   line-height: 1.7;
 }
+
+/* EVIDENCE PHOTOS */
+
 .evidence-gallery {
   position: relative;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 38px 26px;
-  padding: 15px 15px 70px;
+  gap: 35px 22px;
+  padding: 15px 5px 35px;
   z-index: 3;
 }
+
 .case-photo {
   position: relative;
   margin: 0;
-  width: var(--w, 220px);
+  width: min(var(--w, 220px), 42%);
   max-width: 100%;
-  padding: 8px 8px 28px;
+  padding: 7px 7px 25px;
   background: #c8bead;
   box-shadow: 6px 10px 22px #000b;
-  transform: rotate(var(--r, 0deg))
-             translateY(var(--y, 0px));
+  transform:
+    rotate(var(--r, 0deg))
+    translateY(var(--y, 0px));
   transition: transform .3s ease;
   cursor: zoom-in;
 }
-.case-photo:nth-child(3n) { background: #a9a092; }
-.case-photo:nth-child(5n) { background: #d9c9ac; }
+
+.case-photo:nth-child(3n) {
+  background: #a9a092;
+}
+
+.case-photo:nth-child(5n) {
+  background: #d9c9ac;
+}
+
 .case-photo::before {
   content: "";
   position: absolute;
@@ -295,17 +362,23 @@ nav a:hover, .back:hover { color: #ffdc00; }
   height: 14px;
   transform: translateX(-50%);
   border-radius: 50%;
-  background: radial-gradient(circle at 30% 25%,
-    #ff7777, #ba171b 65%, #600707);
+  background: radial-gradient(
+    circle at 30% 25%,
+    #ff7777,
+    #ba171b 65%,
+    #600707
+  );
   box-shadow: 2px 3px 4px #0009;
   z-index: 5;
 }
+
 .case-photo img {
   display: block;
   width: 100%;
-  max-height: 340px;
+  max-height: 260px;
   object-fit: contain;
 }
+
 .case-photo figcaption {
   margin-top: 13px;
   color: #201b15;
@@ -315,29 +388,21 @@ nav a:hover, .back:hover { color: #ffdc00; }
   text-align: center;
   text-transform: uppercase;
 }
+
 .case-photo:hover {
   transform: rotate(0deg)
              translateY(-12px)
              scale(1.08);
   z-index: 15;
 }
+
+/* HIDE OLD SEPARATORS */
+
 .case-divider {
-  height: 1px;
-  max-width: 80%;
-  margin: 0 auto 95px;
-  border-top: 1px dashed #555;
-}
-.scribble {
-  position: absolute;
-  color: #777;
-  opacity: .55;
-  font-family: "Courier New", monospace;
-  font-size: 40px;
-  pointer-events: none;
-  z-index: 0;
+  display: none;
 }
 
-/* IMAGE VIEWER */
+/* LIGHTBOX */
 
 .lightbox {
   display: none;
@@ -349,12 +414,17 @@ nav a:hover, .back:hover { color: #ffdc00; }
   justify-content: center;
   padding: 55px;
 }
-.lightbox.active { display: flex; }
+
+.lightbox.active {
+  display: flex;
+}
+
 .lightbox img {
   max-width: 90%;
   max-height: 85vh;
   object-fit: contain;
 }
+
 .lightbox button {
   position: absolute;
   border: 0;
@@ -363,10 +433,23 @@ nav a:hover, .back:hover { color: #ffdc00; }
   font-size: 38px;
   cursor: pointer;
 }
-.lightbox button:hover { color: #ffdc00; }
-.close { top: 15px; right: 25px; }
-.prev { left: 12px; }
-.next { right: 12px; }
+
+.lightbox button:hover {
+  color: #ffdc00;
+}
+
+.close {
+  top: 15px;
+  right: 25px;
+}
+
+.prev {
+  left: 12px;
+}
+
+.next {
+  right: 12px;
+}
 
 footer {
   padding: 45px 20px;
@@ -375,8 +458,36 @@ footer {
   color: #888;
 }
 
-@media(max-width: 750px) {
-  .board { padding: 15px 12px 50px; }
+/* TABLET */
+
+@media (max-width: 1000px) {
+  .board {
+    width: 100%;
+    padding: 15px 20px 60px;
+  }
+
+  .case-section {
+    width: 49%;
+    padding: 0 10px;
+  }
+
+  .case-photo {
+    width: min(var(--w, 220px), 45%);
+  }
+
+  .case-feature {
+    min-height: 500px;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+  .board {
+    width: 100%;
+    padding: 15px 12px 50px;
+  }
+
   .case-feature {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -384,22 +495,46 @@ footer {
     min-height: auto;
     padding: 20px;
   }
-  .evidence, .video-frame {
+
+  .evidence,
+  .video-frame {
     position: relative;
     inset: auto;
     width: 100%;
     transform: none !important;
   }
+
   .video-frame {
     grid-column: 1 / -1;
     grid-row: 1;
   }
-  .evidence img { max-height: 180px; }
-  .evidence-gallery { gap: 30px 18px; }
-  .case-photo { width: min(42vw, var(--w)); }
-  .paper-label { padding: 16px 20px; }
-  .lightbox { padding: 45px 30px; }
-  .lightbox img { max-width: 100%; }
+
+  .evidence img {
+    max-height: 180px;
+  }
+
+  .case-section {
+    display: block;
+    width: 100%;
+    padding: 0 10px;
+    margin-bottom: 80px;
+  }
+
+  .case-photo {
+    width: min(42vw, var(--w));
+  }
+
+  .paper-label {
+    margin-bottom: 40px;
+  }
+
+  .lightbox {
+    padding: 45px 30px;
+  }
+
+  .lightbox img {
+    max-width: 100%;
+  }
 }
 </style>
 </head>
@@ -408,6 +543,7 @@ footer {
 
 <header>
   <div class="brand">starsandtigers</div>
+
   <nav>
     <a href="/">Home</a>
     <a href="/illustrations/">Illustrations</a>
@@ -428,33 +564,38 @@ footer {
 
   <section class="board-heading">
     <h1>FISHTANK</h1>
+
     <p class="description">
       PROMOTIONAL ARTWORK AND CREATIVE WORK FOR FISHTANK
     </p>
   </section>
 
-  <!-- CENTRAL EVIDENCE -->
+  <!-- FEATURED EVIDENCE -->
 
   <section class="case-feature" id="feature">
 
     <div class="evidence ev-one">
-      <img src="/images/clients/fishtank/fish1tvcast.gif"
-           alt="Fishtank TV animation">
+      <img
+        src="/images/clients/fishtank/fish1tvcast.gif"
+        alt="Fishtank TV animation">
     </div>
 
     <div class="evidence ev-two">
-      <img src="/images/clients/fishtank/fish1cast.gif"
-           alt="Fishtank cast animation">
+      <img
+        src="/images/clients/fishtank/fish1cast.gif"
+        alt="Fishtank cast animation">
     </div>
 
     <div class="evidence ev-three">
-      <img src="/images/clients/fishtank/fishtankseason1poster.jpeg"
-           alt="Fishtank Season 1 poster">
+      <img
+        src="/images/clients/fishtank/fishtankseason1poster.jpeg"
+        alt="Fishtank Season 1 poster">
     </div>
 
     <div class="evidence ev-four">
-      <img src="/images/clients/fishtank/fish1winner.jpeg"
-           alt="Season 1 winner">
+      <img
+        src="/images/clients/fishtank/fish1winner.jpeg"
+        alt="Season 1 winner">
     </div>
 
     <div class="video-frame" id="videoEvidence">
@@ -464,15 +605,13 @@ footer {
           type="video/mp4">
         Your browser does not support video.
       </video>
+
       <div class="video-caption">
         FISHTANK SEASON 1 — THE END
       </div>
     </div>
 
   </section>
-
-  <span class="scribble"
-        style="top:850px;left:5%">???</span>
 
   <!-- PRODUCTION -->
 
@@ -481,10 +620,9 @@ footer {
       <h2>PRODUCTION</h2>
       <p>JET / GOLDSTRIKER / BEN / TAX</p>
     </div>
+
     <div class="evidence-gallery" id="production"></div>
   </section>
-
-  <div class="case-divider"></div>
 
   <!-- THE FISH -->
 
@@ -496,10 +634,9 @@ footer {
         DAMIEL / LETTY / SIMMONS / MAURO
       </p>
     </div>
+
     <div class="evidence-gallery" id="fish"></div>
   </section>
-
-  <div class="case-divider"></div>
 
   <!-- THE FREELOADERS -->
 
@@ -511,10 +648,9 @@ footer {
         DONTARIOUS / ELLA / FRANK / LANCE / TAI
       </p>
     </div>
+
     <div class="evidence-gallery" id="freeloaders"></div>
   </section>
-
-  <div class="case-divider"></div>
 
   <!-- EVERYTHING ELSE -->
 
@@ -523,6 +659,7 @@ footer {
       <h2>EVERYTHING ELSE</h2>
       <p>SKETCHBOOK / SPECIAL COLLECTION</p>
     </div>
+
     <div class="evidence-gallery" id="extras"></div>
   </section>
 
@@ -552,7 +689,7 @@ footer {
 <script>
 const base = "/images/clients/fishtank/";
 
-/* ARTWORK LISTS */
+/* PRODUCTION */
 
 const production = [
   ["fish1jet.jpeg", "Jet"],
@@ -560,6 +697,8 @@ const production = [
   ["fish1ben.jpeg", "Ben"],
   ["fish1tax.jpeg", "Tax"]
 ];
+
+/* THE FISH */
 
 const fish = [
   ["fish1josie.jpeg", "Josie"],
@@ -573,6 +712,8 @@ const fish = [
   ["fish1baldvance.jpeg", "Bald Vance"]
 ];
 
+/* THE FREELOADERS */
+
 const freeloaders = [
   ["fish1alex.jpeg", "Alex"],
   ["fish1betty.jpeg", "Betty"],
@@ -584,6 +725,8 @@ const freeloaders = [
   ["fish1lance.jpeg", "Lance"],
   ["fish1tai.jpeg", "Tai"]
 ];
+
+/* EVERYTHING ELSE */
 
 const extras = [
   ["fish1alexsketch.jpeg", "Alex Sketch"],
@@ -604,11 +747,13 @@ const extras = [
   ["peppasylvia.jpeg", "Peppa and Sylvia"]
 ];
 
-/* CREATE EVIDENCE PHOTOS */
+/* ARTWORK SIZE AND ROTATION */
 
 const sizes = [210, 260, 190, 240, 280, 220];
 const angles = [-6, 4, -3, 7, -5, 3];
 const offsets = [12, -18, 22, -8, 16, -20];
+
+/* BUILD GALLERIES */
 
 function buildGallery(id, artworks) {
   const gallery = document.getElementById(id);
@@ -621,9 +766,11 @@ function buildGallery(id, artworks) {
     figure.style.setProperty(
       "--w", sizes[index % sizes.length] + "px"
     );
+
     figure.style.setProperty(
       "--r", angles[index % angles.length] + "deg"
     );
+
     figure.style.setProperty(
       "--y", offsets[index % offsets.length] + "px"
     );
@@ -760,7 +907,7 @@ if ("ResizeObserver" in window) {
   observer.observe(board);
 }
 
-/* IMAGE VIEWER */
+/* LIGHTBOX */
 
 const lightbox = document.getElementById("lightbox");
 const lightboxImage = document.getElementById("lightboxImage");
