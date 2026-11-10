@@ -7,163 +7,396 @@
 <title>Fishtank | starsandtigers</title>
 
 <style>
-  body {
-    background: #000000;
-    color: white;
-    font-family: Arial, sans-serif;
-    margin: 0;
-  }
+* {
+  box-sizing: border-box;
+}
 
-  header {
-    background: #050505;
-    padding: 28px 5%;
-    border-bottom: 1px solid #777;
-  }
+html {
+  scroll-behavior: smooth;
+}
 
-  .brand {
-    font-size: 16px;
-    font-weight: bold;
-  }
+body {
+  margin: 0;
+  background: #000;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
 
-  nav {
-    text-align: center;
-  }
+header {
+  background: #050505;
+  padding: 28px 5%;
+  border-bottom: 1px solid #777;
+}
 
-  nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 12px;
-  }
+.brand {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
 
-  nav a:hover {
-    color: #ffdc00;
-  }
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+}
 
-  h1 {
-    text-align: center;
-    font-size: 42px;
-    text-transform: uppercase;
-    margin-top: 45px;
-  }
+nav a {
+  color: white;
+  text-decoration: none;
+}
 
-  .description {
-    text-align: center;
-    margin: 15px auto 40px;
-    max-width: 700px;
-  }
+nav a:hover,
+.back:hover {
+  color: #ffdc00;
+}
 
-  .section-title {
-    text-align: center;
-    font-size: 26px;
-    text-transform: uppercase;
-    margin: 58px 20px 20px;
-    letter-spacing: 2px;
-  }
+.back {
+  display: inline-block;
+  margin: 25px 5%;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
 
-  .gallery {
+.intro {
+  text-align: center;
+  padding: 20px 20px 55px;
+}
+
+h1 {
+  font-size: clamp(45px, 8vw, 90px);
+  letter-spacing: 5px;
+  margin: 15px 0;
+}
+
+.description {
+  max-width: 650px;
+  margin: auto;
+  line-height: 1.7;
+  color: #ccc;
+}
+
+/* SCRAPBOOK COVER */
+
+.cover {
+  position: relative;
+  max-width: 1250px;
+  min-height: 740px;
+  margin: 0 auto 90px;
+  padding: 35px;
+  background: radial-gradient(
+    ellipse at center,
+    #24211c 0%,
+    #111 55%,
+    #000 85%
+  );
+}
+
+.cover::before {
+  content: "";
+  position: absolute;
+  inset: 15px;
+  border: 1px dashed #555;
+  pointer-events: none;
+}
+
+.cover-art {
+  position: absolute;
+  width: clamp(130px, 23%, 280px);
+  z-index: 2;
+  cursor: zoom-in;
+  transition: transform .3s ease;
+}
+
+.cover-art img {
+  width: 100%;
+  display: block;
+  box-shadow: 0 12px 30px #000a;
+}
+
+.cover-art:hover {
+  transform: rotate(0deg) scale(1.1) !important;
+  z-index: 10;
+}
+
+.cover-art:nth-child(1) {
+  top: 3%;
+  left: 3%;
+  transform: rotate(-9deg);
+}
+
+.cover-art:nth-child(2) {
+  top: 6%;
+  right: 4%;
+  transform: rotate(8deg);
+}
+
+.cover-art:nth-child(3) {
+  bottom: 7%;
+  left: 5%;
+  transform: rotate(7deg);
+}
+
+.cover-art:nth-child(4) {
+  bottom: 5%;
+  right: 5%;
+  transform: rotate(-8deg);
+}
+
+.cover-center {
+  position: absolute;
+  width: 52%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  text-align: center;
+}
+
+.cover-center video {
+  width: 100%;
+  display: block;
+  background: #000;
+  border: 9px solid #ddd6c4;
+  box-shadow: 0 15px 50px #000;
+}
+
+.video-caption {
+  display: inline-block;
+  padding: 12px 22px;
+  background: #d7c8a3;
+  color: #17130e;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 18px;
+  transform: rotate(-2deg);
+  margin-top: -3px;
+}
+
+/* SECTIONS */
+
+.scrap-section {
+  max-width: 1350px;
+  margin: 0 auto 110px;
+  padding: 0 25px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 45px;
+}
+
+.section-heading h2 {
+  font-size: clamp(28px, 5vw, 50px);
+  letter-spacing: 3px;
+  margin: 0;
+}
+
+.section-heading::after {
+  content: "";
+  height: 1px;
+  background: #777;
+  flex: 1;
+}
+
+.section-note {
+  color: #999;
+  font-size: 13px;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+/* SCATTERED SCRAPBOOK GALLERY */
+
+.scrap-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 40px 35px;
+  padding: 30px 10px 55px;
+}
+
+.scrap {
+  position: relative;
+  width: var(--w, 230px);
+  max-width: 100%;
+  margin: 0;
+  padding: 9px 9px 32px;
+  background: #e5ddcb;
+  box-shadow: 8px 13px 25px #000;
+  transform: rotate(var(--r, 0deg))
+             translateY(var(--y, 0px));
+  transition: transform .3s ease,
+              box-shadow .3s ease;
+  cursor: zoom-in;
+}
+
+.scrap:nth-child(3n) {
+  background: #c6c0b2;
+}
+
+.scrap:nth-child(5n) {
+  padding: 6px;
+  background: #222;
+}
+
+.scrap:hover {
+  transform: rotate(0deg)
+             translateY(-12px)
+             scale(1.09);
+  box-shadow: 12px 20px 40px #000;
+  z-index: 20;
+}
+
+.scrap img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 350px;
+  object-fit: contain;
+}
+
+.scrap figcaption {
+  color: #29241e;
+  text-align: center;
+  font-family: Georgia, serif;
+  font-size: 14px;
+  margin-top: 12px;
+}
+
+.scrap:nth-child(5n) figcaption {
+  color: white;
+}
+
+.scrap:nth-child(4n)::before {
+  content: "";
+  position: absolute;
+  width: 75px;
+  height: 24px;
+  background: #d8c69a99;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-8deg);
+  z-index: 3;
+}
+
+/* DECORATIVE DIVIDER */
+
+.divider {
+  text-align: center;
+  color: #777;
+  letter-spacing: 15px;
+  margin: 60px 0 90px;
+}
+
+/* LIGHTBOX */
+
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.96);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  padding: 55px 65px;
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.lightbox img {
+  max-width: 100%;
+  max-height: 85vh;
+  object-fit: contain;
+}
+
+.close,
+.arrow {
+  position: absolute;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 38px;
+}
+
+.close {
+  top: 15px;
+  right: 25px;
+}
+
+.arrow.left {
+  left: 15px;
+}
+
+.arrow.right {
+  right: 15px;
+}
+
+.close:hover,
+.arrow:hover {
+  color: #ffdc00;
+}
+
+/* FOOTER */
+
+footer {
+  text-align: center;
+  padding: 45px 20px;
+  border-top: 1px solid #444;
+  color: #888;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+  .cover {
+    min-height: auto;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    max-width: 1100px;
-    margin: 30px auto 40px;
-    padding: 0 20px;
-    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    padding: 25px;
   }
 
-  .gallery img {
+  .cover-art,
+  .cover-center {
+    position: static;
     width: 100%;
-    height: auto;
-    object-fit: contain;
-    cursor: zoom-in;
-    transition: transform 0.3s ease;
-    display: block;
+    transform: none !important;
   }
 
-  .gallery img:hover {
-    transform: scale(1.03);
+  .cover-center {
+    grid-column: 1 / -1;
+    grid-row: 1;
   }
 
-  .featured-video {
-    max-width: 900px;
-    margin: 20px auto 50px;
-    padding: 0 20px;
+  .cover-art:hover {
+    transform: scale(1.04) !important;
   }
 
-  .featured-video video {
-    display: block;
-    width: 100%;
-    background: #111;
+  .scrap-gallery {
+    gap: 25px;
   }
 
-  .video-caption {
-    text-align: center;
-    margin-top: 12px;
-    font-size: 14px;
+  .scrap {
+    width: min(75vw, var(--w));
   }
-
-  /* IMAGE LIGHTBOX */
 
   .lightbox {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.9);
-    z-index: 9999;
-    justify-content: center;
-    align-items: center;
-    padding: 30px;
+    padding: 60px 45px;
   }
 
-  .lightbox.active {
-    display: flex;
+  .arrow {
+    font-size: 28px;
   }
-
-  .lightbox img {
-    max-width: 90%;
-    max-height: 85vh;
-    object-fit: contain;
-  }
-
-  .lightbox button {
-    position: absolute;
-    color: white;
-    background: none;
-    border: none;
-    font-size: 40px;
-    cursor: pointer;
-  }
-
-  .lightbox-close {
-    top: 15px;
-    right: 25px;
-  }
-
-  .lightbox-prev {
-    left: 15px;
-  }
-
-  .lightbox-next {
-    right: 15px;
-  }
-
-  @media (max-width: 600px) {
-    .gallery {
-      grid-template-columns: 1fr;
-    }
-
-    nav a {
-      display: inline-block;
-      margin: 6px;
-    }
-
-    .lightbox {
-      padding: 15px;
-    }
-
-    .lightbox img {
-      max-width: 78%;
-    }
-  }
+}
 </style>
 </head>
 
@@ -173,314 +406,297 @@
   <div class="brand">starsandtigers</div>
 
   <nav>
-    <a href="../../../">Home</a>
-    <a href="../../../illustrations/">Illustrations</a>
-    <a href="../../../animations/">Animations</a>
-    <a href="../../../sketches/">Sketches</a>
-    <a href="../../">Client Work</a>
+    <a href="/">Home</a>
+    <a href="/illustrations/">Illustrations</a>
+    <a href="/animations/">Animations</a>
+    <a href="/sketches/">Sketches</a>
+    <a href="/client-projects/">Client Work</a>
   </nav>
 </header>
 
+<a class="back" href="/client-projects/">
+  ← Back to Client Projects
+</a>
+
 <main>
 
-  <h1>Fishtank</h1>
+<section class="intro">
+  <h1>FISHTANK</h1>
 
   <p class="description">
-    Promotional artwork and creative work for Fishtank.
+    A collection of illustrations, sketches,
+    animations, and artwork inspired by
+    Fishtank Season 1.
   </p>
+</section>
 
+<!-- SCRAPBOOK COVER -->
 
-  <!-- SEASON ONE ANIMATIONS -->
+<section class="cover">
 
-  <h2 class="section-title">Season One Animations</h2>
-
-  <section class="gallery" aria-label="Season One animations">
-
-    <img src="../../../images/clients/fishtank/fish1tvcast.gif"
-         alt="Fishtank TV animation" loading="lazy">
-
-    <img src="../../../images/clients/fishtank/fish1cast.gif"
-         alt="Fishtank cast animation" loading="lazy">
-
-  </section>
-
-
-  <!-- FEATURED VIDEO -->
-
-  <h2 class="section-title">Season One / The End</h2>
-
-  <div class="featured-video">
-
-    <video controls preload="metadata">
-      <source
-        src="../../../images/clients/fishtank/Fishtankseason1%20THE%20END%20.mp4"
-        type="video/mp4">
-
-      Your browser does not support this video.
-    </video>
-
-    <p class="video-caption">
-      Fishtank Season 1 — The End
-    </p>
-
+  <div class="cover-art">
+    <img
+      src="/images/clients/fishtank/fishtankseason1poster.jpg"
+      alt="Fishtank Season 1 Poster">
   </div>
 
-
-  <!-- PRODUCTION -->
-
-  <h2 class="section-title">Production</h2>
-
-  <section class="gallery" aria-label="Production">
-
-    <img src="../../../images/clients/fishtank/fish1jet.jpeg"
-         alt="Jet" loading="lazy">
-
-    <img src="../../../images/clients/fishtank/fish1goldstriker.jpeg"
-         alt="Goldstriker" loading="lazy">
-
-    <img src="../../../images/clients/fishtank/fish1ben.jpeg"
-         alt="Ben" loading="lazy">
-
-    <img src="../../../images/clients/fishtank/fish1tax.jpeg"
-         alt="Tax" loading="lazy">
-
-  </section>
-
-
-  <!-- THE FREELOADERS -->
-
-  <h2 class="section-title">The Freeloaders</h2>
-
-  <section class="gallery" aria-label="The Freeloaders">
-
-    <img src="../../../images/clients/fishtank/fish1alex.jpeg"
-         alt="Alex" loading="lazy">
-
-    <img src="../../../images/clients/fishtank/fish1betty.jpeg"
-         alt="Betty" loading="lazy">
-
-    <img src="../../../images/clients/fishtank/fish1chip.jpeg"
-         alt="Chip" loading="lazy">
-
-    <img src="../../../images/clients/fishtank/fish1chris.jpeg"
-         alt="Chris" loading="lazy">
-
-    <img src="../../../images/clients/fishtank/fish1dontarious.jpeg"
-         alt="Dontarious" loading="lazy">
-
-    <img src="../../../images/clients/fishtank/fish1ella.jpeg"
-         alt="Ella" loading="lazy">
-
-    <img src="../../../images/clients/fishtank/fish1frank.jpeg"
-         alt="Frank" loading="lazy">
-
-    <img src="../../../images/clients/fishtank/fish1lance.jpeg"
-         alt="Lance" loading="lazy">
-
-    <img src="../../../images/clients/fishtank/fish1tai.jpeg"
-         alt="Tai" loading="lazy">
-
-  </section>
-
-
-  <!-- THE FISH -->
-
-  <h2 class="section-title">The Fish</h2>
-
-  <section class="gallery" aria-label="The Fish">
-
-    <img src="../../../images/clients/fishtank/fish1josie.jpeg"
-         alt="Josie" loading="lazy">
-
-    <img src="../../../images/clients/fishtank/fish1jonathan.jpeg"
-         alt="Jon" loading="lazy">
-
-    <img src="../../../images/clients/fishtank/fish1vance.jpeg"
-         alt="Vance" loading="lazy">
-
-    <img src="../../../images/clients/fishtank/fish1sylvia.jpeg"
-         alt="Sylvia" loading="lazy">
-
-    <img src="../../../images/clients/fishtank/fish1damiel.jpeg"
-         alt="Damiel" loading="lazy">
-
-    <img src="../../../images/clients/fishtank/fish1letty.jpeg"
-         alt="Letty" loading="lazy">
-
-    <img src="../../../images/clients/fishtank/fish1simmons.jpeg"
-         alt="Simmons" loading="lazy">
-
-    <img src="../../../images/clients/fishtank/fish1mauro.jpeg"
-         alt="Mauro" loading="lazy">
-
-    <img src="../../../images/clients/fishtank/fish1baldvance.jpeg"
-         alt="Bald Vance" loading="lazy">
-
-  </section>
-
-
-  <!-- SKETCHBOOK -->
-
-  <h2 class="section-title">Sketchbook</h2>
-
-  <section class="gallery" aria-label="Sketchbook">
-
-    <img src="../../../images/clients/fishtank/fish1alexsketch.jpeg"
-         alt="Alex sketch" loading="lazy">
-
-    <img src="../../../images/clients/fishtank/fish1bensketch.jpeg"
-         alt="Ben sketch" loading="lazy">
-
-    <img src="../../../images/clients/fishtank/fish1bettysketch.jpeg"
-         alt="Betty sketch" loading="lazy">
-
-    <img src="../../../images/clients/fishtank/fish1chipsketch.jpeg"
-         alt="Chip sketch" loading="lazy">
-
-    <img src="../../../images/clients/fishtank/fish1chrissketch.jpeg"
-         alt="Chris sketch" loading="lazy">
-
-    <img src="../../../images/clients/fishtank/fish1dontarioussketch.jpeg"
-         alt="Dontarious sketch" loading="lazy">
-
-    <img src="../../../images/clients/fishtank/fish1ellasketch.jpeg"
-         alt="Ella sketch" loading="lazy">
-
-    <img src="../../../images/clients/fishtank/fish1franksketch.jpeg"
-         alt="Frank sketch" loading="lazy">
-
-    <img src="../../../images/clients/fishtank/fish1goldstrikersketch.jpeg"
-         alt="Goldstriker sketch" loading="lazy">
-
-    <img src="../../../images/clients/fishtank/fish1jetsketch.jpeg"
-         alt="Jet sketch" loading="lazy">
-
-    <img src="../../../images/clients/fishtank/fish1lancesketch.jpeg"
-         alt="Lance sketch" loading="lazy">
-
-    <img src="../../../images/clients/fishtank/fish1taisketch.jpeg"
-         alt="Tai sketch" loading="lazy">
-
-    <img src="../../../images/clients/fishtank/fish1taxsketch.jpeg"
-         alt="Tax sketch" loading="lazy">
-
-  </section>
-
-
-  <!-- SPECIAL COLLECTION -->
-
-  <h2 class="section-title">Special Collection</h2>
-
-  <section class="gallery" aria-label="Special Collection">
-
-    <img src="../../../images/clients/fishtank/fishtankseason1poster.jpeg"
-         alt="Season 1 poster" loading="lazy">
-
-    <img src="../../../images/clients/fishtank/fish1winner.jpeg"
-         alt="Season 1 winner" loading="lazy">
-
-    <img src="../../../images/clients/fishtank/fishtv1_.jpeg"
-         alt="Fishtank TV" loading="lazy">
-
-    <img src="../../../images/clients/fishtank/josiejonbubbles.jpeg"
-         alt="Josie and Jon" loading="lazy">
-
-    <img src="../../../images/clients/fishtank/peppasylvia.jpeg"
-         alt="Peppa and Sylvia" loading="lazy">
-
-  </section>
+  <div class="cover-art">
+    <img
+      src="/images/clients/fishtank/fish1baldvance.jpeg"
+      alt="Bald Vance">
+  </div>
+
+  <div class="cover-art">
+    <img
+      src="/images/clients/fishtank/fish1alexsketch.jpeg"
+      alt="Alex Sketch">
+  </div>
+
+  <div class="cover-art">
+    <img
+      src="/images/clients/fishtank/fish1bensketch.jpeg"
+      alt="Ben Sketch">
+  </div>
+
+  <div class="cover-center">
+    <video controls playsinline preload="metadata">
+      <source
+        src="/images/clients/fishtank/Fishtankseason1%20THE%20END%20.mp4"
+        type="video/mp4">
+      Your browser does not support video.
+    </video>
+
+    <div class="video-caption">
+      Fishtank Season 1 — THE END
+    </div>
+  </div>
+
+</section>
+
+<!-- PRODUCTION -->
+
+<section class="scrap-section">
+  <div class="section-heading">
+    <h2>PRODUCTION</h2>
+  </div>
+
+  <p class="section-note">
+    Jet / Goldstriker / Ben / Tax
+  </p>
+
+  <div class="scrap-gallery" id="production"></div>
+</section>
+
+<div class="divider">✦ ✦ ✦</div>
+
+<!-- THE FISH -->
+
+<section class="scrap-section">
+  <div class="section-heading">
+    <h2>THE FISH</h2>
+  </div>
+
+  <p class="section-note">
+    Josie / Jon / Vance / Sylvia / Damiel /
+    Letty / Simmons / Mauro
+  </p>
+
+  <div class="scrap-gallery" id="fish"></div>
+</section>
+
+<div class="divider">✦ ✦ ✦</div>
+
+<!-- EVERYTHING ELSE -->
+
+<section class="scrap-section">
+  <div class="section-heading">
+    <h2>EVERYTHING ELSE</h2>
+  </div>
+
+  <p class="section-note">
+    Sketches, additional artwork, and experiments
+  </p>
+
+  <div class="scrap-gallery" id="extras"></div>
+</section>
 
 </main>
 
+<footer>
+  starsandtigers © 2026
+</footer>
 
 <!-- LIGHTBOX -->
 
-<div class="lightbox"
-     id="lightbox"
-     role="dialog"
-     aria-modal="true"
-     aria-label="Artwork viewer">
+<div class="lightbox" id="lightbox">
 
-  <button class="lightbox-close"
-          id="closeLightbox"
-          aria-label="Close image">&times;</button>
+  <button class="close" id="close"
+    aria-label="Close image viewer">
+    &times;
+  </button>
 
-  <button class="lightbox-prev"
-          id="prevLightbox"
-          aria-label="Previous image">&#10094;</button>
+  <button class="arrow left" id="prev"
+    aria-label="Previous image">❮</button>
 
-  <img id="lightboxImage" src="" alt="">
+  <img id="lightboxImage" alt="">
 
-  <button class="lightbox-next"
-          id="nextLightbox"
-          aria-label="Next image">&#10095;</button>
+  <button class="arrow right" id="next"
+    aria-label="Next image">❯</button>
 
 </div>
 
-
 <script>
-  const images = Array.from(
-    document.querySelectorAll('.gallery img')
+const base = "/images/clients/fishtank/";
+
+/* ARTWORK */
+
+const production = [
+  ["fish1bensketch.jpeg", "Ben Sketch"]
+];
+
+const fish = [
+  ["fish1baldvance.jpeg", "Bald Vance"],
+  ["fish1bettysketch.jpeg", "Betty Sketch"]
+];
+
+const extras = [
+  ["fish1alexsketch.jpeg", "Alex Sketch"],
+  ["fish1chipsketch.jpeg", "Chip Sketch"],
+  ["fish1chrissketch.jpeg", "Chris Sketch"],
+  ["fish1dontarioussketch.jpeg", "Dontarious Sketch"]
+];
+
+/* SCATTER SETTINGS */
+
+const sizes = [220, 270, 195, 245, 300, 210];
+const rotations = [-6, 4, -3, 7, -5, 3];
+const offsets = [15, -18, 28, -10, 5, -25];
+
+/* BUILD GALLERIES */
+
+function buildGallery(id, artworks) {
+  const gallery = document.getElementById(id);
+  if (!gallery) return;
+
+  artworks.forEach(([filename, caption], index) => {
+    const figure = document.createElement("figure");
+    figure.className = "scrap";
+
+    figure.style.setProperty(
+      "--w", sizes[index % sizes.length] + "px"
+    );
+
+    figure.style.setProperty(
+      "--r", rotations[index % rotations.length] + "deg"
+    );
+
+    figure.style.setProperty(
+      "--y", offsets[index % offsets.length] + "px"
+    );
+
+    const img = document.createElement("img");
+    img.src = base + encodeURIComponent(filename);
+    img.alt = caption;
+    img.loading = "lazy";
+
+    img.onerror = () => {
+      figure.style.display = "none";
+    };
+
+    const label = document.createElement("figcaption");
+    label.textContent = caption;
+
+    figure.append(img, label);
+    gallery.appendChild(figure);
+  });
+}
+
+buildGallery("production", production);
+buildGallery("fish", fish);
+buildGallery("extras");
+
+/* LIGHTBOX */
+
+const lightbox = document.getElementById("lightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+
+let images = [];
+let currentIndex = 0;
+
+function refreshImages() {
+  images = [...document.querySelectorAll(
+    ".cover-art img, .scrap-gallery img"
+  )].filter(img => img.complete && img.naturalWidth > 0);
+}
+
+function showImage() {
+  if (!images.length) return;
+
+  lightboxImage.src = images[currentIndex].src;
+  lightboxImage.alt = images[currentIndex].alt;
+}
+
+function openLightbox(img) {
+  refreshImages();
+
+  currentIndex = images.indexOf(img);
+  if (currentIndex < 0) return;
+
+  showImage();
+  lightbox.classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+
+function closeLightbox() {
+  lightbox.classList.remove("active");
+  lightboxImage.removeAttribute("src");
+  document.body.style.overflow = "";
+}
+
+function moveImage(direction) {
+  if (!images.length) return;
+
+  currentIndex =
+    (currentIndex + direction + images.length)
+    % images.length;
+
+  showImage();
+}
+
+/* IMAGE CLICK */
+
+document.addEventListener("click", event => {
+  const img = event.target.closest(
+    ".cover-art img, .scrap-gallery img"
   );
 
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImage = document.getElementById('lightboxImage');
+  if (img) openLightbox(img);
+});
 
-  let currentIndex = 0;
+/* BUTTONS */
 
-  function showImage(index) {
-    currentIndex = (index + images.length) % images.length;
+document.getElementById("close")
+  .addEventListener("click", closeLightbox);
 
-    lightboxImage.src = images[currentIndex].src;
-    lightboxImage.alt = images[currentIndex].alt;
-  }
+document.getElementById("prev")
+  .addEventListener("click", () => moveImage(-1));
 
-  function closeLightbox() {
-    lightbox.classList.remove('active');
-    lightboxImage.removeAttribute('src');
-  }
+document.getElementById("next")
+  .addEventListener("click", () => moveImage(1));
 
-  images.forEach((img, index) => {
-    img.addEventListener('click', () => {
-      showImage(index);
-      lightbox.classList.add('active');
-    });
-  });
+lightbox.addEventListener("click", event => {
+  if (event.target === lightbox) closeLightbox();
+});
 
-  document.getElementById('closeLightbox')
-    .addEventListener('click', closeLightbox);
+/* KEYBOARD NAVIGATION */
 
-  document.getElementById('prevLightbox')
-    .addEventListener('click', () => {
-      showImage(currentIndex - 1);
-    });
+document.addEventListener("keydown", event => {
+  if (!lightbox.classList.contains("active")) return;
 
-  document.getElementById('nextLightbox')
-    .addEventListener('click', () => {
-      showImage(currentIndex + 1);
-    });
-
-  lightbox.addEventListener('click', event => {
-    if (event.target === lightbox) {
-      closeLightbox();
-    }
-  });
-
-  document.addEventListener('keydown', event => {
-    if (!lightbox.classList.contains('active')) return;
-
-    if (event.key === 'Escape') {
-      closeLightbox();
-    }
-
-    if (event.key === 'ArrowLeft') {
-      showImage(currentIndex - 1);
-    }
-
-    if (event.key === 'ArrowRight') {
-      showImage(currentIndex + 1);
-    }
-  });
+  if (event.key === "Escape") closeLightbox();
+  if (event.key === "ArrowLeft") moveImage(-1);
+  if (event.key === "ArrowRight") moveImage(1);
+});
 </script>
 
 </body>
