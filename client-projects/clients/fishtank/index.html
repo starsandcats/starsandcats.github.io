@@ -7,356 +7,399 @@
 <title>Fishtank | starsandtigers</title>
 
 <style>
+:root {
+  --red: #c9272c;
+  --paper: #d7c8a8;
+  --paper-dark: #b4a484;
+}
 * { box-sizing: border-box; }
-
+html { scroll-behavior: smooth; }
 body {
   margin: 0;
-  background: #000;
-  color: white;
-  font-family: Arial, sans-serif;
-}
-
-header {
   background: #050505;
-  padding: 28px 5%;
-  border-bottom: 1px solid #777;
+  color: #f4f0e8;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
 }
-
+button, a { -webkit-tap-highlight-color: transparent; }
+header {
+  position: relative;
+  z-index: 30;
+  background: #050505;
+  padding: 25px 5%;
+  border-bottom: 1px solid #666;
+}
 .brand {
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 14px;
+  font-weight: 800;
+  font-size: 17px;
+  margin-bottom: 12px;
 }
-
 nav {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 14px 25px;
+  gap: 12px 25px;
 }
-
 nav a, .back {
   color: white;
   text-decoration: none;
 }
-
-nav a:hover, .back:hover {
-  color: #ffdc00;
-}
-
+nav a:hover, .back:hover { color: #ffdc00; }
 .back {
   display: inline-block;
-  margin: 28px 5%;
+  margin: 24px 5%;
   font-size: 14px;
 }
-
-.intro {
-  text-align: center;
-  padding: 20px 20px 60px;
-}
-
-h1 {
-  font-size: clamp(45px, 8vw, 85px);
-  letter-spacing: 5px;
-  margin: 15px 0;
-}
-
-.description {
-  max-width: 680px;
-  margin: auto;
-  line-height: 1.7;
-  color: #ccc;
-}
-
-/* SCRAPBOOK FEATURE */
-
-.cover {
+.board {
   position: relative;
-  max-width: 1250px;
-  min-height: 720px;
-  margin: 0 auto 110px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 15px 25px 100px;
+  isolation: isolate;
   background:
-    radial-gradient(
-      ellipse at center,
-      #24201b 0%,
-      #101010 65%,
-      #000 100%
-    );
-  border: 1px dashed #444;
+    repeating-linear-gradient(
+      17deg,
+      transparent 0px,
+      transparent 105px,
+      #ffffff04 106px,
+      transparent 108px
+    ),
+    radial-gradient(ellipse at 50% 20%,
+      #191919 0%, #080808 55%, #030303 100%);
 }
-
-.cover-piece {
+.board::before {
+  content: "";
   position: absolute;
-  width: 27%;
-  z-index: 2;
-  cursor: zoom-in;
-  transition: transform .3s ease;
+  inset: 0;
+  opacity: .18;
+  pointer-events: none;
+  background-image:
+    radial-gradient(#aaa 0.45px, transparent 0.7px);
+  background-size: 7px 7px;
+  z-index: -1;
+}
+.board-heading {
+  position: relative;
+  text-align: center;
+  padding: 15px 0 45px;
+}
+.board-heading h1 {
+  display: inline-block;
+  position: relative;
+  margin: 0;
+  font-size: clamp(55px, 10vw, 115px);
+  letter-spacing: 5px;
+  font-weight: 900;
+  transform: rotate(-2deg);
+  text-shadow: 3px 4px #222;
+}
+.board-heading h1::after {
+  content: "";
+  position: absolute;
+  inset: -9px -23px;
+  border: 3px solid var(--red);
+  border-radius: 50%;
+  transform: rotate(-5deg);
+  pointer-events: none;
+}
+.description {
+  display: table;
+  max-width: 90%;
+  margin: 30px auto 0;
+  padding: 13px 22px;
+  color: #201b14;
+  background: var(--paper);
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+  font-weight: bold;
+  transform: rotate(-1deg);
+  box-shadow: 3px 5px 0 #0007;
 }
 
-.cover-piece img {
+/* CONNECTING RED STRINGS */
+
+.strings {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 1;
+}
+.strings line {
+  stroke: var(--red);
+  stroke-width: 2;
+  opacity: .8;
+}
+
+/* FEATURED CASE */
+
+.case-feature {
+  position: relative;
+  min-height: 690px;
+  margin: 0 auto 85px;
+}
+.evidence {
+  position: absolute;
+  z-index: 3;
+  padding: 8px 8px 22px;
+  background: #bdb4a4;
+  box-shadow: 5px 9px 20px #000b;
+  cursor: zoom-in;
+  transition: transform .25s ease;
+}
+.evidence img {
   display: block;
   width: 100%;
-  box-shadow: 0 12px 35px #000a;
+  max-height: 220px;
+  object-fit: contain;
 }
-
-.cover-piece:hover {
-  transform: rotate(0deg) scale(1.1) !important;
-  z-index: 8;
+.evidence:hover {
+  transform: rotate(0deg) scale(1.09) !important;
+  z-index: 12;
 }
-
-.piece-one {
+.evidence::before,
+.paper-label::before,
+.video-frame::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 25%,
+    #ff7777, #b4141a 65%, #570707);
+  box-shadow: 2px 4px 5px #000b;
+  z-index: 15;
+}
+.ev-one {
+  width: 23%;
   top: 5%;
-  left: 3%;
-  transform: rotate(-8deg);
+  left: 2%;
+  transform: rotate(-7deg);
 }
-
-.piece-two {
+.ev-two {
+  width: 23%;
   top: 5%;
-  right: 3%;
+  right: 2%;
   transform: rotate(7deg);
 }
-
-.piece-three {
-  bottom: 5%;
+.ev-three {
+  width: 20%;
+  bottom: 4%;
   left: 4%;
   transform: rotate(5deg);
 }
-
-.piece-four {
-  bottom: 5%;
+.ev-four {
+  width: 20%;
+  bottom: 4%;
   right: 4%;
-  transform: rotate(-7deg);
+  transform: rotate(-6deg);
 }
-
-.featured-video {
+.video-frame {
   position: absolute;
-  top: 50%;
+  width: 52%;
   left: 50%;
-  width: 55%;
+  top: 49%;
   transform: translate(-50%, -50%);
-  z-index: 5;
-  text-align: center;
+  z-index: 6;
+  padding: 10px;
+  background: var(--paper);
+  box-shadow: 8px 15px 35px #000e;
 }
-
-.featured-video video {
+.video-frame video {
   display: block;
   width: 100%;
   background: #000;
-  border: 9px solid #ded5c2;
-  box-shadow: 0 15px 45px #000;
+  aspect-ratio: 16 / 9;
 }
-
 .video-caption {
-  display: inline-block;
-  margin-top: -2px;
-  padding: 12px 24px;
-  background: #ded0ae;
-  color: #191919;
-  font-family: Georgia, serif;
-  font-style: italic;
-  transform: rotate(-2deg);
-}
-
-/* SCRAPBOOK SECTIONS */
-
-.scrap-section {
-  max-width: 1350px;
-  margin: 0 auto 115px;
-  padding: 0 30px;
-}
-
-.section-title {
-  font-size: clamp(30px, 5vw, 50px);
-  letter-spacing: 3px;
-  margin: 0 0 15px;
+  padding: 12px 5px 5px;
   text-align: center;
-}
-
-.section-subtitle {
-  color: #999;
-  text-align: center;
+  color: #17130f;
+  font-family: "Courier New", monospace;
+  font-weight: bold;
   font-size: 13px;
-  letter-spacing: 2px;
-  margin-bottom: 55px;
-  line-height: 1.8;
+  letter-spacing: 1px;
 }
 
-.scrap-gallery {
+/* INVESTIGATION SECTIONS */
+
+.case-section {
+  position: relative;
+  margin: 0 auto 100px;
+  padding: 0 10px;
+}
+.paper-label {
+  position: relative;
+  display: table;
+  margin: 0 auto 55px;
+  padding: 18px 35px;
+  background: var(--paper);
+  color: #17130d;
+  text-align: center;
+  box-shadow: 5px 8px 0 #0009;
+  transform: rotate(-2deg);
+  z-index: 3;
+}
+.paper-label h2 {
+  margin: 0 0 8px;
+  font-family: "Courier New", monospace;
+  font-size: clamp(23px, 4vw, 38px);
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+.paper-label p {
+  max-width: 500px;
+  margin: 12px auto 0;
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+  line-height: 1.7;
+}
+.evidence-gallery {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   align-items: center;
-  gap: 50px 35px;
-  padding: 25px 10px 60px;
+  justify-content: center;
+  gap: 38px 26px;
+  padding: 15px 15px 70px;
+  z-index: 3;
 }
-
-/* INDIVIDUAL SCRAPBOOK PIECES */
-
-.scrap {
+.case-photo {
   position: relative;
   margin: 0;
-  width: var(--width, 240px);
+  width: var(--w, 220px);
   max-width: 100%;
-  padding: 9px 9px 30px;
-  background: #e4dccb;
-  box-shadow: 8px 12px 28px #000;
-  transform:
-    rotate(var(--rotate, 0deg))
-    translateY(var(--offset, 0px));
-  transition:
-    transform .3s ease,
-    box-shadow .3s ease;
+  padding: 8px 8px 28px;
+  background: #c8bead;
+  box-shadow: 6px 10px 22px #000b;
+  transform: rotate(var(--r, 0deg))
+             translateY(var(--y, 0px));
+  transition: transform .3s ease;
   cursor: zoom-in;
 }
-
-.scrap:nth-child(3n) {
-  background: #c9c2b5;
-}
-
-.scrap:nth-child(5n) {
-  background: #242424;
-  padding: 7px;
-}
-
-.scrap:nth-child(4n)::before {
+.case-photo:nth-child(3n) { background: #a9a092; }
+.case-photo:nth-child(5n) { background: #d9c9ac; }
+.case-photo::before {
   content: "";
   position: absolute;
-  top: -13px;
+  top: -9px;
   left: 50%;
-  width: 78px;
-  height: 25px;
-  background: #d7c59b99;
-  transform: translateX(-50%) rotate(-8deg);
-  z-index: 2;
-  pointer-events: none;
+  width: 14px;
+  height: 14px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 25%,
+    #ff7777, #ba171b 65%, #600707);
+  box-shadow: 2px 3px 4px #0009;
+  z-index: 5;
 }
-
-.scrap img {
+.case-photo img {
   display: block;
   width: 100%;
-  height: auto;
-  max-height: 390px;
+  max-height: 340px;
   object-fit: contain;
 }
-
-.scrap figcaption {
-  color: #252019;
+.case-photo figcaption {
+  margin-top: 13px;
+  color: #201b15;
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+  font-weight: bold;
   text-align: center;
-  font-family: Georgia, serif;
-  font-size: 14px;
-  margin-top: 12px;
+  text-transform: uppercase;
 }
-
-.scrap:nth-child(5n) figcaption {
-  color: white;
-}
-
-.scrap:hover {
+.case-photo:hover {
   transform: rotate(0deg)
              translateY(-12px)
-             scale(1.1);
-  box-shadow: 10px 20px 45px #000;
-  z-index: 20;
+             scale(1.08);
+  z-index: 15;
 }
-
-/* DIVIDERS */
-
-.divider {
-  text-align: center;
+.case-divider {
+  height: 1px;
+  max-width: 80%;
+  margin: 0 auto 95px;
+  border-top: 1px dashed #555;
+}
+.scribble {
+  position: absolute;
   color: #777;
-  letter-spacing: 12px;
-  margin: 20px 0 100px;
+  opacity: .55;
+  font-family: "Courier New", monospace;
+  font-size: 40px;
+  pointer-events: none;
+  z-index: 0;
 }
 
-/* LIGHTBOX */
+/* IMAGE VIEWER */
 
 .lightbox {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,.96);
-  z-index: 9999;
+  z-index: 1000;
+  background: #000f;
   align-items: center;
   justify-content: center;
-  padding: 60px;
+  padding: 55px;
 }
-
-.lightbox.active {
-  display: flex;
-}
-
+.lightbox.active { display: flex; }
 .lightbox img {
   max-width: 90%;
   max-height: 85vh;
   object-fit: contain;
 }
-
 .lightbox button {
   position: absolute;
+  border: 0;
   background: none;
-  border: none;
-  color: white;
+  color: #fff;
   font-size: 38px;
   cursor: pointer;
 }
-
-.lightbox button:hover {
-  color: #ffdc00;
-}
-
+.lightbox button:hover { color: #ffdc00; }
 .close { top: 15px; right: 25px; }
-.prev { left: 15px; }
-.next { right: 15px; }
+.prev { left: 12px; }
+.next { right: 12px; }
 
 footer {
-  border-top: 1px solid #444;
   padding: 45px 20px;
+  border-top: 1px solid #444;
   text-align: center;
   color: #888;
 }
 
-/* RESPONSIVE */
-
-@media (max-width: 700px) {
-  .cover {
+@media(max-width: 750px) {
+  .board { padding: 15px 12px 50px; }
+  .case-feature {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
     min-height: auto;
-    padding: 25px;
+    padding: 20px;
   }
-
-  .cover-piece,
-  .featured-video {
-    position: static;
+  .evidence, .video-frame {
+    position: relative;
+    inset: auto;
     width: 100%;
     transform: none !important;
   }
-
-  .featured-video {
+  .video-frame {
     grid-column: 1 / -1;
     grid-row: 1;
   }
-
-  .cover-piece:hover {
-    transform: scale(1.05) !important;
-  }
-
-  .scrap-gallery {
-    gap: 30px;
-  }
-
-  .scrap {
-    width: min(75vw, var(--width));
-  }
-
-  .lightbox {
-    padding: 50px 35px;
-  }
-
-  .lightbox img {
-    max-width: 100%;
-  }
+  .evidence img { max-height: 180px; }
+  .evidence-gallery { gap: 30px 18px; }
+  .case-photo { width: min(42vw, var(--w)); }
+  .paper-label { padding: 16px 20px; }
+  .lightbox { padding: 45px 30px; }
+  .lightbox img { max-width: 100%; }
 }
 </style>
 </head>
@@ -378,104 +421,110 @@ footer {
   ← Back to Client Projects
 </a>
 
-<main>
+<main class="board" id="board">
 
-<section class="intro">
-  <h1>FISHTANK</h1>
-  <p class="description">
-    Promotional artwork and creative work for Fishtank.
-  </p>
-</section>
+  <svg class="strings" id="strings"
+       aria-hidden="true"></svg>
 
-<!-- FEATURED SCRAPBOOK COVER -->
+  <section class="board-heading">
+    <h1>FISHTANK</h1>
+    <p class="description">
+      PROMOTIONAL ARTWORK AND CREATIVE WORK FOR FISHTANK
+    </p>
+  </section>
 
-<section class="cover">
+  <!-- CENTRAL EVIDENCE -->
 
-  <div class="cover-piece piece-one">
-    <img
-      src="/images/clients/fishtank/fish1tvcast.gif"
-      alt="Fishtank TV animation">
-  </div>
+  <section class="case-feature" id="feature">
 
-  <div class="cover-piece piece-two">
-    <img
-      src="/images/clients/fishtank/fish1cast.gif"
-      alt="Fishtank cast animation">
-  </div>
-
-  <div class="cover-piece piece-three">
-    <img
-      src="/images/clients/fishtank/fishtankseason1poster.jpeg"
-      alt="Season 1 poster">
-  </div>
-
-  <div class="cover-piece piece-four">
-    <img
-      src="/images/clients/fishtank/fish1winner.jpeg"
-      alt="Season 1 winner">
-  </div>
-
-  <div class="featured-video">
-    <video controls playsinline preload="metadata">
-      <source
-        src="/images/clients/fishtank/Fishtankseason1%20THE%20END%20.mp4"
-        type="video/mp4">
-      Your browser does not support this video.
-    </video>
-    <div class="video-caption">
-      Fishtank Season 1 — THE END
+    <div class="evidence ev-one">
+      <img src="/images/clients/fishtank/fish1tvcast.gif"
+           alt="Fishtank TV animation">
     </div>
-  </div>
 
-</section>
+    <div class="evidence ev-two">
+      <img src="/images/clients/fishtank/fish1cast.gif"
+           alt="Fishtank cast animation">
+    </div>
 
-<!-- PRODUCTION -->
+    <div class="evidence ev-three">
+      <img src="/images/clients/fishtank/fishtankseason1poster.jpeg"
+           alt="Fishtank Season 1 poster">
+    </div>
 
-<section class="scrap-section">
-  <h2 class="section-title">PRODUCTION</h2>
-  <p class="section-subtitle">
-    JET / GOLDSTRIKER / BEN / TAX
-  </p>
-  <div class="scrap-gallery" id="production"></div>
-</section>
+    <div class="evidence ev-four">
+      <img src="/images/clients/fishtank/fish1winner.jpeg"
+           alt="Season 1 winner">
+    </div>
 
-<div class="divider">✦ ✦ ✦</div>
+    <div class="video-frame" id="videoEvidence">
+      <video controls playsinline preload="metadata">
+        <source
+          src="/images/clients/fishtank/Fishtankseason1%20THE%20END%20.mp4"
+          type="video/mp4">
+        Your browser does not support video.
+      </video>
+      <div class="video-caption">
+        FISHTANK SEASON 1 — THE END
+      </div>
+    </div>
 
-<!-- THE FREELOADERS -->
+  </section>
 
-<section class="scrap-section">
-  <h2 class="section-title">THE FREELOADERS</h2>
-  <p class="section-subtitle">
-    ALEX / BETTY / CHIP / CHRIS /
-    DONTARIOUS / ELLA / FRANK / LANCE / TAI
-  </p>
-  <div class="scrap-gallery" id="freeloaders"></div>
-</section>
+  <span class="scribble"
+        style="top:850px;left:5%">???</span>
 
-<div class="divider">✦ ✦ ✦</div>
+  <!-- PRODUCTION -->
 
-<!-- THE FISH -->
+  <section class="case-section" id="productionCase">
+    <div class="paper-label" id="productionLabel">
+      <h2>PRODUCTION</h2>
+      <p>JET / GOLDSTRIKER / BEN / TAX</p>
+    </div>
+    <div class="evidence-gallery" id="production"></div>
+  </section>
 
-<section class="scrap-section">
-  <h2 class="section-title">THE FISH</h2>
-  <p class="section-subtitle">
-    JOSIE / JON / VANCE / SYLVIA /
-    DAMIEL / LETTY / SIMMONS / MAURO
-  </p>
-  <div class="scrap-gallery" id="fish"></div>
-</section>
+  <div class="case-divider"></div>
 
-<div class="divider">✦ ✦ ✦</div>
+  <!-- THE FISH -->
 
-<!-- EVERYTHING ELSE -->
+  <section class="case-section" id="fishCase">
+    <div class="paper-label" id="fishLabel">
+      <h2>THE FISH</h2>
+      <p>
+        JOSIE / JON / VANCE / SYLVIA /
+        DAMIEL / LETTY / SIMMONS / MAURO
+      </p>
+    </div>
+    <div class="evidence-gallery" id="fish"></div>
+  </section>
 
-<section class="scrap-section">
-  <h2 class="section-title">EVERYTHING ELSE</h2>
-  <p class="section-subtitle">
-    SKETCHBOOK / SPECIAL COLLECTION
-  </p>
-  <div class="scrap-gallery" id="extras"></div>
-</section>
+  <div class="case-divider"></div>
+
+  <!-- THE FREELOADERS -->
+
+  <section class="case-section" id="freeloadersCase">
+    <div class="paper-label" id="freeloadersLabel">
+      <h2>THE FREELOADERS</h2>
+      <p>
+        ALEX / BETTY / CHIP / CHRIS /
+        DONTARIOUS / ELLA / FRANK / LANCE / TAI
+      </p>
+    </div>
+    <div class="evidence-gallery" id="freeloaders"></div>
+  </section>
+
+  <div class="case-divider"></div>
+
+  <!-- EVERYTHING ELSE -->
+
+  <section class="case-section" id="extrasCase">
+    <div class="paper-label" id="extrasLabel">
+      <h2>EVERYTHING ELSE</h2>
+      <p>SKETCHBOOK / SPECIAL COLLECTION</p>
+    </div>
+    <div class="evidence-gallery" id="extras"></div>
+  </section>
 
 </main>
 
@@ -503,7 +552,7 @@ footer {
 <script>
 const base = "/images/clients/fishtank/";
 
-/* PRODUCTION */
+/* ARTWORK LISTS */
 
 const production = [
   ["fish1jet.jpeg", "Jet"],
@@ -511,22 +560,6 @@ const production = [
   ["fish1ben.jpeg", "Ben"],
   ["fish1tax.jpeg", "Tax"]
 ];
-
-/* THE FREELOADERS */
-
-const freeloaders = [
-  ["fish1alex.jpeg", "Alex"],
-  ["fish1betty.jpeg", "Betty"],
-  ["fish1chip.jpeg", "Chip"],
-  ["fish1chris.jpeg", "Chris"],
-  ["fish1dontarious.jpeg", "Dontarious"],
-  ["fish1ella.jpeg", "Ella"],
-  ["fish1frank.jpeg", "Frank"],
-  ["fish1lance.jpeg", "Lance"],
-  ["fish1tai.jpeg", "Tai"]
-];
-
-/* THE FISH */
 
 const fish = [
   ["fish1josie.jpeg", "Josie"],
@@ -540,7 +573,17 @@ const fish = [
   ["fish1baldvance.jpeg", "Bald Vance"]
 ];
 
-/* EVERYTHING ELSE */
+const freeloaders = [
+  ["fish1alex.jpeg", "Alex"],
+  ["fish1betty.jpeg", "Betty"],
+  ["fish1chip.jpeg", "Chip"],
+  ["fish1chris.jpeg", "Chris"],
+  ["fish1dontarious.jpeg", "Dontarious"],
+  ["fish1ella.jpeg", "Ella"],
+  ["fish1frank.jpeg", "Frank"],
+  ["fish1lance.jpeg", "Lance"],
+  ["fish1tai.jpeg", "Tai"]
+];
 
 const extras = [
   ["fish1alexsketch.jpeg", "Alex Sketch"],
@@ -561,13 +604,11 @@ const extras = [
   ["peppasylvia.jpeg", "Peppa and Sylvia"]
 ];
 
-/* SCRAPBOOK POSITION SETTINGS */
+/* CREATE EVIDENCE PHOTOS */
 
-const sizes = [225, 275, 195, 255, 305, 215];
-const rotations = [-7, 5, -3, 8, -5, 4];
-const offsets = [15, -20, 28, -12, 8, -25];
-
-/* BUILD GALLERIES */
+const sizes = [210, 260, 190, 240, 280, 220];
+const angles = [-6, 4, -3, 7, -5, 3];
+const offsets = [12, -18, 22, -8, 16, -20];
 
 function buildGallery(id, artworks) {
   const gallery = document.getElementById(id);
@@ -575,16 +616,16 @@ function buildGallery(id, artworks) {
 
   artworks.forEach(([filename, caption], index) => {
     const figure = document.createElement("figure");
-    figure.className = "scrap";
+    figure.className = "case-photo";
 
     figure.style.setProperty(
-      "--width", sizes[index % sizes.length] + "px"
+      "--w", sizes[index % sizes.length] + "px"
     );
     figure.style.setProperty(
-      "--rotate", rotations[index % rotations.length] + "deg"
+      "--r", angles[index % angles.length] + "deg"
     );
     figure.style.setProperty(
-      "--offset", offsets[index % offsets.length] + "px"
+      "--y", offsets[index % offsets.length] + "px"
     );
 
     const img = document.createElement("img");
@@ -594,6 +635,7 @@ function buildGallery(id, artworks) {
 
     img.onerror = () => {
       figure.style.display = "none";
+      scheduleStrings();
     };
 
     const label = document.createElement("figcaption");
@@ -605,11 +647,120 @@ function buildGallery(id, artworks) {
 }
 
 buildGallery("production", production);
-buildGallery("freeloaders", freeloaders);
 buildGallery("fish", fish);
+buildGallery("freeloaders", freeloaders);
 buildGallery("extras", extras);
 
-/* LIGHTBOX */
+/* RED STRING CONNECTIONS */
+
+const board = document.getElementById("board");
+const svg = document.getElementById("strings");
+
+function pointOnBoard(element) {
+  const boardRect = board.getBoundingClientRect();
+  const rect = element.getBoundingClientRect();
+
+  return {
+    x: rect.left - boardRect.left + rect.width / 2,
+    y: rect.top - boardRect.top + 7
+  };
+}
+
+function addString(from, to) {
+  if (!from || !to) return;
+
+  const a = pointOnBoard(from);
+  const b = pointOnBoard(to);
+
+  const line = document.createElementNS(
+    "http://www.w3.org/2000/svg", "line"
+  );
+
+  line.setAttribute("x1", a.x);
+  line.setAttribute("y1", a.y);
+  line.setAttribute("x2", b.x);
+  line.setAttribute("y2", b.y);
+
+  svg.appendChild(line);
+}
+
+function visiblePhotos(id) {
+  return [...document.querySelectorAll(
+    "#" + id + " .case-photo"
+  )].filter(el => el.style.display !== "none");
+}
+
+function drawStrings() {
+  svg.replaceChildren();
+
+  const width = board.clientWidth;
+  const height = board.scrollHeight;
+
+  svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+  svg.setAttribute("width", width);
+  svg.setAttribute("height", height);
+
+  const video = document.getElementById("videoEvidence");
+
+  document.querySelectorAll(".evidence").forEach(el => {
+    if (el.style.display !== "none") {
+      addString(video, el);
+    }
+  });
+
+  const sections = [
+    ["productionLabel", "production"],
+    ["fishLabel", "fish"],
+    ["freeloadersLabel", "freeloaders"],
+    ["extrasLabel", "extras"]
+  ];
+
+  sections.forEach(([labelId, galleryId]) => {
+    const label = document.getElementById(labelId);
+    const photos = visiblePhotos(galleryId);
+
+    addString(video, label);
+
+    photos.forEach((photo, index) => {
+      if (index < 8) {
+        addString(label, photo);
+      }
+
+      if (index > 0 && index % 3 === 0) {
+        addString(photos[index - 1], photo);
+      }
+    });
+  });
+}
+
+let stringFrame = null;
+
+function scheduleStrings() {
+  if (stringFrame !== null) {
+    cancelAnimationFrame(stringFrame);
+  }
+
+  stringFrame = requestAnimationFrame(() => {
+    stringFrame = null;
+    drawStrings();
+  });
+}
+
+window.addEventListener("load", scheduleStrings);
+window.addEventListener("resize", scheduleStrings);
+
+document.querySelectorAll(
+  ".evidence img, .case-photo img"
+).forEach(img => {
+  img.addEventListener("load", scheduleStrings);
+});
+
+if ("ResizeObserver" in window) {
+  const observer = new ResizeObserver(scheduleStrings);
+  observer.observe(board);
+}
+
+/* IMAGE VIEWER */
 
 const lightbox = document.getElementById("lightbox");
 const lightboxImage = document.getElementById("lightboxImage");
@@ -618,15 +769,16 @@ let images = [];
 let currentIndex = 0;
 
 function refreshImages() {
-  images = Array.from(document.querySelectorAll(
-    ".cover-piece img, .scrap-gallery img"
-  )).filter(img =>
+  images = [...document.querySelectorAll(
+    ".evidence img, .case-photo img"
+  )].filter(img =>
     img.complete && img.naturalWidth > 0
   );
 }
 
 function showImage() {
   if (!images.length) return;
+
   lightboxImage.src = images[currentIndex].src;
   lightboxImage.alt = images[currentIndex].alt;
 }
@@ -657,17 +809,13 @@ function moveImage(direction) {
   showImage();
 }
 
-/* IMAGE CLICKS */
-
 document.addEventListener("click", event => {
   const img = event.target.closest(
-    ".cover-piece img, .scrap-gallery img"
+    ".evidence img, .case-photo img"
   );
 
   if (img) openLightbox(img);
 });
-
-/* BUTTONS */
 
 document.getElementById("close")
   .addEventListener("click", closeLightbox);
@@ -681,8 +829,6 @@ document.getElementById("next")
 lightbox.addEventListener("click", event => {
   if (event.target === lightbox) closeLightbox();
 });
-
-/* KEYBOARD */
 
 document.addEventListener("keydown", event => {
   if (!lightbox.classList.contains("active")) return;
