@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Client Work | starsandtigers</title>
 
@@ -21,37 +21,51 @@ html {
 
 body {
   margin: 0;
+  min-height: 100vh;
   background: #000000;
   color: #ffffff;
   font-family: Arial, Helvetica, sans-serif;
-  min-height: 100vh;
 }
 
-/* HEADER */
+/* TOP HEADER - FISHTANK STYLE */
 
 header {
-  background: #050505;
-  padding: 28px 5%;
+  width: 100%;
+  background: #000000;
   border-bottom: 1px solid #777;
+  padding: 24px 5%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
 }
 
 .brand {
-  font-family: Arial, sans-serif;
-  font-size: 16px;
-  font-weight: bold;
-  color: white;
+  color: #ffffff;
+  font-size: 23px;
+  font-weight: 900;
+  white-space: nowrap;
+  text-decoration: none;
 }
 
+/* NAVIGATION */
+
 nav {
-  text-align: center;
-  margin-top: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 24px;
 }
 
 nav a {
-  color: white;
+  color: #ffffff;
   text-decoration: none;
-  margin: 0 10px;
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: bold;
+  white-space: nowrap;
+  transition: color 0.2s ease;
 }
 
 nav a:hover {
@@ -59,91 +73,86 @@ nav a:hover {
 }
 
 nav a.active {
-  color: #ffdc00;
+  color: #f12518;
 }
 
 /* MAIN CONTENT */
 
 main {
   width: 100%;
-  padding: 30px 5% 20px;
+  padding: 55px 5% 35px;
 }
 
-/* TITLE */
+/* CLIENT WORK HEADING + PROJECTS */
+
+.client-layout {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 35px;
+}
+
+/* SIDE HEADING */
 
 h1 {
-  font-family: Arial, sans-serif;
-  font-weight: bold;
-  font-size: clamp(30px, 4vw, 46px);
+  margin: 0;
+  flex-shrink: 0;
+
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(30px, 3.5vw, 46px);
+  font-weight: 900;
   text-transform: uppercase;
-  text-align: left;
-  margin: 0 0 25px;
-  letter-spacing: 1px;
+  white-space: nowrap;
+  letter-spacing: -1px;
 }
 
 /* PROJECT GALLERY */
 
-/*
-  Both thumbnails stay grouped together
-  on the left side of the page.
-
-  Adjust --thumbnail-width and --gallery-gap
-  to control their size and spacing.
-*/
-
 .projects {
-  --thumbnail-width: 400px;
-  --gallery-gap: 20px;
-
   display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
   align-items: flex-start;
-  gap: var(--gallery-gap);
-
-  width: fit-content;
-  max-width: 100%;
-  margin: 0;
-  padding: 0;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  gap: 20px;
+  min-width: 0;
 }
 
-/* INDIVIDUAL PROJECT */
+/* PROJECT CARDS */
 
 .project {
   display: block;
-  width: var(--thumbnail-width);
-  max-width: 100%;
-  flex: 0 0 auto;
+  width: 400px;
+  flex: 0 0 400px;
 
-  color: white;
+  color: #ffffff;
   text-decoration: none;
-  cursor: pointer;
-
   position: relative;
   z-index: 1;
+  cursor: pointer;
 }
 
-/* THUMBNAILS */
+/* PROJECT IMAGES */
 
 .project img {
   display: block;
   width: 100%;
   height: auto;
-
   border: none;
   border-radius: 0;
 
   transition:
-    transform 0.25s ease,
-    filter 0.25s ease;
+    transform 0.3s ease,
+    filter 0.3s ease;
 
-  transform-origin: center center;
+  transform-origin: center;
 }
 
 /* HOVER ENLARGEMENT */
 
 .project:hover {
-  z-index: 5;
+  z-index: 10;
 }
 
 .project:hover img {
@@ -151,83 +160,133 @@ h1 {
   filter: brightness(1.08);
 }
 
-/* KEYBOARD FOCUS */
-
-.project:focus-visible {
-  outline: 2px solid #ffdc00;
-  outline-offset: 5px;
-  z-index: 5;
-}
-
-.project:focus-visible img {
-  transform: scale(1.08);
-}
-
-/* PROJECT NAMES */
+/* PROJECT TITLES */
 
 .project-name {
   display: block;
-  margin-top: 12px;
+  margin-top: 15px;
 
-  font-size: 15px;
+  font-size: 16px;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 1px;
+  color: #ffffff;
 
-  text-align: left;
-  color: white;
-
-  transition: color 0.25s ease;
+  transition: color 0.3s ease;
 }
 
 .project:hover .project-name {
   color: #ffdc00;
 }
 
+/* KEYBOARD ACCESSIBILITY */
+
+.project:focus-visible {
+  outline: 2px solid #ffdc00;
+  outline-offset: 5px;
+  z-index: 10;
+}
+
+.project:focus-visible img {
+  transform: scale(1.08);
+}
+
 /* FOOTER */
 
 footer {
-  text-align: left;
-  padding: 15px 5% 25px;
-  color: #aaa;
+  padding: 20px 5% 30px;
+  color: #999;
   font-size: 12px;
 }
 
-/* SMALLER SCREENS */
+/* RESPONSIVE LAYOUT */
 
-@media (max-width: 650px) {
+/* MEDIUM DESKTOP */
+
+@media (max-width: 1300px) {
+
+  .client-layout {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+  }
+
+}
+
+/* TABLET */
+
+@media (max-width: 900px) {
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  nav {
+    justify-content: flex-start;
+    gap: 18px;
+  }
+
+  main {
+    padding-top: 35px;
+  }
+
+  .projects {
+    width: 100%;
+  }
+
+  .project {
+    width: calc((100% - 20px) / 2);
+    flex: 0 0 calc((100% - 20px) / 2);
+  }
+
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
 
   header {
     padding: 20px 5%;
   }
 
+  .brand {
+    font-size: 20px;
+  }
+
   nav {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
+    gap: 12px 16px;
   }
 
   nav a {
-    margin: 0;
+    font-size: 12px;
   }
 
   main {
-    padding-top: 25px;
+    padding-top: 30px;
   }
 
   h1 {
-    font-size: 30px;
-    margin-bottom: 20px;
+    font-size: 32px;
+  }
+
+  .client-layout {
+    gap: 25px;
   }
 
   .projects {
-    --thumbnail-width: calc((90vw - 12px) / 2);
-    --gallery-gap: 12px;
+    gap: 12px;
+  }
+
+  .project {
+    width: calc((100% - 12px) / 2);
+    flex: 0 0 calc((100% - 12px) / 2);
   }
 
   .project-name {
     font-size: 12px;
+    margin-top: 10px;
   }
 
 }
@@ -237,7 +296,8 @@ footer {
 @media (prefers-reduced-motion: reduce) {
 
   .project img,
-  .project-name {
+  .project-name,
+  nav a {
     transition: none;
   }
 
@@ -248,32 +308,36 @@ footer {
 
 <body>
 
-<!-- HEADER -->
+<!-- TOP NAVIGATION HEADER -->
 
 <header>
 
-  <div class="brand">
-    starsandtigers
-  </div>
+  <a class="brand" href="/">
+    ★ starsandtigers ★
+  </a>
 
-  <nav>
-    <a href="/">Home</a>
+  <nav aria-label="Main navigation">
+
+    <a href="/">
+      Home
+    </a>
 
     <a href="/illustration/">
-      Digital Illustrations
+      Illustrations
     </a>
 
     <a href="/animations/">
       Animations
     </a>
 
-    <a href="/client-projects/" class="active">
-      Client Projects
-    </a>
-
     <a href="/sketches/">
       Sketches
     </a>
+
+    <a href="/client-projects/" class="active" aria-current="page">
+      Client Work
+    </a>
+
   </nav>
 
 </header>
@@ -282,41 +346,49 @@ footer {
 
 <main>
 
-  <h1>Client Work</h1>
+  <div class="client-layout">
 
-  <div class="projects">
+    <!-- HEADING ON LEFT -->
 
-    <!-- FISHTANK -->
+    <h1>CLIENT WORK</h1>
 
-    <a class="project"
-       href="/client-projects/clients/fishtank/">
+    <!-- PROJECT THUMBNAILS -->
 
-      <img
-        src="/images/clients/fishtank/fishtankthumbnail.jpg"
-        alt="Fishtank Season 1 artwork"
-        decoding="async">
+    <div class="projects">
 
-      <span class="project-name">
-        Fishtank
-      </span>
+      <!-- FISHTANK -->
 
-    </a>
+      <a
+        class="project"
+        href="/client-projects/clients/fishtank/">
 
-    <!-- DBS -->
+        <img
+          src="/images/clients/fishtank/fishtankthumbnail.jpg"
+          alt="Fishtank Season 1 artwork">
 
-    <a class="project"
-       href="/client-projects/clients/dbs/">
+        <span class="project-name">
+          Fishtank
+        </span>
 
-      <img
-        src="/images/clients/dbs/dbsthumbnail.jpg"
-        alt="Down Bad Society artwork"
-        decoding="async">
+      </a>
 
-      <span class="project-name">
-        DBS
-      </span>
+      <!-- DBS -->
 
-    </a>
+      <a
+        class="project"
+        href="/client-projects/clients/dbs/">
+
+        <img
+          src="/images/clients/dbs/dbsthumbnail.jpg"
+          alt="Down Bad Society artwork">
+
+        <span class="project-name">
+          DBS
+        </span>
+
+      </a>
+
+    </div>
 
   </div>
 
