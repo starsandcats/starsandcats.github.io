@@ -6,9 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fishtank Season 1 | starsandtigers</title>
 
-<link rel="preload"
-      as="image"
-      href="/images/clients/fishtank/fishtankthumbnail.jpg">
+<link rel="preload" as="image"
+  href="/images/clients/fishtank/fishtankthumbnail.jpg">
 
 <style>
 * {
@@ -120,7 +119,6 @@ main {
 .video-feature video {
   display: block;
   width: 100%;
-  height: auto;
   aspect-ratio: 16 / 9;
   object-fit: contain;
   background: #000;
@@ -181,12 +179,6 @@ main {
 
 /* FEATURED GIFS */
 
-/*
-  Both GIFs are displayed smaller.
-  Their original proportions are preserved.
-  They are never cropped into squares.
-*/
-
 .featured-gif {
   width: 100%;
   max-width: 320px;
@@ -210,7 +202,7 @@ main {
   height: auto;
   max-height: 240px;
   object-fit: contain;
-  margin: 0 auto;
+  margin: auto;
 }
 
 .gif-caption {
@@ -269,7 +261,7 @@ main {
   font-weight: 900;
 }
 
-/* PRODUCERS — FOUR IN ONE ROW */
+/* PRODUCERS - ALWAYS FOUR IN ONE ROW */
 
 #producers {
   display: grid;
@@ -302,9 +294,9 @@ main {
 }
 
 .poster img {
-  display: block;
   width: 100%;
   height: auto;
+  display: block;
 }
 
 /* ILLUSTRATIONS */
@@ -427,7 +419,7 @@ footer {
   top: 50%;
 }
 
-/* RESPONSIVE LAYOUT */
+/* MOBILE */
 
 @media (max-width: 950px) {
   #producers {
@@ -529,10 +521,9 @@ footer {
 
 <main>
 
-<!-- INTRO AND VIDEO -->
+<!-- INTRO -->
 
 <section class="hero">
-
   <h1>FISHTANK<span>★</span></h1>
 
   <div class="season">★ SEASON 1 ★</div>
@@ -545,9 +536,7 @@ footer {
   <div class="stars">★★★★★</div>
 
   <div class="video-feature">
-
     <video
-      id="fishtankVideo"
       controls
       playsinline
       preload="none"
@@ -558,84 +547,69 @@ footer {
         type="video/mp4">
 
       Your browser does not support video playback.
-
     </video>
 
     <p class="video-caption">
       FISHTANK SEASON 1 — THE END
     </p>
-
   </div>
 
   <a href="/client-projects/" class="back">
     ← BACK TO CLIENT PROJECTS
   </a>
-
 </section>
 
 <!-- PRODUCERS -->
 
 <section class="gallery-section">
-
   <div class="section-heading">
     <h2>PRODUCERS</h2>
   </div>
 
-  <!-- FISHTANK TV GIF ABOVE PRODUCERS -->
   <div class="featured-gif" id="tvFeature"></div>
 
-  <!-- FOUR PRODUCERS IN ONE ROW -->
   <div class="portrait-grid" id="producers"></div>
-
 </section>
 
 <!-- FREELOADERS -->
 
 <section class="gallery-section">
-
   <div class="section-heading">
     <h2>THE FREELOADERS</h2>
   </div>
 
-  <!-- SEASON 1 CAST GIF ABOVE FREELOADERS -->
   <div class="featured-gif" id="castFeature"></div>
 
   <div class="portrait-grid" id="freeloaders"></div>
-
 </section>
 
 <!-- THE FISH -->
 
 <section class="gallery-section">
-
   <div class="section-heading">
     <h2>THE FISH</h2>
   </div>
 
   <div class="portrait-grid" id="fish"></div>
-
 </section>
 
-<!-- SEASON 1 POSTER -->
+<!-- POSTER -->
 
 <section class="poster" id="poster"></section>
 
 <!-- ILLUSTRATIONS -->
 
 <section class="gallery-section">
-
   <div class="section-heading">
     <h2>ILLUSTRATIONS</h2>
   </div>
 
   <div class="illustration-grid" id="illustrations"></div>
-
 </section>
 
-<!-- THE END -->
+<!-- ENDING -->
 
 <section class="ending">
-
   <div class="section-heading">
     <h2>THE END</h2>
   </div>
@@ -643,14 +617,13 @@ footer {
   <p class="ending-caption">
     FISHTANK SEASON 1 — THE END
   </p>
-
 </section>
 
 </main>
 
 <footer>© starsandtigers</footer>
 
-<!-- FULL IMAGE VIEWER -->
+<!-- FULL-SIZE IMAGE VIEWER -->
 
 <div
   class="lightbox"
@@ -659,10 +632,7 @@ footer {
   aria-modal="true"
   aria-label="Artwork viewer">
 
-  <button
-    class="close"
-    id="close"
-    aria-label="Close">
+  <button class="close" id="close" aria-label="Close">
     ×
   </button>
 
@@ -683,15 +653,26 @@ footer {
     aria-label="Next">
     ❯
   </button>
-
 </div>
 
 <script>
 "use strict";
 
-/* IMAGE FOLDER */
+/*
+  IMAGE FOLDERS
+
+  Original artwork:
+  /images/clients/fishtank/
+
+  WebP thumbnails:
+  /images/clients/fishtank/thumbs/
+
+  Gallery displays thumbnails.
+  Lightbox displays originals.
+*/
 
 const base = "/images/clients/fishtank/";
+const thumbs = base + "thumbs/";
 
 /* PRODUCERS */
 
@@ -757,7 +738,7 @@ const poster = [
   ["fishtankseason1poster.jpeg", "Fishtank Season 1 Poster"]
 ];
 
-/* FEATURED GIFS */
+/* GIFS */
 
 const tvGif = [
   "fish1tvcast.gif",
@@ -769,7 +750,7 @@ const castGif = [
   "Fishtank Season 1 Cast"
 ];
 
-/* ALL ARTWORK FOR FULL-SIZE VIEWER */
+/* ALL ORIGINALS FOR IMAGE VIEWER */
 
 const allImages = [
   tvGif,
@@ -781,24 +762,51 @@ const allImages = [
   ...illustrations
 ];
 
+/* ORIGINAL IMAGE PATH */
+
 function imagePath(filename) {
   return base + encodeURIComponent(filename);
 }
 
-/* IMAGE LOADING OPTIMIZATION */
+/*
+  WEBP THUMBNAIL PATH
+
+  fish1jet.jpeg -> thumbs/fish1jet.webp
+  fish1alex.jpeg -> thumbs/fish1alex.webp
+
+  Original filenames remain unchanged.
+*/
+
+function thumbnailPath(filename) {
+  const name = filename.replace(/\.[^.]+$/, ".webp");
+  return thumbs + encodeURIComponent(name);
+}
 
 /*
-  GIFs start loading only when they
-  approach the visible part of the page.
+  APPLY THUMBNAIL
 
-  Regular gallery images use lazy loading.
-  The video does not preload its MP4.
+  If the thumbnail is missing, the
+  original image is used automatically.
 */
+
+function useThumbnail(img, filename) {
+  img.alt = filename;
+  img.loading = "lazy";
+  img.decoding = "async";
+
+  img.onerror = function() {
+    img.onerror = null;
+    img.src = imagePath(filename);
+  };
+
+  img.src = thumbnailPath(filename);
+}
+
+/* LAZY LOAD FEATURED GIFS */
 
 const gifObserver =
   "IntersectionObserver" in window
     ? new IntersectionObserver(entries => {
-
         entries.forEach(entry => {
           if (!entry.isIntersecting) return;
 
@@ -811,7 +819,6 @@ const gifObserver =
 
           gifObserver.unobserve(img);
         });
-
       }, {
         rootMargin: "150px 0px"
       })
@@ -828,7 +835,7 @@ function deferGif(img, filename) {
   }
 }
 
-/* FULL IMAGE VIEWER */
+/* IMAGE VIEWER */
 
 let activeIndex = 0;
 let previousFocus = null;
@@ -856,6 +863,7 @@ function updateLightbox() {
 
   const large = document.getElementById("largeImage");
 
+  // Always display the full-resolution original.
   large.src = imagePath(filename);
   large.alt = name;
 
@@ -884,7 +892,7 @@ function moveImage(direction) {
   updateLightbox();
 }
 
-/* CREATE PORTRAIT */
+/* CREATE CHARACTER PORTRAITS */
 
 function createPortrait(item) {
   const [filename, name] = item;
@@ -902,12 +910,9 @@ function createPortrait(item) {
 
   const img = document.createElement("img");
 
-  img.src = imagePath(filename);
+  // Thumbnail instead of full-size JPEG.
+  useThumbnail(img, filename);
   img.alt = name;
-  img.loading = "lazy";
-  img.decoding = "async";
-  img.width = 400;
-  img.height = 400;
 
   const label = document.createElement("strong");
   label.textContent = name;
@@ -922,7 +927,7 @@ function createPortrait(item) {
   return button;
 }
 
-/* CREATE ILLUSTRATION */
+/* CREATE ILLUSTRATIONS */
 
 function createIllustration(item) {
   const [filename, name] = item;
@@ -937,12 +942,9 @@ function createIllustration(item) {
 
   const img = document.createElement("img");
 
-  img.src = imagePath(filename);
+  // Load WebP thumbnail.
+  useThumbnail(img, filename);
   img.alt = name;
-  img.loading = "lazy";
-  img.decoding = "async";
-  img.width = 400;
-  img.height = 400;
 
   button.appendChild(img);
 
@@ -953,13 +955,34 @@ function createIllustration(item) {
   return button;
 }
 
-/* CREATE FEATURED GIF */
+/* CREATE POSTER */
 
-/*
-  GIFs appear above their character rows.
-  No square cropping is applied.
-  Clicking opens the original full-size GIF.
-*/
+function createPoster(item) {
+  const [filename, name] = item;
+
+  const button = document.createElement("button");
+  button.type = "button";
+  button.setAttribute(
+    "aria-label",
+    "Enlarge " + name
+  );
+
+  const img = document.createElement("img");
+
+  // Load poster thumbnail.
+  useThumbnail(img, filename);
+  img.alt = name;
+
+  button.appendChild(img);
+
+  button.addEventListener("click", () => {
+    openImage(item);
+  });
+
+  return button;
+}
+
+/* CREATE FEATURED GIFS */
 
 function createFeaturedGif(containerId, item) {
   const [filename, name] = item;
@@ -979,6 +1002,7 @@ function createFeaturedGif(containerId, item) {
   img.decoding = "async";
   img.loading = "lazy";
 
+  // Keep GIF animation and original quality.
   deferGif(img, filename);
 
   const caption = document.createElement("span");
@@ -993,35 +1017,7 @@ function createFeaturedGif(containerId, item) {
   });
 }
 
-/* CREATE POSTER */
-
-function createPoster(item) {
-  const [filename, name] = item;
-
-  const button = document.createElement("button");
-  button.type = "button";
-  button.setAttribute(
-    "aria-label",
-    "Enlarge " + name
-  );
-
-  const img = document.createElement("img");
-
-  img.src = imagePath(filename);
-  img.alt = name;
-  img.loading = "lazy";
-  img.decoding = "async";
-
-  button.appendChild(img);
-
-  button.addEventListener("click", () => {
-    openImage(item);
-  });
-
-  return button;
-}
-
-/* FILL GALLERIES */
+/* BUILD GALLERIES */
 
 function fillGallery(id, items, creator) {
   const container = document.getElementById(id);
@@ -1030,8 +1026,6 @@ function fillGallery(id, items, creator) {
     container.appendChild(creator(item));
   });
 }
-
-/* BUILD PAGE */
 
 fillGallery(
   "producers",
@@ -1063,8 +1057,6 @@ fillGallery(
   createPoster
 );
 
-/* FEATURED GIF PLACEMENTS */
-
 createFeaturedGif(
   "tvFeature",
   tvGif
@@ -1075,7 +1067,7 @@ createFeaturedGif(
   castGif
 );
 
-/* IMAGE VIEWER CONTROLS */
+/* VIEWER CONTROLS */
 
 document.getElementById("close")
   .addEventListener("click", closeLightbox);
@@ -1112,11 +1104,9 @@ document.addEventListener("keydown", event => {
 
 document.getElementById("lightbox")
   .addEventListener("click", event => {
-
     if (event.target.id === "lightbox") {
       closeLightbox();
     }
-
   });
 </script>
 
