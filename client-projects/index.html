@@ -36,6 +36,7 @@ header {
 }
 
 .brand {
+  font-family: Arial, sans-serif;
   font-size: 16px;
   font-weight: bold;
   color: white;
@@ -53,7 +54,10 @@ nav a {
   font-size: 13px;
 }
 
-nav a:hover,
+nav a:hover {
+  color: #ffdc00;
+}
+
 nav a.active {
   color: #ffdc00;
 }
@@ -62,37 +66,37 @@ nav a.active {
 
 main {
   width: 100%;
-  padding: 35px 5% 20px;
+  padding: 30px 5% 20px;
 }
 
-/* HEADING AND THUMBNAILS */
-
-.client-layout {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 35px;
-  width: 100%;
-}
+/* TITLE */
 
 h1 {
-  font-weight: 900;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
   font-size: clamp(30px, 4vw, 46px);
   text-transform: uppercase;
   text-align: left;
-  margin: 0;
-  white-space: nowrap;
-  flex-shrink: 0;
+  margin: 0 0 25px;
+  letter-spacing: 1px;
 }
 
 /* PROJECT GALLERY */
+
+/*
+  Both thumbnails stay grouped together
+  on the left side of the page.
+
+  Adjust --thumbnail-width and --gallery-gap
+  to control their size and spacing.
+*/
 
 .projects {
   --thumbnail-width: 400px;
   --gallery-gap: 20px;
 
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   justify-content: flex-start;
   align-items: flex-start;
   gap: var(--gallery-gap);
@@ -108,10 +112,13 @@ h1 {
 .project {
   display: block;
   width: var(--thumbnail-width);
-  flex: 0 0 var(--thumbnail-width);
+  max-width: 100%;
+  flex: 0 0 auto;
+
   color: white;
   text-decoration: none;
   cursor: pointer;
+
   position: relative;
   z-index: 1;
 }
@@ -122,6 +129,7 @@ h1 {
   display: block;
   width: 100%;
   height: auto;
+
   border: none;
   border-radius: 0;
 
@@ -160,12 +168,15 @@ h1 {
 .project-name {
   display: block;
   margin-top: 12px;
+
   font-size: 15px;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 1px;
+
   text-align: left;
   color: white;
+
   transition: color 0.25s ease;
 }
 
@@ -182,30 +193,7 @@ footer {
   font-size: 12px;
 }
 
-/* RESPONSIVE LAYOUT */
-
-@media (max-width: 1300px) {
-
-  .client-layout {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 25px;
-  }
-
-  .projects {
-    flex-wrap: wrap;
-  }
-
-}
-
-@media (max-width: 900px) {
-
-  .projects {
-    --thumbnail-width: min(400px, calc((90vw - 20px) / 2));
-    flex-wrap: nowrap;
-  }
-
-}
+/* SMALLER SCREENS */
 
 @media (max-width: 650px) {
 
@@ -230,10 +218,12 @@ footer {
 
   h1 {
     font-size: 30px;
+    margin-bottom: 20px;
   }
 
-  .client-layout {
-    gap: 20px;
+  .projects {
+    --thumbnail-width: calc((90vw - 12px) / 2);
+    --gallery-gap: 12px;
   }
 
   .project-name {
@@ -292,51 +282,41 @@ footer {
 
 <main>
 
-  <div class="client-layout">
+  <h1>Client Work</h1>
 
-    <!-- HEADING ON LEFT -->
+  <div class="projects">
 
-    <h1>CLIENT WORK</h1>
+    <!-- FISHTANK -->
 
-    <!-- PROJECT THUMBNAILS -->
+    <a class="project"
+       href="/client-projects/clients/fishtank/">
 
-    <div class="projects">
+      <img
+        src="/images/clients/fishtank/fishtankthumbnail.jpg"
+        alt="Fishtank Season 1 artwork"
+        decoding="async">
 
-      <!-- FISHTANK -->
+      <span class="project-name">
+        Fishtank
+      </span>
 
-      <a
-        class="project"
-        href="/client-projects/clients/fishtank/">
+    </a>
 
-        <img
-          src="/images/clients/fishtank/fishtankthumbnail.jpg"
-          alt="Fishtank Season 1 artwork"
-          decoding="async">
+    <!-- DBS -->
 
-        <span class="project-name">
-          Fishtank
-        </span>
+    <a class="project"
+       href="/client-projects/clients/dbs/">
 
-      </a>
+      <img
+        src="/images/clients/dbs/dbsthumbnail.jpg"
+        alt="Down Bad Society artwork"
+        decoding="async">
 
-      <!-- DBS -->
+      <span class="project-name">
+        DBS
+      </span>
 
-      <a
-        class="project"
-        href="/client-projects/clients/dbs/">
-
-        <img
-          src="/images/clients/dbs/dbsthumbnail.jpg"
-          alt="Down Bad Society artwork"
-          decoding="async">
-
-        <span class="project-name">
-          DBS
-        </span>
-
-      </a>
-
-    </div>
+    </a>
 
   </div>
 
