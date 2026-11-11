@@ -6,6 +6,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fishtank Season 1 | starsandtigers</title>
 
+<link rel="preload"
+      as="image"
+      href="/images/clients/fishtank/fishtankthumbnail.jpg">
+
 <style>
 * {
   box-sizing: border-box;
@@ -116,6 +120,7 @@ main {
 .video-feature video {
   display: block;
   width: 100%;
+  height: auto;
   aspect-ratio: 16 / 9;
   object-fit: contain;
   background: #000;
@@ -174,12 +179,18 @@ main {
   letter-spacing: 1px;
 }
 
-/* SMALL FEATURED GIFS — NEVER CROPPED */
+/* FEATURED GIFS */
+
+/*
+  Both GIFs are displayed smaller.
+  Their original proportions are preserved.
+  They are never cropped into squares.
+*/
 
 .featured-gif {
   width: 100%;
-  max-width: 360px;
-  margin: 0 auto 30px;
+  max-width: 320px;
+  margin: 0 auto 32px;
   text-align: center;
 }
 
@@ -194,14 +205,15 @@ main {
 
 .featured-gif img {
   display: block;
-  width: 100%;
+  width: auto;
+  max-width: 100%;
   height: auto;
-  max-height: 260px;
+  max-height: 240px;
   object-fit: contain;
-  margin: auto;
+  margin: 0 auto;
 }
 
-.featured-gif .gif-caption {
+.gif-caption {
   display: block;
   margin-top: 10px;
   font-family: "Courier New", monospace;
@@ -257,17 +269,18 @@ main {
   font-weight: 900;
 }
 
-/* PRODUCERS — ALWAYS ONE ROW */
+/* PRODUCERS — FOUR IN ONE ROW */
 
 #producers {
   display: grid;
-  grid-template-columns: repeat(4, 205px);
+  grid-template-columns: repeat(4, minmax(0, 205px));
   justify-content: center;
   gap: 22px;
 }
 
 #producers .polaroid {
-  width: 205px;
+  width: 100%;
+  min-width: 0;
 }
 
 /* POSTER */
@@ -289,9 +302,9 @@ main {
 }
 
 .poster img {
+  display: block;
   width: 100%;
   height: auto;
-  display: block;
 }
 
 /* ILLUSTRATIONS */
@@ -383,6 +396,7 @@ footer {
 .lightbox-caption {
   margin-top: 16px;
   font-family: "Courier New", monospace;
+  text-align: center;
 }
 
 .lightbox button {
@@ -413,17 +427,12 @@ footer {
   top: 50%;
 }
 
-/* MOBILE */
+/* RESPONSIVE LAYOUT */
 
 @media (max-width: 950px) {
   #producers {
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 10px;
-  }
-
-  #producers .polaroid {
-    width: 100%;
-    min-width: 0;
   }
 
   #producers .polaroid strong {
@@ -464,7 +473,7 @@ footer {
   }
 
   .featured-gif {
-    max-width: 300px;
+    max-width: 280px;
   }
 
   #producers .polaroid {
@@ -512,13 +521,18 @@ footer {
     <a href="/illustration/">Illustrations</a>
     <a href="/animations/">Animations</a>
     <a href="/sketches/">Sketches</a>
-    <a href="/client-projects/" class="active">Client Work</a>
+    <a href="/client-projects/" class="active">
+      Client Work
+    </a>
   </nav>
 </header>
 
 <main>
 
+<!-- INTRO AND VIDEO -->
+
 <section class="hero">
+
   <h1>FISHTANK<span>★</span></h1>
 
   <div class="season">★ SEASON 1 ★</div>
@@ -531,7 +545,9 @@ footer {
   <div class="stars">★★★★★</div>
 
   <div class="video-feature">
+
     <video
+      id="fishtankVideo"
       controls
       playsinline
       preload="none"
@@ -542,67 +558,84 @@ footer {
         type="video/mp4">
 
       Your browser does not support video playback.
+
     </video>
 
     <p class="video-caption">
       FISHTANK SEASON 1 — THE END
     </p>
+
   </div>
 
   <a href="/client-projects/" class="back">
     ← BACK TO CLIENT PROJECTS
   </a>
+
 </section>
 
 <!-- PRODUCERS -->
 
 <section class="gallery-section">
+
   <div class="section-heading">
     <h2>PRODUCERS</h2>
   </div>
 
+  <!-- FISHTANK TV GIF ABOVE PRODUCERS -->
   <div class="featured-gif" id="tvFeature"></div>
 
+  <!-- FOUR PRODUCERS IN ONE ROW -->
   <div class="portrait-grid" id="producers"></div>
+
 </section>
 
 <!-- FREELOADERS -->
 
 <section class="gallery-section">
+
   <div class="section-heading">
     <h2>THE FREELOADERS</h2>
   </div>
 
+  <!-- SEASON 1 CAST GIF ABOVE FREELOADERS -->
   <div class="featured-gif" id="castFeature"></div>
 
   <div class="portrait-grid" id="freeloaders"></div>
+
 </section>
 
-<!-- FISH -->
+<!-- THE FISH -->
 
 <section class="gallery-section">
+
   <div class="section-heading">
     <h2>THE FISH</h2>
   </div>
 
   <div class="portrait-grid" id="fish"></div>
+
 </section>
 
-<!-- POSTER -->
+<!-- SEASON 1 POSTER -->
 
 <section class="poster" id="poster"></section>
 
 <!-- ILLUSTRATIONS -->
 
 <section class="gallery-section">
+
   <div class="section-heading">
     <h2>ILLUSTRATIONS</h2>
   </div>
 
   <div class="illustration-grid" id="illustrations"></div>
+
 </section>
 
+<!-- THE END -->
+
 <section class="ending">
+
   <div class="section-heading">
     <h2>THE END</h2>
   </div>
@@ -610,28 +643,57 @@ footer {
   <p class="ending-caption">
     FISHTANK SEASON 1 — THE END
   </p>
+
 </section>
 
 </main>
 
 <footer>© starsandtigers</footer>
 
-<div class="lightbox" id="lightbox" role="dialog"
-     aria-modal="true" aria-label="Artwork viewer">
+<!-- FULL IMAGE VIEWER -->
 
-  <button class="close" id="close" aria-label="Close">×</button>
-  <button class="previous" id="previous" aria-label="Previous">❮</button>
+<div
+  class="lightbox"
+  id="lightbox"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Artwork viewer">
+
+  <button
+    class="close"
+    id="close"
+    aria-label="Close">
+    ×
+  </button>
+
+  <button
+    class="previous"
+    id="previous"
+    aria-label="Previous">
+    ❮
+  </button>
 
   <img id="largeImage" alt="">
+
   <p class="lightbox-caption" id="caption"></p>
 
-  <button class="next" id="next" aria-label="Next">❯</button>
+  <button
+    class="next"
+    id="next"
+    aria-label="Next">
+    ❯
+  </button>
+
 </div>
 
 <script>
 "use strict";
 
+/* IMAGE FOLDER */
+
 const base = "/images/clients/fishtank/";
+
+/* PRODUCERS */
 
 const producers = [
   ["fish1jet.jpeg", "Jet Neptune"],
@@ -639,6 +701,8 @@ const producers = [
   ["fish1ben.jpeg", "Ben"],
   ["fish1tax.jpeg", "Tax"]
 ];
+
+/* FREELOADERS */
 
 const freeloaders = [
   ["fish1alex.jpeg", "Alex"],
@@ -652,6 +716,8 @@ const freeloaders = [
   ["fish1tai.jpeg", "Tai"]
 ];
 
+/* FISH */
+
 const fish = [
   ["fish1josie.jpeg", "Josie"],
   ["fish1jonathan.jpeg", "Jon"],
@@ -663,6 +729,8 @@ const fish = [
   ["fish1simmons.jpeg", "Simmons"],
   ["fish1mauro.jpeg", "Mauro"]
 ];
+
+/* ILLUSTRATIONS */
 
 const illustrations = [
   ["fish1alexsketch.jpeg", "Alex Sketch"],
@@ -683,12 +751,25 @@ const illustrations = [
   ["peppasylvia.jpeg", "Peppa and Sylvia"]
 ];
 
+/* POSTER */
+
 const poster = [
   ["fishtankseason1poster.jpeg", "Fishtank Season 1 Poster"]
 ];
 
-const tvGif = ["fish1tvcast.gif", "Fishtank TV Cast"];
-const castGif = ["fish1cast.gif", "Fishtank Season 1 Cast"];
+/* FEATURED GIFS */
+
+const tvGif = [
+  "fish1tvcast.gif",
+  "Fishtank TV Cast"
+];
+
+const castGif = [
+  "fish1cast.gif",
+  "Fishtank Season 1 Cast"
+];
+
+/* ALL ARTWORK FOR FULL-SIZE VIEWER */
 
 const allImages = [
   tvGif,
@@ -704,57 +785,77 @@ function imagePath(filename) {
   return base + encodeURIComponent(filename);
 }
 
-/* LOAD GIFS WHEN NEAR THE VIEWPORT */
+/* IMAGE LOADING OPTIMIZATION */
 
-const gifObserver = "IntersectionObserver" in window
-  ? new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
+/*
+  GIFs start loading only when they
+  approach the visible part of the page.
 
-        const img = entry.target;
+  Regular gallery images use lazy loading.
+  The video does not preload its MP4.
+*/
 
-        if (img.dataset.src) {
-          img.src = img.dataset.src;
-          delete img.dataset.src;
-        }
+const gifObserver =
+  "IntersectionObserver" in window
+    ? new IntersectionObserver(entries => {
 
-        gifObserver.unobserve(img);
-      });
-    }, {
-      rootMargin: "250px 0px"
-    })
-  : null;
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+
+          const img = entry.target;
+
+          if (img.dataset.src) {
+            img.src = img.dataset.src;
+            delete img.dataset.src;
+          }
+
+          gifObserver.unobserve(img);
+        });
+
+      }, {
+        rootMargin: "150px 0px"
+      })
+    : null;
 
 function deferGif(img, filename) {
-  img.dataset.src = imagePath(filename);
+  const src = imagePath(filename);
 
   if (gifObserver) {
+    img.dataset.src = src;
     gifObserver.observe(img);
   } else {
-    img.src = img.dataset.src;
-    delete img.dataset.src;
+    img.src = src;
   }
 }
 
-/* IMAGE VIEWER */
+/* FULL IMAGE VIEWER */
 
 let activeIndex = 0;
+let previousFocus = null;
 
 function openImage(item) {
   const index = allImages.indexOf(item);
+
   if (index < 0) return;
 
   activeIndex = index;
+  previousFocus = document.activeElement;
+
   updateLightbox();
 
   document.getElementById("lightbox")
     .classList.add("open");
+
+  document.body.style.overflow = "hidden";
+
+  document.getElementById("close").focus();
 }
 
 function updateLightbox() {
   const [filename, name] = allImages[activeIndex];
 
   const large = document.getElementById("largeImage");
+
   large.src = imagePath(filename);
   large.alt = name;
 
@@ -767,6 +868,12 @@ function closeLightbox() {
 
   document.getElementById("largeImage")
     .removeAttribute("src");
+
+  document.body.style.overflow = "";
+
+  if (previousFocus) {
+    previousFocus.focus();
+  }
 }
 
 function moveImage(direction) {
@@ -777,7 +884,7 @@ function moveImage(direction) {
   updateLightbox();
 }
 
-/* BUILD PORTRAITS */
+/* CREATE PORTRAIT */
 
 function createPortrait(item) {
   const [filename, name] = item;
@@ -785,16 +892,22 @@ function createPortrait(item) {
   const button = document.createElement("button");
   button.className = "polaroid";
   button.type = "button";
-  button.setAttribute("aria-label", "Enlarge " + name);
+  button.setAttribute(
+    "aria-label",
+    "Enlarge " + name
+  );
 
   const windowEl = document.createElement("span");
   windowEl.className = "image-window";
 
   const img = document.createElement("img");
+
   img.src = imagePath(filename);
   img.alt = name;
   img.loading = "lazy";
   img.decoding = "async";
+  img.width = 400;
+  img.height = 400;
 
   const label = document.createElement("strong");
   label.textContent = name;
@@ -802,12 +915,14 @@ function createPortrait(item) {
   windowEl.appendChild(img);
   button.append(windowEl, label);
 
-  button.addEventListener("click", () => openImage(item));
+  button.addEventListener("click", () => {
+    openImage(item);
+  });
 
   return button;
 }
 
-/* BUILD ILLUSTRATIONS */
+/* CREATE ILLUSTRATION */
 
 function createIllustration(item) {
   const [filename, name] = item;
@@ -815,33 +930,54 @@ function createIllustration(item) {
   const button = document.createElement("button");
   button.className = "illustration";
   button.type = "button";
-  button.setAttribute("aria-label", "Enlarge " + name);
+  button.setAttribute(
+    "aria-label",
+    "Enlarge " + name
+  );
 
   const img = document.createElement("img");
+
   img.src = imagePath(filename);
   img.alt = name;
   img.loading = "lazy";
   img.decoding = "async";
+  img.width = 400;
+  img.height = 400;
 
   button.appendChild(img);
-  button.addEventListener("click", () => openImage(item));
+
+  button.addEventListener("click", () => {
+    openImage(item);
+  });
 
   return button;
 }
 
-/* BUILD FEATURED GIFS */
+/* CREATE FEATURED GIF */
+
+/*
+  GIFs appear above their character rows.
+  No square cropping is applied.
+  Clicking opens the original full-size GIF.
+*/
 
 function createFeaturedGif(containerId, item) {
   const [filename, name] = item;
+
   const container = document.getElementById(containerId);
 
   const button = document.createElement("button");
   button.type = "button";
-  button.setAttribute("aria-label", "Enlarge " + name);
+  button.setAttribute(
+    "aria-label",
+    "Enlarge " + name
+  );
 
   const img = document.createElement("img");
+
   img.alt = name;
   img.decoding = "async";
+  img.loading = "lazy";
 
   deferGif(img, filename);
 
@@ -852,8 +988,40 @@ function createFeaturedGif(containerId, item) {
   button.appendChild(img);
   container.append(button, caption);
 
-  button.addEventListener("click", () => openImage(item));
+  button.addEventListener("click", () => {
+    openImage(item);
+  });
 }
+
+/* CREATE POSTER */
+
+function createPoster(item) {
+  const [filename, name] = item;
+
+  const button = document.createElement("button");
+  button.type = "button";
+  button.setAttribute(
+    "aria-label",
+    "Enlarge " + name
+  );
+
+  const img = document.createElement("img");
+
+  img.src = imagePath(filename);
+  img.alt = name;
+  img.loading = "lazy";
+  img.decoding = "async";
+
+  button.appendChild(img);
+
+  button.addEventListener("click", () => {
+    openImage(item);
+  });
+
+  return button;
+}
+
+/* FILL GALLERIES */
 
 function fillGallery(id, items, creator) {
   const container = document.getElementById(id);
@@ -863,40 +1031,92 @@ function fillGallery(id, items, creator) {
   });
 }
 
-fillGallery("producers", producers, createPortrait);
-fillGallery("freeloaders", freeloaders, createPortrait);
-fillGallery("fish", fish, createPortrait);
-fillGallery("illustrations", illustrations, createIllustration);
-fillGallery("poster", poster, createIllustration);
+/* BUILD PAGE */
 
-createFeaturedGif("tvFeature", tvGif);
-createFeaturedGif("castFeature", castGif);
+fillGallery(
+  "producers",
+  producers,
+  createPortrait
+);
 
-/* VIEWER CONTROLS */
+fillGallery(
+  "freeloaders",
+  freeloaders,
+  createPortrait
+);
 
-document.getElementById("close").onclick = closeLightbox;
+fillGallery(
+  "fish",
+  fish,
+  createPortrait
+);
 
-document.getElementById("previous").onclick =
-  () => moveImage(-1);
+fillGallery(
+  "illustrations",
+  illustrations,
+  createIllustration
+);
 
-document.getElementById("next").onclick =
-  () => moveImage(1);
+fillGallery(
+  "poster",
+  poster,
+  createPoster
+);
+
+/* FEATURED GIF PLACEMENTS */
+
+createFeaturedGif(
+  "tvFeature",
+  tvGif
+);
+
+createFeaturedGif(
+  "castFeature",
+  castGif
+);
+
+/* IMAGE VIEWER CONTROLS */
+
+document.getElementById("close")
+  .addEventListener("click", closeLightbox);
+
+document.getElementById("previous")
+  .addEventListener("click", () => {
+    moveImage(-1);
+  });
+
+document.getElementById("next")
+  .addEventListener("click", () => {
+    moveImage(1);
+  });
 
 document.addEventListener("keydown", event => {
   const lightbox = document.getElementById("lightbox");
 
-  if (!lightbox.classList.contains("open")) return;
+  if (!lightbox.classList.contains("open")) {
+    return;
+  }
 
-  if (event.key === "Escape") closeLightbox();
-  if (event.key === "ArrowLeft") moveImage(-1);
-  if (event.key === "ArrowRight") moveImage(1);
+  if (event.key === "Escape") {
+    closeLightbox();
+  }
+
+  if (event.key === "ArrowLeft") {
+    moveImage(-1);
+  }
+
+  if (event.key === "ArrowRight") {
+    moveImage(1);
+  }
 });
 
 document.getElementById("lightbox")
   .addEventListener("click", event => {
+
     if (event.target.id === "lightbox") {
       closeLightbox();
     }
+
   });
 </script>
 
