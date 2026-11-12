@@ -170,6 +170,7 @@ main {
   align-items: center;
   gap: 22px;
   margin-bottom: 35px;
+  text-align: center;
 }
 
 .section-heading::before,
@@ -274,7 +275,7 @@ main {
   font-weight: 900;
 }
 
-/* PRODUCERS - FOUR IN ONE ROW */
+/* PRODUCERS */
 
 #producers {
   display: grid;
@@ -312,17 +313,31 @@ main {
   height: auto;
 }
 
-/* SKETCHES */
+/* CENTERED SKETCHES SECTION */
+
+.sketches-section {
+  text-align: center;
+}
+
+.sketches-section .section-heading {
+  justify-content: center;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 .illustration-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
   gap: 20px;
   max-width: 1050px;
-  margin: auto;
+  margin: 0 auto;
 }
 
 .illustration {
+  width: calc((100% - 60px) / 4);
   border: 0;
   background: transparent;
   padding: 0;
@@ -350,7 +365,7 @@ main {
   padding-bottom: 90px;
 }
 
-/* SMALL WHITE FISHTANK LOGO */
+/* SMALL RED FISHTANK LOGO */
 
 .ending-logo {
   display: flex;
@@ -395,6 +410,24 @@ main {
   letter-spacing: 2px;
   font-size: 14px;
 }
+
+/* BOTTOM BACK LINK */
+
+.bottom-back {
+  display: inline-block;
+  margin-top: 45px;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #aaa;
+  text-decoration: none;
+}
+
+.bottom-back:hover {
+  color: #ffdc00;
+}
+
+/* FOOTER */
 
 footer {
   height: 160px;
@@ -501,7 +534,11 @@ footer {
   }
 
   .illustration-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .illustration {
+    width: calc((100% - 14px) / 2);
   }
 
   .illustration img {
@@ -673,9 +710,9 @@ footer {
 
 <section class="poster" id="poster"></section>
 
-<!-- SKETCHES -->
+<!-- CENTERED SKETCHES -->
 
-<section class="gallery-section">
+<section class="gallery-section sketches-section">
 
   <div class="section-heading">
     <h2>SKETCHES</h2>
@@ -685,14 +722,14 @@ footer {
 
 </section>
 
-<!-- ENDING WITH WHITE LOGO -->
+<!-- ENDING WITH RED LOGO -->
 
 <section class="ending">
 
   <div class="ending-logo">
     <img
       src="/images/clients/fishtank/fishtanklogo.png"
-      alt="White Fishtank Logo">
+      alt="Red Fishtank Logo">
   </div>
 
   <div class="ending-artwork" id="endingArtwork"></div>
@@ -700,6 +737,10 @@ footer {
   <p class="ending-caption">
     FISHTANK SEASON 1 — THE END
   </p>
+
+  <a href="/client-projects/" class="back bottom-back">
+    ← BACK TO CLIENT PROJECTS
+  </a>
 
 </section>
 
@@ -1115,7 +1156,7 @@ fillGallery(
   createPoster
 );
 
-/* FISHTANK TV BELOW WHITE LOGO */
+/* FISHTANK TV BELOW RED LOGO */
 
 fillGallery(
   "endingArtwork",
