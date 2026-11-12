@@ -313,7 +313,7 @@ main {
   height: auto;
 }
 
-/* CENTERED SKETCHES SECTION */
+/* CENTERED SKETCHES */
 
 .sketches-section {
   text-align: center;
@@ -381,11 +381,40 @@ main {
   object-fit: contain;
 }
 
-/* FISHTANK TV ARTWORK */
+/*
+  FULL-WIDTH FISHTANK TV COMPOSITION
+
+  The original image stays 450px wide.
+  The SVG behind it continues the fine white
+  hand-drawn lines to the viewport edges.
+*/
+
+.ending-artwork-stage {
+  position: relative;
+  width: 100vw;
+  max-width: none;
+  margin-left: calc(50% - 50vw);
+  margin-bottom: 30px;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.ending-line-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  overflow: visible;
+}
 
 .ending-artwork {
-  max-width: 400px;
-  margin: 0 auto 30px;
+  position: relative;
+  z-index: 1;
+  width: min(450px, 88vw);
+  max-width: none;
+  margin: 0 auto;
 }
 
 .ending-artwork .illustration {
@@ -397,12 +426,13 @@ main {
   display: block;
   width: 100%;
   height: auto;
-  border: 5px solid #f5f1e9;
+  border: none;
+  object-fit: contain;
   transition: transform .2s ease;
 }
 
 .ending-artwork .illustration:hover img {
-  transform: scale(1.05);
+  transform: scale(1.035);
 }
 
 .ending-caption {
@@ -722,7 +752,7 @@ footer {
 
 </section>
 
-<!-- ENDING WITH RED LOGO -->
+<!-- ENDING WITH RED LOGO AND EXTENDED LINE ART -->
 
 <section class="ending">
 
@@ -732,7 +762,92 @@ footer {
       alt="Red Fishtank Logo">
   </div>
 
-  <div class="ending-artwork" id="endingArtwork"></div>
+  <div class="ending-artwork-stage">
+
+    <svg
+      class="ending-line-art"
+      viewBox="0 0 1600 880"
+      preserveAspectRatio="none"
+      aria-hidden="true">
+
+      <g
+        fill="none"
+        stroke="#f2f2f2"
+        stroke-width="1.1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        opacity="0.88">
+
+        <!-- LEFT SIDE: upper cable -->
+        <path d="
+          M 0 340
+          C 75 336, 95 348, 130 340
+          S 195 331, 245 338
+          C 285 345, 300 318, 340 323
+          S 390 335, 445 331
+          C 477 330, 490 310, 516 310
+          L 590 320
+        "/>
+
+        <!-- LEFT SIDE: lower looping cable -->
+        <path d="
+          M 0 745
+          C 65 752, 115 735, 170 744
+          S 260 768, 312 752
+          C 355 737, 388 771, 425 768
+          S 470 733, 500 743
+          C 530 754, 540 770, 566 756
+          L 615 725
+        "/>
+
+        <!-- LEFT SIDE: additional hand-drawn strand -->
+        <path d="
+          M 0 775
+          C 60 779, 100 788, 142 776
+          S 207 761, 245 779
+          C 275 791, 302 787, 328 782
+          S 385 802, 420 786
+          L 535 752
+        "/>
+
+        <!-- RIGHT SIDE: upper cable -->
+        <path d="
+          M 1015 315
+          C 1060 315, 1080 332, 1112 324
+          S 1170 305, 1205 314
+          C 1232 325, 1215 378, 1242 392
+          S 1300 382, 1338 405
+          C 1400 441, 1445 430, 1490 446
+          S 1565 465, 1600 475
+        "/>
+
+        <!-- RIGHT SIDE: middle strand -->
+        <path d="
+          M 1030 700
+          C 1085 706, 1132 698, 1170 710
+          S 1235 721, 1280 710
+          C 1325 700, 1332 722, 1300 731
+          S 1290 747, 1365 743
+          C 1430 739, 1510 735, 1600 728
+        "/>
+
+        <!-- RIGHT SIDE: lower winding cable -->
+        <path d="
+          M 1035 735
+          C 1090 746, 1145 730, 1180 745
+          S 1230 763, 1200 774
+          C 1170 788, 1220 790, 1265 793
+          S 1340 797, 1385 806
+          C 1450 822, 1390 834, 1420 843
+          S 1520 850, 1600 862
+        "/>
+
+      </g>
+    </svg>
+
+    <div class="ending-artwork" id="endingArtwork"></div>
+
+  </div>
 
   <p class="ending-caption">
     FISHTANK SEASON 1 — THE END
@@ -840,7 +955,6 @@ const illustrations = [
   ["fish1dontarioussketch.jpeg", "Dontarious Sketch"],
   ["fish1ellasketch.jpeg", "Ella Sketch"],
   ["fish1franksketch.jpeg", "Frank Sketch"],
-  ["fish1goldstrikersketch.jpeg", "Goldstriker Sketch"],
   ["fish1jetsketch.jpeg", "Jet Sketch"],
   ["fish1lancesketch.jpeg", "Lance Sketch"],
   ["fish1taisketch.jpeg", "Tai Sketch"],
@@ -981,9 +1095,6 @@ function updateLightbox() {
 function closeLightbox() {
   document.getElementById("lightbox")
     .classList.remove("open");
-
-  document.getElementById("largeImage")
-    .removeAttribute("src");
 
   document.body.style.overflow = "";
 
@@ -1156,15 +1267,11 @@ fillGallery(
   createPoster
 );
 
-/* FISHTANK TV BELOW RED LOGO */
-
 fillGallery(
   "endingArtwork",
   endingArtwork,
   createIllustration
 );
-
-/* ORIGINAL GIF PLACEMENTS */
 
 createFeaturedGif(
   "tvFeature",
