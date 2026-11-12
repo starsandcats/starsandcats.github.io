@@ -82,18 +82,14 @@ main {
   line-height: 1;
 }
 
-/* RED FISHTANK LOGO */
+/* RED LOGO BESIDE FISHTANK TITLE */
 
 .fishtank-logo {
-  width: clamp(48px, 7vw, 90px);
+  width: 150px;
   height: auto;
-  max-height: 100px;
-  object-fit: contain;
   vertical-align: middle;
   margin-left: 10px;
-  filter: brightness(0) saturate(100%)
-          invert(22%) sepia(95%)
-          saturate(5000%) hue-rotate(355deg);
+  object-fit: contain;
 }
 
 /* SEASON 1 */
@@ -316,7 +312,7 @@ main {
   height: auto;
 }
 
-/* ILLUSTRATIONS */
+/* SKETCHES */
 
 .illustration-grid {
   display: grid;
@@ -352,6 +348,47 @@ main {
   text-align: center;
   margin-top: 85px;
   padding-bottom: 90px;
+}
+
+/* SMALL WHITE FISHTANK LOGO */
+
+.ending-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 35px;
+}
+
+.ending-logo img {
+  width: 120px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+/* FISHTANK TV ARTWORK */
+
+.ending-artwork {
+  max-width: 400px;
+  margin: 0 auto 30px;
+}
+
+.ending-artwork .illustration {
+  display: block;
+  width: 100%;
+}
+
+.ending-artwork img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 5px solid #f5f1e9;
+  transition: transform .2s ease;
+}
+
+.ending-artwork .illustration:hover img {
+  transform: scale(1.05);
 }
 
 .ending-caption {
@@ -513,7 +550,8 @@ footer {
   }
 
   .polaroid,
-  .illustration img {
+  .illustration img,
+  .ending-artwork img {
     transition: none;
   }
 }
@@ -636,25 +674,29 @@ footer {
 
 <section class="poster" id="poster"></section>
 
-<!-- ILLUSTRATIONS -->
+<!-- SKETCHES -->
 
 <section class="gallery-section">
 
   <div class="section-heading">
-    <h2>ILLUSTRATIONS</h2>
+    <h2>SKETCHES</h2>
   </div>
 
   <div class="illustration-grid" id="illustrations"></div>
 
 </section>
 
-<!-- THE END -->
+<!-- ENDING WITH WHITE LOGO -->
 
 <section class="ending">
 
-  <div class="section-heading">
-    <h2>THE END</h2>
+  <div class="ending-logo">
+    <img
+      src="/images/clients/fishtank/fishtanklogo.png"
+      alt="White Fishtank Logo">
   </div>
+
+  <div class="ending-artwork" id="endingArtwork"></div>
 
   <p class="ending-caption">
     FISHTANK SEASON 1 — THE END
@@ -747,7 +789,7 @@ const fish = [
   ["fish1mauro.jpeg", "Mauro"]
 ];
 
-/* ILLUSTRATIONS */
+/* SKETCHES */
 
 const illustrations = [
   ["fish1alexsketch.jpeg", "Alex Sketch"],
@@ -763,9 +805,14 @@ const illustrations = [
   ["fish1lancesketch.jpeg", "Lance Sketch"],
   ["fish1taisketch.jpeg", "Tai Sketch"],
   ["fish1taxsketch.jpeg", "Tax Sketch"],
-  ["fishtv1_.jpeg", "Fishtank TV"],
   ["josiejonbubbles.jpeg", "Josie and Jon"],
   ["peppasylvia.jpeg", "Peppa and Sylvia"]
+];
+
+/* FISHTANK TV - ENDING ARTWORK */
+
+const endingArtwork = [
+  ["fishtv1_.jpeg", "Fishtank TV"]
 ];
 
 /* POSTER */
@@ -795,7 +842,8 @@ const allImages = [
   ...freeloaders,
   ...fish,
   ...poster,
-  ...illustrations
+  ...illustrations,
+  ...endingArtwork
 ];
 
 /* IMAGE URL FUNCTIONS */
@@ -946,7 +994,7 @@ function createPortrait(item) {
   return button;
 }
 
-/* CREATE ILLUSTRATIONS */
+/* CREATE SKETCHES */
 
 function createIllustration(item) {
   const [filename, name] = item;
@@ -1066,6 +1114,14 @@ fillGallery(
   "poster",
   poster,
   createPoster
+);
+
+/* FISHTANK TV BELOW WHITE LOGO */
+
+fillGallery(
+  "endingArtwork",
+  endingArtwork,
+  createIllustration
 );
 
 /* ORIGINAL GIF PLACEMENTS */
