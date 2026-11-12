@@ -4,10 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fishtank Season 1 | starsandtigers</title>
 
-<link rel="preload" as="image"
-  href="/images/clients/fishtank/fishtankthumbnail.jpg">
+<title>Fishtank Season 1 | starsandtigers</title>
 
 <style>
 * {
@@ -23,7 +21,10 @@ body {
   background: #000;
   color: #fff;
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
 }
+
+/* HEADER */
 
 header {
   background: #050505;
@@ -42,8 +43,8 @@ header {
 
 nav {
   display: flex;
-  gap: 22px;
   flex-wrap: wrap;
+  gap: 22px;
 }
 
 nav a {
@@ -67,7 +68,7 @@ main {
   padding: 0 25px;
 }
 
-/* INTRO */
+/* HERO */
 
 .hero {
   text-align: center;
@@ -82,8 +83,6 @@ main {
   line-height: 1;
 }
 
-/* RED LOGO BESIDE FISHTANK TITLE */
-
 .fishtank-logo {
   width: 150px;
   height: auto;
@@ -91,8 +90,6 @@ main {
   margin-left: 10px;
   object-fit: contain;
 }
-
-/* SEASON 1 */
 
 .season {
   font-family: "Courier New", monospace;
@@ -181,6 +178,7 @@ main {
   height: 5px;
   background: #e32616;
   border-radius: 50%;
+  flex-shrink: 0;
 }
 
 .section-heading h2 {
@@ -191,7 +189,7 @@ main {
   letter-spacing: 1px;
 }
 
-/* FEATURED GIFS */
+/* GIFS */
 
 .featured-gif {
   width: 100%;
@@ -227,7 +225,7 @@ main {
   letter-spacing: 1px;
 }
 
-/* CHARACTER PORTRAITS */
+/* POLAROID PORTRAITS */
 
 .portrait-grid {
   display: flex;
@@ -275,8 +273,6 @@ main {
   font-weight: 900;
 }
 
-/* PRODUCERS */
-
 #producers {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 205px));
@@ -319,13 +315,6 @@ main {
   text-align: center;
 }
 
-.sketches-section .section-heading {
-  justify-content: center;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .illustration-grid {
   display: flex;
   flex-wrap: wrap;
@@ -365,8 +354,6 @@ main {
   padding-bottom: 90px;
 }
 
-/* SMALL RED FISHTANK LOGO */
-
 .ending-logo {
   display: flex;
   justify-content: center;
@@ -382,57 +369,52 @@ main {
 }
 
 /*
-  FULL-WIDTH FISHTANK TV COMPOSITION
+  RESPONSIVE FISHTANK TV COMPOSITION
 
-  The original image stays 450px wide.
-  The SVG behind it continues the fine white
-  hand-drawn lines to the viewport edges.
+  Original image: 1647 x 895
+  Desktop image width: 450px
+  Mobile image width: up to 88vw
+
+  The image and line extensions are
+  inside ONE SVG coordinate system.
 */
 
 .ending-artwork-stage {
   position: relative;
   width: 100vw;
-  max-width: none;
   margin-left: calc(50% - 50vw);
   margin-bottom: 30px;
   overflow: hidden;
-  isolation: isolate;
 }
 
-.ending-line-art {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none;
-  overflow: visible;
-}
-
-.ending-artwork {
-  position: relative;
-  z-index: 1;
-  width: min(450px, 88vw);
-  max-width: none;
-  margin: 0 auto;
-}
-
-.ending-artwork .illustration {
-  display: block;
-  width: 100%;
-}
-
-.ending-artwork img {
+.ending-composition {
   display: block;
   width: 100%;
   height: auto;
-  border: none;
-  object-fit: contain;
-  transition: transform .2s ease;
+  overflow: hidden;
 }
 
-.ending-artwork .illustration:hover img {
-  transform: scale(1.035);
+.ending-composition .drawn-line {
+  fill: none;
+  stroke: #f0f0f0;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: .88;
+}
+
+.ending-artwork-button {
+  position: absolute;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: zoom-in;
+  z-index: 2;
+}
+
+.ending-artwork-button:focus-visible {
+  outline: 2px solid #ffdc00;
+  outline-offset: 4px;
 }
 
 .ending-caption {
@@ -440,8 +422,6 @@ main {
   letter-spacing: 2px;
   font-size: 14px;
 }
-
-/* BOTTOM BACK LINK */
 
 .bottom-back {
   display: inline-block;
@@ -475,7 +455,7 @@ footer {
   );
 }
 
-/* FULL IMAGE VIEWER */
+/* LIGHTBOX */
 
 .lightbox {
   display: none;
@@ -589,12 +569,20 @@ footer {
   }
 
   #producers .polaroid {
-    width: 100%;
     padding: 4px;
   }
 
   #producers .polaroid strong {
     font-size: 9px;
+  }
+
+  .fishtank-logo {
+    width: 95px;
+  }
+
+  .season {
+    font-size: 18px;
+    letter-spacing: 2px;
   }
 
   .lightbox {
@@ -616,8 +604,7 @@ footer {
   }
 
   .polaroid,
-  .illustration img,
-  .ending-artwork img {
+  .illustration img {
     transition: none;
   }
 }
@@ -642,7 +629,7 @@ footer {
 
 <main>
 
-<!-- INTRO AND VIDEO -->
+<!-- HERO -->
 
 <section class="hero">
 
@@ -670,7 +657,6 @@ footer {
   <div class="video-feature">
 
     <video
-      id="fishtankVideo"
       controls
       playsinline
       preload="none"
@@ -736,11 +722,11 @@ footer {
 
 </section>
 
-<!-- SEASON 1 POSTER -->
+<!-- POSTER -->
 
 <section class="poster" id="poster"></section>
 
-<!-- CENTERED SKETCHES -->
+<!-- SKETCHES -->
 
 <section class="gallery-section sketches-section">
 
@@ -752,7 +738,7 @@ footer {
 
 </section>
 
-<!-- ENDING WITH RED LOGO AND EXTENDED LINE ART -->
+<!-- ENDING -->
 
 <section class="ending">
 
@@ -762,90 +748,119 @@ footer {
       alt="Red Fishtank Logo">
   </div>
 
-  <div class="ending-artwork-stage">
+  <!--
+    ONE RESPONSIVE SVG COMPOSITION
+
+    Image and extended lines share
+    the same coordinate system.
+
+    The SVG viewBox is adjusted by
+    JavaScript to preserve the desired
+    image size on different screens.
+  -->
+
+  <div class="ending-artwork-stage" id="endingStage">
 
     <svg
-      class="ending-line-art"
-      viewBox="0 0 1600 880"
-      preserveAspectRatio="none"
-      aria-hidden="true">
+      class="ending-composition"
+      id="endingComposition"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="-1800 0 5247 895"
+      preserveAspectRatio="xMidYMid meet"
+      role="img"
+      aria-label="Fishtank TV illustration with white hand-drawn lines extending outward">
 
-      <g
-        fill="none"
-        stroke="#f2f2f2"
-        stroke-width="1.1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        opacity="0.88">
+      <!-- LEFT EXTENSIONS -->
 
-        <!-- LEFT SIDE: upper cable -->
+      <g class="drawn-line">
+
+        <!-- Lower cable from left image edge -->
         <path d="
-          M 0 340
-          C 75 336, 95 348, 130 340
-          S 195 331, 245 338
-          C 285 345, 300 318, 340 323
-          S 390 335, 445 331
-          C 477 330, 490 310, 516 310
-          L 590 320
+          M 0 774
+          C -85 768, -130 785, -190 777
+          S -320 761, -400 773
+          C -480 789, -520 768, -605 776
+          S -735 791, -825 777
+          C -915 765, -980 788, -1060 779
+          S -1210 765, -1310 777
+          C -1440 791, -1530 768, -1640 776
+          L -2200 778
         "/>
 
-        <!-- LEFT SIDE: lower looping cable -->
+        <!-- Second lower cable -->
         <path d="
-          M 0 745
-          C 65 752, 115 735, 170 744
-          S 260 768, 312 752
-          C 355 737, 388 771, 425 768
-          S 470 733, 500 743
-          C 530 754, 540 770, 566 756
-          L 615 725
-        "/>
-
-        <!-- LEFT SIDE: additional hand-drawn strand -->
-        <path d="
-          M 0 775
-          C 60 779, 100 788, 142 776
-          S 207 761, 245 779
-          C 275 791, 302 787, 328 782
-          S 385 802, 420 786
-          L 535 752
-        "/>
-
-        <!-- RIGHT SIDE: upper cable -->
-        <path d="
-          M 1015 315
-          C 1060 315, 1080 332, 1112 324
-          S 1170 305, 1205 314
-          C 1232 325, 1215 378, 1242 392
-          S 1300 382, 1338 405
-          C 1400 441, 1445 430, 1490 446
-          S 1565 465, 1600 475
-        "/>
-
-        <!-- RIGHT SIDE: middle strand -->
-        <path d="
-          M 1030 700
-          C 1085 706, 1132 698, 1170 710
-          S 1235 721, 1280 710
-          C 1325 700, 1332 722, 1300 731
-          S 1290 747, 1365 743
-          C 1430 739, 1510 735, 1600 728
-        "/>
-
-        <!-- RIGHT SIDE: lower winding cable -->
-        <path d="
-          M 1035 735
-          C 1090 746, 1145 730, 1180 745
-          S 1230 763, 1200 774
-          C 1170 788, 1220 790, 1265 793
-          S 1340 797, 1385 806
-          C 1450 822, 1390 834, 1420 843
-          S 1520 850, 1600 862
+          M 0 801
+          C -70 814, -135 795, -200 804
+          S -310 819, -375 803
+          C -445 786, -500 817, -570 811
+          S -710 795, -780 808
+          C -880 824, -960 794, -1060 813
+          S -1220 798, -1330 809
+          L -2200 811
         "/>
 
       </g>
+
+      <!-- RIGHT EXTENSIONS -->
+
+      <g class="drawn-line">
+
+        <!-- Upper right cable -->
+        <path d="
+          M 1647 653
+          C 1710 660, 1760 685, 1830 681
+          S 1930 700, 2020 696
+          C 2110 695, 2170 716, 2250 710
+          S 2380 724, 2470 715
+          C 2570 704, 2650 735, 2750 724
+          L 3900 731
+        "/>
+
+        <!-- Middle right cable -->
+        <path d="
+          M 1647 725
+          C 1720 728, 1780 718, 1850 729
+          S 1950 747, 2030 732
+          C 2120 715, 2170 746, 2250 740
+          S 2400 726, 2480 741
+          C 2600 761, 2680 739, 2780 752
+          L 3900 755
+        "/>
+
+        <!-- Lower right cable -->
+        <path d="
+          M 1647 838
+          C 1720 831, 1790 854, 1870 847
+          S 2000 832, 2080 849
+          C 2170 866, 2230 841, 2320 856
+          S 2450 868, 2530 857
+          C 2620 845, 2710 873, 2810 864
+          L 3900 868
+        "/>
+
+      </g>
+
+      <!-- ORIGINAL ARTWORK -->
+
+      <image
+        id="endingSvgImage"
+        href="/images/clients/fishtank/fishtv1_.jpeg"
+        x="0"
+        y="0"
+        width="1647"
+        height="895"
+        preserveAspectRatio="none"/>
+
     </svg>
 
-    <div class="ending-artwork" id="endingArtwork"></div>
+    <!-- CLICKABLE AREA OVER ORIGINAL ARTWORK -->
+
+    <button
+      type="button"
+      class="ending-artwork-button"
+      id="endingArtworkButton"
+      aria-label="Enlarge Fishtank TV artwork">
+    </button>
 
   </div>
 
@@ -863,7 +878,7 @@ footer {
 
 <footer>© starsandtigers</footer>
 
-<!-- FULL-SIZE IMAGE VIEWER -->
+<!-- LIGHTBOX -->
 
 <div
   class="lightbox"
@@ -955,18 +970,13 @@ const illustrations = [
   ["fish1dontarioussketch.jpeg", "Dontarious Sketch"],
   ["fish1ellasketch.jpeg", "Ella Sketch"],
   ["fish1franksketch.jpeg", "Frank Sketch"],
+  ["fish1goldstrikersketch.jpeg", "Goldstriker Sketch"],
   ["fish1jetsketch.jpeg", "Jet Sketch"],
   ["fish1lancesketch.jpeg", "Lance Sketch"],
   ["fish1taisketch.jpeg", "Tai Sketch"],
   ["fish1taxsketch.jpeg", "Tax Sketch"],
   ["josiejonbubbles.jpeg", "Josie and Jon"],
   ["peppasylvia.jpeg", "Peppa and Sylvia"]
-];
-
-/* FISHTANK TV - ENDING ARTWORK */
-
-const endingArtwork = [
-  ["fishtv1_.jpeg", "Fishtank TV"]
 ];
 
 /* POSTER */
@@ -987,7 +997,14 @@ const castGif = [
   "Fishtank Season 1 Cast"
 ];
 
-/* ALL ORIGINAL ARTWORK FOR VIEWER */
+/* ENDING ARTWORK */
+
+const endingArtwork = [
+  "fishtv1_.jpeg",
+  "Fishtank TV"
+];
+
+/* LIGHTBOX ORDER */
 
 const allImages = [
   tvGif,
@@ -997,10 +1014,10 @@ const allImages = [
   ...fish,
   ...poster,
   ...illustrations,
-  ...endingArtwork
+  endingArtwork
 ];
 
-/* IMAGE URL FUNCTIONS */
+/* IMAGE URLS */
 
 function imagePath(filename) {
   return base + encodeURIComponent(filename);
@@ -1011,7 +1028,7 @@ function thumbnailPath(filename) {
   return thumbs + encodeURIComponent(name);
 }
 
-/* WEBP THUMBNAIL LOADING */
+/* WEBP THUMBNAILS */
 
 function useThumbnail(img, filename) {
   img.loading = "lazy";
@@ -1025,7 +1042,7 @@ function useThumbnail(img, filename) {
   img.src = thumbnailPath(filename);
 }
 
-/* LAZY-LOAD ANIMATED GIFS */
+/* GIF LOADING */
 
 const gifObserver =
   "IntersectionObserver" in window
@@ -1058,7 +1075,7 @@ function deferGif(img, filename) {
   }
 }
 
-/* FULL-SIZE IMAGE VIEWER */
+/* LIGHTBOX */
 
 let activeIndex = 0;
 let previousFocus = null;
@@ -1096,6 +1113,9 @@ function closeLightbox() {
   document.getElementById("lightbox")
     .classList.remove("open");
 
+  document.getElementById("largeImage")
+    .removeAttribute("src");
+
   document.body.style.overflow = "";
 
   if (previousFocus) {
@@ -1111,7 +1131,7 @@ function moveImage(direction) {
   updateLightbox();
 }
 
-/* CREATE CHARACTER PORTRAITS */
+/* CREATE POLAROIDS */
 
 function createPortrait(item) {
   const [filename, name] = item;
@@ -1195,7 +1215,7 @@ function createPoster(item) {
   return button;
 }
 
-/* CREATE FEATURED GIFS */
+/* CREATE GIFS */
 
 function createFeaturedGif(containerId, item) {
   const [filename, name] = item;
@@ -1235,7 +1255,7 @@ function fillGallery(id, items, creator) {
   });
 }
 
-/* BUILD PAGE */
+/* BUILD GALLERIES */
 
 fillGallery(
   "producers",
@@ -1267,12 +1287,6 @@ fillGallery(
   createPoster
 );
 
-fillGallery(
-  "endingArtwork",
-  endingArtwork,
-  createIllustration
-);
-
 createFeaturedGif(
   "tvFeature",
   tvGif
@@ -1283,7 +1297,122 @@ createFeaturedGif(
   castGif
 );
 
-/* IMAGE VIEWER CONTROLS */
+/*
+  RESPONSIVE ENDING COMPOSITION
+
+  All measurements below use the
+  original image's coordinate system.
+
+  Image size:
+  1647 x 895
+
+  Desired rendered width:
+  450px on desktop
+  88% of screen width on small screens
+
+  This ensures the original image and
+  extended lines never drift apart.
+*/
+
+const originalWidth = 1647;
+const originalHeight = 895;
+
+const endingStage = document.getElementById(
+  "endingStage"
+);
+
+const endingSvg = document.getElementById(
+  "endingComposition"
+);
+
+const endingButton = document.getElementById(
+  "endingArtworkButton"
+);
+
+function updateEndingComposition() {
+
+  const viewportWidth = endingStage.clientWidth;
+
+  const desiredImageWidth = Math.min(
+    450,
+    viewportWidth * 0.88
+  );
+
+  const scale = desiredImageWidth / originalWidth;
+
+  /*
+    Calculate how much of the original
+    SVG coordinate system is needed
+    to fill the entire screen.
+  */
+
+  const visibleSvgWidth = viewportWidth / scale;
+
+  const viewBoxX =
+    (originalWidth - visibleSvgWidth) / 2;
+
+  /*
+    Because the SVG image and the
+    extension paths share coordinates,
+    resizing this viewBox keeps their
+    relative positions fixed.
+  */
+
+  endingSvg.setAttribute(
+    "viewBox",
+    `${viewBoxX} 0 ${visibleSvgWidth} ${originalHeight}`
+  );
+
+  /*
+    The SVG's rendered height follows
+    the image's original aspect ratio.
+  */
+
+  const renderedHeight = originalHeight * scale;
+
+  endingSvg.style.height = renderedHeight + "px";
+
+  /*
+    Position the invisible click target
+    directly over the original artwork.
+  */
+
+  const imageLeft =
+    (viewportWidth - desiredImageWidth) / 2;
+
+  endingButton.style.left = imageLeft + "px";
+  endingButton.style.top = "0px";
+  endingButton.style.width = desiredImageWidth + "px";
+  endingButton.style.height = renderedHeight + "px";
+}
+
+updateEndingComposition();
+
+/*
+  ResizeObserver handles changes to
+  the gallery's actual container size.
+*/
+
+if ("ResizeObserver" in window) {
+  const endingResizeObserver = new ResizeObserver(() => {
+    updateEndingComposition();
+  });
+
+  endingResizeObserver.observe(endingStage);
+} else {
+  window.addEventListener(
+    "resize",
+    updateEndingComposition
+  );
+}
+
+/* OPEN ENDING ARTWORK */
+
+endingButton.addEventListener("click", () => {
+  openImage(endingArtwork);
+});
+
+/* LIGHTBOX CONTROLS */
 
 document.getElementById("close")
   .addEventListener("click", closeLightbox);
@@ -1299,6 +1428,7 @@ document.getElementById("next")
   });
 
 document.addEventListener("keydown", event => {
+
   const lightbox = document.getElementById("lightbox");
 
   if (!lightbox.classList.contains("open")) {
