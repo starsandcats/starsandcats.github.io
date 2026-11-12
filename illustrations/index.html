@@ -1,459 +1,274 @@
-
-<!DOCTYPE html>
-<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Illustrations — starsandcats</title>
+  <title>Illustrations — Stars and Cats</title>
 
-<title>Illustrations | starsandtigers</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-<style>
-* {
-  box-sizing: border-box;
-}
+    body {
+      background: #f7f4f0;
+      color: #222;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 40px 8%;
+      background: #000000;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
 
-body {
-  margin: 0;
-  background: #000;
-  color: #fff;
-  font-family: Arial, Helvetica, sans-serif;
-}
+    a { color: inherit; }
+    header {
+      background: #050505;
+      padding: 28px 5%;
+      border-bottom: 1px solid #777;
+    }
 
-/* HEADER */
+    h1 { margin-top: 50px; }
+    .brand {
+      font-size: 16px;
+      font-weight: bold;
+    }
 
-header {
-  width: 100%;
-  padding: 24px 5%;
-  background: #000;
-  border-bottom: 1px solid #777;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 30px;
-}
+    nav {
+      text-align: center;
+      margin-top: 22px;
+    }
 
-.brand {
-  color: white;
-  text-decoration: none;
-  font-size: 23px;
-  font-weight: 900;
-  white-space: nowrap;
-}
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 13px;
+    }
 
-nav {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  flex-wrap: wrap;
-  gap: 24px;
-}
+    nav a:hover {
+      color: #ffdc00;
+    }
 
-nav a {
-  color: white;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: bold;
-  transition: color .25s ease;
-}
+    h1 {
+      text-align: center;
+      font-size: clamp(34px, 5vw, 64px);
+      font-weight: normal;
+      margin: 45px 10px 30px;
+      text-transform: uppercase;
+    }
 
-nav a:hover,
-nav a.active {
-  color: #ffdc00;
-}
+    main {
+      padding: 0 8% 40px;
+    }
 
-/* MAIN CONTENT */
+    .description {
+      text-align: center;
+    }
 
-main {
-  padding: 45px 5% 80px;
-}
+    .gallery {
+      display: grid;
+@@ -29,112 +72,57 @@
+      width: 100%;
+      height: auto;
+      display: block;
+      cursor: zoom-in;
+      transition: opacity 0.2s ease;
+    }
 
-h1 {
-  font-size: clamp(36px, 5vw, 60px);
-  font-weight: 900;
-  text-transform: uppercase;
-  margin: 0 0 15px;
-}
+    .gallery img:hover {
+      opacity: 0.85;
+    }
 
-.description {
-  color: #ccc;
-  font-size: 15px;
-  margin: 0 0 35px;
-}
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0, 0, 0, 0.88);
+      justify-content: center;
+      align-items: center;
+      padding: 50px 20px;
+    }
 
-/* ILLUSTRATION GALLERY */
+    .lightbox.active {
+      display: flex;
+    }
 
-.gallery {
-  display: grid;
-  grid-template-columns:
-    repeat(3, minmax(0, 1fr));
-  gap: 20px;
-  align-items: start;
-}
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 85vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
 
-.artwork {
-  position: relative;
-  min-width: 0;
-  z-index: 1;
-}
+    .lightbox-close {
+      position: absolute;
+      top: 15px;
+      right: 25px;
+      color: white;
+      font-size: 42px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      line-height: 1;
+    }
 
-.artwork:hover {
-  z-index: 10;
-}
-
-.artwork img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 0;
+    .lightbox-close:hover {
+      opacity: 0.7;
+    }
+    
+/* Make gallery artwork clickable */
+.gallery img {
   cursor: zoom-in;
-  transition:
-    transform .3s ease,
-    filter .3s ease;
+  transition: opacity 0.2s ease;
 }
 
-.artwork img:hover {
-  transform: scale(1.08);
-  filter: brightness(1.08);
+.gallery img:hover {
+  opacity: 0.85;
 }
 
-/* LIGHTBOX */
-
+/* Full-screen dark overlay */
 .lightbox {
+  display: none;
   position: fixed;
   inset: 0;
-  display: none;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.88);
   justify-content: center;
   align-items: center;
-  background: rgba(0,0,0,.96);
-  z-index: 9999;
-  padding: 55px;
+  padding: 50px 20px;
+  box-sizing: border-box;
 }
 
 .lightbox.active {
   display: flex;
 }
 
+/* Enlarged artwork */
 .lightbox img {
   max-width: 90vw;
   max-height: 85vh;
+  width: auto;
+  height: auto;
   object-fit: contain;
 }
 
-.close,
-.arrow {
+/* X close button */
+.lightbox-close {
   position: absolute;
-  color: white;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-}
-
-.close {
   top: 15px;
   right: 25px;
+  color: white;
   font-size: 42px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  line-height: 1;
 }
 
-.arrow {
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 40px;
+.lightbox-close:hover {
+  opacity: 0.7;
 }
-
-.prev {
-  left: 15px;
-}
-
-.next {
-  right: 15px;
-}
-
-.close:hover,
-.arrow:hover {
-  color: #ffdc00;
-}
-
-/* RESPONSIVE */
-
-@media (max-width: 900px) {
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 18px;
-  }
-
-  nav {
-    justify-content: flex-start;
-    gap: 18px;
-  }
-
-  .gallery {
-    grid-template-columns:
-      repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 600px) {
-  header {
-    padding: 20px 5%;
-  }
-
-  .brand {
-    font-size: 20px;
-  }
-
-  nav {
-    gap: 12px 16px;
-  }
-
-  nav a {
-    font-size: 12px;
-  }
-
-  main {
-    padding-top: 30px;
-  }
-
-  .gallery {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-
-  .lightbox {
-    padding: 50px 35px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .artwork img,
-  nav a {
-    transition: none;
-  }
-}
-</style>
+  </style>
 </head>
 
 <body>
+<style> 
+ * {
+  box-sizing: border-box;
+}
 
-<!-- HEADER -->
+body {
+  margin: 0;
+  background: #000000;
+  color: white;
+  font-family: Arial, sans-serif;
+  font-weight: normal;
+}
+
+header {
+  background: #050505;
+  padding: 28px 5%;
+  border-bottom: 1px solid #777;
+}
+
+.brand {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+nav {
+  text-align: center;
+  margin-top: 22px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 13px;
+}
+
+nav a:hover {
+  color: #ffdc00;
+}
+
+h1 {
+  text-align: center;
+  font-size: clamp(34px, 5vw, 64px);
+  font-weight: normal;
+  margin: 45px 10px 30px;
+  text-transform: uppercase;
+}
+ 
 
 <header>
-  <a class="brand" href="/">
-    ★ starsandtigers ★
-  </a>
-
-  <nav aria-label="Main navigation">
-    <a href="/">Home</a>
-
-    <a href="/illustration/"
-       class="active"
-       aria-current="page">
-      Illustrations
-    </a>
-
-    <a href="/animations/">
-      Animations
-    </a>
-
-    <a href="/sketches/">
-      Sketches
-    </a>
-
-    <a href="/client-projects/">
-      Client Work
-    </a>
+  <div class="brand">starsandtigers</div>
+  <nav>
+@@ -145,25 +133,26 @@
+    <a href="../sketches/">Sketches</a>
   </nav>
 </header>
+  
+  <h1>Illustrations</h1>
+  <p>A collection of my illustration work.</p>
 
-<!-- MAIN -->
+<h1>Illustrations</h1>
 
 <main>
+  <p class="description">A collection of my illustration work.</p>
 
-  <h1>ILLUSTRATIONS</h1>
-
-  <p class="description">
-    A collection of my illustrative works.
-  </p>
-
-  <div class="gallery" id="gallery"></div>
-
+  <div class="gallery">
+      <img src="../images/illustration/butchers.jpg"
+         alt="butchers">
+    <img src="../images/illustration/petersteele.jpg"
+         alt="Portrait of Peter Steele">
+      <img src="../images/illustration/paulo.jpg"
+         alt="Portrait of Paulo">
+     <img src="../images/illustration/ripped.jpg"
+         alt="Illustration: Ripped">
+    <img src="../images/illustration/butchers.jpg" alt="Butchers">
+    <img src="../images/illustration/petersteele.jpg" alt="Portrait of Peter Steele">
+    <img src="../images/illustration/paulo.jpg" alt="Portrait of Paulo">
+    <img src="../images/illustration/ripped.jpg" alt="Illustration: Ripped">
+  </div>
+  
 </main>
 
-<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog"
+     aria-modal="true" aria-label="Enlarged artwork">
 
-<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose"
+          aria-label="Close enlarged image">&times;</button>
 
-  <button class="close"
-          id="close"
-          aria-label="Close image">
-    &times;
-  </button>
-
-  <button class="arrow prev"
-          id="prev"
-          aria-label="Previous image">
-    &#10094;
-  </button>
-
-  <img id="lightboxImage"
-       src=""
-       alt="Enlarged illustration">
-
-  <button class="arrow next"
-          id="next"
-          aria-label="Next image">
-    &#10095;
-  </button>
-
+  <img id="lightboxImage" src="" alt="">
 </div>
 
-<script>
-
-/* GALLERY */
-
-const gallery = document.getElementById("gallery");
-
-const folder = "/images/illustration/";
-
-const githubAPI =
-  "https://api.github.com/repos/" +
-  "starsandcats/starsandcats.github.io/" +
-  "contents/images/illustration?ref=main";
-
-const fallbackFiles = [
-  "ripped.jpg",
-  "petersteele.jpg"
-];
-
-let images = [];
-let currentIndex = 0;
-
-function renderGallery(files) {
-  gallery.innerHTML = "";
-  images = [];
-
-  files.forEach(filename => {
-    const src = folder +
-      filename.split("/").map(encodeURIComponent).join("/");
-
-    const item = document.createElement("div");
-    item.className = "artwork";
-
-    const img = document.createElement("img");
-    img.src = src;
-    img.alt = filename.replace(/\.[^.]+$/, "");
-    img.loading = "lazy";
-
-    const index = images.length;
-    images.push(src);
-
-    img.addEventListener("click", () => {
-      openLightbox(index);
-    });
-
-    item.appendChild(img);
-    gallery.appendChild(item);
+@@ -202,5 +191,7 @@ <h1>Illustrations</h1>
+    }
   });
-}
-
-async function loadGallery() {
-  try {
-    const response = await fetch(githubAPI);
-
-    if (!response.ok) {
-      throw new Error("Could not load image list");
-    }
-
-    const files = await response.json();
-
-    const imageFiles = files
-      .filter(file =>
-        file.type === "file" &&
-        /\.(jpg|jpeg|png|gif|webp)$/i.test(file.name)
-      )
-      .map(file => file.name)
-      .sort((a, b) =>
-        a.localeCompare(b, undefined, {
-          numeric: true
-        })
-      );
-
-    if (imageFiles.length === 0) {
-      throw new Error("No images found");
-    }
-
-    renderGallery(imageFiles);
-
-  } catch (error) {
-    renderGallery(fallbackFiles);
-  }
-}
-
-loadGallery();
-
-/* LIGHTBOX */
-
-const lightbox =
-  document.getElementById("lightbox");
-
-const lightboxImage =
-  document.getElementById("lightboxImage");
-
-function openLightbox(index) {
-  currentIndex = index;
-
-  lightboxImage.src = images[index];
-
-  lightbox.classList.add("active");
-  document.body.style.overflow = "hidden";
-}
-
-function closeLightbox() {
-  lightbox.classList.remove("active");
-  document.body.style.overflow = "";
-}
-
-function changeImage(direction) {
-  if (!images.length) return;
-
-  currentIndex =
-    (currentIndex + direction + images.length) %
-    images.length;
-
-  lightboxImage.src = images[currentIndex];
-}
-
-document.getElementById("close")
-  .addEventListener("click", closeLightbox);
-
-document.getElementById("prev")
-  .addEventListener("click", () => changeImage(-1));
-
-document.getElementById("next")
-  .addEventListener("click", () => changeImage(1));
-
-lightbox.addEventListener("click", event => {
-  if (event.target === lightbox) {
-    closeLightbox();
-  }
-});
-
-document.addEventListener("keydown", event => {
-  if (!lightbox.classList.contains("active")) return;
-
-  if (event.key === "Escape") {
-    closeLightbox();
-  }
-
-  if (event.key === "ArrowLeft") {
-    changeImage(-1);
-  }
-
-  if (event.key === "ArrowRight") {
-    changeImage(1);
-  }
-});
-
 </script>
 
 </body>
