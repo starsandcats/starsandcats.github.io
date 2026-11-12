@@ -4,594 +4,862 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title>DBS — starsandtigers</title>
 
 <style>
+
+/* GENERAL */
+
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    background: #000;
-    color: white;
-    font-family: Arial, sans-serif;
+  margin: 0;
+  background: #000000;
+  color: white;
+  font-family: Arial, sans-serif;
 }
 
+/* TOP HEADER */
+
 header {
-    background: #050505;
-    padding: 28px 5%;
-    border-bottom: 1px solid #777;
+  width: 100%;
+  background: #000000;
+  border-bottom: 1px solid #777;
+  padding: 24px 5%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
 }
 
 .brand {
-    font-size: 16px;
-    font-weight: bold;
+  color: white;
+  font-size: 23px;
+  font-weight: 900;
+  text-decoration: none;
+  white-space: nowrap;
 }
 
+/* NAVIGATION */
+
 nav {
-    text-align: center;
-    margin-top: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 24px;
 }
 
 nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 10px;
-    font-size: 13px;
-    transition: color .25s ease;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  white-space: nowrap;
+  transition: color 0.25s ease;
 }
 
 nav a:hover,
-.back:hover {
-    color: #ffdc00;
+nav a.active {
+  color: #ffdc00;
 }
+
+/* DBS HEADING */
 
 h1 {
-    text-align: center;
-    color: #f5d742;
-    font-size: clamp(38px, 6vw, 68px);
-    margin: 60px 10px 25px;
+  text-align: center;
+  color: #f5d742;
+  font-size: clamp(38px, 6vw, 68px);
+  margin: 60px 10px 25px;
 }
+
+/* DESCRIPTION */
 
 .description {
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 0 22px;
-    text-align: center;
-    color: #f5d742;
-    line-height: 1.8;
-    font-size: 15px;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 22px;
+  text-align: center;
+  color: #f5d742;
+  line-height: 1.8;
+  font-size: 15px;
 }
 
-/* WIDER GALLERY */
+/* CIRCULAR GALLERY */
 
 .gallery {
-    position: relative;
-    width: min(98vw, 1600px);
-    aspect-ratio: 1.45 / 1;
-    margin: 45px auto 70px;
+  position: relative;
+  width: min(98vw, 1600px);
+  aspect-ratio: 1.45 / 1;
+  margin: 45px auto 70px;
 }
 
 .gallery-item {
-    position: absolute;
-    left: var(--x);
-    top: var(--y);
-    width: var(--w);
-    transform: translate(-50%, -50%);
-    transition: transform .35s ease, filter .35s ease;
-    z-index: 1;
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--w);
+  transform: translate(-50%, -50%);
+  transition: transform .35s ease, filter .35s ease;
+  z-index: 1;
 }
 
 .gallery-item img {
-    display: block;
-    width: 100%;
-    height: auto;
-    cursor: zoom-in;
-    filter: drop-shadow(0 0 4px rgba(255,255,255,.15));
+  display: block;
+  width: 100%;
+  height: auto;
+  cursor: zoom-in;
+  filter: drop-shadow(0 0 4px rgba(255,255,255,.15));
 }
 
 .gallery-item:hover {
-    z-index: 20;
-    transform: translate(-50%, -50%) scale(1.18);
-    filter: drop-shadow(0 0 12px rgba(245,215,66,.45));
+  z-index: 20;
+  transform: translate(-50%, -50%) scale(1.18);
+  filter: drop-shadow(0 0 12px rgba(245,215,66,.45));
 }
 
 /* CENTER VIDEO */
 
 .video-item {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: clamp(260px, 27%, 430px);
-    transform: translate(-50%, -50%);
-    z-index: 10;
-    background: #080808;
-    padding: 6px;
-    border: 1px solid #444;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: clamp(260px, 27%, 430px);
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  background: #080808;
+  padding: 6px;
+  border: 1px solid #444;
 }
 
 .video-item video {
-    display: block;
-    width: 100%;
-    height: auto;
-    background: #000;
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #000;
 }
 
 .video-label {
-    text-align: center;
-    color: #f5d742;
-    font-size: 12px;
-    letter-spacing: 3px;
-    padding: 10px 0 5px;
+  text-align: center;
+  color: #f5d742;
+  font-size: 12px;
+  letter-spacing: 3px;
+  padding: 10px 0 5px;
 }
 
 /* BACK LINK */
 
 .back {
-    display: block;
-    width: fit-content;
-    margin: 20px auto 60px;
-    color: white;
-    text-decoration: none;
-    font-size: 14px;
-    transition: color .25s ease;
+  display: block;
+  width: fit-content;
+  margin: 20px auto 60px;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color .25s ease;
+}
+
+.back:hover {
+  color: #ffdc00;
 }
 
 /* LIGHTBOX */
 
 .lightbox {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 100;
-    background: rgba(0,0,0,.97);
-    justify-content: center;
-    align-items: center;
-    padding: 25px 70px;
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(0,0,0,.97);
+  justify-content: center;
+  align-items: center;
+  padding: 25px 70px;
 }
 
 .lightbox.active {
-    display: flex;
+  display: flex;
 }
 
 .lightbox img {
-    max-width: 88vw;
-    max-height: 85vh;
-    object-fit: contain;
+  max-width: 88vw;
+  max-height: 85vh;
+  object-fit: contain;
 }
 
 .lightbox-arrow,
 .close {
-    position: absolute;
-    color: white;
-    background: rgba(20,20,20,.7);
-    border: 1px solid #555;
-    cursor: pointer;
-    transition: color .2s ease, background .2s ease;
+  position: absolute;
+  color: white;
+  background: rgba(20,20,20,.7);
+  border: 1px solid #555;
+  cursor: pointer;
+  transition: color .2s ease, background .2s ease;
 }
 
 .lightbox-arrow:hover,
 .close:hover {
-    color: #f5d742;
-    background: #222;
+  color: #f5d742;
+  background: #222;
 }
 
 .lightbox-arrow {
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 38px;
-    width: 52px;
-    height: 65px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 38px;
+  width: 52px;
+  height: 65px;
 }
 
 .lightbox-prev {
-    left: 15px;
+  left: 15px;
 }
 
 .lightbox-next {
-    right: 15px;
+  right: 15px;
 }
 
 .close {
-    top: 18px;
-    right: 25px;
-    font-size: 36px;
-    width: 48px;
-    height: 48px;
+  top: 18px;
+  right: 25px;
+  font-size: 36px;
+  width: 48px;
+  height: 48px;
 }
 
 .image-counter {
-    position: absolute;
-    bottom: 18px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: #ccc;
-    font-size: 13px;
-    letter-spacing: 2px;
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #ccc;
+  font-size: 13px;
+  letter-spacing: 2px;
+}
+
+/* RESPONSIVE HEADER */
+
+@media (max-width: 900px) {
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  nav {
+    justify-content: flex-start;
+    gap: 18px;
+  }
+
 }
 
 /* MOBILE GALLERY */
 
 @media (max-width: 700px) {
-    h1 {
-        margin-top: 40px;
-    }
 
-    .gallery {
-        width: 94%;
-        aspect-ratio: auto;
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 22px 14px;
-        align-items: center;
-    }
+  header {
+    padding: 20px 5%;
+  }
 
-    .gallery-item {
-        position: static;
-        width: 100% !important;
-        transform: none;
-    }
+  .brand {
+    font-size: 20px;
+  }
 
-    .gallery-item:hover {
-        transform: scale(1.04);
-    }
+  nav {
+    gap: 12px 16px;
+  }
 
-    .video-item {
-        position: static;
-        grid-column: span 2;
-        width: 85%;
-        transform: none;
-        justify-self: center;
-        margin: 15px 0;
-    }
+  nav a {
+    font-size: 12px;
+  }
 
-    nav a {
-        margin: 0 5px;
-        font-size: 12px;
-    }
+  h1 {
+    margin-top: 40px;
+  }
 
-    .lightbox {
-        padding: 20px 48px;
-    }
+  .gallery {
+    width: 94%;
+    aspect-ratio: auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px 14px;
+    align-items: center;
+  }
 
-    .lightbox img {
-        max-width: 100%;
-        max-height: 78vh;
-    }
+  .gallery-item {
+    position: static;
+    width: 100% !important;
+    transform: none;
+  }
 
-    .lightbox-arrow {
-        width: 38px;
-        height: 52px;
-        font-size: 28px;
-    }
+  .gallery-item:hover {
+    transform: scale(1.04);
+  }
 
-    .lightbox-prev {
-        left: 5px;
-    }
+  .video-item {
+    position: static;
+    grid-column: span 2;
+    width: 85%;
+    transform: none;
+    justify-self: center;
+    margin: 15px 0;
+  }
 
-    .lightbox-next {
-        right: 5px;
-    }
+  .lightbox {
+    padding: 20px 48px;
+  }
+
+  .lightbox img {
+    max-width: 100%;
+    max-height: 78vh;
+  }
+
+  .lightbox-arrow {
+    width: 38px;
+    height: 52px;
+    font-size: 28px;
+  }
+
+  .lightbox-prev {
+    left: 5px;
+  }
+
+  .lightbox-next {
+    right: 5px;
+  }
+
 }
 
 @media (max-width: 380px) {
-    .gallery {
-        grid-template-columns: 1fr;
-    }
 
-    .video-item {
-        grid-column: span 1;
-        width: 100%;
-    }
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .video-item {
+    grid-column: span 1;
+    width: 100%;
+  }
+
 }
+
 </style>
 </head>
 
 <body>
 
+<!-- TOP NAVIGATION HEADER -->
+
 <header>
-    <div class="brand">starsandtigers</div>
-    <nav>
-        <a href="../../../">Home</a>
-        <a href="../../../illustrations/">Illustrations</a>
-        <a href="../../../animations/">Animations</a>
-        <a href="../../../client-projects/">Client Projects</a>
-        <a href="../../../sketches/">Sketches</a>
-    </nav>
+
+  <a class="brand" href="/">
+    ★ starsandtigers ★
+  </a>
+
+  <nav aria-label="Main navigation">
+
+    <a href="/">
+      Home
+    </a>
+
+    <a href="/illustration/">
+      Illustrations
+    </a>
+
+    <a href="/animations/">
+      Animations
+    </a>
+
+    <a href="/sketches/">
+      Sketches
+    </a>
+
+    <a
+      href="/client-projects/"
+      class="active"
+      aria-current="page">
+      Client Work
+    </a>
+
+  </nav>
+
 </header>
+
+<!-- DBS TITLE -->
 
 <h1>DBS</h1>
 
-<div class="description">
-    <p>
-        Upon reading the letters D, B, and S, you might be wondering
-        "just what is DBS?" All I can tell you is my best interpretation
-        of what DBS is to me. DBS simply put is a concept, an idea.
-        DBS is a brand, it's a character, it's a man, it's men, it's
-        action and violence, it's chaotic and dancing in the dark,
-        with the one and only MR.DBS being the masked face of it all.
-    </p>
+<!-- DBS DESCRIPTION -->
 
-    <p>
-        You may ask "just who is MR.DBS?" What does he want? Where is
-        he going? What is he doing? What will he do next? Are we in
-        danger? MR.DBS is the mysterious figure who will answer NONE
-        of these questions. Just who the hat selling, gun shooting,
-        suitcase carrying, man of the night in a trench coat and
-        balaclava is might remain one of the world's greatest mysteries,
-        but regardless of it all he will do what he wants and get what
-        he needs.
-    </p>
+<div class="description">
+
+  <p>
+    Upon reading the letters D, B, and S, you might be wondering
+    "just what is DBS?" All I can tell you is my best interpretation
+    of what DBS is to me. DBS simply put is a concept, an idea.
+    DBS is a brand, it's a character, it's a man, it's men, it's
+    action and violence, it's chaotic and dancing in the dark,
+    with the one and only MR.DBS being the masked face of it all.
+  </p>
+
+  <p>
+    You may ask "just who is MR.DBS?" What does he want? Where is
+    he going? What is he doing? What will he do next? Are we in
+    danger? MR.DBS is the mysterious figure who will answer NONE
+    of these questions. Just who the hat selling, gun shooting,
+    suitcase carrying, man of the night in a trench coat and
+    balaclava is might remain one of the world's greatest mysteries,
+    but regardless of it all he will do what he wants and get what
+    he needs.
+  </p>
+
 </div>
+
+<!-- DBS GALLERY -->
 
 <main class="gallery" id="gallery">
 
-    <div class="gallery-item">
-        <img src="../../../images/clients/dbs/dbsposter.JPG" alt="DBS poster">
+  <div class="gallery-item">
+    <img src="../../../images/clients/dbs/dbsposter.JPG"
+         alt="DBS poster">
+  </div>
+
+  <div class="gallery-item">
+    <img src="../../../images/clients/dbs/dbsrecord.jpg"
+         alt="DBS record">
+  </div>
+
+  <div class="gallery-item">
+    <img src="../../../images/clients/dbs/DBSdancewithfoid2.JPG"
+         alt="DBS dance">
+  </div>
+
+  <div class="gallery-item">
+    <img src="../../../images/clients/dbs/DBSdancewithfoid3.JPG"
+         alt="DBS dance">
+  </div>
+
+  <div class="gallery-item">
+    <img src="../../../images/clients/dbs/DBSdancewithfoid1.JPG"
+         alt="DBS dance">
+  </div>
+
+  <div class="gallery-item">
+    <img src="../../../images/clients/dbs/DBS_Pistol_Animation.GIF"
+         alt="DBS pistol animation">
+  </div>
+
+  <div class="gallery-item">
+    <img src="../../../images/clients/dbs/DBS_lifting_Animation.GIF"
+         alt="DBS lifting animation">
+  </div>
+
+  <div class="gallery-item">
+    <img src="../../../images/animation/DBS_gun_Animation_Final.gif"
+         alt="DBS gun animation">
+  </div>
+
+  <div class="gallery-item">
+    <img src="../../../images/clients/dbs/dbspanels.JPG"
+         alt="DBS panels">
+  </div>
+
+  <div class="gallery-item">
+    <img src="../../../images/clients/dbs/dbsdance.JPG"
+         alt="DBS dance">
+  </div>
+
+  <div class="gallery-item">
+    <img src="../../../images/clients/dbs/dbsfalloff.JPG"
+         alt="DBS falloff">
+  </div>
+
+  <!-- CENTER VIDEO -->
+
+  <div class="gallery-item video-item">
+
+    <video controls muted loop playsinline>
+      <source
+        src="../../../images/clients/dbs/DBS.mp4"
+        type="video/mp4">
+    </video>
+
+    <div class="video-label">
+      DOWN BAD SOCIETY
     </div>
 
-    <div class="gallery-item">
-        <img src="../../../images/clients/dbs/dbsrecord.jpg" alt="DBS record">
-    </div>
+  </div>
 
-    <div class="gallery-item">
-        <img src="../../../images/clients/dbs/DBSdancewithfoid2.JPG" alt="DBS dance">
-    </div>
+  <div class="gallery-item">
+    <img src="../../../images/clients/dbs/dbsrepeat.JPG"
+         alt="DBS repeat">
+  </div>
 
-    <div class="gallery-item">
-        <img src="../../../images/clients/dbs/DBSdancewithfoid3.JPG" alt="DBS dance">
-    </div>
+  <div class="gallery-item">
+    <img src="../../../images/clients/dbs/dbsshadow.JPG"
+         alt="DBS shadow">
+  </div>
 
-    <div class="gallery-item">
-        <img src="../../../images/clients/dbs/DBSdancewithfoid1.JPG" alt="DBS dance">
-    </div>
+  <div class="gallery-item">
+    <img src="../../../images/clients/dbs/dbsondbs.JPG"
+         alt="DBS on DBS">
+  </div>
 
-    <div class="gallery-item">
-        <img src="../../../images/clients/dbs/DBS_Pistol_Animation.GIF" alt="DBS pistol animation">
-    </div>
+  <div class="gallery-item">
+    <img src="../../../images/clients/dbs/dbstie.JPG"
+         alt="DBS tie">
+  </div>
 
-    <div class="gallery-item">
-        <img src="../../../images/clients/dbs/DBS_lifting_Animation.GIF" alt="DBS lifting animation">
-    </div>
+  <div class="gallery-item">
+    <img src="../../../images/clients/dbs/dbsspotlight.JPG"
+         alt="DBS spotlight">
+  </div>
 
-    <div class="gallery-item">
-        <img src="../../../images/animation/DBS_gun_Animation_Final.gif" alt="DBS gun animation">
-    </div>
+  <div class="gallery-item">
+    <img src="../../../images/clients/dbs/dbsportrait.JPG"
+         alt="DBS portrait">
+  </div>
 
-    <div class="gallery-item">
-        <img src="../../../images/clients/dbs/dbspanels.JPG" alt="DBS panels">
-    </div>
+  <div class="gallery-item">
+    <img src="/images/clients/dbs/dbswindy.GIF"
+         alt="DBS Windy">
+  </div>
 
-    <div class="gallery-item">
-        <img src="../../../images/clients/dbs/dbsdance.JPG" alt="DBS dance">
-    </div>
+  <div class="gallery-item">
+    <img src="/images/clients/dbs/dbsyeah.JPG"
+         alt="DBS Yeah">
+  </div>
 
-    <div class="gallery-item">
-        <img src="../../../images/clients/dbs/dbsfalloff.JPG" alt="DBS falloff">
-    </div>
+  <div class="gallery-item">
+    <img src="../../../images/clients/dbs/dbsrecordspin.gif"
+         alt="DBS record spin">
+  </div>
 
-    <div class="gallery-item video-item">
-        <video controls muted loop playsinline>
-            <source src="../../../images/clients/dbs/DBS.mp4" type="video/mp4">
-        </video>
-        <div class="video-label">DOWN BAD SOCIETY</div>
-    </div>
+  <div class="gallery-item">
+    <img src="../../../images/clients/dbs/dbsglitch.gif"
+         alt="DBS glitch">
+  </div>
 
-    <div class="gallery-item">
-        <img src="../../../images/clients/dbs/dbsrepeat.JPG" alt="DBS repeat">
-    </div>
+  <div class="gallery-item">
+    <img src="../../../images/clients/dbs/dbshands.gif"
+         alt="DBS hands">
+  </div>
 
-    <div class="gallery-item">
-        <img src="../../../images/clients/dbs/dbsshadow.JPG" alt="DBS shadow">
-    </div>
+  <div class="gallery-item">
+    <img src="../../../images/clients/dbs/dbsboogie.gif"
+         alt="DBS boogie">
+  </div>
 
-    <div class="gallery-item">
-        <img src="../../../images/clients/dbs/dbsondbs.JPG" alt="DBS on DBS">
-    </div>
+  <div class="gallery-item">
+    <img src="../../../images/clients/dbs/dbsmoonwalk.gif"
+         alt="DBS moonwalk">
+  </div>
 
-    <div class="gallery-item">
-        <img src="../../../images/clients/dbs/dbstie.JPG" alt="DBS tie">
-    </div>
+  <div class="gallery-item">
+    <img src="../../../images/clients/dbs/dbsshoot.gif"
+         alt="DBS shoot">
+  </div>
 
-    <div class="gallery-item">
-        <img src="../../../images/clients/dbs/dbsspotlight.JPG" alt="DBS spotlight">
-    </div>
-
-    <div class="gallery-item">
-        <img src="../../../images/clients/dbs/dbsportrait.JPG" alt="DBS portrait">
-    </div>
-
-    <div class="gallery-item">
-        <img src="/images/clients/dbs/dbswindy.GIF" alt="DBS Windy">
-    </div>
-
-    <div class="gallery-item">
-        <img src="/images/clients/dbs/dbsyeah.JPG" alt="DBS Yeah">
-    </div>
-
-    <div class="gallery-item">
-        <img src="../../../images/clients/dbs/dbsrecordspin.gif" alt="DBS record spin">
-    </div>
-
-    <div class="gallery-item">
-        <img src="../../../images/clients/dbs/dbsglitch.gif" alt="DBS glitch">
-    </div>
-
-    <div class="gallery-item">
-        <img src="../../../images/clients/dbs/dbshands.gif" alt="DBS hands">
-    </div>
-
-    <div class="gallery-item">
-        <img src="../../../images/clients/dbs/dbsboogie.gif" alt="DBS boogie">
-    </div>
-
-    <div class="gallery-item">
-        <img src="../../../images/clients/dbs/dbsmoonwalk.gif" alt="DBS moonwalk">
-    </div>
-
-    <div class="gallery-item">
-        <img src="../../../images/clients/dbs/dbsshoot.gif" alt="DBS shoot">
-    </div>
-
-    <div class="gallery-item">
-        <img src="../../../images/clients/dbs/dbsripple.gif" alt="DBS ripple">
-    </div>
+  <div class="gallery-item">
+    <img src="../../../images/clients/dbs/dbsripple.gif"
+         alt="DBS ripple">
+  </div>
 
 </main>
 
-<a class="back" href="../../">← Back to Client Projects</a>
+<!-- BACK TO CLIENT WORK -->
+
+<a class="back" href="/client-projects/">
+  ← Back to Client Projects
+</a>
+
+<!-- IMAGE LIGHTBOX -->
 
 <div class="lightbox" id="lightbox">
-    <button class="close" aria-label="Close image">&times;</button>
-    <button class="lightbox-arrow lightbox-prev" aria-label="Previous image">&#10094;</button>
-    <img src="" alt="Enlarged DBS artwork">
-    <button class="lightbox-arrow lightbox-next" aria-label="Next image">&#10095;</button>
-    <div class="image-counter" id="imageCounter"></div>
+
+  <button class="close" aria-label="Close image">
+    &times;
+  </button>
+
+  <button
+    class="lightbox-arrow lightbox-prev"
+    aria-label="Previous image">
+    &#10094;
+  </button>
+
+  <img src="" alt="Enlarged DBS artwork">
+
+  <button
+    class="lightbox-arrow lightbox-next"
+    aria-label="Next image">
+    &#10095;
+  </button>
+
+  <div class="image-counter" id="imageCounter"></div>
+
 </div>
 
 <script>
-const gallery = document.getElementById("gallery");
-const artworkItems = [...gallery.querySelectorAll(".gallery-item:not(.video-item)")];
-const artworkImages = artworkItems.map(item => item.querySelector("img"));
 
-/* RANDOMIZE THE ARTWORK POSITIONS AND SIZES */
+/* GALLERY SETUP */
+
+const gallery = document.getElementById("gallery");
+
+const artworkItems = [
+  ...gallery.querySelectorAll(
+    ".gallery-item:not(.video-item)"
+  )
+];
+
+const artworkImages = artworkItems.map(
+  item => item.querySelector("img")
+);
+
+/* RANDOMIZE ARTWORK POSITIONS */
 
 function shuffle(array) {
-    const result = [...array];
 
-    for (let i = result.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [result[i], result[j]] = [result[j], result[i]];
-    }
+  const result = [...array];
 
-    return result;
+  for (let i = result.length - 1; i > 0; i--) {
+
+    const j = Math.floor(Math.random() * (i + 1));
+
+    [result[i], result[j]] = [result[j], result[i]];
+
+  }
+
+  return result;
+
 }
+
+/* CREATE CIRCULAR POSITIONS */
 
 function createPositions() {
-    const positions = [];
 
-    // Wider outer ring
-    for (let i = 0; i < 18; i++) {
-        const angle = (i / 18) * Math.PI * 2;
-        const rotation = Math.random() * 0.12;
+  const positions = [];
 
-        positions.push({
-            x: 50 + Math.cos(angle + rotation) * 44,
-            y: 50 + Math.sin(angle + rotation) * 41,
-            width: 10 + Math.random() * 5.5
-        });
-    }
+  /* OUTER RING */
 
-    // Inner ring around the video
-    for (let i = 0; i < 8; i++) {
-        const angle = (i / 8) * Math.PI * 2 + Math.random() * 0.15;
+  for (let i = 0; i < 18; i++) {
 
-        positions.push({
-            x: 50 + Math.cos(angle) * 28,
-            y: 50 + Math.sin(angle) * 27,
-            width: 8.5 + Math.random() * 4
-        });
-    }
+    const angle = (i / 18) * Math.PI * 2;
+    const rotation = Math.random() * 0.12;
 
-    return shuffle(positions);
+    positions.push({
+
+      x: 50 + Math.cos(angle + rotation) * 44,
+
+      y: 50 + Math.sin(angle + rotation) * 41,
+
+      width: 10 + Math.random() * 5.5
+
+    });
+
+  }
+
+  /* INNER RING AROUND VIDEO */
+
+  for (let i = 0; i < 8; i++) {
+
+    const angle =
+      (i / 8) * Math.PI * 2 + Math.random() * 0.15;
+
+    positions.push({
+
+      x: 50 + Math.cos(angle) * 28,
+
+      y: 50 + Math.sin(angle) * 27,
+
+      width: 8.5 + Math.random() * 4
+
+    });
+
+  }
+
+  return shuffle(positions);
+
 }
+
+/* ARRANGE ARTWORK */
 
 function arrangeGallery() {
-    if (window.innerWidth <= 700) return;
 
-    const positions = createPositions();
-    const shuffledItems = shuffle(artworkItems);
+  if (window.innerWidth <= 700) return;
 
-    shuffledItems.forEach((item, index) => {
-        const position = positions[index];
+  const positions = createPositions();
+  const shuffledItems = shuffle(artworkItems);
 
-        item.style.setProperty("--x", position.x + "%");
-        item.style.setProperty("--y", position.y + "%");
-        item.style.setProperty("--w", position.width + "%");
-    });
+  shuffledItems.forEach((item, index) => {
+
+    const position = positions[index];
+
+    item.style.setProperty(
+      "--x",
+      position.x + "%"
+    );
+
+    item.style.setProperty(
+      "--y",
+      position.y + "%"
+    );
+
+    item.style.setProperty(
+      "--w",
+      position.width + "%"
+    );
+
+  });
+
 }
 
+/* INITIAL ARRANGEMENT */
+
 arrangeGallery();
+
+/* REARRANGE ON RESIZE */
 
 let resizeTimer;
 
 window.addEventListener("resize", () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(arrangeGallery, 150);
+
+  clearTimeout(resizeTimer);
+
+  resizeTimer = setTimeout(arrangeGallery, 150);
+
 });
 
-/* LIGHTBOX AND IMAGE NAVIGATION */
+/* LIGHTBOX SETUP */
 
 const lightbox = document.getElementById("lightbox");
+
 const enlarged = lightbox.querySelector("img");
+
 const counter = document.getElementById("imageCounter");
+
 const closeButton = lightbox.querySelector(".close");
-const previousButton = lightbox.querySelector(".lightbox-prev");
-const nextButton = lightbox.querySelector(".lightbox-next");
+
+const previousButton =
+  lightbox.querySelector(".lightbox-prev");
+
+const nextButton =
+  lightbox.querySelector(".lightbox-next");
 
 let currentImage = 0;
 
+/* SHOW IMAGE */
+
 function showImage(index) {
-    currentImage = (index + artworkImages.length) % artworkImages.length;
 
-    const image = artworkImages[currentImage];
+  currentImage =
+    (index + artworkImages.length) % artworkImages.length;
 
-    enlarged.src = image.src;
-    enlarged.alt = image.alt;
+  const image = artworkImages[currentImage];
 
-    counter.textContent =
-        (currentImage + 1) + " / " + artworkImages.length;
+  enlarged.src = image.src;
+  enlarged.alt = image.alt;
+
+  counter.textContent =
+    (currentImage + 1) + " / " + artworkImages.length;
+
 }
+
+/* OPEN LIGHTBOX */
 
 function openLightbox(index) {
-    showImage(index);
-    lightbox.classList.add("active");
-    document.body.style.overflow = "hidden";
+
+  showImage(index);
+
+  lightbox.classList.add("active");
+
+  document.body.style.overflow = "hidden";
+
 }
+
+/* CLOSE LIGHTBOX */
 
 function closeLightbox() {
-    lightbox.classList.remove("active");
-    document.body.style.overflow = "";
+
+  lightbox.classList.remove("active");
+
+  document.body.style.overflow = "";
+
 }
 
+/* CLICK ARTWORK TO ENLARGE */
+
 artworkImages.forEach((image, index) => {
-    image.addEventListener("click", () => {
-        openLightbox(index);
-    });
+
+  image.addEventListener("click", () => {
+
+    openLightbox(index);
+
+  });
+
 });
+
+/* PREVIOUS IMAGE */
 
 previousButton.addEventListener("click", () => {
-    showImage(currentImage - 1);
+
+  showImage(currentImage - 1);
+
 });
 
+/* NEXT IMAGE */
+
 nextButton.addEventListener("click", () => {
-    showImage(currentImage + 1);
+
+  showImage(currentImage + 1);
+
 });
+
+/* CLOSE BUTTON */
 
 closeButton.addEventListener("click", closeLightbox);
 
+/* CLICK OUTSIDE IMAGE TO CLOSE */
+
 lightbox.addEventListener("click", event => {
-    if (event.target === lightbox) {
-        closeLightbox();
-    }
+
+  if (event.target === lightbox) {
+
+    closeLightbox();
+
+  }
+
 });
+
+/* KEYBOARD CONTROLS */
 
 document.addEventListener("keydown", event => {
-    if (!lightbox.classList.contains("active")) return;
 
-    if (event.key === "ArrowLeft") {
-        showImage(currentImage - 1);
-    }
+  if (!lightbox.classList.contains("active")) return;
 
-    if (event.key === "ArrowRight") {
-        showImage(currentImage + 1);
-    }
+  if (event.key === "ArrowLeft") {
 
-    if (event.key === "Escape") {
-        closeLightbox();
-    }
+    showImage(currentImage - 1);
+
+  }
+
+  if (event.key === "ArrowRight") {
+
+    showImage(currentImage + 1);
+
+  }
+
+  if (event.key === "Escape") {
+
+    closeLightbox();
+
+  }
+
 });
+
 </script>
 
 </body>
