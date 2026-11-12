@@ -6,25 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fishtank Season 1 | starsandtigers</title>
 
-<link rel="preload" as="image"
-  href="/images/clients/fishtank/fishtankthumbnail.jpg">
-
 <style>
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
   margin: 0;
   background: #000;
   color: #fff;
   font-family: Arial, Helvetica, sans-serif;
 }
-
 header {
   background: #050505;
   border-bottom: 1px solid #777;
@@ -34,32 +24,25 @@ header {
   align-items: center;
   gap: 20px;
 }
-
 .brand {
   font-size: 20px;
   font-weight: 900;
+  color: white;
+  text-decoration: none;
 }
-
 nav {
   display: flex;
   gap: 22px;
   flex-wrap: wrap;
 }
-
 nav a {
   color: white;
   text-decoration: none;
   font-size: 14px;
   font-weight: bold;
 }
-
-nav a:hover {
-  color: #ffdc00;
-}
-
-nav a.active {
-  color: #f32918;
-}
+nav a:hover { color: #ffdc00; }
+nav a.active { color: #f32918; }
 
 main {
   max-width: 1250px;
@@ -67,13 +50,12 @@ main {
   padding: 0 25px;
 }
 
-/* INTRO */
+/* HERO */
 
 .hero {
   text-align: center;
   padding: 55px 20px 35px;
 }
-
 .hero h1 {
   font-size: clamp(54px, 9vw, 112px);
   font-weight: 1000;
@@ -81,18 +63,13 @@ main {
   margin: 0;
   line-height: 1;
 }
-
-.hero h1 span {
-  color: #ed2616;
-}
-
+.hero h1 span { color: #ed2616; }
 .season {
   font-family: "Courier New", monospace;
   font-size: 25px;
   letter-spacing: 5px;
   margin-top: 12px;
 }
-
 .description {
   font-family: "Courier New", monospace;
   max-width: 530px;
@@ -100,31 +77,26 @@ main {
   line-height: 1.8;
   font-size: 14px;
 }
-
 .stars {
   color: #e92b18;
   font-size: 32px;
   letter-spacing: 15px;
   margin: 15px 0 35px;
 }
-
-/* VIDEO */
-
 .video-feature {
   width: 100%;
   max-width: 760px;
-  margin: 0 auto 55px;
+  margin: 0 auto 75px;
 }
-
 .video-feature video {
   display: block;
   width: 100%;
+  height: auto;
   aspect-ratio: 16 / 9;
   object-fit: contain;
   background: #000;
   border: 3px solid white;
 }
-
 .video-caption {
   text-align: center;
   font-family: "Courier New", monospace;
@@ -132,25 +104,18 @@ main {
   margin-top: 14px;
   letter-spacing: 1px;
 }
-
 .back {
   display: inline-block;
   color: #aaa;
   text-decoration: none;
   font-size: 12px;
-  margin-top: 20px;
+  margin-top: 25px;
 }
+.back:hover { color: #ffdc00; }
 
-.back:hover {
-  color: #ffdc00;
-}
+/* SECTIONS */
 
-/* GALLERY SECTIONS */
-
-.gallery-section {
-  margin-bottom: 85px;
-}
-
+.gallery-section { margin-bottom: 85px; }
 .section-heading {
   display: flex;
   justify-content: center;
@@ -158,7 +123,6 @@ main {
   gap: 22px;
   margin-bottom: 35px;
 }
-
 .section-heading::before,
 .section-heading::after {
   content: "";
@@ -168,48 +132,11 @@ main {
   background: #e32616;
   border-radius: 50%;
 }
-
 .section-heading h2 {
   margin: 0;
   text-align: center;
   font-size: clamp(29px, 5vw, 49px);
   font-weight: 1000;
-  letter-spacing: 1px;
-}
-
-/* FEATURED GIFS */
-
-.featured-gif {
-  width: 100%;
-  max-width: 320px;
-  margin: 0 auto 32px;
-  text-align: center;
-}
-
-.featured-gif button {
-  display: block;
-  width: 100%;
-  border: 0;
-  padding: 0;
-  background: transparent;
-  cursor: zoom-in;
-}
-
-.featured-gif img {
-  display: block;
-  width: auto;
-  max-width: 100%;
-  height: auto;
-  max-height: 240px;
-  object-fit: contain;
-  margin: auto;
-}
-
-.gif-caption {
-  display: block;
-  margin-top: 10px;
-  font-family: "Courier New", monospace;
-  font-size: 12px;
   letter-spacing: 1px;
 }
 
@@ -221,7 +148,6 @@ main {
   justify-content: center;
   gap: 22px;
 }
-
 .polaroid {
   width: 205px;
   background: #f5f1e9;
@@ -232,27 +158,23 @@ main {
   box-shadow: 4px 6px 0 #191919;
   transition: transform .2s ease;
 }
-
 .polaroid:hover {
   transform: translateY(-6px) scale(1.04);
 }
-
-.image-window {
+.polaroid .image-window {
   display: block;
   width: 100%;
   aspect-ratio: 1;
   overflow: hidden;
   background: #171717;
 }
-
 .polaroid img {
-  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center 25%;
+  display: block;
 }
-
 .polaroid strong {
   display: block;
   margin-top: 8px;
@@ -261,41 +183,22 @@ main {
   font-weight: 900;
 }
 
-/* PRODUCERS - ALWAYS FOUR IN ONE ROW */
-
-#producers {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 205px));
-  justify-content: center;
-  gap: 22px;
-}
-
-#producers .polaroid {
-  width: 100%;
-  min-width: 0;
-}
-
 /* POSTER */
 
 .poster {
   text-align: center;
   margin: 75px auto;
 }
-
 .poster button {
-  display: block;
   border: 4px solid white;
   padding: 0;
   background: transparent;
   cursor: zoom-in;
   max-width: 440px;
   width: 100%;
-  margin: auto;
 }
-
 .poster img {
   width: 100%;
-  height: auto;
   display: block;
 }
 
@@ -303,19 +206,17 @@ main {
 
 .illustration-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   max-width: 1050px;
   margin: auto;
 }
-
 .illustration {
   border: 0;
   background: transparent;
   padding: 0;
   cursor: zoom-in;
 }
-
 .illustration img {
   width: 100%;
   height: 220px;
@@ -324,7 +225,6 @@ main {
   border: 5px solid #f5f1e9;
   transition: transform .2s ease;
 }
-
 .illustration:hover img {
   transform: scale(1.05);
 }
@@ -336,13 +236,26 @@ main {
   margin-top: 85px;
   padding-bottom: 90px;
 }
-
+.ending-gif {
+  max-width: 650px;
+  margin: 25px auto;
+}
+.ending-gif button {
+  width: 100%;
+  border: 4px solid white;
+  padding: 0;
+  background: transparent;
+  cursor: zoom-in;
+}
+.ending-gif img {
+  width: 100%;
+  display: block;
+}
 .ending-caption {
   font-family: "Courier New", monospace;
   letter-spacing: 2px;
   font-size: 14px;
 }
-
 footer {
   height: 160px;
   display: flex;
@@ -359,24 +272,20 @@ footer {
   );
 }
 
-/* IMAGE VIEWER */
+/* LIGHTBOX */
 
 .lightbox {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, .97);
+  background: rgba(0,0,0,.97);
   z-index: 100;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   padding: 55px 70px;
 }
-
-.lightbox.open {
-  display: flex;
-}
-
+.lightbox.open { display: flex; }
 .lightbox img {
   max-width: 90vw;
   max-height: 80vh;
@@ -384,13 +293,10 @@ footer {
   height: auto;
   object-fit: contain;
 }
-
 .lightbox-caption {
   margin-top: 16px;
   font-family: "Courier New", monospace;
-  text-align: center;
 }
-
 .lightbox button {
   position: absolute;
   background: none;
@@ -399,106 +305,27 @@ footer {
   font-size: 40px;
   cursor: pointer;
 }
-
-.lightbox button:hover {
-  color: #ffdc00;
-}
-
-.close {
-  top: 15px;
-  right: 25px;
-}
-
-.previous {
-  left: 20px;
-  top: 50%;
-}
-
-.next {
-  right: 20px;
-  top: 50%;
-}
+.lightbox button:hover { color: #ffdc00; }
+.close { top: 15px; right: 25px; }
+.previous { left: 20px; top: 50%; }
+.next { right: 20px; top: 50%; }
 
 /* MOBILE */
 
-@media (max-width: 950px) {
-  #producers {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 10px;
-  }
-
-  #producers .polaroid strong {
-    font-size: clamp(8px, 1.8vw, 15px);
-    overflow-wrap: anywhere;
-  }
-}
-
 @media (max-width: 750px) {
-  header {
-    flex-direction: column;
-  }
-
+  header { flex-direction: column; }
   nav {
     justify-content: center;
     gap: 12px;
   }
-
-  .portrait-grid .polaroid {
-    width: calc(50% - 12px);
-  }
-
+  .polaroid { width: calc(50% - 12px); }
   .illustration-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, 1fr);
   }
-
-  .illustration img {
-    height: 160px;
-  }
-
+  .illustration img { height: 160px; }
   .section-heading::before,
-  .section-heading::after {
-    width: 30px;
-  }
-
-  .section-heading h2 {
-    font-size: 26px;
-  }
-
-  .featured-gif {
-    max-width: 280px;
-  }
-
-  #producers .polaroid {
-    width: 100%;
-    padding: 4px;
-  }
-
-  #producers .polaroid strong {
-    font-size: 9px;
-  }
-
-  .lightbox {
-    padding: 55px 35px;
-  }
-
-  .previous {
-    left: 5px;
-  }
-
-  .next {
-    right: 5px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  .polaroid,
-  .illustration img {
-    transition: none;
-  }
+  .section-heading::after { width: 30px; }
+  .section-heading h2 { font-size: 26px; }
 }
 </style>
 </head>
@@ -506,11 +333,10 @@ footer {
 <body>
 
 <header>
-  <div class="brand">★ starsandtigers ★</div>
-
+  <a class="brand" href="/">★ starsandtigers ★</a>
   <nav>
     <a href="/">Home</a>
-    <a href="/illustration/">Illustrations</a>
+    <a href="/illustrations/">Illustrations</a>
     <a href="/animations/">Animations</a>
     <a href="/sketches/">Sketches</a>
     <a href="/client-projects/" class="active">
@@ -521,11 +347,8 @@ footer {
 
 <main>
 
-<!-- INTRO -->
-
 <section class="hero">
   <h1>FISHTANK<span>★</span></h1>
-
   <div class="season">★ SEASON 1 ★</div>
 
   <p class="description">
@@ -539,16 +362,13 @@ footer {
     <video
       controls
       playsinline
-      preload="none"
+      preload="metadata"
       poster="/images/clients/fishtank/fishtankthumbnail.jpg">
-
       <source
         src="/images/clients/fishtank/Fishtankseason1%20THE%20END%20.mp4"
         type="video/mp4">
-
       Your browser does not support video playback.
     </video>
-
     <p class="video-caption">
       FISHTANK SEASON 1 — THE END
     </p>
@@ -559,61 +379,31 @@ footer {
   </a>
 </section>
 
-<!-- PRODUCERS -->
-
 <section class="gallery-section">
-  <div class="section-heading">
-    <h2>PRODUCERS</h2>
-  </div>
-
-  <div class="featured-gif" id="tvFeature"></div>
-
+  <div class="section-heading"><h2>PRODUCERS</h2></div>
   <div class="portrait-grid" id="producers"></div>
 </section>
 
-<!-- FREELOADERS -->
-
 <section class="gallery-section">
-  <div class="section-heading">
-    <h2>THE FREELOADERS</h2>
-  </div>
-
-  <div class="featured-gif" id="castFeature"></div>
-
+  <div class="section-heading"><h2>THE FREELOADERS</h2></div>
   <div class="portrait-grid" id="freeloaders"></div>
 </section>
 
-<!-- THE FISH -->
-
 <section class="gallery-section">
-  <div class="section-heading">
-    <h2>THE FISH</h2>
-  </div>
-
+  <div class="section-heading"><h2>THE FISH</h2></div>
   <div class="portrait-grid" id="fish"></div>
 </section>
 
-<!-- POSTER -->
-
 <section class="poster" id="poster"></section>
 
-<!-- ILLUSTRATIONS -->
-
 <section class="gallery-section">
-  <div class="section-heading">
-    <h2>ILLUSTRATIONS</h2>
-  </div>
-
+  <div class="section-heading"><h2>ILLUSTRATIONS</h2></div>
   <div class="illustration-grid" id="illustrations"></div>
 </section>
 
-<!-- ENDING -->
-
 <section class="ending">
-  <div class="section-heading">
-    <h2>THE END</h2>
-  </div>
-
+  <div class="section-heading"><h2>THE END</h2></div>
+  <div class="ending-gif" id="ending"></div>
   <p class="ending-caption">
     FISHTANK SEASON 1 — THE END
   </p>
@@ -623,58 +413,18 @@ footer {
 
 <footer>© starsandtigers</footer>
 
-<!-- FULL-SIZE IMAGE VIEWER -->
-
-<div
-  class="lightbox"
-  id="lightbox"
-  role="dialog"
-  aria-modal="true"
-  aria-label="Artwork viewer">
-
-  <button class="close" id="close" aria-label="Close">
-    ×
-  </button>
-
-  <button
-    class="previous"
-    id="previous"
-    aria-label="Previous">
-    ❮
-  </button>
-
+<div class="lightbox" id="lightbox"
+     role="dialog" aria-modal="true">
+  <button class="close" id="close" aria-label="Close">×</button>
+  <button class="previous" id="previous"
+          aria-label="Previous">❮</button>
   <img id="largeImage" alt="">
-
   <p class="lightbox-caption" id="caption"></p>
-
-  <button
-    class="next"
-    id="next"
-    aria-label="Next">
-    ❯
-  </button>
+  <button class="next" id="next" aria-label="Next">❯</button>
 </div>
 
 <script>
-"use strict";
-
-/*
-  IMAGE FOLDERS
-
-  Original artwork:
-  /images/clients/fishtank/
-
-  WebP thumbnails:
-  /images/clients/fishtank/thumbs/
-
-  Gallery displays thumbnails.
-  Lightbox displays originals.
-*/
-
 const base = "/images/clients/fishtank/";
-const thumbs = base + "thumbs/";
-
-/* PRODUCERS */
 
 const producers = [
   ["fish1jet.jpeg", "Jet Neptune"],
@@ -682,8 +432,6 @@ const producers = [
   ["fish1ben.jpeg", "Ben"],
   ["fish1tax.jpeg", "Tax"]
 ];
-
-/* FREELOADERS */
 
 const freeloaders = [
   ["fish1alex.jpeg", "Alex"],
@@ -697,7 +445,13 @@ const freeloaders = [
   ["fish1tai.jpeg", "Tai"]
 ];
 
-/* FISH */
+/*
+  FISH THUMBNAILS
+
+  These are the existing known portrait filenames.
+  The loader below also checks for newer thumbnail
+  files and uses them when it finds a matching name.
+*/
 
 const fish = [
   ["fish1josie.jpeg", "Josie"],
@@ -710,8 +464,6 @@ const fish = [
   ["fish1simmons.jpeg", "Simmons"],
   ["fish1mauro.jpeg", "Mauro"]
 ];
-
-/* ILLUSTRATIONS */
 
 const illustrations = [
   ["fish1alexsketch.jpeg", "Alex Sketch"],
@@ -732,187 +484,60 @@ const illustrations = [
   ["peppasylvia.jpeg", "Peppa and Sylvia"]
 ];
 
-/* POSTER */
-
 const poster = [
   ["fishtankseason1poster.jpeg", "Fishtank Season 1 Poster"]
 ];
 
-/* GIFS */
-
-const tvGif = [
-  "fish1tvcast.gif",
-  "Fishtank TV Cast"
+const ending = [
+  ["fish1cast.gif", "Fishtank Season 1 Cast"],
+  ["fish1tvcast.gif", "Fishtank TV Cast"]
 ];
-
-const castGif = [
-  "fish1cast.gif",
-  "Fishtank Season 1 Cast"
-];
-
-/* ALL ORIGINALS FOR IMAGE VIEWER */
 
 const allImages = [
-  tvGif,
   ...producers,
-  castGif,
   ...freeloaders,
   ...fish,
   ...poster,
-  ...illustrations
+  ...illustrations,
+  ...ending
 ];
 
-/* ORIGINAL IMAGE PATH */
+let activeIndex = 0;
 
 function imagePath(filename) {
   return base + encodeURIComponent(filename);
 }
 
-/*
-  WEBP THUMBNAIL PATH
-
-  fish1jet.jpeg -> thumbs/fish1jet.webp
-  fish1alex.jpeg -> thumbs/fish1alex.webp
-
-  Original filenames remain unchanged.
-*/
-
-function thumbnailPath(filename) {
-  const name = filename.replace(/\.[^.]+$/, ".webp");
-  return thumbs + encodeURIComponent(name);
-}
-
-/*
-  APPLY THUMBNAIL
-
-  If the thumbnail is missing, the
-  original image is used automatically.
-*/
-
-function useThumbnail(img, filename) {
-  img.alt = filename;
-  img.loading = "lazy";
-  img.decoding = "async";
-
-  img.onerror = function() {
-    img.onerror = null;
-    img.src = imagePath(filename);
-  };
-
-  img.src = thumbnailPath(filename);
-}
-
-/* LAZY LOAD FEATURED GIFS */
-
-const gifObserver =
-  "IntersectionObserver" in window
-    ? new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (!entry.isIntersecting) return;
-
-          const img = entry.target;
-
-          if (img.dataset.src) {
-            img.src = img.dataset.src;
-            delete img.dataset.src;
-          }
-
-          gifObserver.unobserve(img);
-        });
-      }, {
-        rootMargin: "150px 0px"
-      })
-    : null;
-
-function deferGif(img, filename) {
-  const src = imagePath(filename);
-
-  if (gifObserver) {
-    img.dataset.src = src;
-    gifObserver.observe(img);
-  } else {
-    img.src = src;
-  }
-}
-
-/* IMAGE VIEWER */
-
-let activeIndex = 0;
-let previousFocus = null;
-
-function openImage(item) {
-  const index = allImages.indexOf(item);
-
-  if (index < 0) return;
-
+function openImage(index) {
   activeIndex = index;
-  previousFocus = document.activeElement;
-
   updateLightbox();
-
   document.getElementById("lightbox")
     .classList.add("open");
-
   document.body.style.overflow = "hidden";
-
-  document.getElementById("close").focus();
 }
 
 function updateLightbox() {
   const [filename, name] = allImages[activeIndex];
-
-  const large = document.getElementById("largeImage");
-
-  // Always display the full-resolution original.
-  large.src = imagePath(filename);
-  large.alt = name;
-
+  document.getElementById("largeImage").src =
+    imagePath(filename);
+  document.getElementById("largeImage").alt = name;
   document.getElementById("caption").textContent = name;
 }
 
-function closeLightbox() {
-  document.getElementById("lightbox")
-    .classList.remove("open");
-
-  document.getElementById("largeImage")
-    .removeAttribute("src");
-
-  document.body.style.overflow = "";
-
-  if (previousFocus) {
-    previousFocus.focus();
-  }
-}
-
-function moveImage(direction) {
-  activeIndex =
-    (activeIndex + direction + allImages.length)
-    % allImages.length;
-
-  updateLightbox();
-}
-
-/* CREATE CHARACTER PORTRAITS */
-
 function createPortrait(item) {
   const [filename, name] = item;
-
   const button = document.createElement("button");
   button.className = "polaroid";
   button.type = "button";
-  button.setAttribute(
-    "aria-label",
-    "Enlarge " + name
-  );
 
   const windowEl = document.createElement("span");
   windowEl.className = "image-window";
 
   const img = document.createElement("img");
-
-  // Thumbnail instead of full-size JPEG.
-  useThumbnail(img, filename);
+  img.src = imagePath(filename);
   img.alt = name;
+  img.loading = "lazy";
+  img.decoding = "async";
 
   const label = document.createElement("strong");
   label.textContent = name;
@@ -920,186 +545,146 @@ function createPortrait(item) {
   windowEl.appendChild(img);
   button.append(windowEl, label);
 
-  button.addEventListener("click", () => {
-    openImage(item);
-  });
+  button.onclick = () =>
+    openImage(allImages.indexOf(item));
 
   return button;
 }
-
-/* CREATE ILLUSTRATIONS */
 
 function createIllustration(item) {
   const [filename, name] = item;
-
   const button = document.createElement("button");
   button.className = "illustration";
   button.type = "button";
-  button.setAttribute(
-    "aria-label",
-    "Enlarge " + name
-  );
 
   const img = document.createElement("img");
-
-  // Load WebP thumbnail.
-  useThumbnail(img, filename);
+  img.src = imagePath(filename);
   img.alt = name;
-
-  button.appendChild(img);
-
-  button.addEventListener("click", () => {
-    openImage(item);
-  });
-
-  return button;
-}
-
-/* CREATE POSTER */
-
-function createPoster(item) {
-  const [filename, name] = item;
-
-  const button = document.createElement("button");
-  button.type = "button";
-  button.setAttribute(
-    "aria-label",
-    "Enlarge " + name
-  );
-
-  const img = document.createElement("img");
-
-  // Load poster thumbnail.
-  useThumbnail(img, filename);
-  img.alt = name;
-
-  button.appendChild(img);
-
-  button.addEventListener("click", () => {
-    openImage(item);
-  });
-
-  return button;
-}
-
-/* CREATE FEATURED GIFS */
-
-function createFeaturedGif(containerId, item) {
-  const [filename, name] = item;
-
-  const container = document.getElementById(containerId);
-
-  const button = document.createElement("button");
-  button.type = "button";
-  button.setAttribute(
-    "aria-label",
-    "Enlarge " + name
-  );
-
-  const img = document.createElement("img");
-
-  img.alt = name;
-  img.decoding = "async";
   img.loading = "lazy";
-
-  // Keep GIF animation and original quality.
-  deferGif(img, filename);
-
-  const caption = document.createElement("span");
-  caption.className = "gif-caption";
-  caption.textContent = name;
+  img.decoding = "async";
 
   button.appendChild(img);
-  container.append(button, caption);
+  button.onclick = () =>
+    openImage(allImages.indexOf(item));
 
-  button.addEventListener("click", () => {
-    openImage(item);
-  });
+  return button;
 }
-
-/* BUILD GALLERIES */
 
 function fillGallery(id, items, creator) {
   const container = document.getElementById(id);
+  container.innerHTML = "";
 
   items.forEach(item => {
     container.appendChild(creator(item));
   });
 }
 
-fillGallery(
-  "producers",
-  producers,
-  createPortrait
-);
+/*
+  NEW THUMBNAIL CHECK
 
-fillGallery(
-  "freeloaders",
-  freeloaders,
-  createPortrait
-);
+  Finds newly uploaded images with names such as:
+  josie-thumbnail.jpg
+  fish1josiethumb.png
+  vanceportrait.jpeg
 
-fillGallery(
-  "fish",
-  fish,
-  createPortrait
-);
+  The existing portrait remains if no matching
+  new thumbnail is found.
+*/
 
-fillGallery(
-  "illustrations",
-  illustrations,
-  createIllustration
-);
+async function checkNewThumbnails() {
+  const api =
+    "https://api.github.com/repos/" +
+    "starsandcats/starsandcats.github.io/" +
+    "contents/images/clients/fishtank?ref=main";
 
-fillGallery(
-  "poster",
-  poster,
-  createPoster
-);
+  try {
+    const response = await fetch(api);
+    if (!response.ok) return;
 
-createFeaturedGif(
-  "tvFeature",
-  tvGif
-);
+    const files = await response.json();
+    if (!Array.isArray(files)) return;
 
-createFeaturedGif(
-  "castFeature",
-  castGif
-);
+    const candidates = files
+      .filter(file =>
+        file.type === "file" &&
+        /\.(jpg|jpeg|png|webp|gif)$/i.test(file.name) &&
+        /thumbnail|thumb|portrait/i.test(file.name)
+      )
+      .map(file => file.name);
 
-/* VIEWER CONTROLS */
+    const normalize = text =>
+      text.toLowerCase().replace(/[^a-z0-9]/g, "");
 
-document.getElementById("close")
-  .addEventListener("click", closeLightbox);
+    fish.forEach(item => {
+      const name = normalize(item[1]);
 
-document.getElementById("previous")
-  .addEventListener("click", () => {
-    moveImage(-1);
-  });
+      const match = candidates.find(filename => {
+        const cleaned = normalize(filename);
+        return cleaned.includes(name);
+      });
 
-document.getElementById("next")
-  .addEventListener("click", () => {
-    moveImage(1);
-  });
+      if (match) {
+        item[0] = match;
+      }
+    });
+
+    fillGallery("fish", fish, createPortrait);
+
+  } catch (error) {
+    console.warn(
+      "Using existing fish portraits.",
+      error
+    );
+  }
+}
+
+/* RENDER EXISTING GALLERIES */
+
+fillGallery("producers", producers, createPortrait);
+fillGallery("freeloaders", freeloaders, createPortrait);
+fillGallery("fish", fish, createPortrait);
+fillGallery("illustrations", illustrations, createIllustration);
+fillGallery("poster", poster, createIllustration);
+fillGallery("ending", ending, createIllustration);
+
+/* CHECK NEW FISH THUMBNAILS */
+
+checkNewThumbnails();
+
+/* LIGHTBOX CONTROLS */
+
+function closeLightbox() {
+  document.getElementById("lightbox")
+    .classList.remove("open");
+  document.getElementById("largeImage")
+    .removeAttribute("src");
+  document.body.style.overflow = "";
+}
+
+function moveImage(direction) {
+  activeIndex =
+    (activeIndex + direction + allImages.length)
+    % allImages.length;
+  updateLightbox();
+}
+
+document.getElementById("close").onclick =
+  closeLightbox;
+
+document.getElementById("previous").onclick =
+  () => moveImage(-1);
+
+document.getElementById("next").onclick =
+  () => moveImage(1);
 
 document.addEventListener("keydown", event => {
   const lightbox = document.getElementById("lightbox");
 
-  if (!lightbox.classList.contains("open")) {
-    return;
-  }
+  if (!lightbox.classList.contains("open")) return;
 
-  if (event.key === "Escape") {
-    closeLightbox();
-  }
-
-  if (event.key === "ArrowLeft") {
-    moveImage(-1);
-  }
-
-  if (event.key === "ArrowRight") {
-    moveImage(1);
-  }
+  if (event.key === "Escape") closeLightbox();
+  if (event.key === "ArrowLeft") moveImage(-1);
+  if (event.key === "ArrowRight") moveImage(1);
 });
 
 document.getElementById("lightbox")
