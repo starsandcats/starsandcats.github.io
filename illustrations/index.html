@@ -3,20 +3,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fishtank Season 1 | starsandtigers</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="preload"
-      as="image"
-      href="/images/clients/fishtank/fishtankthumbnail.jpg">
+<title>Illustrations | starsandtigers</title>
 
 <style>
 * {
   box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 body {
@@ -26,25 +19,33 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* HEADER */
+
 header {
-  background: #050505;
+  width: 100%;
+  padding: 24px 5%;
+  background: #000;
   border-bottom: 1px solid #777;
-  padding: 22px 5%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
+  gap: 30px;
 }
 
 .brand {
-  font-size: 20px;
+  color: white;
+  text-decoration: none;
+  font-size: 23px;
   font-weight: 900;
+  white-space: nowrap;
 }
 
 nav {
   display: flex;
-  gap: 22px;
+  align-items: center;
+  justify-content: flex-end;
   flex-wrap: wrap;
+  gap: 24px;
 }
 
 nav a {
@@ -52,459 +53,180 @@ nav a {
   text-decoration: none;
   font-size: 14px;
   font-weight: bold;
+  transition: color .25s ease;
 }
 
-nav a:hover {
+nav a:hover,
+nav a.active {
   color: #ffdc00;
 }
 
-nav a.active {
-  color: #f32918;
-}
+/* MAIN CONTENT */
 
 main {
-  max-width: 1250px;
-  margin: auto;
-  padding: 0 25px;
+  padding: 45px 5% 80px;
 }
 
-/* INTRO */
-
-.hero {
-  text-align: center;
-  padding: 55px 20px 35px;
-}
-
-.hero h1 {
-  font-size: clamp(54px, 9vw, 112px);
-  font-weight: 1000;
-  letter-spacing: -3px;
-  margin: 0;
-  line-height: 1;
-}
-
-.hero h1 span {
-  color: #ed2616;
-}
-
-.season {
-  font-family: "Courier New", monospace;
-  font-size: 25px;
-  letter-spacing: 5px;
-  margin-top: 12px;
+h1 {
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 900;
+  text-transform: uppercase;
+  margin: 0 0 15px;
 }
 
 .description {
-  font-family: "Courier New", monospace;
-  max-width: 530px;
-  margin: 30px auto 20px;
-  line-height: 1.8;
-  font-size: 14px;
-}
-
-.stars {
-  color: #e92b18;
-  font-size: 32px;
-  letter-spacing: 15px;
-  margin: 15px 0 35px;
-}
-
-/* VIDEO */
-
-.video-feature {
-  width: 100%;
-  max-width: 760px;
-  margin: 0 auto 55px;
-}
-
-.video-feature video {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9;
-  object-fit: contain;
-  background: #000;
-  border: 3px solid white;
-}
-
-.video-caption {
-  text-align: center;
-  font-family: "Courier New", monospace;
-  font-size: 13px;
-  margin-top: 14px;
-  letter-spacing: 1px;
-}
-
-.back {
-  display: inline-block;
-  color: #aaa;
-  text-decoration: none;
-  font-size: 12px;
-  margin-top: 20px;
-}
-
-.back:hover {
-  color: #ffdc00;
-}
-
-/* GALLERY SECTIONS */
-
-.gallery-section {
-  margin-bottom: 85px;
-}
-
-.section-heading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 22px;
-  margin-bottom: 35px;
-}
-
-.section-heading::before,
-.section-heading::after {
-  content: "";
-  display: block;
-  width: 90px;
-  height: 5px;
-  background: #e32616;
-  border-radius: 50%;
-}
-
-.section-heading h2 {
-  margin: 0;
-  text-align: center;
-  font-size: clamp(29px, 5vw, 49px);
-  font-weight: 1000;
-  letter-spacing: 1px;
-}
-
-/* FEATURED GIFS */
-
-/*
-  Both GIFs are displayed smaller.
-  Their original proportions are preserved.
-  They are never cropped into squares.
-*/
-
-.featured-gif {
-  width: 100%;
-  max-width: 320px;
-  margin: 0 auto 32px;
-  text-align: center;
-}
-
-.featured-gif button {
-  display: block;
-  width: 100%;
-  border: 0;
-  padding: 0;
-  background: transparent;
-  cursor: zoom-in;
-}
-
-.featured-gif img {
-  display: block;
-  width: auto;
-  max-width: 100%;
-  height: auto;
-  max-height: 240px;
-  object-fit: contain;
-  margin: 0 auto;
-}
-
-.gif-caption {
-  display: block;
-  margin-top: 10px;
-  font-family: "Courier New", monospace;
-  font-size: 12px;
-  letter-spacing: 1px;
-}
-
-/* CHARACTER PORTRAITS */
-
-.portrait-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 22px;
-}
-
-.polaroid {
-  width: 205px;
-  background: #f5f1e9;
-  padding: 7px 7px 9px;
-  border: 0;
-  cursor: zoom-in;
-  color: #111;
-  box-shadow: 4px 6px 0 #191919;
-  transition: transform .2s ease;
-}
-
-.polaroid:hover {
-  transform: translateY(-6px) scale(1.04);
-}
-
-.image-window {
-  display: block;
-  width: 100%;
-  aspect-ratio: 1;
-  overflow: hidden;
-  background: #171717;
-}
-
-.polaroid img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 25%;
-}
-
-.polaroid strong {
-  display: block;
-  margin-top: 8px;
+  color: #ccc;
   font-size: 15px;
-  text-transform: uppercase;
-  font-weight: 900;
+  margin: 0 0 35px;
 }
 
-/* PRODUCERS — FOUR IN ONE ROW */
+/* ILLUSTRATION GALLERY */
 
-#producers {
+.gallery {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 205px));
-  justify-content: center;
-  gap: 22px;
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  align-items: start;
 }
 
-#producers .polaroid {
-  width: 100%;
+.artwork {
+  position: relative;
   min-width: 0;
+  z-index: 1;
 }
 
-/* POSTER */
-
-.poster {
-  text-align: center;
-  margin: 75px auto;
+.artwork:hover {
+  z-index: 10;
 }
 
-.poster button {
-  display: block;
-  border: 4px solid white;
-  padding: 0;
-  background: transparent;
-  cursor: zoom-in;
-  max-width: 440px;
-  width: 100%;
-  margin: auto;
-}
-
-.poster img {
+.artwork img {
   display: block;
   width: 100%;
   height: auto;
-}
-
-/* ILLUSTRATIONS */
-
-.illustration-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 20px;
-  max-width: 1050px;
-  margin: auto;
-}
-
-.illustration {
-  border: 0;
-  background: transparent;
-  padding: 0;
+  border-radius: 0;
   cursor: zoom-in;
+  transition:
+    transform .3s ease,
+    filter .3s ease;
 }
 
-.illustration img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  display: block;
-  border: 5px solid #f5f1e9;
-  transition: transform .2s ease;
+.artwork img:hover {
+  transform: scale(1.08);
+  filter: brightness(1.08);
 }
 
-.illustration:hover img {
-  transform: scale(1.05);
-}
-
-/* ENDING */
-
-.ending {
-  text-align: center;
-  margin-top: 85px;
-  padding-bottom: 90px;
-}
-
-.ending-caption {
-  font-family: "Courier New", monospace;
-  letter-spacing: 2px;
-  font-size: 14px;
-}
-
-footer {
-  height: 160px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding-bottom: 20px;
-  font-size: 12px;
-  background: linear-gradient(
-    to bottom,
-    #000 0%,
-    #260000 35%,
-    #c00000 75%,
-    #f00000 100%
-  );
-}
-
-/* IMAGE VIEWER */
+/* LIGHTBOX */
 
 .lightbox {
-  display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, .97);
-  z-index: 100;
-  align-items: center;
+  display: none;
   justify-content: center;
-  flex-direction: column;
-  padding: 55px 70px;
+  align-items: center;
+  background: rgba(0,0,0,.96);
+  z-index: 9999;
+  padding: 55px;
 }
 
-.lightbox.open {
+.lightbox.active {
   display: flex;
 }
 
 .lightbox img {
   max-width: 90vw;
-  max-height: 80vh;
-  width: auto;
-  height: auto;
+  max-height: 85vh;
   object-fit: contain;
 }
 
-.lightbox-caption {
-  margin-top: 16px;
-  font-family: "Courier New", monospace;
-  text-align: center;
-}
-
-.lightbox button {
+.close,
+.arrow {
   position: absolute;
-  background: none;
-  border: 0;
   color: white;
-  font-size: 40px;
+  border: none;
+  background: transparent;
   cursor: pointer;
-}
-
-.lightbox button:hover {
-  color: #ffdc00;
 }
 
 .close {
   top: 15px;
   right: 25px;
+  font-size: 42px;
 }
 
-.previous {
-  left: 20px;
+.arrow {
   top: 50%;
+  transform: translateY(-50%);
+  font-size: 40px;
+}
+
+.prev {
+  left: 15px;
 }
 
 .next {
-  right: 20px;
-  top: 50%;
+  right: 15px;
 }
 
-/* RESPONSIVE LAYOUT */
-
-@media (max-width: 950px) {
-  #producers {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 10px;
-  }
-
-  #producers .polaroid strong {
-    font-size: clamp(8px, 1.8vw, 15px);
-    overflow-wrap: anywhere;
-  }
+.close:hover,
+.arrow:hover {
+  color: #ffdc00;
 }
 
-@media (max-width: 750px) {
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
   header {
     flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
   }
 
   nav {
-    justify-content: center;
-    gap: 12px;
+    justify-content: flex-start;
+    gap: 18px;
   }
 
-  .portrait-grid .polaroid {
-    width: calc(50% - 12px);
+  .gallery {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  header {
+    padding: 20px 5%;
   }
 
-  .illustration-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .brand {
+    font-size: 20px;
   }
 
-  .illustration img {
-    height: 160px;
+  nav {
+    gap: 12px 16px;
   }
 
-  .section-heading::before,
-  .section-heading::after {
-    width: 30px;
+  nav a {
+    font-size: 12px;
   }
 
-  .section-heading h2 {
-    font-size: 26px;
+  main {
+    padding-top: 30px;
   }
 
-  .featured-gif {
-    max-width: 280px;
-  }
-
-  #producers .polaroid {
-    width: 100%;
-    padding: 4px;
-  }
-
-  #producers .polaroid strong {
-    font-size: 9px;
+  .gallery {
+    grid-template-columns: 1fr;
+    gap: 18px;
   }
 
   .lightbox {
-    padding: 55px 35px;
-  }
-
-  .previous {
-    left: 5px;
-  }
-
-  .next {
-    right: 5px;
+    padding: 50px 35px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  .polaroid,
-  .illustration img {
+  .artwork img,
+  nav a {
     transition: none;
   }
 }
@@ -513,611 +235,225 @@ footer {
 
 <body>
 
-<header>
-  <div class="brand">★ starsandtigers ★</div>
+<!-- HEADER -->
 
-  <nav>
+<header>
+  <a class="brand" href="/">
+    ★ starsandtigers ★
+  </a>
+
+  <nav aria-label="Main navigation">
     <a href="/">Home</a>
-    <a href="/illustration/">Illustrations</a>
-    <a href="/animations/">Animations</a>
-    <a href="/sketches/">Sketches</a>
-    <a href="/client-projects/" class="active">
+
+    <a href="/illustration/"
+       class="active"
+       aria-current="page">
+      Illustrations
+    </a>
+
+    <a href="/animations/">
+      Animations
+    </a>
+
+    <a href="/sketches/">
+      Sketches
+    </a>
+
+    <a href="/client-projects/">
       Client Work
     </a>
   </nav>
 </header>
 
+<!-- MAIN -->
+
 <main>
 
-<!-- INTRO AND VIDEO -->
-
-<section class="hero">
-
-  <h1>FISHTANK<span>★</span></h1>
-
-  <div class="season">★ SEASON 1 ★</div>
+  <h1>ILLUSTRATIONS</h1>
 
   <p class="description">
-    A collection of illustrations for Fishtank Season 1,
-    the 24/7 reality show created by Jet Neptune and Sam Hyde.
+    A collection of my illustrative works.
   </p>
 
-  <div class="stars">★★★★★</div>
-
-  <div class="video-feature">
-
-    <video
-      id="fishtankVideo"
-      controls
-      playsinline
-      preload="none"
-      poster="/images/clients/fishtank/fishtankthumbnail.jpg">
-
-      <source
-        src="/images/clients/fishtank/Fishtankseason1%20THE%20END%20.mp4"
-        type="video/mp4">
-
-      Your browser does not support video playback.
-
-    </video>
-
-    <p class="video-caption">
-      FISHTANK SEASON 1 — THE END
-    </p>
-
-  </div>
-
-  <a href="/client-projects/" class="back">
-    ← BACK TO CLIENT PROJECTS
-  </a>
-
-</section>
-
-<!-- PRODUCERS -->
-
-<section class="gallery-section">
-
-  <div class="section-heading">
-    <h2>PRODUCERS</h2>
-  </div>
-
-  <!-- FISHTANK TV GIF ABOVE PRODUCERS -->
-  <div class="featured-gif" id="tvFeature"></div>
-
-  <!-- FOUR PRODUCERS IN ONE ROW -->
-  <div class="portrait-grid" id="producers"></div>
-
-</section>
-
-<!-- FREELOADERS -->
-
-<section class="gallery-section">
-
-  <div class="section-heading">
-    <h2>THE FREELOADERS</h2>
-  </div>
-
-  <!-- SEASON 1 CAST GIF ABOVE FREELOADERS -->
-  <div class="featured-gif" id="castFeature"></div>
-
-  <div class="portrait-grid" id="freeloaders"></div>
-
-</section>
-
-<!-- THE FISH -->
-
-<section class="gallery-section">
-
-  <div class="section-heading">
-    <h2>THE FISH</h2>
-  </div>
-
-  <div class="portrait-grid" id="fish"></div>
-
-</section>
-
-<!-- SEASON 1 POSTER -->
-
-<section class="poster" id="poster"></section>
-
-<!-- ILLUSTRATIONS -->
-
-<section class="gallery-section">
-
-  <div class="section-heading">
-    <h2>ILLUSTRATIONS</h2>
-  </div>
-
-  <div class="illustration-grid" id="illustrations"></div>
-
-</section>
-
-<!-- THE END -->
-
-<section class="ending">
-
-  <div class="section-heading">
-    <h2>THE END</h2>
-  </div>
-
-  <p class="ending-caption">
-    FISHTANK SEASON 1 — THE END
-  </p>
-
-</section>
+  <div class="gallery" id="gallery"></div>
 
 </main>
 
-<footer>© starsandtigers</footer>
+<!-- LIGHTBOX -->
 
-<!-- FULL IMAGE VIEWER -->
+<div class="lightbox" id="lightbox">
 
-<div
-  class="lightbox"
-  id="lightbox"
-  role="dialog"
-  aria-modal="true"
-  aria-label="Artwork viewer">
-
-  <button
-    class="close"
-    id="close"
-    aria-label="Close">
-    ×
+  <button class="close"
+          id="close"
+          aria-label="Close image">
+    &times;
   </button>
 
-  <button
-    class="previous"
-    id="previous"
-    aria-label="Previous">
-    ❮
+  <button class="arrow prev"
+          id="prev"
+          aria-label="Previous image">
+    &#10094;
   </button>
 
-  <img id="largeImage" alt="">
+  <img id="lightboxImage"
+       src=""
+       alt="Enlarged illustration">
 
-  <p class="lightbox-caption" id="caption"></p>
-
-  <button
-    class="next"
-    id="next"
-    aria-label="Next">
-    ❯
+  <button class="arrow next"
+          id="next"
+          aria-label="Next image">
+    &#10095;
   </button>
 
 </div>
 
 <script>
-"use strict";
 
-/* IMAGE FOLDER */
+/* GALLERY */
 
-const base = "/images/clients/fishtank/";
+const gallery = document.getElementById("gallery");
 
-/* PRODUCERS */
+const folder = "/images/illustration/";
 
-const producers = [
-  ["fish1jet.jpeg", "Jet Neptune"],
-  ["fish1goldstriker.jpeg", "Goldstriker"],
-  ["fish1ben.jpeg", "Ben"],
-  ["fish1tax.jpeg", "Tax"]
+const githubAPI =
+  "https://api.github.com/repos/" +
+  "starsandcats/starsandcats.github.io/" +
+  "contents/images/illustration?ref=main";
+
+const fallbackFiles = [
+  "ripped.jpg",
+  "petersteele.jpg"
 ];
 
-/* FREELOADERS */
+let images = [];
+let currentIndex = 0;
 
-const freeloaders = [
-  ["fish1alex.jpeg", "Alex"],
-  ["fish1betty.jpeg", "Betty"],
-  ["fish1chip.jpeg", "Chip"],
-  ["fish1chris.jpeg", "Chris"],
-  ["fish1dontarious.jpeg", "Dontarious"],
-  ["fish1ella.jpeg", "Ella"],
-  ["fish1frank.jpeg", "Frank"],
-  ["fish1lance.jpeg", "Lance"],
-  ["fish1tai.jpeg", "Tai"]
-];
+function renderGallery(files) {
+  gallery.innerHTML = "";
+  images = [];
 
-/* FISH */
+  files.forEach(filename => {
+    const src = folder +
+      filename.split("/").map(encodeURIComponent).join("/");
 
-const fish = [
-  ["fish1josie.jpeg", "Josie"],
-  ["fish1jonathan.jpeg", "Jon"],
-  ["fish1vance.jpeg", "Vance"],
-  ["fish1baldvance.jpeg", "Bald Vance"],
-  ["fish1sylvia.jpeg", "Sylvia"],
-  ["fish1damiel.jpeg", "Damiel"],
-  ["fish1letty.jpeg", "Letty"],
-  ["fish1simmons.jpeg", "Simmons"],
-  ["fish1mauro.jpeg", "Mauro"]
-];
+    const item = document.createElement("div");
+    item.className = "artwork";
 
-/* ILLUSTRATIONS */
+    const img = document.createElement("img");
+    img.src = src;
+    img.alt = filename.replace(/\.[^.]+$/, "");
+    img.loading = "lazy";
 
-const illustrations = [
-  ["fish1alexsketch.jpeg", "Alex Sketch"],
-  ["fish1bensketch.jpeg", "Ben Sketch"],
-  ["fish1bettysketch.jpeg", "Betty Sketch"],
-  ["fish1chipsketch.jpeg", "Chip Sketch"],
-  ["fish1chrissketch.jpeg", "Chris Sketch"],
-  ["fish1dontarioussketch.jpeg", "Dontarious Sketch"],
-  ["fish1ellasketch.jpeg", "Ella Sketch"],
-  ["fish1franksketch.jpeg", "Frank Sketch"],
-  ["fish1goldstrikersketch.jpeg", "Goldstriker Sketch"],
-  ["fish1jetsketch.jpeg", "Jet Sketch"],
-  ["fish1lancesketch.jpeg", "Lance Sketch"],
-  ["fish1taisketch.jpeg", "Tai Sketch"],
-  ["fish1taxsketch.jpeg", "Tax Sketch"],
-  ["fishtv1_.jpeg", "Fishtank TV"],
-  ["josiejonbubbles.jpeg", "Josie and Jon"],
-  ["peppasylvia.jpeg", "Peppa and Sylvia"]
-];
+    const index = images.length;
+    images.push(src);
 
-/* POSTER */
+    img.addEventListener("click", () => {
+      openLightbox(index);
+    });
 
-const poster = [
-  ["fishtankseason1poster.jpeg", "Fishtank Season 1 Poster"]
-];
-
-/* FEATURED GIFS */
-
-const tvGif = [
-  "fish1tvcast.gif",
-  "Fishtank TV Cast"
-];
-
-const castGif = [
-  "fish1cast.gif",
-  "Fishtank Season 1 Cast"
-];
-
-/* ALL ARTWORK FOR FULL-SIZE VIEWER */
-
-const allImages = [
-  tvGif,
-  ...producers,
-  castGif,
-  ...freeloaders,
-  ...fish,
-  ...poster,
-  ...illustrations
-];
-
-function imagePath(filename) {
-  return base + encodeURIComponent(filename);
+    item.appendChild(img);
+    gallery.appendChild(item);
+  });
 }
 
-/* IMAGE LOADING OPTIMIZATION */
+async function loadGallery() {
+  try {
+    const response = await fetch(githubAPI);
 
-/*
-  GIFs start loading only when they
-  approach the visible part of the page.
+    if (!response.ok) {
+      throw new Error("Could not load image list");
+    }
 
-  Regular gallery images use lazy loading.
-  The video does not preload its MP4.
-*/
+    const files = await response.json();
 
-const gifObserver =
-  "IntersectionObserver" in window
-    ? new IntersectionObserver(entries => {
+    const imageFiles = files
+      .filter(file =>
+        file.type === "file" &&
+        /\.(jpg|jpeg|png|gif|webp)$/i.test(file.name)
+      )
+      .map(file => file.name)
+      .sort((a, b) =>
+        a.localeCompare(b, undefined, {
+          numeric: true
+        })
+      );
 
-        entries.forEach(entry => {
-          if (!entry.isIntersecting) return;
+    if (imageFiles.length === 0) {
+      throw new Error("No images found");
+    }
 
-          const img = entry.target;
+    renderGallery(imageFiles);
 
-          if (img.dataset.src) {
-            img.src = img.dataset.src;
-            delete img.dataset.src;
-          }
-
-          gifObserver.unobserve(img);
-        });
-
-      }, {
-        rootMargin: "150px 0px"
-      })
-    : null;
-
-function deferGif(img, filename) {
-  const src = imagePath(filename);
-
-  if (gifObserver) {
-    img.dataset.src = src;
-    gifObserver.observe(img);
-  } else {
-    img.src = src;
+  } catch (error) {
+    renderGallery(fallbackFiles);
   }
 }
 
-/* FULL IMAGE VIEWER */
+loadGallery();
 
-let activeIndex = 0;
-let previousFocus = null;
+/* LIGHTBOX */
 
-function openImage(item) {
-  const index = allImages.indexOf(item);
+const lightbox =
+  document.getElementById("lightbox");
 
-  if (index < 0) return;
+const lightboxImage =
+  document.getElementById("lightboxImage");
 
-  activeIndex = index;
-  previousFocus = document.activeElement;
+function openLightbox(index) {
+  currentIndex = index;
 
-  updateLightbox();
+  lightboxImage.src = images[index];
 
-  document.getElementById("lightbox")
-    .classList.add("open");
-
+  lightbox.classList.add("active");
   document.body.style.overflow = "hidden";
-
-  document.getElementById("close").focus();
-}
-
-function updateLightbox() {
-  const [filename, name] = allImages[activeIndex];
-
-  const large = document.getElementById("largeImage");
-
-  large.src = imagePath(filename);
-  large.alt = name;
-
-  document.getElementById("caption").textContent = name;
 }
 
 function closeLightbox() {
-  document.getElementById("lightbox")
-    .classList.remove("open");
-
-  document.getElementById("largeImage")
-    .removeAttribute("src");
-
+  lightbox.classList.remove("active");
   document.body.style.overflow = "";
-
-  if (previousFocus) {
-    previousFocus.focus();
-  }
 }
 
-function moveImage(direction) {
-  activeIndex =
-    (activeIndex + direction + allImages.length)
-    % allImages.length;
+function changeImage(direction) {
+  if (!images.length) return;
 
-  updateLightbox();
+  currentIndex =
+    (currentIndex + direction + images.length) %
+    images.length;
+
+  lightboxImage.src = images[currentIndex];
 }
-
-/* CREATE PORTRAIT */
-
-function createPortrait(item) {
-  const [filename, name] = item;
-
-  const button = document.createElement("button");
-  button.className = "polaroid";
-  button.type = "button";
-  button.setAttribute(
-    "aria-label",
-    "Enlarge " + name
-  );
-
-  const windowEl = document.createElement("span");
-  windowEl.className = "image-window";
-
-  const img = document.createElement("img");
-
-  img.src = imagePath(filename);
-  img.alt = name;
-  img.loading = "lazy";
-  img.decoding = "async";
-  img.width = 400;
-  img.height = 400;
-
-  const label = document.createElement("strong");
-  label.textContent = name;
-
-  windowEl.appendChild(img);
-  button.append(windowEl, label);
-
-  button.addEventListener("click", () => {
-    openImage(item);
-  });
-
-  return button;
-}
-
-/* CREATE ILLUSTRATION */
-
-function createIllustration(item) {
-  const [filename, name] = item;
-
-  const button = document.createElement("button");
-  button.className = "illustration";
-  button.type = "button";
-  button.setAttribute(
-    "aria-label",
-    "Enlarge " + name
-  );
-
-  const img = document.createElement("img");
-
-  img.src = imagePath(filename);
-  img.alt = name;
-  img.loading = "lazy";
-  img.decoding = "async";
-  img.width = 400;
-  img.height = 400;
-
-  button.appendChild(img);
-
-  button.addEventListener("click", () => {
-    openImage(item);
-  });
-
-  return button;
-}
-
-/* CREATE FEATURED GIF */
-
-/*
-  GIFs appear above their character rows.
-  No square cropping is applied.
-  Clicking opens the original full-size GIF.
-*/
-
-function createFeaturedGif(containerId, item) {
-  const [filename, name] = item;
-
-  const container = document.getElementById(containerId);
-
-  const button = document.createElement("button");
-  button.type = "button";
-  button.setAttribute(
-    "aria-label",
-    "Enlarge " + name
-  );
-
-  const img = document.createElement("img");
-
-  img.alt = name;
-  img.decoding = "async";
-  img.loading = "lazy";
-
-  deferGif(img, filename);
-
-  const caption = document.createElement("span");
-  caption.className = "gif-caption";
-  caption.textContent = name;
-
-  button.appendChild(img);
-  container.append(button, caption);
-
-  button.addEventListener("click", () => {
-    openImage(item);
-  });
-}
-
-/* CREATE POSTER */
-
-function createPoster(item) {
-  const [filename, name] = item;
-
-  const button = document.createElement("button");
-  button.type = "button";
-  button.setAttribute(
-    "aria-label",
-    "Enlarge " + name
-  );
-
-  const img = document.createElement("img");
-
-  img.src = imagePath(filename);
-  img.alt = name;
-  img.loading = "lazy";
-  img.decoding = "async";
-
-  button.appendChild(img);
-
-  button.addEventListener("click", () => {
-    openImage(item);
-  });
-
-  return button;
-}
-
-/* FILL GALLERIES */
-
-function fillGallery(id, items, creator) {
-  const container = document.getElementById(id);
-
-  items.forEach(item => {
-    container.appendChild(creator(item));
-  });
-}
-
-/* BUILD PAGE */
-
-fillGallery(
-  "producers",
-  producers,
-  createPortrait
-);
-
-fillGallery(
-  "freeloaders",
-  freeloaders,
-  createPortrait
-);
-
-fillGallery(
-  "fish",
-  fish,
-  createPortrait
-);
-
-fillGallery(
-  "illustrations",
-  illustrations,
-  createIllustration
-);
-
-fillGallery(
-  "poster",
-  poster,
-  createPoster
-);
-
-/* FEATURED GIF PLACEMENTS */
-
-createFeaturedGif(
-  "tvFeature",
-  tvGif
-);
-
-createFeaturedGif(
-  "castFeature",
-  castGif
-);
-
-/* IMAGE VIEWER CONTROLS */
 
 document.getElementById("close")
   .addEventListener("click", closeLightbox);
 
-document.getElementById("previous")
-  .addEventListener("click", () => {
-    moveImage(-1);
-  });
+document.getElementById("prev")
+  .addEventListener("click", () => changeImage(-1));
 
 document.getElementById("next")
-  .addEventListener("click", () => {
-    moveImage(1);
-  });
+  .addEventListener("click", () => changeImage(1));
+
+lightbox.addEventListener("click", event => {
+  if (event.target === lightbox) {
+    closeLightbox();
+  }
+});
 
 document.addEventListener("keydown", event => {
-  const lightbox = document.getElementById("lightbox");
-
-  if (!lightbox.classList.contains("open")) {
-    return;
-  }
+  if (!lightbox.classList.contains("active")) return;
 
   if (event.key === "Escape") {
     closeLightbox();
   }
 
   if (event.key === "ArrowLeft") {
-    moveImage(-1);
+    changeImage(-1);
   }
 
   if (event.key === "ArrowRight") {
-    moveImage(1);
+    changeImage(1);
   }
 });
 
-document.getElementById("lightbox")
-  .addEventListener("click", event => {
-
-    if (event.target.id === "lightbox") {
-      closeLightbox();
-    }
-
-  });
 </script>
 
 </body>
