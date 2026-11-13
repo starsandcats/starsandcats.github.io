@@ -7,13 +7,9 @@
 <title>Fishtank Season 1 | starsandtigers</title>
 
 <style>
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
@@ -53,13 +49,8 @@ nav a {
   font-weight: bold;
 }
 
-nav a:hover {
-  color: #ffdc00;
-}
-
-nav a.active {
-  color: #f32918;
-}
+nav a:hover { color: #ffdc00; }
+nav a.active { color: #f32918; }
 
 main {
   max-width: 1250px;
@@ -100,9 +91,7 @@ main {
   flex-shrink: 0;
 }
 
-.logo-reversed {
-  transform: scaleX(-1);
-}
+.logo-reversed { transform: scaleX(-1); }
 
 .season {
   font-family: "Courier New", monospace;
@@ -111,9 +100,7 @@ main {
   margin-top: 12px;
 }
 
-.red-star {
-  color: #ed2616;
-}
+.red-star { color: #ed2616; }
 
 .description {
   font-family: "Courier New", monospace;
@@ -158,9 +145,7 @@ main {
 
 /* GALLERY */
 
-.gallery-section {
-  margin-bottom: 85px;
-}
+.gallery-section { margin-bottom: 85px; }
 
 .section-heading {
   display: flex;
@@ -190,22 +175,30 @@ main {
   letter-spacing: 1px;
 }
 
-/* FEATURED GIFS - NO CAPTIONS */
+/* FEATURED GIFS - BIGGER WITH WHITE FRAMES */
 
 .featured-gif {
   width: 100%;
-  max-width: 320px;
-  margin: 0 auto 32px;
+  max-width: 380px;
+  margin: 0 auto 35px;
   text-align: center;
 }
 
 .featured-gif button {
   display: block;
-  width: 100%;
-  border: 0;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+  border: 5px solid #fff;
   padding: 0;
-  background: transparent;
+  background: #000;
   cursor: zoom-in;
+  line-height: 0;
+  transition: transform .2s ease;
+}
+
+.featured-gif button:hover {
+  transform: scale(1.035);
 }
 
 .featured-gif img {
@@ -213,9 +206,9 @@ main {
   width: auto;
   max-width: 100%;
   height: auto;
-  max-height: 240px;
+  max-height: 300px;
   object-fit: contain;
-  margin: auto;
+  margin: 0 auto;
 }
 
 /* POLAROID PORTRAITS */
@@ -304,9 +297,7 @@ main {
 
 /* CENTERED SKETCHES */
 
-.sketches-section {
-  text-align: center;
-}
+.sketches-section { text-align: center; }
 
 .illustration-grid {
   display: flex;
@@ -335,9 +326,7 @@ main {
   transition: transform .2s ease;
 }
 
-.illustration:hover img {
-  transform: scale(1.05);
-}
+.illustration:hover img { transform: scale(1.05); }
 
 /* ENDING */
 
@@ -459,9 +448,7 @@ footer {
   padding: 55px 70px;
 }
 
-.lightbox.open {
-  display: flex;
-}
+.lightbox.open { display: flex; }
 
 .lightbox img {
   max-width: 90vw;
@@ -486,24 +473,11 @@ footer {
   cursor: pointer;
 }
 
-.lightbox button:hover {
-  color: #ffdc00;
-}
+.lightbox button:hover { color: #ffdc00; }
 
-.close {
-  top: 15px;
-  right: 25px;
-}
-
-.previous {
-  left: 20px;
-  top: 50%;
-}
-
-.next {
-  right: 20px;
-  top: 50%;
-}
+.close { top: 15px; right: 25px; }
+.previous { left: 20px; top: 50%; }
+.next { right: 20px; top: 50%; }
 
 /* MOBILE */
 
@@ -520,14 +494,8 @@ footer {
 }
 
 @media (max-width: 750px) {
-  header {
-    flex-direction: column;
-  }
-
-  nav {
-    justify-content: center;
-    gap: 12px;
-  }
+  header { flex-direction: column; }
+  nav { justify-content: center; gap: 12px; }
 
   .hero h1.fishtank-title {
     gap: 8px;
@@ -543,64 +511,43 @@ footer {
     width: calc(50% - 12px);
   }
 
-  .illustration-grid {
-    gap: 14px;
-  }
+  .illustration-grid { gap: 14px; }
 
   .illustration {
     width: calc((100% - 14px) / 2);
   }
 
-  .illustration img {
-    height: 160px;
-  }
+  .illustration img { height: 160px; }
 
   .section-heading::before,
   .section-heading::after {
     width: 30px;
   }
 
-  .section-heading h2 {
-    font-size: 26px;
-  }
+  .section-heading h2 { font-size: 26px; }
 
-  .featured-gif {
-    max-width: 280px;
-  }
+  .featured-gif { max-width: 340px; }
+  .featured-gif img { max-height: 270px; }
 
-  #producers .polaroid {
-    padding: 4px;
-  }
-
-  #producers .polaroid strong {
-    font-size: 9px;
-  }
+  #producers .polaroid { padding: 4px; }
+  #producers .polaroid strong { font-size: 9px; }
 
   .season {
     font-size: 18px;
     letter-spacing: 2px;
   }
 
-  .lightbox {
-    padding: 55px 35px;
-  }
-
-  .previous {
-    left: 5px;
-  }
-
-  .next {
-    right: 5px;
-  }
+  .lightbox { padding: 55px 35px; }
+  .previous { left: 5px; }
+  .next { right: 5px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
+  html { scroll-behavior: auto; }
 
   .polaroid,
-  .illustration img {
+  .illustration img,
+  .featured-gif button {
     transition: none;
   }
 }
@@ -617,9 +564,7 @@ footer {
     <a href="/illustration/">Illustrations</a>
     <a href="/animations/">Animations</a>
     <a href="/sketches/">Sketches</a>
-    <a href="/client-projects/" class="active">
-      Client Work
-    </a>
+    <a href="/client-projects/" class="active">Client Work</a>
   </nav>
 </header>
 
@@ -657,7 +602,6 @@ footer {
   <div class="stars">★★★★★</div>
 
   <div class="video-feature">
-
     <video
       controls
       playsinline
@@ -669,13 +613,11 @@ footer {
         type="video/mp4">
 
       Your browser does not support video playback.
-
     </video>
 
     <p class="video-caption">
       FISHTANK SEASON 1 — THE END
     </p>
-
   </div>
 
 </section>
@@ -750,7 +692,6 @@ footer {
       <!-- LEFT EXTENSIONS -->
 
       <g class="drawn-line">
-
         <path d="
           M 0 774
           C -85 768, -130 785, -190 777
@@ -773,13 +714,11 @@ footer {
           S -1220 798, -1330 809
           L -2200 811
         "/>
-
       </g>
 
       <!-- RIGHT EXTENSIONS -->
 
       <g class="drawn-line">
-
         <path d="
           M 1647 653
           C 1710 660, 1760 685, 1830 681
@@ -809,7 +748,6 @@ footer {
           C 2620 845, 2710 873, 2810 864
           L 3900 868
         "/>
-
       </g>
 
       <!-- ORIGINAL FISHTANK TV ARTWORK -->
@@ -837,8 +775,6 @@ footer {
     FISHTANK SEASON 1 — THE END
   </p>
 
-  <!-- ONLY BACK TO CLIENT PROJECTS LINK -->
-
   <a href="/client-projects/" class="back bottom-back">
     ← BACK TO CLIENT PROJECTS
   </a>
@@ -858,22 +794,13 @@ footer {
   aria-modal="true"
   aria-label="Artwork viewer">
 
-  <button class="close" id="close" aria-label="Close">
-    ×
-  </button>
-
-  <button class="previous" id="previous" aria-label="Previous">
-    ❮
-  </button>
+  <button class="close" id="close" aria-label="Close">×</button>
+  <button class="previous" id="previous" aria-label="Previous">❮</button>
 
   <img id="largeImage" alt="">
-
   <p class="lightbox-caption" id="caption"></p>
 
-  <button class="next" id="next" aria-label="Next">
-    ❯
-  </button>
-
+  <button class="next" id="next" aria-label="Next">❯</button>
 </div>
 
 <script>
@@ -950,22 +877,12 @@ const poster = [
 
 /* FEATURED GIFS */
 
-const tvGif = [
-  "fish1tvcast.gif",
-  "Fishtank TV Cast"
-];
-
-const castGif = [
-  "fish1cast.gif",
-  "Fishtank Season 1 Cast"
-];
+const tvGif = ["fish1tvcast.gif", "Fishtank TV Cast"];
+const castGif = ["fish1cast.gif", "Fishtank Season 1 Cast"];
 
 /* ENDING ARTWORK */
 
-const endingArtwork = [
-  "fishtv1_.jpeg",
-  "Fishtank TV"
-];
+const endingArtwork = ["fishtv1_.jpeg", "Fishtank TV"];
 
 /* LIGHTBOX ORDER */
 
@@ -1012,7 +929,6 @@ function useThumbnail(img, filename) {
 const gifObserver =
   "IntersectionObserver" in window
     ? new IntersectionObserver(entries => {
-
         entries.forEach(entry => {
           if (!entry.isIntersecting) return;
 
@@ -1025,7 +941,6 @@ const gifObserver =
 
           gifObserver.unobserve(img);
         });
-
       }, {
         rootMargin: "150px 0px"
       })
@@ -1061,7 +976,6 @@ function openImage(item) {
     .classList.add("open");
 
   document.body.style.overflow = "hidden";
-
   document.getElementById("close").focus();
 }
 
@@ -1085,9 +999,7 @@ function closeLightbox() {
 
   document.body.style.overflow = "";
 
-  if (previousFocus) {
-    previousFocus.focus();
-  }
+  if (previousFocus) previousFocus.focus();
 }
 
 function moveImage(direction) {
@@ -1112,7 +1024,6 @@ function createPortrait(item) {
   windowEl.className = "image-window";
 
   const img = document.createElement("img");
-
   useThumbnail(img, filename);
 
   img.alt = name;
@@ -1143,7 +1054,6 @@ function createIllustration(item) {
   button.setAttribute("aria-label", "Enlarge " + name);
 
   const img = document.createElement("img");
-
   useThumbnail(img, filename);
 
   img.alt = name;
@@ -1169,7 +1079,6 @@ function createPoster(item) {
   button.setAttribute("aria-label", "Enlarge " + name);
 
   const img = document.createElement("img");
-
   useThumbnail(img, filename);
   img.alt = name;
 
@@ -1255,7 +1164,6 @@ function updateEndingComposition() {
   );
 
   const scale = desiredImageWidth / originalWidth;
-
   const visibleSvgWidth = viewportWidth / scale;
 
   const viewBoxX =
@@ -1285,10 +1193,7 @@ if ("ResizeObserver" in window) {
   new ResizeObserver(updateEndingComposition)
     .observe(endingStage);
 } else {
-  window.addEventListener(
-    "resize",
-    updateEndingComposition
-  );
+  window.addEventListener("resize", updateEndingComposition);
 }
 
 endingButton.addEventListener("click", () => {
@@ -1317,17 +1222,9 @@ document.addEventListener("keydown", event => {
     return;
   }
 
-  if (event.key === "Escape") {
-    closeLightbox();
-  }
-
-  if (event.key === "ArrowLeft") {
-    moveImage(-1);
-  }
-
-  if (event.key === "ArrowRight") {
-    moveImage(1);
-  }
+  if (event.key === "Escape") closeLightbox();
+  if (event.key === "ArrowLeft") moveImage(-1);
+  if (event.key === "ArrowRight") moveImage(1);
 });
 
 document.getElementById("lightbox")
