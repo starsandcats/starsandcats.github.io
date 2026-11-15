@@ -7,8 +7,13 @@
 <title>Fishtank Season 1 | starsandtigers</title>
 
 <style>
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;
@@ -48,8 +53,13 @@ nav a {
   font-weight: bold;
 }
 
-nav a:hover { color: #ffdc00; }
-nav a.active { color: #f32918; }
+nav a:hover {
+  color: #ffdc00;
+}
+
+nav a.active {
+  color: #f32918;
+}
 
 main {
   max-width: 1250px;
@@ -98,7 +108,9 @@ main {
   margin-top: 12px;
 }
 
-.red-star { color: #ed2616; }
+.red-star {
+  color: #ed2616;
+}
 
 .description {
   font-family: "Courier New", monospace;
@@ -140,7 +152,7 @@ main {
   letter-spacing: 1px;
 }
 
-/* GALLERY SECTIONS */
+/* SECTIONS */
 
 .gallery-section {
   margin-bottom: 85px;
@@ -207,12 +219,13 @@ main {
   object-fit: contain;
 }
 
-/* BOTH PHOTO TICKERS */
+/* PHOTO TICKERS */
 
 .photo-ticker-stage {
   position: relative;
   width: 100vw;
   margin-left: calc(50% - 50vw);
+  min-height: 320px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -236,18 +249,20 @@ main {
   width: max-content;
   flex-shrink: 0;
   will-change: transform;
-  animation: tickerScroll var(--ticker-speed)
+  animation: tickerScroll var(--ticker-speed, 30s)
     linear infinite;
 }
 
 .photo-ticker-group {
   display: flex;
   flex-shrink: 0;
+  align-items: center;
   gap: 14px;
   padding-right: 14px;
 }
 
 .photo-ticker-photo {
+  display: block;
   flex-shrink: 0;
   object-fit: cover;
   object-position: center;
@@ -258,8 +273,8 @@ main {
 /* PRODUCERS: RIGHT TO LEFT */
 
 .producer-ticker-stage {
-  height: 310px;
   --ticker-speed: 24s;
+  min-height: 310px;
 }
 
 .producer-ticker-stage .photo-ticker-photo {
@@ -269,21 +284,35 @@ main {
 
 /* FREELOADERS: LEFT TO RIGHT */
 
+/*
+  The cast GIF determines the photo height.
+
+  JavaScript measures the actual displayed GIF and
+  updates --cast-height automatically.
+
+  This avoids fixed dimensions that don't match
+  the GIF on different screen sizes.
+*/
+
 .freeloader-ticker-stage {
-  height: 370px;
   --ticker-speed: 32s;
+  --cast-height: 300px;
+  min-height: calc(var(--cast-height) + 30px);
 }
 
 .freeloader-ticker-stage .photo-ticker-photo {
-  width: 190px;
-  height: 290px;
+  height: var(--cast-height);
+  width: auto;
+  aspect-ratio: 5 / 8;
+  object-fit: cover;
+  border: 5px solid #fff;
 }
 
 .freeloader-ticker-stage .photo-ticker-track {
   animation-direction: reverse;
 }
 
-/* SEAMLESS INFINITE MOVEMENT */
+/* CONTINUOUS LOOP */
 
 @keyframes tickerScroll {
   from {
@@ -295,7 +324,7 @@ main {
   }
 }
 
-/* STATIONARY GIFS IN FRONT */
+/* STATIONARY GIFS */
 
 .photo-ticker-stage .featured-gif {
   position: relative;
@@ -587,9 +616,20 @@ footer {
   color: #ffdc00;
 }
 
-.close { top: 15px; right: 25px; }
-.previous { left: 20px; top: 50%; }
-.next { right: 20px; top: 50%; }
+.close {
+  top: 15px;
+  right: 25px;
+}
+
+.previous {
+  left: 20px;
+  top: 50%;
+}
+
+.next {
+  right: 20px;
+  top: 50%;
+}
 
 /* MOBILE */
 
@@ -664,7 +704,7 @@ footer {
   }
 
   .producer-ticker-stage {
-    height: 255px;
+    min-height: 255px;
   }
 
   .producer-ticker-stage .photo-ticker-photo {
@@ -673,12 +713,7 @@ footer {
   }
 
   .freeloader-ticker-stage {
-    height: 300px;
-  }
-
-  .freeloader-ticker-stage .photo-ticker-photo {
-    width: 145px;
-    height: 225px;
+    min-height: calc(var(--cast-height) + 30px);
   }
 
   .photo-ticker-stage .featured-gif {
@@ -693,12 +728,19 @@ footer {
     padding: 55px 35px;
   }
 
-  .previous { left: 5px; }
-  .next { right: 5px; }
+  .previous {
+    left: 5px;
+  }
+
+  .next {
+    right: 5px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
+  html {
+    scroll-behavior: auto;
+  }
 
   .photo-ticker-track {
     animation: none;
@@ -858,8 +900,6 @@ footer {
       role="img"
       aria-label="Fishtank TV artwork with extended white lines">
 
-      <!-- LEFT EXTENSIONS -->
-
       <g class="drawn-line">
         <path d="
           M 0 774
@@ -884,8 +924,6 @@ footer {
           L -2200 811
         "/>
       </g>
-
-      <!-- RIGHT EXTENSIONS -->
 
       <g class="drawn-line">
         <path d="
@@ -1375,10 +1413,74 @@ function createPhotoTicker(featureId, photos, stageClass) {
   stage.appendChild(windowEl);
   stage.appendChild(feature);
 
-  /* Two identical halves keep the loop continuous.
-     Each half is long enough to cover the screen. */
+  /*
+    Match the Freeloader photographs to the
+    actual displayed height of the cast GIF.
+  */
+
+  if (stageClass === "freeloader-ticker-stage") {
+    const castImage = feature.querySelector("img");
+
+    function matchCastHeight() {
+      if (!castImage) return;
+
+      const gifHeight =
+        castImage.getBoundingClientRect().height;
+
+      if (gifHeight > 0) {
+        /*
+          Include the GIF's 5px top and bottom
+          border in the matched photo height.
+        */
+        stage.style.setProperty(
+          "--cast-height",
+          (gifHeight + 10) + "px"
+        );
+      }
+    }
+
+    if (castImage) {
+      castImage.addEventListener("load", matchCastHeight);
+
+      if ("ResizeObserver" in window) {
+        new ResizeObserver(matchCastHeight)
+          .observe(castImage);
+      } else {
+        window.addEventListener(
+          "resize",
+          matchCastHeight
+        );
+      }
+
+      matchCastHeight();
+    }
+  }
+
+  /*
+    Two identical halves create the loop.
+    Each half must cover the full viewport.
+  */
+
+  let lastWidth = 0;
+  let lastHeight = 0;
 
   function updateTicker() {
+    const width = stage.clientWidth;
+
+    const photoHeight = firstGroup
+      .querySelector(".photo-ticker-photo")
+      ?.getBoundingClientRect().height || 0;
+
+    if (
+      width === lastWidth &&
+      photoHeight === lastHeight
+    ) {
+      return;
+    }
+
+    lastWidth = width;
+    lastHeight = photoHeight;
+
     track.style.animation = "none";
 
     firstGroup.replaceChildren(
@@ -1394,7 +1496,7 @@ function createPhotoTicker(featureId, photos, stageClass) {
 
     const copies = Math.max(
       1,
-      Math.ceil(stage.clientWidth / singleWidth)
+      Math.ceil(width / singleWidth)
     );
 
     for (let i = 1; i < copies; i++) {
@@ -1416,6 +1518,7 @@ function createPhotoTicker(featureId, photos, stageClass) {
 
   if ("ResizeObserver" in window) {
     new ResizeObserver(updateTicker).observe(stage);
+    new ResizeObserver(updateTicker).observe(firstGroup);
   } else {
     window.addEventListener("resize", updateTicker);
   }
