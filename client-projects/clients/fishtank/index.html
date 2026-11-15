@@ -8,7 +8,6 @@
 
 <style>
 * { box-sizing: border-box; }
-
 html { scroll-behavior: smooth; }
 
 body {
@@ -58,19 +57,18 @@ main {
   padding: 0 25px;
 }
 
-/* CENTERED TITLE WITH MIRRORED LOGOS */
+/* TITLE */
 
 .hero {
   text-align: center;
   padding: 55px 20px 35px;
 }
 
-.hero h1.fishtank-title {
+.fishtank-title {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 20px;
-  width: 100%;
   margin: 0 auto;
   font-size: clamp(42px, 7vw, 100px);
   font-weight: 1000;
@@ -80,18 +78,18 @@ main {
 
 .fishtank-title span {
   white-space: nowrap;
-  text-align: center;
 }
 
 .fishtank-logo {
   width: 150px;
   height: auto;
-  margin: 0;
   object-fit: contain;
   flex-shrink: 0;
 }
 
-.logo-reversed { transform: scaleX(-1); }
+.logo-reversed {
+  transform: scaleX(-1);
+}
 
 .season {
   font-family: "Courier New", monospace;
@@ -128,7 +126,6 @@ main {
 .video-feature video {
   display: block;
   width: 100%;
-  height: auto;
   aspect-ratio: 16 / 9;
   object-fit: contain;
   background: #000;
@@ -143,9 +140,11 @@ main {
   letter-spacing: 1px;
 }
 
-/* GALLERY */
+/* GALLERY SECTIONS */
 
-.gallery-section { margin-bottom: 85px; }
+.gallery-section {
+  margin-bottom: 85px;
+}
 
 .section-heading {
   display: flex;
@@ -169,13 +168,11 @@ main {
 
 .section-heading h2 {
   margin: 0;
-  text-align: center;
   font-size: clamp(29px, 5vw, 49px);
   font-weight: 1000;
-  letter-spacing: 1px;
 }
 
-/* FEATURED GIFS - BIGGER WITH WHITE FRAMES */
+/* FEATURED GIFS */
 
 .featured-gif {
   width: 100%;
@@ -208,10 +205,122 @@ main {
   height: auto;
   max-height: 300px;
   object-fit: contain;
-  margin: 0 auto;
 }
 
-/* POLAROID PORTRAITS */
+/* BOTH PHOTO TICKERS */
+
+.photo-ticker-stage {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  isolation: isolate;
+  margin-bottom: 35px;
+}
+
+.photo-ticker-window {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.photo-ticker-track {
+  display: flex;
+  width: max-content;
+  flex-shrink: 0;
+  will-change: transform;
+  animation: tickerScroll var(--ticker-speed)
+    linear infinite;
+}
+
+.photo-ticker-group {
+  display: flex;
+  flex-shrink: 0;
+  gap: 14px;
+  padding-right: 14px;
+}
+
+.photo-ticker-photo {
+  flex-shrink: 0;
+  object-fit: cover;
+  object-position: center;
+  border: 5px solid #fff;
+  background: #111;
+}
+
+/* PRODUCERS: RIGHT TO LEFT */
+
+.producer-ticker-stage {
+  height: 310px;
+  --ticker-speed: 24s;
+}
+
+.producer-ticker-stage .photo-ticker-photo {
+  width: 170px;
+  height: 210px;
+}
+
+/* FREELOADERS: LEFT TO RIGHT */
+
+.freeloader-ticker-stage {
+  height: 370px;
+  --ticker-speed: 32s;
+}
+
+.freeloader-ticker-stage .photo-ticker-photo {
+  width: 190px;
+  height: 290px;
+}
+
+.freeloader-ticker-stage .photo-ticker-track {
+  animation-direction: reverse;
+}
+
+/* SEAMLESS INFINITE MOVEMENT */
+
+@keyframes tickerScroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* STATIONARY GIFS IN FRONT */
+
+.photo-ticker-stage .featured-gif {
+  position: relative;
+  z-index: 3;
+  width: 380px;
+  max-width: 85vw;
+  margin: 0;
+  pointer-events: auto;
+}
+
+.photo-ticker-stage .featured-gif button {
+  position: relative;
+  background: #000;
+  box-shadow: 0 0 0 8px #000;
+}
+
+.producer-ticker-stage .featured-gif img {
+  max-height: 290px;
+}
+
+.freeloader-ticker-stage .featured-gif img {
+  max-height: 300px;
+}
+
+/* PORTRAIT GALLERIES */
 
 .portrait-grid {
   display: flex;
@@ -295,9 +404,11 @@ main {
   height: auto;
 }
 
-/* CENTERED SKETCHES */
+/* SKETCHES */
 
-.sketches-section { text-align: center; }
+.sketches-section {
+  text-align: center;
+}
 
 .illustration-grid {
   display: flex;
@@ -326,7 +437,9 @@ main {
   transition: transform .2s ease;
 }
 
-.illustration:hover img { transform: scale(1.05); }
+.illustration:hover img {
+  transform: scale(1.05);
+}
 
 /* ENDING */
 
@@ -394,25 +507,20 @@ main {
   font-size: 14px;
 }
 
-/* ONLY BOTTOM BACK LINK */
+/* BACK LINK AT BOTTOM ONLY */
 
 .back {
   display: inline-block;
   color: #aaa;
   text-decoration: none;
-  font-size: 12px;
-  margin-top: 20px;
-}
-
-.bottom-back {
-  margin-top: 45px;
   font-size: 13px;
   font-weight: bold;
   letter-spacing: 1px;
+  margin-top: 45px;
 }
 
-.bottom-back:hover,
-.bottom-back:focus-visible {
+.back:hover,
+.back:focus-visible {
   color: #f32918;
 }
 
@@ -434,7 +542,7 @@ footer {
   );
 }
 
-/* LIGHTBOX */
+/* IMAGE VIEWER */
 
 .lightbox {
   display: none;
@@ -448,7 +556,9 @@ footer {
   padding: 55px 70px;
 }
 
-.lightbox.open { display: flex; }
+.lightbox.open {
+  display: flex;
+}
 
 .lightbox img {
   max-width: 90vw;
@@ -473,7 +583,9 @@ footer {
   cursor: pointer;
 }
 
-.lightbox button:hover { color: #ffdc00; }
+.lightbox button:hover {
+  color: #ffdc00;
+}
 
 .close { top: 15px; right: 25px; }
 .previous { left: 20px; top: 50%; }
@@ -494,10 +606,16 @@ footer {
 }
 
 @media (max-width: 750px) {
-  header { flex-direction: column; }
-  nav { justify-content: center; gap: 12px; }
+  header {
+    flex-direction: column;
+  }
 
-  .hero h1.fishtank-title {
+  nav {
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .fishtank-title {
     gap: 8px;
     font-size: clamp(30px, 8vw, 55px);
     letter-spacing: -1px;
@@ -511,39 +629,80 @@ footer {
     width: calc(50% - 12px);
   }
 
-  .illustration-grid { gap: 14px; }
+  .illustration-grid {
+    gap: 14px;
+  }
 
   .illustration {
     width: calc((100% - 14px) / 2);
   }
 
-  .illustration img { height: 160px; }
+  .illustration img {
+    height: 160px;
+  }
 
   .section-heading::before,
   .section-heading::after {
     width: 30px;
   }
 
-  .section-heading h2 { font-size: 26px; }
-
-  .featured-gif { max-width: 340px; }
-  .featured-gif img { max-height: 270px; }
-
-  #producers .polaroid { padding: 4px; }
-  #producers .polaroid strong { font-size: 9px; }
+  .section-heading h2 {
+    font-size: 26px;
+  }
 
   .season {
     font-size: 18px;
     letter-spacing: 2px;
   }
 
-  .lightbox { padding: 55px 35px; }
+  #producers .polaroid {
+    padding: 4px;
+  }
+
+  #producers .polaroid strong {
+    font-size: 9px;
+  }
+
+  .producer-ticker-stage {
+    height: 255px;
+  }
+
+  .producer-ticker-stage .photo-ticker-photo {
+    width: 115px;
+    height: 155px;
+  }
+
+  .freeloader-ticker-stage {
+    height: 300px;
+  }
+
+  .freeloader-ticker-stage .photo-ticker-photo {
+    width: 145px;
+    height: 225px;
+  }
+
+  .photo-ticker-stage .featured-gif {
+    width: 260px;
+  }
+
+  .photo-ticker-stage .featured-gif img {
+    max-height: 220px;
+  }
+
+  .lightbox {
+    padding: 55px 35px;
+  }
+
   .previous { left: 5px; }
   .next { right: 5px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+
+  .photo-ticker-track {
+    animation: none;
+  }
 
   .polaroid,
   .illustration img,
@@ -570,7 +729,7 @@ footer {
 
 <main>
 
-<!-- CENTERED FISHTANK TITLE -->
+<!-- FISHTANK TITLE -->
 
 <section class="hero">
 
@@ -625,33 +784,41 @@ footer {
 <!-- PRODUCERS -->
 
 <section class="gallery-section">
+
   <div class="section-heading">
     <h2>PRODUCERS</h2>
   </div>
 
   <div class="featured-gif" id="tvFeature"></div>
+
   <div class="portrait-grid" id="producers"></div>
+
 </section>
 
 <!-- FREELOADERS -->
 
 <section class="gallery-section">
+
   <div class="section-heading">
     <h2>THE FREELOADERS</h2>
   </div>
 
   <div class="featured-gif" id="castFeature"></div>
+
   <div class="portrait-grid" id="freeloaders"></div>
+
 </section>
 
 <!-- THE FISH -->
 
 <section class="gallery-section">
+
   <div class="section-heading">
     <h2>THE FISH</h2>
   </div>
 
   <div class="portrait-grid" id="fish"></div>
+
 </section>
 
 <!-- POSTER -->
@@ -661,11 +828,13 @@ footer {
 <!-- SKETCHES -->
 
 <section class="gallery-section sketches-section">
+
   <div class="section-heading">
     <h2>SKETCHES</h2>
   </div>
 
   <div class="illustration-grid" id="illustrations"></div>
+
 </section>
 
 <!-- ENDING -->
@@ -750,8 +919,6 @@ footer {
         "/>
       </g>
 
-      <!-- ORIGINAL FISHTANK TV ARTWORK -->
-
       <image
         href="/images/clients/fishtank/fishtv1_.jpeg"
         x="0"
@@ -775,7 +942,7 @@ footer {
     FISHTANK SEASON 1 — THE END
   </p>
 
-  <a href="/client-projects/" class="back bottom-back">
+  <a href="/client-projects/" class="back">
     ← BACK TO CLIENT PROJECTS
   </a>
 
@@ -812,7 +979,7 @@ const base = "/images/clients/fishtank/";
 const thumbs = base + "thumbs/";
 const thumbnailVersion = "20261112";
 
-/* PRODUCERS */
+/* PRODUCER ARTWORK */
 
 const producers = [
   ["fish1jet.jpeg", "Jet Neptune"],
@@ -821,7 +988,7 @@ const producers = [
   ["fish1tax.jpeg", "Tax"]
 ];
 
-/* FREELOADERS */
+/* FREELOADER ARTWORK */
 
 const freeloaders = [
   ["fish1alex.jpeg", "Alex"],
@@ -884,7 +1051,30 @@ const castGif = ["fish1cast.gif", "Fishtank Season 1 Cast"];
 
 const endingArtwork = ["fishtv1_.jpeg", "Fishtank TV"];
 
-/* LIGHTBOX ORDER */
+/* PRODUCER PHOTOGRAPHS */
+
+const producerPhotos = [
+  ["jetphoto.jpg", "Jet Neptune"],
+  ["goldstrikerphoto.jpg", "Goldstriker"],
+  ["benphoto.jpg", "Ben"],
+  ["taxphoto.jpg", "Tax"]
+];
+
+/* FREELOADER PHOTOGRAPHS */
+
+const freeloaderPhotos = [
+  ["alexphoto.jpg", "Alex"],
+  ["bettyphoto.jpg", "Betty"],
+  ["chipphoto.jpg", "Chip"],
+  ["chrisphoto.jpg", "Chris"],
+  ["dontariousphoto.jpg", "Dontarious"],
+  ["ellaphoto.jpg", "Ella"],
+  ["frankphoto.jpg", "Frank"],
+  ["lancephoto.jpg", "Lance"],
+  ["taiphoto.jpg", "Tai"]
+];
+
+/* IMAGE VIEWER ORDER */
 
 const allImages = [
   tvGif,
@@ -910,7 +1100,7 @@ function thumbnailPath(filename) {
     + "?v=" + thumbnailVersion;
 }
 
-/* WEBP THUMBNAILS */
+/* THUMBNAIL LOADING */
 
 function useThumbnail(img, filename) {
   img.loading = "lazy";
@@ -957,7 +1147,7 @@ function deferGif(img, filename) {
   }
 }
 
-/* LIGHTBOX */
+/* IMAGE VIEWER */
 
 let activeIndex = 0;
 let previousFocus = null;
@@ -1091,11 +1281,10 @@ function createPoster(item) {
   return button;
 }
 
-/* FEATURED GIFS - NO CAPTIONS */
+/* CREATE FEATURED GIFS */
 
 function createFeaturedGif(containerId, item) {
   const [filename, name] = item;
-
   const container = document.getElementById(containerId);
 
   const button = document.createElement("button");
@@ -1103,7 +1292,6 @@ function createFeaturedGif(containerId, item) {
   button.setAttribute("aria-label", "Enlarge " + name);
 
   const img = document.createElement("img");
-
   img.alt = name;
   img.loading = "lazy";
   img.decoding = "async";
@@ -1128,7 +1316,7 @@ function fillGallery(id, items, creator) {
   });
 }
 
-/* BUILD GALLERIES */
+/* BUILD ALL GALLERIES */
 
 fillGallery("producers", producers, createPortrait);
 fillGallery("freeloaders", freeloaders, createPortrait);
@@ -1138,6 +1326,116 @@ fillGallery("poster", poster, createPoster);
 
 createFeaturedGif("tvFeature", tvGif);
 createFeaturedGif("castFeature", castGif);
+
+/* CREATE SEAMLESS PHOTO TICKERS */
+
+function createPhotoTicker(featureId, photos, stageClass) {
+  const feature = document.getElementById(featureId);
+
+  if (!feature) return;
+
+  const stage = document.createElement("div");
+  stage.className = "photo-ticker-stage " + stageClass;
+
+  const windowEl = document.createElement("div");
+  windowEl.className = "photo-ticker-window";
+  windowEl.setAttribute("aria-hidden", "true");
+
+  const track = document.createElement("div");
+  track.className = "photo-ticker-track";
+
+  function makePhoto(filename, name) {
+    const img = document.createElement("img");
+    img.src = imagePath(filename);
+    img.alt = name;
+    img.className = "photo-ticker-photo";
+    img.decoding = "async";
+    img.draggable = false;
+    return img;
+  }
+
+  function makeGroup() {
+    const group = document.createElement("div");
+    group.className = "photo-ticker-group";
+
+    photos.forEach(([filename, name]) => {
+      group.appendChild(makePhoto(filename, name));
+    });
+
+    return group;
+  }
+
+  const firstGroup = makeGroup();
+  const secondGroup = makeGroup();
+
+  track.append(firstGroup, secondGroup);
+  windowEl.appendChild(track);
+
+  feature.parentNode.insertBefore(stage, feature);
+  stage.appendChild(windowEl);
+  stage.appendChild(feature);
+
+  /* Two identical halves keep the loop continuous.
+     Each half is long enough to cover the screen. */
+
+  function updateTicker() {
+    track.style.animation = "none";
+
+    firstGroup.replaceChildren(
+      ...photos.map(([filename, name]) =>
+        makePhoto(filename, name)
+      )
+    );
+
+    const singleWidth =
+      firstGroup.getBoundingClientRect().width;
+
+    if (!singleWidth) return;
+
+    const copies = Math.max(
+      1,
+      Math.ceil(stage.clientWidth / singleWidth)
+    );
+
+    for (let i = 1; i < copies; i++) {
+      photos.forEach(([filename, name]) => {
+        firstGroup.appendChild(makePhoto(filename, name));
+      });
+    }
+
+    secondGroup.replaceChildren(
+      ...Array.from(firstGroup.children, img =>
+        img.cloneNode(true)
+      )
+    );
+
+    track.style.animation = "";
+  }
+
+  updateTicker();
+
+  if ("ResizeObserver" in window) {
+    new ResizeObserver(updateTicker).observe(stage);
+  } else {
+    window.addEventListener("resize", updateTicker);
+  }
+}
+
+/* PRODUCERS: RIGHT TO LEFT */
+
+createPhotoTicker(
+  "tvFeature",
+  producerPhotos,
+  "producer-ticker-stage"
+);
+
+/* FREELOADERS: LEFT TO RIGHT */
+
+createPhotoTicker(
+  "castFeature",
+  freeloaderPhotos,
+  "freeloader-ticker-stage"
+);
 
 /* RESPONSIVE FISHTANK TV ENDING */
 
@@ -1175,7 +1473,6 @@ function updateEndingComposition() {
   );
 
   const renderedHeight = originalHeight * scale;
-
   endingSvg.style.height = renderedHeight + "px";
 
   const imageLeft =
@@ -1200,7 +1497,7 @@ endingButton.addEventListener("click", () => {
   openImage(endingArtwork);
 });
 
-/* LIGHTBOX CONTROLS */
+/* IMAGE VIEWER CONTROLS */
 
 document.getElementById("close")
   .addEventListener("click", closeLightbox);
@@ -1235,402 +1532,6 @@ document.getElementById("lightbox")
   });
 
 </script>
- 
-<style>
-/* PRODUCER PHOTO TICKER */
 
-.producer-ticker-stage {
-  position: relative;
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  height: 310px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  isolation: isolate;
-  margin-bottom: 30px;
-}
-
-.producer-ticker-window {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  z-index: 1;
-}
-
-.producer-ticker-track {
-  display: flex;
-  width: max-content;
-  animation: producerScroll 24s linear infinite;
-  will-change: transform;
-}
-
-.producer-ticker-group {
-  display: flex;
-  flex-shrink: 0;
-  gap: 14px;
-  padding-right: 14px;
-}
-
-.producer-ticker-photo {
-  width: 170px;
-  height: 210px;
-  flex-shrink: 0;
-  object-fit: cover;
-  object-position: center;
-  border: 5px solid #fff;
-  background: #111;
-}
-
-@keyframes producerScroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-/* KEEP THE ORIGINAL TV IN FRONT */
-
-.producer-ticker-stage #tvFeature {
-  position: relative;
-  z-index: 3;
-  width: 380px;
-  max-width: 85vw;
-  margin: 0;
-  pointer-events: auto;
-}
-
-.producer-ticker-stage #tvFeature button {
-  position: relative;
-  background: #000;
-  box-shadow: 0 0 0 8px #000;
-}
-
-.producer-ticker-stage #tvFeature img {
-  max-height: 290px;
-}
-
-@media (max-width: 750px) {
-  .producer-ticker-stage {
-    height: 255px;
-  }
-
-  .producer-ticker-photo {
-    width: 115px;
-    height: 155px;
-  }
-
-  .producer-ticker-stage #tvFeature {
-    width: 260px;
-  }
-
-  .producer-ticker-stage #tvFeature img {
-    max-height: 220px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .producer-ticker-track {
-    animation: none;
-  }
-}
-</style>
-
-<script>
-/* SEAMLESS PRODUCER PHOTO LOOP */
-
-(function () {
-  const tv = document.getElementById("tvFeature");
-
-  if (!tv || tv.closest(".producer-ticker-stage")) return;
-
-  const photos = [
-    ["jetphoto.jpg", "Jet Neptune"],
-    ["goldstrikerphoto.jpg", "Goldstriker"],
-    ["benphoto.jpg", "Ben"],
-    ["taxphoto.jpg", "Tax"]
-  ];
-
-  const stage = document.createElement("div");
-  stage.className = "producer-ticker-stage";
-
-  const windowEl = document.createElement("div");
-  windowEl.className = "producer-ticker-window";
-  windowEl.setAttribute("aria-hidden", "true");
-
-  const track = document.createElement("div");
-  track.className = "producer-ticker-track";
-
-  function makeGroup() {
-    const group = document.createElement("div");
-    group.className = "producer-ticker-group";
-
-    photos.forEach(([filename, name]) => {
-      const img = document.createElement("img");
-
-      img.src = "/images/clients/fishtank/" + filename;
-      img.alt = name;
-      img.className = "producer-ticker-photo";
-      img.decoding = "async";
-      img.draggable = false;
-
-      group.appendChild(img);
-    });
-
-    return group;
-  }
-
-  /* Duplicate identical sequences for seamless looping.
-     Add enough copies to cover wide screens. */
-
-  const firstGroup = makeGroup();
-  const secondGroup = makeGroup();
-
-  track.append(firstGroup, secondGroup);
-  windowEl.appendChild(track);
-
-  tv.parentNode.insertBefore(stage, tv);
-  stage.appendChild(windowEl);
-  stage.appendChild(tv);
-
-  function updateTicker() {
-    const requiredWidth = stage.clientWidth;
-    const groupWidth = firstGroup.getBoundingClientRect().width;
-
-    if (!groupWidth) return;
-
-    const copies = Math.max(
-      1,
-      Math.ceil(requiredWidth / groupWidth)
-    );
-
-    const newGroups = [];
-
-    for (let i = 0; i < copies; i++) {
-      newGroups.push(makeGroup());
-    }
-
-    firstGroup.replaceChildren(
-      ...newGroups.flatMap(group => [...group.children])
-    );
-
-    secondGroup.replaceChildren(
-      ...Array.from(firstGroup.children, img => img.cloneNode(true))
-    );
-  }
-
-  updateTicker();
-
-  window.addEventListener("resize", updateTicker);
-})();
-</script>
-  
-<style>
-/* FREELOADER PHOTO TICKER */
-
-.freeloader-ticker-stage {
-  position: relative;
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  height: 310px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  isolation: isolate;
-  margin-bottom: 35px;
-}
-
-.freeloader-ticker-window {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  z-index: 1;
-}
-
-.freeloader-ticker-track {
-  display: flex;
-  width: max-content;
-  animation: freeloaderScroll 32s linear infinite;
-  will-change: transform;
-}
-
-.freeloader-ticker-group {
-  display: flex;
-  flex-shrink: 0;
-  gap: 14px;
-  padding-right: 14px;
-}
-
-.freeloader-ticker-photo {
-  width: 130px;
-  height: 210px;
-  flex-shrink: 0;
-  object-fit: cover;
-  object-position: center;
-  border: 5px solid #fff;
-  background: #111;
-}
-
-@keyframes freeloaderScroll {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-/* CAST GIF STAYS IN FRONT */
-
-.freeloader-ticker-stage #castFeature {
-  position: relative;
-  z-index: 3;
-  width: 380px;
-  max-width: 85vw;
-  margin: 0;
-}
-
-.freeloader-ticker-stage #castFeature button {
-  position: relative;
-  background: #000;
-  box-shadow: 0 0 0 8px #000;
-}
-
-.freeloader-ticker-stage #castFeature img {
-  max-height: 300px;
-  object-fit: contain;
-}
-
-@media (max-width: 750px) {
-  .freeloader-ticker-stage {
-    height: 255px;
-  }
-
-  .freeloader-ticker-photo {
-    width: 100px;
-    height: 160px;
-  }
-
-  .freeloader-ticker-stage #castFeature {
-    width: 260px;
-  }
-
-  .freeloader-ticker-stage #castFeature img {
-    max-height: 220px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .freeloader-ticker-track {
-    animation: none;
-  }
-}
-</style>
-
-<script>
-/* SEAMLESS FREELOADER PHOTO LOOP */
-
-(function () {
-  const cast = document.getElementById("castFeature");
-
-  if (!cast || cast.closest(".freeloader-ticker-stage")) {
-    return;
-  }
-
-  const photos = [
-    ["alexphoto.jpg", "Alex"],
-    ["bettyphoto.jpg", "Betty"],
-    ["chipphoto.jpg", "Chip"],
-    ["chrisphoto.jpg", "Chris"],
-    ["dontariousphoto.jpg", "Dontarious"],
-    ["ellaphoto.jpg", "Ella"],
-    ["frankphoto.jpg", "Frank"],
-    ["lancephoto.jpg", "Lance"],
-    ["taiphoto.jpg", "Tai"]
-  ];
-
-  const stage = document.createElement("div");
-  stage.className = "freeloader-ticker-stage";
-
-  const windowEl = document.createElement("div");
-  windowEl.className = "freeloader-ticker-window";
-  windowEl.setAttribute("aria-hidden", "true");
-
-  const track = document.createElement("div");
-  track.className = "freeloader-ticker-track";
-
-  function makeGroup() {
-    const group = document.createElement("div");
-    group.className = "freeloader-ticker-group";
-
-    photos.forEach(([filename, name]) => {
-      const img = document.createElement("img");
-
-      img.src = "/images/clients/fishtank/" +
-        encodeURIComponent(filename);
-
-      img.alt = name;
-      img.className = "freeloader-ticker-photo";
-      img.decoding = "async";
-      img.draggable = false;
-
-      group.appendChild(img);
-    });
-
-    return group;
-  }
-
-  const firstGroup = makeGroup();
-  const secondGroup = makeGroup();
-
-  track.append(firstGroup, secondGroup);
-  windowEl.appendChild(track);
-
-  cast.parentNode.insertBefore(stage, cast);
-  stage.appendChild(windowEl);
-  stage.appendChild(cast);
-
-  function updateTicker() {
-    const groupWidth =
-      firstGroup.getBoundingClientRect().width;
-
-    if (!groupWidth) return;
-
-    const copies = Math.max(
-      1,
-      Math.ceil(stage.clientWidth / groupWidth)
-    );
-
-    const newPhotos = [];
-
-    for (let i = 0; i < copies; i++) {
-      const group = makeGroup();
-      newPhotos.push(...group.children);
-    }
-
-    firstGroup.replaceChildren(...newPhotos);
-
-    secondGroup.replaceChildren(
-      ...Array.from(
-        firstGroup.children,
-        img => img.cloneNode(true)
-      )
-    );
-  }
-
-  updateTicker();
-
-  window.addEventListener("resize", updateTicker);
-})();
-</script>
 </body>
 </html>
