@@ -1235,5 +1235,199 @@ document.getElementById("lightbox")
   });
 
 </script>
+ 
+<style>
+/* PRODUCER PHOTO TICKER */
+
+.producer-ticker-stage {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  height: 310px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  isolation: isolate;
+  margin-bottom: 30px;
+}
+
+.producer-ticker-window {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.producer-ticker-track {
+  display: flex;
+  width: max-content;
+  animation: producerScroll 24s linear infinite;
+  will-change: transform;
+}
+
+.producer-ticker-group {
+  display: flex;
+  flex-shrink: 0;
+  gap: 14px;
+  padding-right: 14px;
+}
+
+.producer-ticker-photo {
+  width: 170px;
+  height: 210px;
+  flex-shrink: 0;
+  object-fit: cover;
+  object-position: center;
+  border: 2px solid #fff;
+  background: #111;
+}
+
+@keyframes producerScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* KEEP THE ORIGINAL TV IN FRONT */
+
+.producer-ticker-stage #tvFeature {
+  position: relative;
+  z-index: 3;
+  width: 380px;
+  max-width: 85vw;
+  margin: 0;
+  pointer-events: auto;
+}
+
+.producer-ticker-stage #tvFeature button {
+  position: relative;
+  background: #000;
+  box-shadow: 0 0 0 8px #000;
+}
+
+.producer-ticker-stage #tvFeature img {
+  max-height: 290px;
+}
+
+@media (max-width: 750px) {
+  .producer-ticker-stage {
+    height: 255px;
+  }
+
+  .producer-ticker-photo {
+    width: 115px;
+    height: 155px;
+  }
+
+  .producer-ticker-stage #tvFeature {
+    width: 260px;
+  }
+
+  .producer-ticker-stage #tvFeature img {
+    max-height: 220px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .producer-ticker-track {
+    animation: none;
+  }
+}
+</style>
+
+<script>
+/* SEAMLESS PRODUCER PHOTO LOOP */
+
+(function () {
+  const tv = document.getElementById("tvFeature");
+
+  if (!tv || tv.closest(".producer-ticker-stage")) return;
+
+  const photos = [
+    ["jetphoto.jpg", "Jet Neptune"],
+    ["goldstrikerphoto.jpg", "Goldstriker"],
+    ["benphoto.jpg", "Ben"],
+    ["taxphoto.jpg", "Tax"]
+  ];
+
+  const stage = document.createElement("div");
+  stage.className = "producer-ticker-stage";
+
+  const windowEl = document.createElement("div");
+  windowEl.className = "producer-ticker-window";
+  windowEl.setAttribute("aria-hidden", "true");
+
+  const track = document.createElement("div");
+  track.className = "producer-ticker-track";
+
+  function makeGroup() {
+    const group = document.createElement("div");
+    group.className = "producer-ticker-group";
+
+    photos.forEach(([filename, name]) => {
+      const img = document.createElement("img");
+
+      img.src = "/images/clients/fishtank/" + filename;
+      img.alt = name;
+      img.className = "producer-ticker-photo";
+      img.decoding = "async";
+      img.draggable = false;
+
+      group.appendChild(img);
+    });
+
+    return group;
+  }
+
+  /* Duplicate identical sequences for seamless looping.
+     Add enough copies to cover wide screens. */
+
+  const firstGroup = makeGroup();
+  const secondGroup = makeGroup();
+
+  track.append(firstGroup, secondGroup);
+  windowEl.appendChild(track);
+
+  tv.parentNode.insertBefore(stage, tv);
+  stage.appendChild(windowEl);
+  stage.appendChild(tv);
+
+  function updateTicker() {
+    const requiredWidth = stage.clientWidth;
+    const groupWidth = firstGroup.getBoundingClientRect().width;
+
+    if (!groupWidth) return;
+
+    const copies = Math.max(
+      1,
+      Math.ceil(requiredWidth / groupWidth)
+    );
+
+    const newGroups = [];
+
+    for (let i = 0; i < copies; i++) {
+      newGroups.push(makeGroup());
+    }
+
+    firstGroup.replaceChildren(
+      ...newGroups.flatMap(group => [...group.children])
+    );
+
+    secondGroup.replaceChildren(
+      ...Array.from(firstGroup.children, img => img.cloneNode(true))
+    );
+  }
+
+  updateTicker();
+
+  window.addEventListener("resize", updateTicker);
+})();
+</script> 
 </body>
 </html>
