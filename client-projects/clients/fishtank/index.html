@@ -1428,6 +1428,209 @@ document.getElementById("lightbox")
 
   window.addEventListener("resize", updateTicker);
 })();
-</script> 
+</script>
+  
+<style>
+/* FREELOADER PHOTO TICKER */
+
+.freeloader-ticker-stage {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  height: 310px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  isolation: isolate;
+  margin-bottom: 35px;
+}
+
+.freeloader-ticker-window {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.freeloader-ticker-track {
+  display: flex;
+  width: max-content;
+  animation: freeloaderScroll 32s linear infinite;
+  will-change: transform;
+}
+
+.freeloader-ticker-group {
+  display: flex;
+  flex-shrink: 0;
+  gap: 14px;
+  padding-right: 14px;
+}
+
+.freeloader-ticker-photo {
+  width: 130px;
+  height: 210px;
+  flex-shrink: 0;
+  object-fit: cover;
+  object-position: center;
+  border: 5px solid #fff;
+  background: #111;
+}
+
+@keyframes freeloaderScroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* CAST GIF STAYS IN FRONT */
+
+.freeloader-ticker-stage #castFeature {
+  position: relative;
+  z-index: 3;
+  width: 380px;
+  max-width: 85vw;
+  margin: 0;
+}
+
+.freeloader-ticker-stage #castFeature button {
+  position: relative;
+  background: #000;
+  box-shadow: 0 0 0 8px #000;
+}
+
+.freeloader-ticker-stage #castFeature img {
+  max-height: 300px;
+  object-fit: contain;
+}
+
+@media (max-width: 750px) {
+  .freeloader-ticker-stage {
+    height: 255px;
+  }
+
+  .freeloader-ticker-photo {
+    width: 100px;
+    height: 160px;
+  }
+
+  .freeloader-ticker-stage #castFeature {
+    width: 260px;
+  }
+
+  .freeloader-ticker-stage #castFeature img {
+    max-height: 220px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .freeloader-ticker-track {
+    animation: none;
+  }
+}
+</style>
+
+<script>
+/* SEAMLESS FREELOADER PHOTO LOOP */
+
+(function () {
+  const cast = document.getElementById("castFeature");
+
+  if (!cast || cast.closest(".freeloader-ticker-stage")) {
+    return;
+  }
+
+  const photos = [
+    ["alexphoto.jpg", "Alex"],
+    ["bettyphoto.jpg", "Betty"],
+    ["chipphoto.jpg", "Chip"],
+    ["chrisphoto.jpg", "Chris"],
+    ["dontariousphoto.jpg", "Dontarious"],
+    ["ellaphoto.jpg", "Ella"],
+    ["frankphoto 1.jpg", "Frank"],
+    ["lancephoto.jpg", "Lance"],
+    ["taiphoto.jpg", "Tai"]
+  ];
+
+  const stage = document.createElement("div");
+  stage.className = "freeloader-ticker-stage";
+
+  const windowEl = document.createElement("div");
+  windowEl.className = "freeloader-ticker-window";
+  windowEl.setAttribute("aria-hidden", "true");
+
+  const track = document.createElement("div");
+  track.className = "freeloader-ticker-track";
+
+  function makeGroup() {
+    const group = document.createElement("div");
+    group.className = "freeloader-ticker-group";
+
+    photos.forEach(([filename, name]) => {
+      const img = document.createElement("img");
+
+      img.src = "/images/clients/fishtank/" +
+        encodeURIComponent(filename);
+
+      img.alt = name;
+      img.className = "freeloader-ticker-photo";
+      img.decoding = "async";
+      img.draggable = false;
+
+      group.appendChild(img);
+    });
+
+    return group;
+  }
+
+  const firstGroup = makeGroup();
+  const secondGroup = makeGroup();
+
+  track.append(firstGroup, secondGroup);
+  windowEl.appendChild(track);
+
+  cast.parentNode.insertBefore(stage, cast);
+  stage.appendChild(windowEl);
+  stage.appendChild(cast);
+
+  function updateTicker() {
+    const groupWidth =
+      firstGroup.getBoundingClientRect().width;
+
+    if (!groupWidth) return;
+
+    const copies = Math.max(
+      1,
+      Math.ceil(stage.clientWidth / groupWidth)
+    );
+
+    const newPhotos = [];
+
+    for (let i = 0; i < copies; i++) {
+      const group = makeGroup();
+      newPhotos.push(...group.children);
+    }
+
+    firstGroup.replaceChildren(...newPhotos);
+
+    secondGroup.replaceChildren(
+      ...Array.from(
+        firstGroup.children,
+        img => img.cloneNode(true)
+      )
+    );
+  }
+
+  updateTicker();
+
+  window.addEventListener("resize", updateTicker);
+})();
+</script>
 </body>
 </html>
