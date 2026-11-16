@@ -539,19 +539,26 @@ main {
   cursor: pointer;
 }
 
+
+/* WHITE FISHTANK LOGO */
 .ending-logo img {
   display: block;
   width: 120px;
-  max-width: 100%;
   height: auto;
   object-fit: contain;
   filter: brightness(0) invert(1);
-  transition: transform .25s ease;
+  transition: transform 0.25s ease, filter 0.25s ease;
 }
 
+/* RED NEON GLOW + SLIGHT ENLARGEMENT */
 .ending-logo a:hover img,
 .ending-logo a:focus-visible img {
   transform: scale(1.08);
+  filter:
+    brightness(0) invert(1)
+    drop-shadow(0 0 5px #ff0000)
+    drop-shadow(0 0 12px #ff0000)
+    drop-shadow(0 0 22px #ff0000);
 }
 
 .ending-logo a:focus-visible {
