@@ -7,19 +7,24 @@
 <title>Fishtank Season 1 | starsandtigers</title>
 
 <style>
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;
-  background: #000;
-  color: #fff;
+  background: #000000;
+  color: #ffffff;
   font-family: Arial, Helvetica, sans-serif;
   overflow-x: hidden;
 }
 
 /* HEADER */
+
 header {
   background: #050505;
   border-bottom: 1px solid #777;
@@ -48,8 +53,13 @@ nav a {
   font-weight: bold;
 }
 
-nav a:hover { color: #ffdc00; }
-nav a.active { color: #f32918; }
+nav a:hover {
+  color: #ffdc00;
+}
+
+nav a.active {
+  color: #f32918;
+}
 
 main {
   max-width: 1250px;
@@ -58,6 +68,7 @@ main {
 }
 
 /* TITLE */
+
 .hero {
   text-align: center;
   padding: 55px 20px 35px;
@@ -75,7 +86,9 @@ main {
   line-height: 1;
 }
 
-.fishtank-title span { white-space: nowrap; }
+.fishtank-title span {
+  white-space: nowrap;
+}
 
 .fishtank-logo {
   width: 150px;
@@ -84,7 +97,9 @@ main {
   flex-shrink: 0;
 }
 
-.logo-reversed { transform: scaleX(-1); }
+.logo-reversed {
+  transform: scaleX(-1);
+}
 
 .season {
   font-family: "Courier New", monospace;
@@ -93,7 +108,9 @@ main {
   margin-top: 12px;
 }
 
-.red-star { color: #ed2616; }
+.red-star {
+  color: #ed2616;
+}
 
 .description {
   font-family: "Courier New", monospace;
@@ -111,6 +128,7 @@ main {
 }
 
 /* VIDEO */
+
 .video-feature {
   width: 100%;
   max-width: 760px;
@@ -135,7 +153,10 @@ main {
 }
 
 /* SECTIONS */
-.gallery-section { margin-bottom: 85px; }
+
+.gallery-section {
+  margin-bottom: 85px;
+}
 
 .section-heading {
   display: flex;
@@ -164,6 +185,7 @@ main {
 }
 
 /* FEATURED GIFS */
+
 .featured-gif {
   width: 100%;
   max-width: 380px;
@@ -181,7 +203,7 @@ main {
   background: black;
   cursor: zoom-in;
   line-height: 0;
-  transition: transform .2s ease;
+  transition: transform 0.2s ease;
 }
 
 .featured-gif button:hover {
@@ -198,6 +220,7 @@ main {
 }
 
 /* MOVING PHOTO TICKERS */
+
 .photo-ticker-stage {
   position: relative;
   width: 100vw;
@@ -248,6 +271,7 @@ main {
 }
 
 /* PRODUCERS: RIGHT TO LEFT */
+
 .producer-ticker-stage {
   --ticker-speed: 24s;
   min-height: 310px;
@@ -259,6 +283,7 @@ main {
 }
 
 /* FREELOADERS: LEFT TO RIGHT */
+
 .freeloader-ticker-stage {
   --ticker-speed: 32s;
   --cast-height: 300px;
@@ -278,11 +303,17 @@ main {
 }
 
 @keyframes tickerScroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 /* STATIONARY CENTER GIFS */
+
 .photo-ticker-stage .featured-gif {
   position: relative;
   z-index: 3;
@@ -307,6 +338,7 @@ main {
 }
 
 /* POLAROID PORTRAITS */
+
 .portrait-grid {
   display: flex;
   flex-wrap: wrap;
@@ -322,7 +354,7 @@ main {
   cursor: zoom-in;
   color: #111;
   box-shadow: 4px 6px 0 #191919;
-  transition: transform .2s ease;
+  transition: transform 0.2s ease;
 }
 
 .polaroid:hover {
@@ -366,6 +398,7 @@ main {
 }
 
 /* POSTER */
+
 .poster {
   text-align: center;
   margin: 75px auto;
@@ -389,7 +422,10 @@ main {
 }
 
 /* SKETCHES */
-.sketches-section { text-align: center; }
+
+.sketches-section {
+  text-align: center;
+}
 
 .illustration-grid {
   display: flex;
@@ -415,7 +451,7 @@ main {
   object-fit: cover;
   display: block;
   border: 5px solid #f5f1e9;
-  transition: transform .2s ease;
+  transition: transform 0.2s ease;
 }
 
 .illustration:hover img {
@@ -423,6 +459,7 @@ main {
 }
 
 /* ENDING ARTWORK */
+
 .ending {
   text-align: center;
   margin-top: 85px;
@@ -451,7 +488,7 @@ main {
   stroke-width: 2.5;
   stroke-linecap: round;
   stroke-linejoin: round;
-  opacity: .88;
+  opacity: 0.88;
 }
 
 .ending-artwork-button {
@@ -472,52 +509,59 @@ main {
   font-family: "Courier New", monospace;
   letter-spacing: 2px;
   font-size: 14px;
-}
-
-/* BACK TO CLIENT PROJECTS */
-.back {
-  display: inline-block;
-  color: #aaa;
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  margin-top: 45px;
   margin-bottom: 35px;
 }
 
-.back:hover,
-.back:focus-visible {
-  color: #f32918;
-}
-
 /*
-  RED GRADIENT:
-  STARTS BELOW THE BACK LINK.
-  CONTINUES BEHIND THE WHITE FISH
-  AND DOWN THROUGH THE FOOTER.
+  BOTTOM RED GRADIENT
+
+  THE BACK LINK AND WHITE FISH ARE
+  BOTH INSIDE THE SAME GRADIENT.
+
+  THE LINK SITS JUST ABOVE THE FISH.
 */
+
 .bottom-gradient {
   width: 100vw;
   margin-left: calc(50% - 50vw);
-  padding: 0;
+  padding: 60px 0 100px;
+  text-align: center;
+
   background: linear-gradient(
     to bottom,
-    #000000 0%,
-    #240000 20%,
-    #650000 47%,
-    #b00000 76%,
+    #500000 0%,
+    #900000 30%,
+    #c00000 65%,
     #f00000 100%
   );
 }
 
-/* WHITE FISHTANK FISH */
+/* BACK TO CLIENT PROJECTS */
+
+.back {
+  display: inline-block;
+  color: #000000;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin: 0 0 18px;
+  transition: color 0.25s ease;
+}
+
+.back:hover,
+.back:focus-visible {
+  color: #ffffff;
+}
+
+/* WHITE FISHTANK LOGO */
+
 .ending-logo {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
-  padding: 70px 0 100px;
+  margin: 0;
+  padding: 0;
 }
 
 .ending-logo a {
@@ -532,11 +576,7 @@ main {
   max-width: 100%;
   height: auto;
   object-fit: contain;
-
-  /* WHITE FISH */
   filter: brightness(0) invert(1);
-
-  /* SLIGHT HOVER ENLARGEMENT */
   transition: transform 0.25s ease;
 }
 
@@ -550,7 +590,8 @@ main {
   outline-offset: 8px;
 }
 
-/* FOOTER CONTINUES THE GRADIENT */
+/* FOOTER CONTINUES THE RED GRADIENT */
+
 footer {
   min-height: 130px;
   display: flex;
@@ -562,11 +603,12 @@ footer {
 }
 
 /* IMAGE VIEWER */
+
 .lightbox {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, .97);
+  background: rgba(0, 0, 0, 0.97);
   z-index: 100;
   align-items: center;
   justify-content: center;
@@ -574,7 +616,9 @@ footer {
   padding: 55px 70px;
 }
 
-.lightbox.open { display: flex; }
+.lightbox.open {
+  display: flex;
+}
 
 .lightbox img {
   max-width: 90vw;
@@ -599,13 +643,27 @@ footer {
   cursor: pointer;
 }
 
-.lightbox button:hover { color: #ffdc00; }
+.lightbox button:hover {
+  color: #ffdc00;
+}
 
-.close { top: 15px; right: 25px; }
-.previous { left: 20px; top: 50%; }
-.next { right: 20px; top: 50%; }
+.close {
+  top: 15px;
+  right: 25px;
+}
+
+.previous {
+  left: 20px;
+  top: 50%;
+}
+
+.next {
+  right: 20px;
+  top: 50%;
+}
 
 /* MOBILE */
+
 @media (max-width: 950px) {
   #producers {
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -619,7 +677,9 @@ footer {
 }
 
 @media (max-width: 750px) {
-  header { flex-direction: column; }
+  header {
+    flex-direction: column;
+  }
 
   nav {
     justify-content: center;
@@ -640,28 +700,43 @@ footer {
     width: calc(50% - 12px);
   }
 
-  .illustration-grid { gap: 14px; }
+  .illustration-grid {
+    gap: 14px;
+  }
 
   .illustration {
     width: calc((100% - 14px) / 2);
   }
 
-  .illustration img { height: 160px; }
+  .illustration img {
+    height: 160px;
+  }
 
   .section-heading::before,
-  .section-heading::after { width: 30px; }
+  .section-heading::after {
+    width: 30px;
+  }
 
-  .section-heading h2 { font-size: 26px; }
+  .section-heading h2 {
+    font-size: 26px;
+  }
 
   .season {
     font-size: 18px;
     letter-spacing: 2px;
   }
 
-  #producers .polaroid { padding: 4px; }
-  #producers .polaroid strong { font-size: 9px; }
+  #producers .polaroid {
+    padding: 4px;
+  }
 
-  .producer-ticker-stage { min-height: 255px; }
+  #producers .polaroid strong {
+    font-size: 9px;
+  }
+
+  .producer-ticker-stage {
+    min-height: 255px;
+  }
 
   .producer-ticker-stage .photo-ticker-photo {
     width: 115px;
@@ -676,15 +751,27 @@ footer {
     max-height: 220px;
   }
 
-  .lightbox { padding: 55px 35px; }
-  .previous { left: 5px; }
-  .next { right: 5px; }
+  .lightbox {
+    padding: 55px 35px;
+  }
+
+  .previous {
+    left: 5px;
+  }
+
+  .next {
+    right: 5px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
+  html {
+    scroll-behavior: auto;
+  }
 
-  .photo-ticker-track { animation: none; }
+  .photo-ticker-track {
+    animation: none;
+  }
 
   .polaroid,
   .illustration img,
@@ -713,6 +800,7 @@ footer {
 <main>
 
 <!-- TITLE AND VIDEO -->
+
 <section class="hero">
 
   <h1 class="fishtank-title">
@@ -763,6 +851,7 @@ footer {
 </section>
 
 <!-- PRODUCERS -->
+
 <section class="gallery-section">
   <div class="section-heading">
     <h2>THE PRODUCERS</h2>
@@ -773,6 +862,7 @@ footer {
 </section>
 
 <!-- FREELOADERS -->
+
 <section class="gallery-section">
   <div class="section-heading">
     <h2>THE FREELOADERS</h2>
@@ -783,6 +873,7 @@ footer {
 </section>
 
 <!-- THE FISH -->
+
 <section class="gallery-section">
   <div class="section-heading">
     <h2>THE FISH</h2>
@@ -792,9 +883,11 @@ footer {
 </section>
 
 <!-- POSTER -->
+
 <section class="poster" id="poster"></section>
 
 <!-- SKETCHES -->
+
 <section class="gallery-section sketches-section">
   <div class="section-heading">
     <h2>SKETCHES</h2>
@@ -804,9 +897,11 @@ footer {
 </section>
 
 <!-- ENDING -->
+
 <section class="ending">
 
   <!-- FISHTANK TV WITH EXTENDED WHITE LINES -->
+
   <div class="ending-artwork-stage" id="endingStage">
 
     <svg
@@ -890,21 +985,21 @@ footer {
       id="endingArtworkButton"
       aria-label="Enlarge Fishtank TV artwork">
     </button>
+
   </div>
 
   <p class="ending-caption">
     FISHTANK SEASON 1 — THE END
   </p>
 
-  <!-- BACK LINK ABOVE THE GRADIENT -->
-  <a href="/client-projects/" class="back">
-    ← BACK TO CLIENT PROJECTS
-  </a>
+  <!-- BACK LINK AND LOGO INSIDE RED GRADIENT -->
 
-  <!-- GRADIENT STARTS HERE, BELOW BACK LINK -->
   <div class="bottom-gradient">
 
-    <!-- WHITE CLICKABLE FISHTANK LOGO -->
+    <a href="/client-projects/" class="back">
+      ← BACK TO CLIENT PROJECTS
+    </a>
+
     <div class="ending-logo">
       <a
         href="https://www.fishtank.live/"
@@ -924,12 +1019,14 @@ footer {
 
 </main>
 
-<!-- SOLID RED FOOTER CONTINUES GRADIENT -->
+<!-- FOOTER -->
+
 <footer>
   © starsandtigers
 </footer>
 
 <!-- IMAGE VIEWER -->
+
 <div
   class="lightbox"
   id="lightbox"
@@ -961,11 +1058,13 @@ footer {
 "use strict";
 
 /* IMAGE PATHS */
+
 const base = "/images/clients/fishtank/";
 const thumbs = base + "thumbs/";
 const thumbnailVersion = "20261116";
 
 /* PRODUCER ARTWORK */
+
 const producers = [
   ["fish1jet.jpeg", "Jet Neptune", "fish1jet.webp"],
   ["fish1goldstriker.jpeg", "Goldstriker", "fish1goldstriker.webp"],
@@ -974,6 +1073,7 @@ const producers = [
 ];
 
 /* FREELOADER ARTWORK */
+
 const freeloaders = [
   ["fish1alex.jpeg", "Alex", "fish1alex.webp"],
   ["fish1betty.jpeg", "Betty", "fish1betty.webp"],
@@ -987,6 +1087,7 @@ const freeloaders = [
 ];
 
 /* THE FISH */
+
 const fish = [
   ["fish1josie.jpeg", "Josie", "fish1josie.webp"],
   ["fish1jonathan.jpeg", "Jon", "fish1jon.webp"],
@@ -1000,6 +1101,7 @@ const fish = [
 ];
 
 /* SKETCHES */
+
 const illustrations = [
   ["fish1alexsketch.jpeg", "Alex Sketch", "fish1alexsketch.webp"],
   ["fish1bensketch.jpeg", "Ben Sketch", "fish1bensketch.webp"],
@@ -1019,6 +1121,7 @@ const illustrations = [
 ];
 
 /* POSTER */
+
 const poster = [
   [
     "fishtankseason1poster.jpeg",
@@ -1028,13 +1131,16 @@ const poster = [
 ];
 
 /* FEATURED GIFS */
+
 const tvGif = ["fish1tvcast.gif", "Fishtank TV Cast"];
 const castGif = ["fish1cast.gif", "Fishtank Season 1 Cast"];
 
 /* ENDING ARTWORK */
+
 const endingArtwork = ["fishtv1_.jpeg", "Fishtank TV"];
 
 /* PRODUCER PHOTOGRAPHS */
+
 const producerPhotos = [
   ["jetphoto.jpg", "Jet Neptune"],
   ["goldstrikerphoto.jpg", "Goldstriker"],
@@ -1043,6 +1149,7 @@ const producerPhotos = [
 ];
 
 /* FREELOADER PHOTOGRAPHS */
+
 const freeloaderPhotos = [
   ["alexphoto.jpg", "Alex"],
   ["bettyphoto.jpg", "Betty"],
@@ -1056,6 +1163,7 @@ const freeloaderPhotos = [
 ];
 
 /* IMAGE VIEWER ORDER */
+
 const allImages = [
   tvGif,
   ...producers,
@@ -1068,6 +1176,7 @@ const allImages = [
 ];
 
 /* IMAGE URLS */
+
 function imagePath(filename) {
   return base + encodeURIComponent(filename);
 }
@@ -1081,6 +1190,7 @@ function thumbnailPath(filename, thumbnail) {
 }
 
 /* THUMBNAIL LOADING */
+
 function useThumbnail(img, filename, thumbnail) {
   img.loading = "lazy";
   img.decoding = "async";
@@ -1094,6 +1204,7 @@ function useThumbnail(img, filename, thumbnail) {
 }
 
 /* LAZY GIF LOADING */
+
 const gifObserver =
   "IntersectionObserver" in window
     ? new IntersectionObserver(entries => {
@@ -1124,19 +1235,25 @@ function deferGif(img, filename) {
 }
 
 /* IMAGE VIEWER */
+
 let activeIndex = 0;
 let previousFocus = null;
 
 function openImage(item) {
   const index = allImages.indexOf(item);
+
   if (index < 0) return;
 
   activeIndex = index;
   previousFocus = document.activeElement;
+
   updateLightbox();
 
-  document.getElementById("lightbox").classList.add("open");
+  document.getElementById("lightbox")
+    .classList.add("open");
+
   document.body.style.overflow = "hidden";
+
   document.getElementById("close").focus();
 }
 
@@ -1144,15 +1261,21 @@ function updateLightbox() {
   const [filename, name] = allImages[activeIndex];
 
   const large = document.getElementById("largeImage");
+
   large.src = imagePath(filename);
   large.alt = name;
 
-  document.getElementById("caption").textContent = name;
+  document.getElementById("caption")
+    .textContent = name;
 }
 
 function closeLightbox() {
-  document.getElementById("lightbox").classList.remove("open");
-  document.getElementById("largeImage").removeAttribute("src");
+  document.getElementById("lightbox")
+    .classList.remove("open");
+
+  document.getElementById("largeImage")
+    .removeAttribute("src");
+
   document.body.style.overflow = "";
 
   if (
@@ -1174,19 +1297,27 @@ function moveImage(direction) {
 }
 
 /* CREATE PORTRAITS */
+
 function createPortrait(item) {
   const [filename, name, thumbnail] = item;
 
   const button = document.createElement("button");
+
   button.className = "polaroid";
   button.type = "button";
-  button.setAttribute("aria-label", "Enlarge " + name);
+
+  button.setAttribute(
+    "aria-label",
+    "Enlarge " + name
+  );
 
   const windowEl = document.createElement("span");
   windowEl.className = "image-window";
 
   const img = document.createElement("img");
+
   useThumbnail(img, filename, thumbnail);
+
   img.alt = name;
   img.width = 400;
   img.height = 400;
@@ -1197,62 +1328,98 @@ function createPortrait(item) {
   windowEl.appendChild(img);
   button.append(windowEl, label);
 
-  button.addEventListener("click", () => openImage(item));
+  button.addEventListener(
+    "click",
+    () => openImage(item)
+  );
 
   return button;
 }
 
 /* CREATE SKETCHES */
+
 function createIllustration(item) {
   const [filename, name, thumbnail] = item;
 
   const button = document.createElement("button");
+
   button.className = "illustration";
   button.type = "button";
-  button.setAttribute("aria-label", "Enlarge " + name);
+
+  button.setAttribute(
+    "aria-label",
+    "Enlarge " + name
+  );
 
   const img = document.createElement("img");
+
   useThumbnail(img, filename, thumbnail);
+
   img.alt = name;
   img.width = 400;
   img.height = 400;
 
   button.appendChild(img);
-  button.addEventListener("click", () => openImage(item));
+
+  button.addEventListener(
+    "click",
+    () => openImage(item)
+  );
 
   return button;
 }
 
 /* CREATE POSTER */
+
 function createPoster(item) {
   const [filename, name, thumbnail] = item;
 
   const button = document.createElement("button");
+
   button.type = "button";
-  button.setAttribute("aria-label", "Enlarge " + name);
+
+  button.setAttribute(
+    "aria-label",
+    "Enlarge " + name
+  );
 
   const img = document.createElement("img");
+
   useThumbnail(img, filename, thumbnail);
+
   img.alt = name;
 
   button.appendChild(img);
-  button.addEventListener("click", () => openImage(item));
+
+  button.addEventListener(
+    "click",
+    () => openImage(item)
+  );
 
   return button;
 }
 
 /* CREATE FEATURED GIFS */
+
 function createFeaturedGif(containerId, item) {
   const [filename, name] = item;
-  const container = document.getElementById(containerId);
+
+  const container =
+    document.getElementById(containerId);
 
   if (!container) return;
 
   const button = document.createElement("button");
+
   button.type = "button";
-  button.setAttribute("aria-label", "Enlarge " + name);
+
+  button.setAttribute(
+    "aria-label",
+    "Enlarge " + name
+  );
 
   const img = document.createElement("img");
+
   img.alt = name;
   img.loading = "lazy";
   img.decoding = "async";
@@ -1262,12 +1429,17 @@ function createFeaturedGif(containerId, item) {
   button.appendChild(img);
   container.appendChild(button);
 
-  button.addEventListener("click", () => openImage(item));
+  button.addEventListener(
+    "click",
+    () => openImage(item)
+  );
 }
 
 /* FILL GALLERIES */
+
 function fillGallery(id, items, creator) {
   const container = document.getElementById(id);
+
   if (!container) return;
 
   items.forEach(item => {
@@ -1276,6 +1448,7 @@ function fillGallery(id, items, creator) {
 }
 
 /* BUILD ALL GALLERIES */
+
 fillGallery("producers", producers, createPortrait);
 fillGallery("freeloaders", freeloaders, createPortrait);
 fillGallery("fish", fish, createPortrait);
@@ -1286,6 +1459,7 @@ createFeaturedGif("tvFeature", tvGif);
 createFeaturedGif("castFeature", castGif);
 
 /* MOVING PHOTO TICKERS */
+
 function createPhotoTicker(featureId, photos, stageClass) {
   const feature = document.getElementById(featureId);
 
@@ -1293,13 +1467,16 @@ function createPhotoTicker(featureId, photos, stageClass) {
     !feature ||
     !feature.parentNode ||
     !photos.length
-  ) return;
+  ) {
+    return;
+  }
 
   const stage = document.createElement("div");
   stage.className = "photo-ticker-stage " + stageClass;
 
   const windowEl = document.createElement("div");
   windowEl.className = "photo-ticker-window";
+
   windowEl.setAttribute("aria-hidden", "true");
 
   const track = document.createElement("div");
@@ -1335,10 +1512,12 @@ function createPhotoTicker(featureId, photos, stageClass) {
   windowEl.appendChild(track);
 
   feature.parentNode.insertBefore(stage, feature);
+
   stage.appendChild(windowEl);
   stage.appendChild(feature);
 
   /* MATCH FREELOADER PHOTOS TO GIF HEIGHT */
+
   if (stageClass === "freeloader-ticker-stage") {
     const castImage = feature.querySelector("img");
 
@@ -1357,12 +1536,19 @@ function createPhotoTicker(featureId, photos, stageClass) {
     }
 
     if (castImage) {
-      castImage.addEventListener("load", matchCastHeight);
+      castImage.addEventListener(
+        "load",
+        matchCastHeight
+      );
 
       if ("ResizeObserver" in window) {
-        new ResizeObserver(matchCastHeight).observe(castImage);
+        new ResizeObserver(matchCastHeight)
+          .observe(castImage);
       } else {
-        window.addEventListener("resize", matchCastHeight);
+        window.addEventListener(
+          "resize",
+          matchCastHeight
+        );
       }
 
       matchCastHeight();
@@ -1370,6 +1556,7 @@ function createPhotoTicker(featureId, photos, stageClass) {
   }
 
   /* CONTINUOUS LOOP */
+
   let lastWidth = 0;
   let lastHeight = 0;
 
@@ -1386,7 +1573,9 @@ function createPhotoTicker(featureId, photos, stageClass) {
     if (
       width === lastWidth &&
       photoHeight === lastHeight
-    ) return;
+    ) {
+      return;
+    }
 
     lastWidth = width;
     lastHeight = photoHeight;
@@ -1395,7 +1584,8 @@ function createPhotoTicker(featureId, photos, stageClass) {
 
     firstGroup.replaceChildren(
       ...photos.map(
-        ([filename, name]) => makePhoto(filename, name)
+        ([filename, name]) =>
+          makePhoto(filename, name)
       )
     );
 
@@ -1414,7 +1604,9 @@ function createPhotoTicker(featureId, photos, stageClass) {
 
     for (let i = 1; i < copies; i++) {
       photos.forEach(([filename, name]) => {
-        firstGroup.appendChild(makePhoto(filename, name));
+        firstGroup.appendChild(
+          makePhoto(filename, name)
+        );
       });
     }
 
@@ -1433,11 +1625,15 @@ function createPhotoTicker(featureId, photos, stageClass) {
   if ("ResizeObserver" in window) {
     new ResizeObserver(updateTicker).observe(stage);
   } else {
-    window.addEventListener("resize", updateTicker);
+    window.addEventListener(
+      "resize",
+      updateTicker
+    );
   }
 }
 
 /* PRODUCERS: RIGHT TO LEFT */
+
 createPhotoTicker(
   "tvFeature",
   producerPhotos,
@@ -1445,6 +1641,7 @@ createPhotoTicker(
 );
 
 /* FREELOADERS: LEFT TO RIGHT */
+
 createPhotoTicker(
   "castFeature",
   freeloaderPhotos,
@@ -1452,10 +1649,16 @@ createPhotoTicker(
 );
 
 /* RESPONSIVE ENDING ARTWORK */
+
 function positionEndingButton() {
-  const stage = document.getElementById("endingStage");
-  const svg = document.getElementById("endingComposition");
-  const button = document.getElementById("endingArtworkButton");
+  const stage =
+    document.getElementById("endingStage");
+
+  const svg =
+    document.getElementById("endingComposition");
+
+  const button =
+    document.getElementById("endingArtworkButton");
 
   if (!stage || !svg || !button) return;
 
@@ -1479,8 +1682,12 @@ function positionEndingButton() {
     (offsetX + 1800 * scale) + "px";
 
   button.style.top = offsetY + "px";
-  button.style.width = (1647 * scale) + "px";
-  button.style.height = (895 * scale) + "px";
+
+  button.style.width =
+    (1647 * scale) + "px";
+
+  button.style.height =
+    (895 * scale) + "px";
 }
 
 document.getElementById("endingArtworkButton")
@@ -1489,20 +1696,37 @@ document.getElementById("endingArtworkButton")
     () => openImage(endingArtwork)
   );
 
-window.addEventListener("resize", positionEndingButton);
-window.addEventListener("load", positionEndingButton);
+window.addEventListener(
+  "resize",
+  positionEndingButton
+);
+
+window.addEventListener(
+  "load",
+  positionEndingButton
+);
 
 positionEndingButton();
 
 /* IMAGE VIEWER CONTROLS */
+
 document.getElementById("close")
-  .addEventListener("click", closeLightbox);
+  .addEventListener(
+    "click",
+    closeLightbox
+  );
 
 document.getElementById("previous")
-  .addEventListener("click", () => moveImage(-1));
+  .addEventListener(
+    "click",
+    () => moveImage(-1)
+  );
 
 document.getElementById("next")
-  .addEventListener("click", () => moveImage(1));
+  .addEventListener(
+    "click",
+    () => moveImage(1)
+  );
 
 document.getElementById("lightbox")
   .addEventListener("click", event => {
@@ -1512,13 +1736,24 @@ document.getElementById("lightbox")
   });
 
 document.addEventListener("keydown", event => {
-  const lightbox = document.getElementById("lightbox");
+  const lightbox =
+    document.getElementById("lightbox");
 
-  if (!lightbox.classList.contains("open")) return;
+  if (!lightbox.classList.contains("open")) {
+    return;
+  }
 
-  if (event.key === "Escape") closeLightbox();
-  if (event.key === "ArrowLeft") moveImage(-1);
-  if (event.key === "ArrowRight") moveImage(1);
+  if (event.key === "Escape") {
+    closeLightbox();
+  }
+
+  if (event.key === "ArrowLeft") {
+    moveImage(-1);
+  }
+
+  if (event.key === "ArrowRight") {
+    moveImage(1);
+  }
 });
 </script>
 
