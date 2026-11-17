@@ -5,9 +5,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fishtank Season 1 | starsandtigers</title>
+
 <style>
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+
 body {
   margin: 0;
   background: #000;
@@ -15,6 +17,8 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   overflow-x: hidden;
 }
+
+/* HEADER */
 header {
   background: #050505;
   border-bottom: 1px solid #777;
@@ -34,10 +38,16 @@ nav a {
 }
 nav a:hover { color: #ffdc00; }
 nav a.active { color: #f32918; }
-main { max-width: 1250px; margin: auto; padding: 0 25px; }
+
+main {
+  max-width: 1250px;
+  margin: auto;
+  padding: 0 25px;
+}
 
 /* TITLE */
 .hero { text-align: center; padding: 55px 20px 35px; }
+
 .fishtank-title {
   display: flex;
   justify-content: center;
@@ -57,6 +67,7 @@ main { max-width: 1250px; margin: auto; padding: 0 25px; }
   flex-shrink: 0;
 }
 .logo-reversed { transform: scaleX(-1); }
+
 .season {
   font-family: "Courier New", monospace;
   font-size: 25px;
@@ -64,6 +75,7 @@ main { max-width: 1250px; margin: auto; padding: 0 25px; }
   margin-top: 12px;
 }
 .red-star { color: #ed2616; }
+
 .description {
   font-family: "Courier New", monospace;
   max-width: 530px;
@@ -84,13 +96,60 @@ main { max-width: 1250px; margin: auto; padding: 0 25px; }
   max-width: 760px;
   margin: 0 auto 55px;
 }
-.video-feature video {
-  display: block;
+.video-player {
+  position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
+  background: #000;
+}
+.video-player video {
+  display: block;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   background: black;
   border: 3px solid white;
+}
+
+/* RED OUTLINE PLAY BUTTON */
+.video-play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  padding: 0;
+  border: 3px solid #ed271a;
+  border-radius: 50%;
+  background: rgba(12, 12, 12, .88);
+  color: #ed271a;
+  cursor: pointer;
+  transition:
+    transform .2s ease,
+    background .2s ease,
+    box-shadow .2s ease;
+}
+.video-play-button svg {
+  width: 47px;
+  height: 47px;
+  margin-left: 5px;
+  fill: currentColor;
+}
+.video-play-button:hover,
+.video-play-button:focus-visible {
+  transform: translate(-50%, -50%) scale(1.1);
+  background: rgba(0, 0, 0, .95);
+  box-shadow:
+    0 0 12px rgba(237, 39, 26, .55),
+    0 0 25px rgba(237, 39, 26, .25);
+}
+.video-play-button.hidden {
+  display: none;
 }
 .video-caption {
   text-align: center;
@@ -182,8 +241,7 @@ main { max-width: 1250px; margin: auto; padding: 0 25px; }
   width: max-content;
   flex-shrink: 0;
   will-change: transform;
-  animation: tickerScroll var(--ticker-speed, 30s)
-    linear infinite;
+  animation: tickerScroll var(--ticker-speed, 30s) linear infinite;
 }
 .photo-ticker-group {
   display: flex;
@@ -200,6 +258,8 @@ main { max-width: 1250px; margin: auto; padding: 0 25px; }
   border: 5px solid white;
   background: #111;
 }
+
+/* PRODUCERS — RIGHT TO LEFT */
 .producer-ticker-stage {
   --ticker-speed: 24s;
   min-height: 310px;
@@ -208,10 +268,14 @@ main { max-width: 1250px; margin: auto; padding: 0 25px; }
   width: 170px;
   height: 210px;
 }
+
+/* FREELOADERS — LEFT TO RIGHT */
 .freeloader-ticker-stage {
   --ticker-speed: 32s;
   --cast-height: 300px;
   min-height: calc(var(--cast-height) + 30px);
+  margin-top: 55px;
+  margin-bottom: 35px;
 }
 .freeloader-ticker-stage .photo-ticker-photo {
   height: var(--cast-height);
@@ -223,10 +287,13 @@ main { max-width: 1250px; margin: auto; padding: 0 25px; }
 .freeloader-ticker-stage .photo-ticker-track {
   animation-direction: reverse;
 }
+
 @keyframes tickerScroll {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
+
+/* CENTER GIFS */
 .photo-ticker-stage .featured-gif {
   position: relative;
   z-index: 3;
@@ -332,7 +399,7 @@ main { max-width: 1250px; margin: auto; padding: 0 25px; }
 }
 .illustration:hover img { transform: scale(1.05); }
 
-/* ENDING TV ARTWORK */
+/* ENDING ARTWORK */
 .ending { text-align: center; margin-top: 85px; }
 .ending-artwork-stage {
   position: relative;
@@ -367,7 +434,7 @@ main { max-width: 1250px; margin: auto; padding: 0 25px; }
   outline-offset: 4px;
 }
 
-/* CONTINUOUS BLACK TO RED GRADIENT */
+/* BLACK TO RED GRADIENT */
 .ending-gradient {
   width: 100%;
   min-height: 550px;
@@ -387,8 +454,6 @@ main { max-width: 1250px; margin: auto; padding: 0 25px; }
     #f00000 100%
   );
 }
-
-/* LOWER CAPTION, CLOSER TO BACK LINK */
 .ending-caption {
   font-family: "Courier New", monospace;
   letter-spacing: 2px;
@@ -396,8 +461,6 @@ main { max-width: 1250px; margin: auto; padding: 0 25px; }
   color: #fff;
   margin: 95px 0 0;
 }
-
-/* LINK AND FISH GROUP */
 .ending-links {
   display: flex;
   flex-direction: column;
@@ -406,21 +469,19 @@ main { max-width: 1250px; margin: auto; padding: 0 25px; }
   margin-top: 45px;
 }
 
-/* WHITE BACK LINK WITH RED NEON HOVER */
+/* BACK LINK — RED GLOW ON HOVER */
 .back {
   display: inline-block;
-  color: #ffffff;
+  color: #fff;
   text-decoration: none;
   font-size: 13px;
   font-weight: bold;
   letter-spacing: 1px;
-  transition:
-    color .25s ease,
-    text-shadow .25s ease;
+  transition: color .25s ease, text-shadow .25s ease;
 }
 .back:hover,
 .back:focus-visible {
-  color: #ffffff;
+  color: #fff;
   text-shadow:
     0 0 5px #ff0000,
     0 0 12px #ff0000,
@@ -428,7 +489,7 @@ main { max-width: 1250px; margin: auto; padding: 0 25px; }
     0 0 35px #ff0000;
 }
 
-/* WHITE FISH WITH MATCHING RED NEON HOVER */
+/* FISH — MATCHING RED GLOW ON HOVER */
 .ending-logo {
   display: flex;
   justify-content: center;
@@ -446,9 +507,7 @@ main { max-width: 1250px; margin: auto; padding: 0 25px; }
   height: auto;
   object-fit: contain;
   filter: brightness(0) invert(1);
-  transition:
-    transform .25s ease,
-    filter .25s ease;
+  transition: transform .25s ease, filter .25s ease;
 }
 .ending-logo a:hover img,
 .ending-logo a:focus-visible img {
@@ -464,7 +523,6 @@ main { max-width: 1250px; margin: auto; padding: 0 25px; }
   outline-offset: 8px;
 }
 
-/* FOOTER */
 footer {
   margin-top: auto;
   width: 100%;
@@ -480,7 +538,7 @@ footer {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, .97);
+  background: rgba(0,0,0,.97);
   z-index: 100;
   align-items: center;
   justify-content: center;
@@ -550,6 +608,18 @@ footer {
   }
   .photo-ticker-stage .featured-gif { width: 260px; }
   .photo-ticker-stage .featured-gif img { max-height: 220px; }
+  .freeloader-ticker-stage {
+    margin-top: 45px;
+    margin-bottom: 35px;
+  }
+  .video-play-button {
+    width: 76px;
+    height: 76px;
+  }
+  .video-play-button svg {
+    width: 36px;
+    height: 36px;
+  }
   .ending-gradient { min-height: 480px; }
   .ending-caption { margin-top: 75px; }
   .ending-links { margin-top: 35px; }
@@ -564,7 +634,8 @@ footer {
   .illustration img,
   .featured-gif button,
   .ending-logo img,
-  .back { transition: none; }
+  .back,
+  .video-play-button { transition: none; }
 }
 </style>
 </head>
@@ -586,15 +657,11 @@ footer {
 
 <section class="hero">
   <h1 class="fishtank-title">
-    <img
-      src="/images/clients/fishtank/fishtanklogo.png"
-      alt=""
-      class="fishtank-logo logo-reversed">
+    <img src="/images/clients/fishtank/fishtanklogo.png"
+         alt="" class="fishtank-logo logo-reversed">
     <span>FISHTANK</span>
-    <img
-      src="/images/clients/fishtank/fishtanklogo.png"
-      alt=""
-      class="fishtank-logo">
+    <img src="/images/clients/fishtank/fishtanklogo.png"
+         alt="" class="fishtank-logo">
   </h1>
 
   <div class="season">
@@ -610,46 +677,63 @@ footer {
 
   <div class="stars">★★★★★</div>
 
+  <!-- FEATURED VIDEO WITH RED PLAY BUTTON -->
   <div class="video-feature">
-    <video
-      controls
-      playsinline
-      preload="none"
-      poster="/images/clients/fishtank/fishtankthumbnail.jpg">
-      <source
-        src="/images/clients/fishtank/Fishtankseason1%20THE%20END%20.mp4"
-        type="video/mp4">
-      Your browser does not support video playback.
-    </video>
+    <div class="video-player">
+      <video id="fishtankVideo"
+             controls
+             playsinline
+             preload="none"
+             poster="/images/clients/fishtank/fishtankthumbnail.jpg">
+        <source
+          src="/images/clients/fishtank/Fishtankseason1%20THE%20END%20.mp4"
+          type="video/mp4">
+        Your browser does not support video playback.
+      </video>
+
+      <button type="button"
+              class="video-play-button"
+              id="videoPlayButton"
+              aria-label="Play Fishtank Season 1 video">
+        <svg viewBox="0 0 40 40" aria-hidden="true">
+          <path d="M13 7 L34 20 L13 33 Z"/>
+        </svg>
+      </button>
+    </div>
     <p class="video-caption">FISHTANK SEASON 1 — THE END</p>
   </div>
 </section>
 
+<!-- PRODUCERS -->
 <section class="gallery-section">
   <div class="section-heading"><h2>THE PRODUCERS</h2></div>
   <div class="featured-gif" id="tvFeature"></div>
   <div class="portrait-grid" id="producers"></div>
 </section>
 
+<!-- FREELOADERS -->
 <section class="gallery-section">
   <div class="section-heading"><h2>THE FREELOADERS</h2></div>
   <div class="featured-gif" id="castFeature"></div>
   <div class="portrait-grid" id="freeloaders"></div>
 </section>
 
+<!-- THE FISH -->
 <section class="gallery-section">
   <div class="section-heading"><h2>THE FISH</h2></div>
   <div class="portrait-grid" id="fish"></div>
 </section>
 
+<!-- POSTER -->
 <section class="poster" id="poster"></section>
 
+<!-- SKETCHES -->
 <section class="gallery-section sketches-section">
   <div class="section-heading"><h2>SKETCHES</h2></div>
   <div class="illustration-grid" id="illustrations"></div>
 </section>
 
-<!-- ENDING ARTWORK -->
+<!-- ENDING TV ARTWORK -->
 <section class="ending">
   <div class="ending-artwork-stage" id="endingStage">
     <svg
@@ -662,120 +746,58 @@ footer {
       aria-label="Fishtank TV artwork with extended white lines">
 
       <g class="drawn-line">
-        <path d="
-          M 0 774
-          C -85 768, -130 785, -190 777
-          S -320 761, -400 773
-          C -480 789, -520 768, -605 776
-          S -735 791, -825 777
-          C -915 765, -980 788, -1060 779
-          S -1210 765, -1310 777
-          C -1440 791, -1530 768, -1640 776
-          L -2200 778
-        "/>
-        <path d="
-          M 0 801
-          C -70 814, -135 795, -200 804
-          S -310 819, -375 803
-          C -445 786, -500 817, -570 811
-          S -710 795, -780 808
-          C -880 824, -960 794, -1060 813
-          S -1220 798, -1330 809
-          L -2200 811
-        "/>
+        <path d="M 0 774 C -85 768, -130 785, -190 777 S -320 761, -400 773 C -480 789, -520 768, -605 776 S -735 791, -825 777 C -915 765, -980 788, -1060 779 S -1210 765, -1310 777 C -1440 791, -1530 768, -1640 776 L -2200 778"/>
+        <path d="M 0 801 C -70 814, -135 795, -200 804 S -310 819, -375 803 C -445 786, -500 817, -570 811 S -710 795, -780 808 C -880 824, -960 794, -1060 813 S -1220 798, -1330 809 L -2200 811"/>
       </g>
 
       <g class="drawn-line">
-        <path d="
-          M 1647 653
-          C 1710 660, 1760 685, 1830 681
-          S 1930 700, 2020 696
-          C 2110 695, 2170 716, 2250 710
-          S 2380 724, 2470 715
-          C 2570 704, 2650 735, 2750 724
-          L 3900 731
-        "/>
-        <path d="
-          M 1647 725
-          C 1720 728, 1780 718, 1850 729
-          S 1950 747, 2030 732
-          C 2120 715, 2170 746, 2250 740
-          S 2400 726, 2480 741
-          C 2600 761, 2680 739, 2780 752
-          L 3900 755
-        "/>
-        <path d="
-          M 1647 838
-          C 1720 831, 1790 854, 1870 847
-          S 2000 832, 2080 849
-          C 2170 866, 2230 841, 2320 856
-          S 2450 868, 2530 857
-          C 2620 845, 2710 873, 2810 864
-          L 3900 868
-        "/>
+        <path d="M 1647 653 C 1710 660, 1760 685, 1830 681 S 1930 700, 2020 696 C 2110 695, 2170 716, 2250 710 S 2380 724, 2470 715 C 2570 704, 2650 735, 2750 724 L 3900 731"/>
+        <path d="M 1647 725 C 1720 728, 1780 718, 1850 729 S 1950 747, 2030 732 C 2120 715, 2170 746, 2250 740 S 2400 726, 2480 741 C 2600 761, 2680 739, 2780 752 L 3900 755"/>
+        <path d="M 1647 838 C 1720 831, 1790 854, 1870 847 S 2000 832, 2080 849 C 2170 866, 2230 841, 2320 856 S 2450 868, 2530 857 C 2620 845, 2710 873, 2810 864 L 3900 868"/>
       </g>
 
       <image
         href="/images/clients/fishtank/fishtv1_.jpeg"
-        x="0"
-        y="0"
-        width="1647"
-        height="895"
+        x="0" y="0" width="1647" height="895"
         preserveAspectRatio="none"/>
     </svg>
 
-    <button
-      type="button"
+    <button type="button"
       class="ending-artwork-button"
       id="endingArtworkButton"
-      aria-label="Enlarge Fishtank TV artwork">
-    </button>
+      aria-label="Enlarge Fishtank TV artwork"></button>
   </div>
 </section>
 
 </main>
 
-<!-- ONE CONTINUOUS GRADIENT -->
+<!-- ENDING GRADIENT -->
 <div class="ending-gradient">
-
-  <p class="ending-caption">
-    FISHTANK SEASON 1 — THE END
-  </p>
+  <p class="ending-caption">FISHTANK SEASON 1 — THE END</p>
 
   <div class="ending-links">
-
-    <!-- WHITE TEXT WITH RED GLOW ON HOVER -->
     <a href="/client-projects/" class="back">
       ← BACK TO CLIENT PROJECTS
     </a>
 
-    <!-- WHITE FISH WITH MATCHING RED GLOW -->
     <div class="ending-logo">
-      <a
-        href="https://www.fishtank.live/"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Visit Fishtank Live in a new tab">
-        <img
-          src="/images/clients/fishtank/fishtanklogo.png"
-          alt="Fishtank logo">
+      <a href="https://www.fishtank.live/"
+         target="_blank"
+         rel="noopener noreferrer"
+         aria-label="Visit Fishtank Live in a new tab">
+        <img src="/images/clients/fishtank/fishtanklogo.png"
+             alt="Fishtank logo">
       </a>
     </div>
-
   </div>
 
   <footer>© starsandtigers</footer>
-
 </div>
 
-<!-- IMAGE VIEWER -->
-<div
-  class="lightbox"
-  id="lightbox"
-  role="dialog"
-  aria-modal="true"
-  aria-label="Artwork viewer">
-
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox"
+     role="dialog" aria-modal="true"
+     aria-label="Artwork viewer">
   <button class="close" id="close" aria-label="Close">×</button>
   <button class="previous" id="previous" aria-label="Previous">❮</button>
   <img id="largeImage" alt="">
@@ -884,10 +906,8 @@ function imagePath(filename) {
 }
 
 function thumbnailPath(filename, thumbnail) {
-  const name = thumbnail ||
-    filename.replace(/\.[^.]+$/, ".webp");
-  return thumbs + encodeURIComponent(name)
-    + "?v=" + thumbnailVersion;
+  const name = thumbnail || filename.replace(/\.[^.]+$/, ".webp");
+  return thumbs + encodeURIComponent(name) + "?v=" + thumbnailVersion;
 }
 
 function useThumbnail(img, filename, thumbnail) {
@@ -923,6 +943,33 @@ function deferGif(img, filename) {
     img.src = src;
   }
 }
+
+/* VIDEO PLAY BUTTON */
+const fishtankVideo = document.getElementById("fishtankVideo");
+const videoPlayButton = document.getElementById("videoPlayButton");
+
+videoPlayButton.addEventListener("click", () => {
+  const playPromise = fishtankVideo.play();
+  if (playPromise && typeof playPromise.catch === "function") {
+    playPromise.catch(() => {
+      videoPlayButton.classList.remove("hidden");
+    });
+  }
+});
+
+fishtankVideo.addEventListener("play", () => {
+  videoPlayButton.classList.add("hidden");
+});
+
+fishtankVideo.addEventListener("pause", () => {
+  if (fishtankVideo.currentTime === 0) {
+    videoPlayButton.classList.remove("hidden");
+  }
+});
+
+fishtankVideo.addEventListener("ended", () => {
+  videoPlayButton.classList.remove("hidden");
+});
 
 /* LIGHTBOX */
 let activeIndex = 0;
@@ -1108,10 +1155,7 @@ function createPhotoTicker(featureId, photos, stageClass) {
       if (!castImage) return;
       const gifHeight = castImage.getBoundingClientRect().height;
       if (gifHeight > 0) {
-        stage.style.setProperty(
-          "--cast-height",
-          (gifHeight + 10) + "px"
-        );
+        stage.style.setProperty("--cast-height", (gifHeight + 10) + "px");
       }
     }
 
@@ -1180,6 +1224,7 @@ createPhotoTicker(
   producerPhotos,
   "producer-ticker-stage"
 );
+
 createPhotoTicker(
   "castFeature",
   freeloaderPhotos,
