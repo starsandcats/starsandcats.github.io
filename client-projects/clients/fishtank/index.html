@@ -343,7 +343,7 @@ main {
   object-position: center 25%;
 }
 
-/* NEW: ILLUSTRATION TO REAL PHOTO HOVER */
+/* ILLUSTRATION TO REAL PHOTO HOVER */
 .image-window .portrait-art {
   position: absolute;
   inset: 0;
@@ -916,6 +916,19 @@ const freeloaderPhotos = [
   ["taiphoto.jpg", "Tai"]
 ];
 
+/* REAL PHOTOS FOR THE FISH */
+const fishPhotos = [
+  ["josie.jpg", "Josie"],
+  ["jon.jpg", "Jon"],
+  ["vance.jpg", "Vance"],
+  ["baldvance.jpg", "Bald Vance"],
+  ["sylvia.jpg", "Sylvia"],
+  ["damiel.jpg", "Damiel"],
+  ["letty.jpg", "Letty"],
+  ["simmons.jpg", "Simmons"],
+  ["mauro.jpg", "Mauro"]
+];
+
 const allImages = [
   tvGif,
   ...producers,
@@ -1137,8 +1150,8 @@ function fillGallery(id, items, creator) {
   items.forEach(item => container.appendChild(creator(item)));
 }
 
-/* Match each illustration with its corresponding real photo */
-fillGallery("producers", producers, (item, index) => {
+/* MATCH ILLUSTRATIONS TO REAL PHOTOS */
+fillGallery("producers", producers, item => {
   const photo = producerPhotos.find(
     ([filename, name]) => name === item[1]
   );
@@ -1152,7 +1165,13 @@ fillGallery("freeloaders", freeloaders, item => {
   return createPortrait(item, photo ? photo[0] : null);
 });
 
-fillGallery("fish", fish, item => createPortrait(item, null));
+fillGallery("fish", fish, item => {
+  const photo = fishPhotos.find(
+    ([filename, name]) => name === item[1]
+  );
+  return createPortrait(item, photo ? photo[0] : null);
+});
+
 fillGallery("illustrations", illustrations, createIllustration);
 fillGallery("poster", poster, createPoster);
 createFeaturedGif("tvFeature", tvGif);
