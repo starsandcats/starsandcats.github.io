@@ -28,9 +28,7 @@ header {
   align-items: center;
   gap: 20px;
 }
-
 .brand { font-size: 20px; font-weight: 900; }
-
 nav { display: flex; flex-wrap: wrap; gap: 22px; }
 nav a {
   color: white;
@@ -171,7 +169,7 @@ main {
   object-fit: contain;
 }
 
-/* MOVING PHOTO TICKERS */
+/* PHOTO TICKERS */
 .photo-ticker-stage {
   position: relative;
   width: 100vw;
@@ -227,12 +225,17 @@ main {
 }
 
 /* FREELOADERS — LEFT TO RIGHT */
-/* EXTRA 25PX SPACE BELOW THE FREELOADERS TITLE */
+/* MATCHES PRODUCERS' ABOVE/BELOW SPACING */
 .freeloader-ticker-stage {
   --ticker-speed: 32s;
   --cast-height: 300px;
   min-height: calc(var(--cast-height) + 30px);
-  margin-top: 25px;
+
+  /* Space between THE FREELOADERS title and photos */
+  margin-top: 55px;
+
+  /* Space between photos and illustrated portraits */
+  margin-bottom: 90px;
 }
 .freeloader-ticker-stage .photo-ticker-photo {
   height: var(--cast-height);
@@ -250,7 +253,7 @@ main {
   to { transform: translateX(-50%); }
 }
 
-/* STATIONARY CENTER GIFS */
+/* CENTER GIFS */
 .photo-ticker-stage .featured-gif {
   position: relative;
   z-index: 3;
@@ -267,7 +270,7 @@ main {
 .producer-ticker-stage .featured-gif img { max-height: 290px; }
 .freeloader-ticker-stage .featured-gif img { max-height: 300px; }
 
-/* POLAROID PORTRAITS */
+/* PORTRAITS */
 .portrait-grid {
   display: flex;
   flex-wrap: wrap;
@@ -356,7 +359,7 @@ main {
 }
 .illustration:hover img { transform: scale(1.05); }
 
-/* ENDING TV ARTWORK */
+/* ENDING ARTWORK */
 .ending { text-align: center; margin-top: 85px; }
 .ending-artwork-stage {
   position: relative;
@@ -391,7 +394,7 @@ main {
   outline-offset: 4px;
 }
 
-/* CONTINUOUS BLACK-TO-RED GRADIENT */
+/* BLACK TO RED GRADIENT */
 .ending-gradient {
   width: 100%;
   min-height: 550px;
@@ -426,10 +429,10 @@ main {
   margin-top: 45px;
 }
 
-/* WHITE BACK LINK WITH RED NEON HOVER */
+/* BACK LINK — RED GLOW ON HOVER */
 .back {
   display: inline-block;
-  color: #ffffff;
+  color: #fff;
   text-decoration: none;
   font-size: 13px;
   font-weight: bold;
@@ -438,7 +441,7 @@ main {
 }
 .back:hover,
 .back:focus-visible {
-  color: #ffffff;
+  color: #fff;
   text-shadow:
     0 0 5px #ff0000,
     0 0 12px #ff0000,
@@ -446,7 +449,7 @@ main {
     0 0 35px #ff0000;
 }
 
-/* WHITE FISH WITH MATCHING RED NEON HOVER */
+/* FISH — MATCHING RED GLOW ON HOVER */
 .ending-logo {
   display: flex;
   justify-content: center;
@@ -480,7 +483,6 @@ main {
   outline-offset: 8px;
 }
 
-/* FOOTER */
 footer {
   margin-top: auto;
   width: 100%;
@@ -496,7 +498,7 @@ footer {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, .97);
+  background: rgba(0,0,0,.97);
   z-index: 100;
   align-items: center;
   justify-content: center;
@@ -566,6 +568,10 @@ footer {
   }
   .photo-ticker-stage .featured-gif { width: 260px; }
   .photo-ticker-stage .featured-gif img { max-height: 220px; }
+  .freeloader-ticker-stage {
+    margin-top: 45px;
+    margin-bottom: 70px;
+  }
   .ending-gradient { min-height: 480px; }
   .ending-caption { margin-top: 75px; }
   .ending-links { margin-top: 35px; }
@@ -600,18 +606,13 @@ footer {
 
 <main>
 
-<!-- TITLE AND VIDEO -->
 <section class="hero">
   <h1 class="fishtank-title">
-    <img
-      src="/images/clients/fishtank/fishtanklogo.png"
-      alt=""
-      class="fishtank-logo logo-reversed">
+    <img src="/images/clients/fishtank/fishtanklogo.png"
+         alt="" class="fishtank-logo logo-reversed">
     <span>FISHTANK</span>
-    <img
-      src="/images/clients/fishtank/fishtanklogo.png"
-      alt=""
-      class="fishtank-logo">
+    <img src="/images/clients/fishtank/fishtanklogo.png"
+         alt="" class="fishtank-logo">
   </h1>
 
   <div class="season">
@@ -628,11 +629,8 @@ footer {
   <div class="stars">★★★★★</div>
 
   <div class="video-feature">
-    <video
-      controls
-      playsinline
-      preload="none"
-      poster="/images/clients/fishtank/fishtankthumbnail.jpg">
+    <video controls playsinline preload="none"
+           poster="/images/clients/fishtank/fishtankthumbnail.jpg">
       <source
         src="/images/clients/fishtank/Fishtankseason1%20THE%20END%20.mp4"
         type="video/mp4">
@@ -644,27 +642,21 @@ footer {
 
 <!-- PRODUCERS -->
 <section class="gallery-section">
-  <div class="section-heading">
-    <h2>THE PRODUCERS</h2>
-  </div>
+  <div class="section-heading"><h2>THE PRODUCERS</h2></div>
   <div class="featured-gif" id="tvFeature"></div>
   <div class="portrait-grid" id="producers"></div>
 </section>
 
 <!-- FREELOADERS -->
 <section class="gallery-section">
-  <div class="section-heading">
-    <h2>THE FREELOADERS</h2>
-  </div>
+  <div class="section-heading"><h2>THE FREELOADERS</h2></div>
   <div class="featured-gif" id="castFeature"></div>
   <div class="portrait-grid" id="freeloaders"></div>
 </section>
 
 <!-- THE FISH -->
 <section class="gallery-section">
-  <div class="section-heading">
-    <h2>THE FISH</h2>
-  </div>
+  <div class="section-heading"><h2>THE FISH</h2></div>
   <div class="portrait-grid" id="fish"></div>
 </section>
 
@@ -673,9 +665,7 @@ footer {
 
 <!-- SKETCHES -->
 <section class="gallery-section sketches-section">
-  <div class="section-heading">
-    <h2>SKETCHES</h2>
-  </div>
+  <div class="section-heading"><h2>SKETCHES</h2></div>
   <div class="illustration-grid" id="illustrations"></div>
 </section>
 
@@ -692,80 +682,32 @@ footer {
       aria-label="Fishtank TV artwork with extended white lines">
 
       <g class="drawn-line">
-        <path d="
-          M 0 774
-          C -85 768, -130 785, -190 777
-          S -320 761, -400 773
-          C -480 789, -520 768, -605 776
-          S -735 791, -825 777
-          C -915 765, -980 788, -1060 779
-          S -1210 765, -1310 777
-          C -1440 791, -1530 768, -1640 776
-          L -2200 778
-        "/>
-        <path d="
-          M 0 801
-          C -70 814, -135 795, -200 804
-          S -310 819, -375 803
-          C -445 786, -500 817, -570 811
-          S -710 795, -780 808
-          C -880 824, -960 794, -1060 813
-          S -1220 798, -1330 809
-          L -2200 811
-        "/>
+        <path d="M 0 774 C -85 768, -130 785, -190 777 S -320 761, -400 773 C -480 789, -520 768, -605 776 S -735 791, -825 777 C -915 765, -980 788, -1060 779 S -1210 765, -1310 777 C -1440 791, -1530 768, -1640 776 L -2200 778"/>
+        <path d="M 0 801 C -70 814, -135 795, -200 804 S -310 819, -375 803 C -445 786, -500 817, -570 811 S -710 795, -780 808 C -880 824, -960 794, -1060 813 S -1220 798, -1330 809 L -2200 811"/>
       </g>
 
       <g class="drawn-line">
-        <path d="
-          M 1647 653
-          C 1710 660, 1760 685, 1830 681
-          S 1930 700, 2020 696
-          C 2110 695, 2170 716, 2250 710
-          S 2380 724, 2470 715
-          C 2570 704, 2650 735, 2750 724
-          L 3900 731
-        "/>
-        <path d="
-          M 1647 725
-          C 1720 728, 1780 718, 1850 729
-          S 1950 747, 2030 732
-          C 2120 715, 2170 746, 2250 740
-          S 2400 726, 2480 741
-          C 2600 761, 2680 739, 2780 752
-          L 3900 755
-        "/>
-        <path d="
-          M 1647 838
-          C 1720 831, 1790 854, 1870 847
-          S 2000 832, 2080 849
-          C 2170 866, 2230 841, 2320 856
-          S 2450 868, 2530 857
-          C 2620 845, 2710 873, 2810 864
-          L 3900 868
-        "/>
+        <path d="M 1647 653 C 1710 660, 1760 685, 1830 681 S 1930 700, 2020 696 C 2110 695, 2170 716, 2250 710 S 2380 724, 2470 715 C 2570 704, 2650 735, 2750 724 L 3900 731"/>
+        <path d="M 1647 725 C 1720 728, 1780 718, 1850 729 S 1950 747, 2030 732 C 2120 715, 2170 746, 2250 740 S 2400 726, 2480 741 C 2600 761, 2680 739, 2780 752 L 3900 755"/>
+        <path d="M 1647 838 C 1720 831, 1790 854, 1870 847 S 2000 832, 2080 849 C 2170 866, 2230 841, 2320 856 S 2450 868, 2530 857 C 2620 845, 2710 873, 2810 864 L 3900 868"/>
       </g>
 
       <image
         href="/images/clients/fishtank/fishtv1_.jpeg"
-        x="0"
-        y="0"
-        width="1647"
-        height="895"
+        x="0" y="0" width="1647" height="895"
         preserveAspectRatio="none"/>
     </svg>
 
-    <button
-      type="button"
+    <button type="button"
       class="ending-artwork-button"
       id="endingArtworkButton"
-      aria-label="Enlarge Fishtank TV artwork">
-    </button>
+      aria-label="Enlarge Fishtank TV artwork"></button>
   </div>
 </section>
 
 </main>
 
-<!-- CONTINUOUS ENDING GRADIENT -->
+<!-- ENDING GRADIENT -->
 <div class="ending-gradient">
   <p class="ending-caption">FISHTANK SEASON 1 — THE END</p>
 
@@ -775,14 +717,12 @@ footer {
     </a>
 
     <div class="ending-logo">
-      <a
-        href="https://www.fishtank.live/"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Visit Fishtank Live in a new tab">
-        <img
-          src="/images/clients/fishtank/fishtanklogo.png"
-          alt="Fishtank logo">
+      <a href="https://www.fishtank.live/"
+         target="_blank"
+         rel="noopener noreferrer"
+         aria-label="Visit Fishtank Live in a new tab">
+        <img src="/images/clients/fishtank/fishtanklogo.png"
+             alt="Fishtank logo">
       </a>
     </div>
   </div>
@@ -790,14 +730,10 @@ footer {
   <footer>© starsandtigers</footer>
 </div>
 
-<!-- IMAGE VIEWER -->
-<div
-  class="lightbox"
-  id="lightbox"
-  role="dialog"
-  aria-modal="true"
-  aria-label="Artwork viewer">
-
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox"
+     role="dialog" aria-modal="true"
+     aria-label="Artwork viewer">
   <button class="close" id="close" aria-label="Close">×</button>
   <button class="previous" id="previous" aria-label="Previous">❮</button>
   <img id="largeImage" alt="">
@@ -906,8 +842,7 @@ function imagePath(filename) {
 }
 
 function thumbnailPath(filename, thumbnail) {
-  const name = thumbnail ||
-    filename.replace(/\.[^.]+$/, ".webp");
+  const name = thumbnail || filename.replace(/\.[^.]+$/, ".webp");
   return thumbs + encodeURIComponent(name) + "?v=" + thumbnailVersion;
 }
 
