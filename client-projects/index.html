@@ -98,7 +98,6 @@ main {
 h1 {
   margin: 0;
   flex-shrink: 0;
-
   color: #ffffff;
   font-family: Arial, Helvetica, sans-serif;
   font-size: clamp(30px, 3.5vw, 46px);
@@ -125,7 +124,6 @@ h1 {
   display: block;
   width: 400px;
   flex: 0 0 400px;
-
   color: #ffffff;
   text-decoration: none;
   position: relative;
@@ -175,8 +173,16 @@ h1 {
   transition: color 0.3s ease;
 }
 
+/* DEFAULT PROJECT HOVER - YELLOW */
+
 .project:hover .project-name {
   color: #ffdc00;
+}
+
+/* FISHTANK HOVER - RED */
+
+.project[href*="fishtank"]:hover .project-name {
+  color: #ff0000;
 }
 
 /* KEYBOARD ACCESSIBILITY */
@@ -322,7 +328,9 @@ footer {
       Home
     </a>
 
-   <a href="/illustrations/">Illustrations</a>
+    <a href="/illustration/">
+      Illustrations
+    </a>
 
     <a href="/animations/">
       Animations
@@ -332,7 +340,9 @@ footer {
       Sketches
     </a>
 
-    <a href="/client-projects/" class="active" aria-current="page">
+    <a href="/client-projects/"
+       class="active"
+       aria-current="page">
       Client Work
     </a>
 
