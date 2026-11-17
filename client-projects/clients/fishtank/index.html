@@ -148,9 +148,8 @@ main {
     0 0 12px rgba(255, 255, 255, .55),
     0 0 25px rgba(255, 255, 255, .25);
 }
-.video-play-button.hidden {
-  display: none;
-}
+.video-play-button.hidden { display: none; }
+
 .video-caption {
   text-align: center;
   font-family: "Courier New", monospace;
@@ -330,6 +329,7 @@ main {
 .polaroid:hover { transform: translateY(-6px) scale(1.04); }
 .image-window {
   display: block;
+  position: relative;
   width: 100%;
   aspect-ratio: 1;
   overflow: hidden;
@@ -342,6 +342,30 @@ main {
   object-fit: cover;
   object-position: center 25%;
 }
+
+/* NEW: ILLUSTRATION TO REAL PHOTO HOVER */
+.image-window .portrait-art {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  transition: opacity .35s ease;
+}
+.image-window .portrait-photo {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity .35s ease;
+}
+.polaroid:hover .portrait-photo,
+.polaroid:focus-visible .portrait-photo {
+  opacity: 1;
+}
+.polaroid:hover .portrait-art,
+.polaroid:focus-visible .portrait-art {
+  opacity: 0;
+}
+
 .polaroid strong {
   display: block;
   margin-top: 8px;
@@ -635,7 +659,9 @@ footer {
   .featured-gif button,
   .ending-logo img,
   .back,
-  .video-play-button { transition: none; }
+  .video-play-button,
+  .image-window .portrait-art,
+  .image-window .portrait-photo { transition: none; }
 }
 </style>
 </head>
@@ -1009,9 +1035,10 @@ function moveImage(direction) {
   updateLightbox();
 }
 
-/* PORTRAITS */
-function createPortrait(item) {
+/* PORTRAITS WITH REAL-PHOTO HOVER */
+function createPortrait(item, photoFilename) {
   const [filename, name, thumbnail] = item;
+
   const button = document.createElement("button");
   button.className = "polaroid";
   button.type = "button";
@@ -1020,16 +1047,29 @@ function createPortrait(item) {
   const windowEl = document.createElement("span");
   windowEl.className = "image-window";
 
-  const img = document.createElement("img");
-  useThumbnail(img, filename, thumbnail);
-  img.alt = name;
-  img.width = 400;
-  img.height = 400;
+  const art = document.createElement("img");
+  art.className = photoFilename ? "portrait-art" : "";
+  useThumbnail(art, filename, thumbnail);
+  art.alt = name;
+  art.width = 400;
+  art.height = 400;
+  windowEl.appendChild(art);
+
+  if (photoFilename) {
+    const photo = document.createElement("img");
+    photo.className = "portrait-photo";
+    photo.src = imagePath(photoFilename);
+    photo.alt = "";
+    photo.loading = "lazy";
+    photo.decoding = "async";
+    photo.width = 400;
+    photo.height = 400;
+    windowEl.appendChild(photo);
+  }
 
   const label = document.createElement("strong");
   label.textContent = name;
 
-  windowEl.appendChild(img);
   button.append(windowEl, label);
   button.addEventListener("click", () => openImage(item));
   return button;
@@ -1097,9 +1137,22 @@ function fillGallery(id, items, creator) {
   items.forEach(item => container.appendChild(creator(item)));
 }
 
-fillGallery("producers", producers, createPortrait);
-fillGallery("freeloaders", freeloaders, createPortrait);
-fillGallery("fish", fish, createPortrait);
+/* Match each illustration with its corresponding real photo */
+fillGallery("producers", producers, (item, index) => {
+  const photo = producerPhotos.find(
+    ([filename, name]) => name === item[1]
+  );
+  return createPortrait(item, photo ? photo[0] : null);
+});
+
+fillGallery("freeloaders", freeloaders, item => {
+  const photo = freeloaderPhotos.find(
+    ([filename, name]) => name === item[1]
+  );
+  return createPortrait(item, photo ? photo[0] : null);
+});
+
+fillGallery("fish", fish, item => createPortrait(item, null));
 fillGallery("illustrations", illustrations, createIllustration);
 fillGallery("poster", poster, createPoster);
 createFeaturedGif("tvFeature", tvGif);
