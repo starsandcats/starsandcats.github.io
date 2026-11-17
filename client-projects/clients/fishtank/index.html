@@ -18,7 +18,6 @@ body {
   overflow-x: hidden;
 }
 
-/* HEADER */
 header {
   background: #050505;
   border-bottom: 1px solid #777;
@@ -28,14 +27,22 @@ header {
   align-items: center;
   gap: 20px;
 }
+
 .brand { font-size: 20px; font-weight: 900; }
-nav { display: flex; flex-wrap: wrap; gap: 22px; }
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+}
+
 nav a {
   color: white;
   text-decoration: none;
   font-size: 14px;
   font-weight: bold;
 }
+
 nav a:hover { color: #ffdc00; }
 nav a.active { color: #f32918; }
 
@@ -46,10 +53,12 @@ main {
 }
 
 /* TITLE */
+
 .hero {
   text-align: center;
   padding: 55px 20px 35px;
 }
+
 .fishtank-title {
   display: flex;
   justify-content: center;
@@ -61,21 +70,27 @@ main {
   letter-spacing: -3px;
   line-height: 1;
 }
+
 .fishtank-title span { white-space: nowrap; }
+
 .fishtank-logo {
   width: 150px;
   height: auto;
   object-fit: contain;
   flex-shrink: 0;
 }
+
 .logo-reversed { transform: scaleX(-1); }
+
 .season {
   font-family: "Courier New", monospace;
   font-size: 25px;
   letter-spacing: 5px;
   margin-top: 12px;
 }
+
 .red-star { color: #ed2616; }
+
 .description {
   font-family: "Courier New", monospace;
   max-width: 530px;
@@ -83,6 +98,7 @@ main {
   line-height: 1.8;
   font-size: 14px;
 }
+
 .stars {
   color: #e92b18;
   font-size: 32px;
@@ -91,17 +107,20 @@ main {
 }
 
 /* VIDEO */
+
 .video-feature {
   width: 100%;
   max-width: 760px;
   margin: 0 auto 55px;
 }
+
 .video-player {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
   background: #000;
 }
+
 .video-player video {
   display: block;
   width: 100%;
@@ -110,6 +129,7 @@ main {
   background: black;
   border: 3px solid white;
 }
+
 .video-play-button {
   position: absolute;
   top: 50%;
@@ -122,26 +142,28 @@ main {
   width: 100px;
   height: 100px;
   padding: 0;
-  border: 3px solid #fff;
+  border: 3px solid white;
   border-radius: 50%;
   background: rgba(12,12,12,.88);
-  color: #fff;
+  color: white;
   cursor: pointer;
-  transition: transform .2s, background .2s, box-shadow .2s;
+  transition: transform .2s, box-shadow .2s;
 }
+
 .video-play-button svg {
   width: 47px;
   height: 47px;
   margin-left: 5px;
   fill: currentColor;
 }
-.video-play-button:hover,
-.video-play-button:focus-visible {
+
+.video-play-button:hover {
   transform: translate(-50%, -50%) scale(1.1);
-  background: rgba(0,0,0,.95);
-  box-shadow: 0 0 12px #ffffff88, 0 0 25px #ffffff44;
+  box-shadow: 0 0 20px #ffffff77;
 }
+
 .video-play-button.hidden { display: none; }
+
 .video-caption {
   text-align: center;
   font-family: "Courier New", monospace;
@@ -150,8 +172,10 @@ main {
   letter-spacing: 1px;
 }
 
-/* GALLERY SECTIONS */
+/* SECTIONS */
+
 .gallery-section { margin-bottom: 85px; }
+
 .section-heading {
   display: flex;
   justify-content: center;
@@ -160,6 +184,7 @@ main {
   margin-bottom: 35px;
   text-align: center;
 }
+
 .section-heading::before,
 .section-heading::after {
   content: "";
@@ -170,6 +195,7 @@ main {
   border-radius: 50%;
   flex-shrink: 0;
 }
+
 .section-heading h2 {
   margin: 0;
   font-size: clamp(29px,5vw,49px);
@@ -177,12 +203,14 @@ main {
 }
 
 /* FEATURED GIFS */
+
 .featured-gif {
   width: 100%;
   max-width: 380px;
   margin: 0 auto 35px;
   text-align: center;
 }
+
 .featured-gif button {
   display: block;
   width: fit-content;
@@ -195,7 +223,11 @@ main {
   line-height: 0;
   transition: transform .2s ease;
 }
-.featured-gif button:hover { transform: scale(1.035); }
+
+.featured-gif button:hover {
+  transform: scale(1.035);
+}
+
 .featured-gif img {
   display: block;
   width: auto;
@@ -206,6 +238,7 @@ main {
 }
 
 /* PHOTO TICKERS */
+
 .photo-ticker-stage {
   position: relative;
   width: 100vw;
@@ -218,6 +251,7 @@ main {
   isolation: isolate;
   margin-bottom: 35px;
 }
+
 .photo-ticker-window {
   position: absolute;
   inset: 0;
@@ -227,6 +261,7 @@ main {
   z-index: 1;
   pointer-events: none;
 }
+
 .photo-ticker-track {
   display: flex;
   width: max-content;
@@ -234,6 +269,7 @@ main {
   will-change: transform;
   animation: tickerScroll var(--ticker-speed,30s) linear infinite;
 }
+
 .photo-ticker-group {
   display: flex;
   flex-shrink: 0;
@@ -241,6 +277,7 @@ main {
   gap: 14px;
   padding-right: 14px;
 }
+
 .photo-ticker-photo {
   display: block;
   flex-shrink: 0;
@@ -250,17 +287,16 @@ main {
   background: #111;
 }
 
-/* PRODUCERS — RIGHT TO LEFT */
 .producer-ticker-stage {
   --ticker-speed: 24s;
   min-height: 310px;
 }
+
 .producer-ticker-stage .photo-ticker-photo {
   width: 170px;
   height: 210px;
 }
 
-/* FREELOADERS — LEFT TO RIGHT */
 .freeloader-ticker-stage {
   --ticker-speed: 32s;
   --cast-height: 300px;
@@ -268,6 +304,7 @@ main {
   margin-top: 55px;
   margin-bottom: 35px;
 }
+
 .freeloader-ticker-stage .photo-ticker-photo {
   height: var(--cast-height);
   width: auto;
@@ -275,15 +312,16 @@ main {
   object-fit: cover;
   border: 5px solid white;
 }
+
 .freeloader-ticker-stage .photo-ticker-track {
   animation-direction: reverse;
 }
+
 @keyframes tickerScroll {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
 
-/* CENTER GIFS */
 .photo-ticker-stage .featured-gif {
   position: relative;
   z-index: 3;
@@ -292,21 +330,29 @@ main {
   margin: 0;
   pointer-events: auto;
 }
+
 .photo-ticker-stage .featured-gif button {
-  position: relative;
   background: black;
   box-shadow: 0 0 0 8px black;
 }
-.producer-ticker-stage .featured-gif img { max-height: 290px; }
-.freeloader-ticker-stage .featured-gif img { max-height: 300px; }
 
-/* PORTRAITS */
+.producer-ticker-stage .featured-gif img {
+  max-height: 290px;
+}
+
+.freeloader-ticker-stage .featured-gif img {
+  max-height: 300px;
+}
+
+/* POLAROIDS */
+
 .portrait-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 22px;
 }
+
 .polaroid {
   width: 205px;
   background: #f5f1e9;
@@ -317,7 +363,11 @@ main {
   box-shadow: 4px 6px 0 #191919;
   transition: transform .2s ease;
 }
-.polaroid:hover { transform: translateY(-6px) scale(1.04); }
+
+.polaroid:hover {
+  transform: translateY(-6px) scale(1.04);
+}
+
 .image-window {
   display: block;
   position: relative;
@@ -326,6 +376,7 @@ main {
   overflow: hidden;
   background: #171717;
 }
+
 .polaroid img {
   display: block;
   width: 100%;
@@ -334,24 +385,30 @@ main {
   object-position: center 25%;
 }
 
-/* ILLUSTRATION TO REAL PHOTO HOVER */
-.image-window .portrait-art {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  transition: opacity .35s ease;
-}
+.image-window .portrait-art,
 .image-window .portrait-photo {
   position: absolute;
   inset: 0;
-  z-index: 2;
-  opacity: 0;
   transition: opacity .35s ease;
 }
+
+.image-window .portrait-art { z-index: 1; }
+
+.image-window .portrait-photo {
+  z-index: 2;
+  opacity: 0;
+}
+
 .polaroid:hover .portrait-photo,
-.polaroid:focus-visible .portrait-photo { opacity: 1; }
+.polaroid:focus-visible .portrait-photo {
+  opacity: 1;
+}
+
 .polaroid:hover .portrait-art,
-.polaroid:focus-visible .portrait-art { opacity: 0; }
+.polaroid:focus-visible .portrait-art {
+  opacity: 0;
+}
+
 .polaroid strong {
   display: block;
   margin-top: 8px;
@@ -359,30 +416,157 @@ main {
   text-transform: uppercase;
   font-weight: 900;
 }
+
 #producers {
   display: grid;
   grid-template-columns: repeat(4,minmax(0,205px));
   justify-content: center;
   gap: 22px;
 }
-#producers .polaroid { width: 100%; min-width: 0; }
 
-/* POSTER */
-.poster { text-align: center; margin: 75px auto; }
+#producers .polaroid {
+  width: 100%;
+  min-width: 0;
+}
+
+/* RED FISHTANK FISH SWIMMING AREA */
+/* Begins at THE FISH and ends after the poster */
+
+.fish-swimming-zone {
+  position: relative;
+  isolation: isolate;
+  padding-top: 25px;
+  padding-bottom: 65px;
+}
+
+.fish-swimming-zone > section {
+  position: relative;
+  z-index: 2;
+}
+
+.red-fish-school {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  width: 100%;
+}
+
+.red-swimmer {
+  position: absolute;
+  left: 0;
+  top: var(--fish-y);
+  width: var(--fish-size);
+  opacity: var(--fish-opacity);
+  animation-duration: var(--fish-speed);
+  animation-delay: var(--fish-delay);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform;
+}
+
+.red-swimmer.swim-right {
+  animation-name: redSwimRight;
+}
+
+.red-swimmer.swim-left {
+  animation-name: redSwimLeft;
+}
+
+.red-swimmer img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+
+  /* Make the existing logo red */
+  filter:
+    brightness(0)
+    saturate(100%)
+    invert(19%)
+    sepia(100%)
+    saturate(7000%)
+    hue-rotate(0deg)
+    brightness(110%);
+
+  animation: fishFloat var(--bob-speed) ease-in-out infinite alternate;
+}
+
+/* Source logo is assumed to face right */
+.red-swimmer.swim-left img {
+  transform: scaleX(-1);
+}
+
+@keyframes redSwimRight {
+  from {
+    transform: translateX(-180px);
+  }
+  to {
+    transform: translateX(calc(100vw + 180px));
+  }
+}
+
+@keyframes redSwimLeft {
+  from {
+    transform: translateX(calc(100vw + 180px));
+  }
+  to {
+    transform: translateX(-180px);
+  }
+}
+
+@keyframes fishFloat {
+  from { translate: 0 -7px; }
+  to { translate: 0 7px; }
+}
+
+/* POSTER AND HOVER */
+
+.poster {
+  text-align: center;
+  margin: 75px auto 40px;
+  padding: 25px 0 45px;
+}
+
 .poster button {
   display: block;
   border: 4px solid white;
   padding: 0;
-  background: transparent;
+  background: #000;
   cursor: zoom-in;
   max-width: 440px;
   width: 100%;
   margin: auto;
+  position: relative;
+  z-index: 3;
+  box-shadow: 0 8px 25px rgba(0,0,0,.65);
+
+  transition:
+    transform .35s ease,
+    box-shadow .35s ease,
+    border-color .35s ease;
 }
-.poster img { display: block; width: 100%; height: auto; }
+
+.poster button:hover,
+.poster button:focus-visible {
+  transform: scale(1.075);
+  border-color: #fff;
+  box-shadow:
+    0 12px 40px rgba(0,0,0,.85),
+    0 0 20px rgba(220,0,0,.6);
+}
+
+.poster img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 
 /* SKETCHES */
+
 .sketches-section { text-align: center; }
+
 .illustration-grid {
   display: flex;
   flex-wrap: wrap;
@@ -392,6 +576,7 @@ main {
   max-width: 1050px;
   margin: 0 auto;
 }
+
 .illustration {
   width: calc((100% - 60px) / 4);
   border: 0;
@@ -399,6 +584,7 @@ main {
   padding: 0;
   cursor: zoom-in;
 }
+
 .illustration img {
   width: 100%;
   height: 220px;
@@ -407,22 +593,32 @@ main {
   border: 5px solid #f5f1e9;
   transition: transform .2s ease;
 }
-.illustration:hover img { transform: scale(1.05); }
 
-/* ENDING ARTWORK */
-.ending { text-align: center; margin-top: 85px; }
+.illustration:hover img {
+  transform: scale(1.05);
+}
+
+/* ENDING TV */
+
+.ending {
+  text-align: center;
+  margin-top: 85px;
+}
+
 .ending-artwork-stage {
   position: relative;
   width: 100vw;
   margin-left: calc(50% - 50vw);
   overflow: hidden;
 }
+
 .ending-composition {
   display: block;
   width: 100%;
   height: auto;
   overflow: hidden;
 }
+
 .ending-composition .drawn-line {
   fill: none;
   stroke: #f0f0f0;
@@ -431,6 +627,7 @@ main {
   stroke-linejoin: round;
   opacity: .88;
 }
+
 .ending-artwork-button {
   position: absolute;
   border: 0;
@@ -439,15 +636,11 @@ main {
   cursor: zoom-in;
   z-index: 2;
 }
-.ending-artwork-button:focus-visible {
-  outline: 2px solid #ffdc00;
-  outline-offset: 4px;
-}
 
-/* BLACK TO RED GRADIENT */
+/* FOOTER GRADIENT */
+
 .ending-gradient {
   position: relative;
-  isolation: isolate;
   overflow: hidden;
   width: 100%;
   min-height: 550px;
@@ -468,80 +661,14 @@ main {
   );
 }
 
-/* SWIMMING FISHTANK LOGOS */
-.fish-school {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.swimming-fish {
-  position: absolute;
-  top: var(--fish-y);
-  left: 0;
-  width: var(--fish-size);
-  opacity: var(--fish-opacity, .9);
-  will-change: transform;
-  animation-duration: var(--fish-speed);
-  animation-delay: var(--fish-delay);
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-}
-
-.swimming-fish.swim-right {
-  animation-name: swim-to-right;
-}
-
-.swimming-fish.swim-left {
-  animation-name: swim-to-left;
-}
-
-.swimming-fish img {
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  filter: brightness(0);
-  animation: fish-floating var(--bob-speed,3s) ease-in-out infinite alternate;
-}
-
-/* The source logo faces right. Reverse it only when traveling left. */
-.swimming-fish.swim-left img {
-  transform: scaleX(-1);
-}
-
-@keyframes swim-to-right {
-  from { transform: translateX(-150px); }
-  to { transform: translateX(calc(100vw + 150px)); }
-}
-
-@keyframes swim-to-left {
-  from { transform: translateX(calc(100vw + 150px)); }
-  to { transform: translateX(-150px); }
-}
-
-@keyframes fish-floating {
-  from { translate: 0 -5px; }
-  to { translate: 0 5px; }
-}
-
-/* KEEP FOOTER CONTENT ABOVE SWIMMING FISH */
-.ending-caption,
-.ending-links,
-.ending-gradient footer {
-  position: relative;
-  z-index: 2;
-}
-
 .ending-caption {
   font-family: "Courier New", monospace;
   letter-spacing: 2px;
   font-size: 14px;
-  color: #fff;
+  color: white;
   margin: 95px 0 0;
 }
+
 .ending-links {
   display: flex;
   flex-direction: column;
@@ -550,19 +677,17 @@ main {
   margin-top: 45px;
 }
 
-/* BACK LINK — RED GLOW ON HOVER */
 .back {
   display: inline-block;
-  color: #fff;
+  color: white;
   text-decoration: none;
   font-size: 13px;
   font-weight: bold;
   letter-spacing: 1px;
-  transition: color .25s ease, text-shadow .25s ease;
+  transition: text-shadow .25s ease;
 }
-.back:hover,
-.back:focus-visible {
-  color: #fff;
+
+.back:hover {
   text-shadow:
     0 0 5px #ff0000,
     0 0 12px #ff0000,
@@ -570,38 +695,20 @@ main {
     0 0 35px #ff0000;
 }
 
-/* WHITE FOOTER LOGO */
-.ending-logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.ending-logo a {
-  display: inline-block;
-  line-height: 0;
-  cursor: pointer;
-}
 .ending-logo img {
   display: block;
   width: 120px;
-  max-width: 100%;
   height: auto;
-  object-fit: contain;
   filter: brightness(0) invert(1);
   transition: transform .25s ease, filter .25s ease;
 }
-.ending-logo a:hover img,
-.ending-logo a:focus-visible img {
+
+.ending-logo a:hover img {
   transform: scale(1.08);
   filter:
     brightness(0) invert(1)
-    drop-shadow(0 0 5px #ff0000)
-    drop-shadow(0 0 12px #ff0000)
-    drop-shadow(0 0 22px #ff0000);
-}
-.ending-logo a:focus-visible {
-  outline: 2px solid white;
-  outline-offset: 8px;
+    drop-shadow(0 0 8px red)
+    drop-shadow(0 0 20px red);
 }
 
 footer {
@@ -609,12 +716,11 @@ footer {
   width: 100%;
   padding: 80px 20px 20px;
   font-size: 12px;
-  color: white;
   text-align: center;
-  background: transparent;
 }
 
-/* FINAL COLLAGE — LAST IMAGE ON PAGE */
+/* FINAL COLLAGE */
+
 .final-collage {
   display: block;
   width: 100%;
@@ -623,14 +729,15 @@ footer {
   line-height: 0;
   background: #f00000;
 }
+
 .final-collage img {
   display: block;
   width: 100%;
   height: auto;
-  object-fit: contain;
 }
 
 /* LIGHTBOX */
+
 .lightbox {
   display: none;
   position: fixed;
@@ -642,19 +749,21 @@ footer {
   flex-direction: column;
   padding: 55px 70px;
 }
+
 .lightbox.open { display: flex; }
+
 .lightbox img {
   max-width: 90vw;
   max-height: 80vh;
-  width: auto;
-  height: auto;
   object-fit: contain;
 }
+
 .lightbox-caption {
   margin-top: 16px;
   font-family: "Courier New", monospace;
   text-align: center;
 }
+
 .lightbox button {
   position: absolute;
   background: none;
@@ -663,17 +772,21 @@ footer {
   font-size: 40px;
   cursor: pointer;
 }
+
 .lightbox button:hover { color: #ffdc00; }
+
 .close { top: 15px; right: 25px; }
 .previous { left: 20px; top: 50%; }
 .next { right: 20px; top: 50%; }
 
 /* MOBILE */
+
 @media (max-width: 950px) {
   #producers {
     grid-template-columns: repeat(4,minmax(0,1fr));
     gap: 10px;
   }
+
   #producers .polaroid strong {
     font-size: clamp(8px,1.8vw,15px);
     overflow-wrap: anywhere;
@@ -682,59 +795,105 @@ footer {
 
 @media (max-width: 750px) {
   header { flex-direction: column; }
-  nav { justify-content: center; gap: 12px; }
+
+  nav {
+    justify-content: center;
+    gap: 12px;
+  }
+
   .fishtank-title {
     gap: 8px;
     font-size: clamp(30px,8vw,55px);
     letter-spacing: -1px;
   }
-  .fishtank-logo { width: clamp(40px,12vw,95px); }
-  .portrait-grid .polaroid { width: calc(50% - 12px); }
+
+  .fishtank-logo {
+    width: clamp(40px,12vw,95px);
+  }
+
+  .portrait-grid .polaroid {
+    width: calc(50% - 12px);
+  }
+
   .illustration-grid { gap: 14px; }
-  .illustration { width: calc((100% - 14px) / 2); }
+
+  .illustration {
+    width: calc((100% - 14px) / 2);
+  }
+
   .illustration img { height: 160px; }
+
   .section-heading::before,
   .section-heading::after { width: 30px; }
+
   .section-heading h2 { font-size: 26px; }
-  .season { font-size: 18px; letter-spacing: 2px; }
+
+  .season {
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
+
   #producers .polaroid { padding: 4px; }
   #producers .polaroid strong { font-size: 9px; }
+
   .producer-ticker-stage { min-height: 255px; }
+
   .producer-ticker-stage .photo-ticker-photo {
     width: 115px;
     height: 155px;
   }
+
   .photo-ticker-stage .featured-gif { width: 260px; }
-  .photo-ticker-stage .featured-gif img { max-height: 220px; }
-  .freeloader-ticker-stage {
-    margin-top: 45px;
-    margin-bottom: 35px;
+
+  .photo-ticker-stage .featured-gif img {
+    max-height: 220px;
   }
-  .video-play-button { width: 76px; height: 76px; }
-  .video-play-button svg { width: 36px; height: 36px; }
+
+  .video-play-button {
+    width: 76px;
+    height: 76px;
+  }
+
+  .video-play-button svg {
+    width: 36px;
+    height: 36px;
+  }
+
   .ending-gradient { min-height: 480px; }
+
   .ending-caption { margin-top: 75px; }
+
   .ending-links { margin-top: 35px; }
+
   .lightbox { padding: 55px 35px; }
+
   .previous { left: 5px; }
   .next { right: 5px; }
+
+  .poster button {
+    max-width: 85%;
+  }
+
+  .poster button:hover {
+    transform: scale(1.035);
+  }
 }
 
-/* ACCESSIBILITY */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+
   .photo-ticker-track,
-  .swimming-fish,
-  .swimming-fish img { animation: none; }
+  .red-swimmer,
+  .red-swimmer img {
+    animation: none;
+  }
 
   .polaroid,
   .illustration img,
-  .featured-gif button,
-  .ending-logo img,
-  .back,
-  .video-play-button,
-  .image-window .portrait-art,
-  .image-window .portrait-photo { transition: none; }
+  .poster button,
+  .featured-gif button {
+    transition: none;
+  }
 }
 </style>
 </head>
@@ -755,10 +914,13 @@ footer {
 <main>
 
 <section class="hero">
+
   <h1 class="fishtank-title">
     <img src="/images/clients/fishtank/fishtanklogo.png"
          alt="" class="fishtank-logo logo-reversed">
+
     <span>FISHTANK</span>
+
     <img src="/images/clients/fishtank/fishtanklogo.png"
          alt="" class="fishtank-logo">
   </h1>
@@ -785,61 +947,92 @@ footer {
         <source
           src="/images/clients/fishtank/Fishtankseason1%20THE%20END%20.mp4"
           type="video/mp4">
-        Your browser does not support video playback.
       </video>
 
       <button type="button"
               class="video-play-button"
               id="videoPlayButton"
-              aria-label="Play Fishtank Season 1 video">
-        <svg viewBox="0 0 40 40" aria-hidden="true">
+              aria-label="Play video">
+        <svg viewBox="0 0 40 40">
           <path d="M13 7 L34 20 L13 33 Z"/>
         </svg>
       </button>
     </div>
-    <p class="video-caption">FISHTANK SEASON 1 — THE END</p>
+
+    <p class="video-caption">
+      FISHTANK SEASON 1 — THE END
+    </p>
   </div>
 </section>
 
 <!-- PRODUCERS -->
+
 <section class="gallery-section">
-  <div class="section-heading"><h2>THE PRODUCERS</h2></div>
+  <div class="section-heading">
+    <h2>THE PRODUCERS</h2>
+  </div>
+
   <div class="featured-gif" id="tvFeature"></div>
   <div class="portrait-grid" id="producers"></div>
 </section>
 
 <!-- FREELOADERS -->
+
 <section class="gallery-section">
-  <div class="section-heading"><h2>THE FREELOADERS</h2></div>
+  <div class="section-heading">
+    <h2>THE FREELOADERS</h2>
+  </div>
+
   <div class="featured-gif" id="castFeature"></div>
   <div class="portrait-grid" id="freeloaders"></div>
 </section>
 
-<!-- THE FISH -->
-<section class="gallery-section">
-  <div class="section-heading"><h2>THE FISH</h2></div>
-  <div class="portrait-grid" id="fish"></div>
-</section>
+<!-- RED SWIMMING FISH BEGIN HERE -->
 
-<!-- POSTER -->
-<section class="poster" id="poster"></section>
+<div class="fish-swimming-zone" id="fishSwimmingZone">
+
+  <div class="red-fish-school"
+       id="redFishSchool"
+       aria-hidden="true"></div>
+
+  <!-- THE FISH -->
+
+  <section class="gallery-section">
+    <div class="section-heading">
+      <h2>THE FISH</h2>
+    </div>
+
+    <div class="portrait-grid" id="fish"></div>
+  </section>
+
+  <!-- FISHTANK SEASON 1 POSTER -->
+
+  <section class="poster" id="poster"></section>
+
+</div>
+
+<!-- RED SWIMMING FISH END HERE -->
 
 <!-- SKETCHES -->
+
 <section class="gallery-section sketches-section">
-  <div class="section-heading"><h2>SKETCHES</h2></div>
+  <div class="section-heading">
+    <h2>SKETCHES</h2>
+  </div>
+
   <div class="illustration-grid" id="illustrations"></div>
 </section>
 
 <!-- ENDING TV ARTWORK -->
+
 <section class="ending">
   <div class="ending-artwork-stage" id="endingStage">
+
     <svg class="ending-composition"
          id="endingComposition"
          xmlns="http://www.w3.org/2000/svg"
          viewBox="-1800 0 5247 895"
-         preserveAspectRatio="xMidYMid meet"
-         role="img"
-         aria-label="Fishtank TV artwork with extended white lines">
+         preserveAspectRatio="xMidYMid meet">
 
       <g class="drawn-line">
         <path d="M 0 774 C -85 768, -130 785, -190 777 S -320 761, -400 773 C -480 789, -520 768, -605 776 S -735 791, -825 777 C -915 765, -980 788, -1060 779 S -1210 765, -1310 777 C -1440 791, -1530 768, -1640 776 L -2200 778"/>
@@ -866,12 +1059,13 @@ footer {
 
 </main>
 
-<!-- RED GRADIENT WITH 18 SWIMMING FISHTANK LOGOS -->
+<!-- FOOTER -->
+
 <div class="ending-gradient">
 
-  <div class="fish-school" id="fishSchool" aria-hidden="true"></div>
-
-  <p class="ending-caption">FISHTANK SEASON 1 — THE END</p>
+  <p class="ending-caption">
+    FISHTANK SEASON 1 — THE END
+  </p>
 
   <div class="ending-links">
     <a href="/client-projects/" class="back">
@@ -881,8 +1075,7 @@ footer {
     <div class="ending-logo">
       <a href="https://www.fishtank.live/"
          target="_blank"
-         rel="noopener noreferrer"
-         aria-label="Visit Fishtank Live in a new tab">
+         rel="noopener noreferrer">
         <img src="/images/clients/fishtank/fishtanklogo.png"
              alt="Fishtank logo">
       </a>
@@ -893,13 +1086,18 @@ footer {
 </div>
 
 <!-- LIGHTBOX -->
+
 <div class="lightbox" id="lightbox"
-     role="dialog" aria-modal="true"
+     role="dialog"
+     aria-modal="true"
      aria-label="Artwork viewer">
+
   <button class="close" id="close" aria-label="Close">×</button>
   <button class="previous" id="previous" aria-label="Previous">❮</button>
+
   <img id="largeImage" alt="">
   <p class="lightbox-caption" id="caption"></p>
+
   <button class="next" id="next" aria-label="Next">❯</button>
 </div>
 
@@ -911,52 +1109,52 @@ const thumbs = base + "thumbs/";
 const thumbnailVersion = "20261116";
 
 const producers = [
-  ["fish1jet.jpeg", "Jet Neptune", "fish1jet.webp"],
-  ["fish1goldstriker.jpeg", "Goldstriker", "fish1goldstriker.webp"],
-  ["fish1ben.jpeg", "Ben", "fish1ben.webp"],
-  ["fish1tax.jpeg", "Tax", "fish1tax.webp"]
+  ["fish1jet.jpeg","Jet Neptune","fish1jet.webp"],
+  ["fish1goldstriker.jpeg","Goldstriker","fish1goldstriker.webp"],
+  ["fish1ben.jpeg","Ben","fish1ben.webp"],
+  ["fish1tax.jpeg","Tax","fish1tax.webp"]
 ];
 
 const freeloaders = [
-  ["fish1alex.jpeg", "Alex", "fish1alex.webp"],
-  ["fish1betty.jpeg", "Betty", "fish1betty.webp"],
-  ["fish1chip.jpeg", "Chip", "fish1chip.webp"],
-  ["fish1chris.jpeg", "Chris", "fish1chris.webp"],
-  ["fish1dontarious.jpeg", "Dontarious", "fish1dontarious.webp"],
-  ["fish1ella.jpeg", "Ella", "fish1ella.webp"],
-  ["fish1frank.jpeg", "Frank", "fish1frank.webp"],
-  ["fish1lance.jpeg", "Lance", "fish1lance.webp"],
-  ["fish1tai.jpeg", "Tai", "fish1tai.webp"]
+  ["fish1alex.jpeg","Alex","fish1alex.webp"],
+  ["fish1betty.jpeg","Betty","fish1betty.webp"],
+  ["fish1chip.jpeg","Chip","fish1chip.webp"],
+  ["fish1chris.jpeg","Chris","fish1chris.webp"],
+  ["fish1dontarious.jpeg","Dontarious","fish1dontarious.webp"],
+  ["fish1ella.jpeg","Ella","fish1ella.webp"],
+  ["fish1frank.jpeg","Frank","fish1frank.webp"],
+  ["fish1lance.jpeg","Lance","fish1lance.webp"],
+  ["fish1tai.jpeg","Tai","fish1tai.webp"]
 ];
 
 const fish = [
-  ["fish1josie.jpeg", "Josie", "fish1josie.webp"],
-  ["fish1jonathan.jpeg", "Jon", "fish1jon.webp"],
-  ["fish1vance.jpeg", "Vance", "fish1vance.webp"],
-  ["fish1baldvance.jpeg", "Bald Vance", "fish1baldvance.webp"],
-  ["fish1sylvia.jpeg", "Sylvia", "fish1sylvia.webp"],
-  ["fish1damiel.jpeg", "Damiel", "fish1damiel.webp"],
-  ["fish1letty.jpeg", "Letty", "fish1letty.webp"],
-  ["fish1simmons.jpeg", "Simmons", "fish1simmons.webp"],
-  ["fish1mauro.jpeg", "Mauro", "fish1mauro.webp"]
+  ["fish1josie.jpeg","Josie","fish1josie.webp"],
+  ["fish1jonathan.jpeg","Jon","fish1jon.webp"],
+  ["fish1vance.jpeg","Vance","fish1vance.webp"],
+  ["fish1baldvance.jpeg","Bald Vance","fish1baldvance.webp"],
+  ["fish1sylvia.jpeg","Sylvia","fish1sylvia.webp"],
+  ["fish1damiel.jpeg","Damiel","fish1damiel.webp"],
+  ["fish1letty.jpeg","Letty","fish1letty.webp"],
+  ["fish1simmons.jpeg","Simmons","fish1simmons.webp"],
+  ["fish1mauro.jpeg","Mauro","fish1mauro.webp"]
 ];
 
 const illustrations = [
-  ["fish1alexsketch.jpeg", "Alex Sketch", "fish1alexsketch.webp"],
-  ["fish1bensketch.jpeg", "Ben Sketch", "fish1bensketch.webp"],
-  ["fish1bettysketch.jpeg", "Betty Sketch", "fish1bettysketch.webp"],
-  ["fish1chipsketch.jpeg", "Chip Sketch", "fish1chipsketch.webp"],
-  ["fish1chrissketch.jpeg", "Chris Sketch", "fish1chrissketch.webp"],
-  ["fish1dontarioussketch.jpeg", "Dontarious Sketch", "fish1dontarioussketch.webp"],
-  ["fish1ellasketch.jpeg", "Ella Sketch", "fish1ellasketch.webp"],
-  ["fish1franksketch.jpeg", "Frank Sketch", "fish1franksketch.webp"],
-  ["fish1goldstrikersketch.jpeg", "Goldstriker Sketch", "fish1goldstrikersketch.webp"],
-  ["fish1jetsketch.jpeg", "Jet Sketch", "fish1jetsketch.webp"],
-  ["fish1lancesketch.jpeg", "Lance Sketch", "fish1lancesketch.webp"],
-  ["fish1taisketch.jpeg", "Tai Sketch", "fish1taisketch.webp"],
-  ["fish1taxsketch.jpeg", "Tax Sketch", "fish1taxsketch.webp"],
-  ["josiejonbubbles.jpeg", "Josie and Jon", "josiejonbubbles.webp"],
-  ["peppasylvia.jpeg", "Peppa and Sylvia", "peppasylvia.webp"]
+  ["fish1alexsketch.jpeg","Alex Sketch","fish1alexsketch.webp"],
+  ["fish1bensketch.jpeg","Ben Sketch","fish1bensketch.webp"],
+  ["fish1bettysketch.jpeg","Betty Sketch","fish1bettysketch.webp"],
+  ["fish1chipsketch.jpeg","Chip Sketch","fish1chipsketch.webp"],
+  ["fish1chrissketch.jpeg","Chris Sketch","fish1chrissketch.webp"],
+  ["fish1dontarioussketch.jpeg","Dontarious Sketch","fish1dontarioussketch.webp"],
+  ["fish1ellasketch.jpeg","Ella Sketch","fish1ellasketch.webp"],
+  ["fish1franksketch.jpeg","Frank Sketch","fish1franksketch.webp"],
+  ["fish1goldstrikersketch.jpeg","Goldstriker Sketch","fish1goldstrikersketch.webp"],
+  ["fish1jetsketch.jpeg","Jet Sketch","fish1jetsketch.webp"],
+  ["fish1lancesketch.jpeg","Lance Sketch","fish1lancesketch.webp"],
+  ["fish1taisketch.jpeg","Tai Sketch","fish1taisketch.webp"],
+  ["fish1taxsketch.jpeg","Tax Sketch","fish1taxsketch.webp"],
+  ["josiejonbubbles.jpeg","Josie and Jon","josiejonbubbles.webp"],
+  ["peppasylvia.jpeg","Peppa and Sylvia","peppasylvia.webp"]
 ];
 
 const poster = [
@@ -965,39 +1163,39 @@ const poster = [
    "fishtankseason1poster.webp"]
 ];
 
-const tvGif = ["fish1tvcast.gif", "Fishtank TV Cast"];
-const castGif = ["fish1cast.gif", "Fishtank Season 1 Cast"];
-const endingArtwork = ["fishtv1_.jpeg", "Fishtank TV"];
+const tvGif = ["fish1tvcast.gif","Fishtank TV Cast"];
+const castGif = ["fish1cast.gif","Fishtank Season 1 Cast"];
+const endingArtwork = ["fishtv1_.jpeg","Fishtank TV"];
 
 const producerPhotos = [
-  ["jetphoto.jpg", "Jet Neptune"],
-  ["goldstrikerphoto.jpg", "Goldstriker"],
-  ["benphoto.jpg", "Ben"],
-  ["taxphoto.jpg", "Tax"]
+  ["jetphoto.jpg","Jet Neptune"],
+  ["goldstrikerphoto.jpg","Goldstriker"],
+  ["benphoto.jpg","Ben"],
+  ["taxphoto.jpg","Tax"]
 ];
 
 const freeloaderPhotos = [
-  ["alexphoto.jpg", "Alex"],
-  ["bettyphoto.jpg", "Betty"],
-  ["chipphoto.jpg", "Chip"],
-  ["chrisphoto.jpg", "Chris"],
-  ["dontariousphoto.jpg", "Dontarious"],
-  ["ellaphoto.jpg", "Ella"],
-  ["frankphoto.jpg", "Frank"],
-  ["lancephoto.jpg", "Lance"],
-  ["taiphoto.jpg", "Tai"]
+  ["alexphoto.jpg","Alex"],
+  ["bettyphoto.jpg","Betty"],
+  ["chipphoto.jpg","Chip"],
+  ["chrisphoto.jpg","Chris"],
+  ["dontariousphoto.jpg","Dontarious"],
+  ["ellaphoto.jpg","Ella"],
+  ["frankphoto.jpg","Frank"],
+  ["lancephoto.jpg","Lance"],
+  ["taiphoto.jpg","Tai"]
 ];
 
 const fishPhotos = [
-  ["josiephoto.jpg", "Josie"],
-  ["jonphoto.jpg", "Jon"],
-  ["vancephoto.jpg", "Vance"],
-  ["baldvancephoto.jpg", "Bald Vance"],
-  ["sylviaphoto.jpg", "Sylvia"],
-  ["damielphoto.jpg", "Damiel"],
-  ["lettyphoto.jpg", "Letty"],
-  ["simmonsphoto.jpg", "Simmons"],
-  ["maurophoto.jpg", "Mauro"]
+  ["josie.jpg","Josie"],
+  ["jon.jpg","Jon"],
+  ["vance.jpg","Vance"],
+  ["baldvance.jpg","Bald Vance"],
+  ["sylvia.jpg","Sylvia"],
+  ["damiel.jpg","Damiel"],
+  ["letty.jpg","Letty"],
+  ["simmons.jpg","Simmons"],
+  ["mauro.jpg","Mauro"]
 ];
 
 const allImages = [
@@ -1016,78 +1214,57 @@ function imagePath(filename) {
 }
 
 function thumbnailPath(filename, thumbnail) {
-  const name = thumbnail || filename.replace(/\.[^.]+$/, ".webp");
-  return thumbs + encodeURIComponent(name) + "?v=" + thumbnailVersion;
+  const name = thumbnail ||
+    filename.replace(/\.[^.]+$/, ".webp");
+
+  return thumbs + encodeURIComponent(name) +
+    "?v=" + thumbnailVersion;
 }
 
 function useThumbnail(img, filename, thumbnail) {
   img.loading = "lazy";
   img.decoding = "async";
+
   img.onerror = function() {
     img.onerror = null;
     img.src = imagePath(filename);
   };
+
   img.src = thumbnailPath(filename, thumbnail);
 }
 
-const gifObserver = "IntersectionObserver" in window
-  ? new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        const img = entry.target;
-        if (img.dataset.src) {
-          img.src = img.dataset.src;
-          delete img.dataset.src;
-        }
-        gifObserver.unobserve(img);
-      });
-    }, { rootMargin: "150px 0px" })
-  : null;
+/* VIDEO */
 
-function deferGif(img, filename) {
-  const src = imagePath(filename);
-  if (gifObserver) {
-    img.dataset.src = src;
-    gifObserver.observe(img);
-  } else {
-    img.src = src;
-  }
-}
+const video = document.getElementById("fishtankVideo");
+const playButton = document.getElementById("videoPlayButton");
 
-/* VIDEO PLAY BUTTON */
-const fishtankVideo = document.getElementById("fishtankVideo");
-const videoPlayButton = document.getElementById("videoPlayButton");
+playButton.addEventListener("click", () => {
+  video.play().catch(() => {
+    playButton.classList.remove("hidden");
+  });
+});
 
-videoPlayButton.addEventListener("click", () => {
-  const playPromise = fishtankVideo.play();
-  if (playPromise && typeof playPromise.catch === "function") {
-    playPromise.catch(() => {
-      videoPlayButton.classList.remove("hidden");
-    });
-  }
+video.addEventListener("play", () => {
+  playButton.classList.add("hidden");
 });
-fishtankVideo.addEventListener("play", () => {
-  videoPlayButton.classList.add("hidden");
-});
-fishtankVideo.addEventListener("pause", () => {
-  if (fishtankVideo.currentTime === 0) {
-    videoPlayButton.classList.remove("hidden");
-  }
-});
-fishtankVideo.addEventListener("ended", () => {
-  videoPlayButton.classList.remove("hidden");
+
+video.addEventListener("ended", () => {
+  playButton.classList.remove("hidden");
 });
 
 /* LIGHTBOX */
+
 let activeIndex = 0;
 let previousFocus = null;
 
 function openImage(item) {
   const index = allImages.indexOf(item);
   if (index < 0) return;
+
   activeIndex = index;
   previousFocus = document.activeElement;
   updateLightbox();
+
   document.getElementById("lightbox").classList.add("open");
   document.body.style.overflow = "hidden";
   document.getElementById("close").focus();
@@ -1095,9 +1272,11 @@ function openImage(item) {
 
 function updateLightbox() {
   const [filename, name] = allImages[activeIndex];
+
   const large = document.getElementById("largeImage");
   large.src = imagePath(filename);
   large.alt = name;
+
   document.getElementById("caption").textContent = name;
 }
 
@@ -1105,18 +1284,22 @@ function closeLightbox() {
   document.getElementById("lightbox").classList.remove("open");
   document.getElementById("largeImage").removeAttribute("src");
   document.body.style.overflow = "";
-  if (previousFocus && typeof previousFocus.focus === "function") {
+
+  if (previousFocus && previousFocus.focus) {
     previousFocus.focus();
   }
 }
 
 function moveImage(direction) {
-  activeIndex = (activeIndex + direction + allImages.length)
-    % allImages.length;
+  activeIndex =
+    (activeIndex + direction + allImages.length) %
+    allImages.length;
+
   updateLightbox();
 }
 
-/* PORTRAITS WITH REAL-PHOTO HOVER */
+/* PORTRAITS */
+
 function createPortrait(item, photoFilename) {
   const [filename, name, thumbnail] = item;
 
@@ -1129,11 +1312,10 @@ function createPortrait(item, photoFilename) {
   windowEl.className = "image-window";
 
   const art = document.createElement("img");
-  art.className = photoFilename ? "portrait-art" : "";
+  art.className = "portrait-art";
   useThumbnail(art, filename, thumbnail);
   art.alt = name;
-  art.width = 400;
-  art.height = 400;
+
   windowEl.appendChild(art);
 
   if (photoFilename) {
@@ -1142,9 +1324,6 @@ function createPortrait(item, photoFilename) {
     photo.src = imagePath(photoFilename);
     photo.alt = "";
     photo.loading = "lazy";
-    photo.decoding = "async";
-    photo.width = 400;
-    photo.height = 400;
     windowEl.appendChild(photo);
   }
 
@@ -1153,12 +1332,13 @@ function createPortrait(item, photoFilename) {
 
   button.append(windowEl, label);
   button.addEventListener("click", () => openImage(item));
+
   return button;
 }
 
-/* SKETCHES */
 function createIllustration(item) {
   const [filename, name, thumbnail] = item;
+
   const button = document.createElement("button");
   button.className = "illustration";
   button.type = "button";
@@ -1167,16 +1347,16 @@ function createIllustration(item) {
   const img = document.createElement("img");
   useThumbnail(img, filename, thumbnail);
   img.alt = name;
-  img.width = 400;
-  img.height = 400;
+
   button.appendChild(img);
   button.addEventListener("click", () => openImage(item));
+
   return button;
 }
 
-/* POSTER */
 function createPoster(item) {
   const [filename, name, thumbnail] = item;
+
   const button = document.createElement("button");
   button.type = "button";
   button.setAttribute("aria-label", "Enlarge " + name);
@@ -1184,43 +1364,45 @@ function createPoster(item) {
   const img = document.createElement("img");
   useThumbnail(img, filename, thumbnail);
   img.alt = name;
+
   button.appendChild(img);
   button.addEventListener("click", () => openImage(item));
+
   return button;
 }
 
-/* FEATURED GIFS */
 function createFeaturedGif(containerId, item) {
   const [filename, name] = item;
   const container = document.getElementById(containerId);
-  if (!container) return;
 
   const button = document.createElement("button");
   button.type = "button";
   button.setAttribute("aria-label", "Enlarge " + name);
 
   const img = document.createElement("img");
+  img.src = imagePath(filename);
   img.alt = name;
   img.loading = "lazy";
-  img.decoding = "async";
-  deferGif(img, filename);
 
   button.appendChild(img);
   container.appendChild(button);
+
   button.addEventListener("click", () => openImage(item));
 }
 
 function fillGallery(id, items, creator) {
   const container = document.getElementById(id);
-  if (!container) return;
-  items.forEach(item => container.appendChild(creator(item)));
+
+  items.forEach(item => {
+    container.appendChild(creator(item));
+  });
 }
 
-/* MATCH ILLUSTRATIONS TO REAL PHOTOS */
 fillGallery("producers", producers, item => {
   const photo = producerPhotos.find(
     ([filename, name]) => name === item[1]
   );
+
   return createPortrait(item, photo ? photo[0] : null);
 });
 
@@ -1228,6 +1410,7 @@ fillGallery("freeloaders", freeloaders, item => {
   const photo = freeloaderPhotos.find(
     ([filename, name]) => name === item[1]
   );
+
   return createPortrait(item, photo ? photo[0] : null);
 });
 
@@ -1235,18 +1418,20 @@ fillGallery("fish", fish, item => {
   const photo = fishPhotos.find(
     ([filename, name]) => name === item[1]
   );
+
   return createPortrait(item, photo ? photo[0] : null);
 });
 
 fillGallery("illustrations", illustrations, createIllustration);
 fillGallery("poster", poster, createPoster);
+
 createFeaturedGif("tvFeature", tvGif);
 createFeaturedGif("castFeature", castGif);
 
-/* PHOTO TICKERS */
+/* PRODUCER AND FREELOADER TICKERS */
+
 function createPhotoTicker(featureId, photos, stageClass) {
   const feature = document.getElementById(featureId);
-  if (!feature || !feature.parentNode || !photos.length) return;
 
   const stage = document.createElement("div");
   stage.className = "photo-ticker-stage " + stageClass;
@@ -1258,22 +1443,20 @@ function createPhotoTicker(featureId, photos, stageClass) {
   const track = document.createElement("div");
   track.className = "photo-ticker-track";
 
-  function makePhoto(filename, name) {
-    const img = document.createElement("img");
-    img.src = imagePath(filename);
-    img.alt = name;
-    img.className = "photo-ticker-photo";
-    img.decoding = "async";
-    img.draggable = false;
-    return img;
-  }
-
   function makeGroup() {
     const group = document.createElement("div");
     group.className = "photo-ticker-group";
+
     photos.forEach(([filename, name]) => {
-      group.appendChild(makePhoto(filename, name));
+      const img = document.createElement("img");
+      img.src = imagePath(filename);
+      img.alt = "";
+      img.className = "photo-ticker-photo";
+      img.draggable = false;
+
+      group.appendChild(img);
     });
+
     return group;
   }
 
@@ -1282,70 +1465,67 @@ function createPhotoTicker(featureId, photos, stageClass) {
 
   track.append(firstGroup, secondGroup);
   windowEl.appendChild(track);
+
   feature.parentNode.insertBefore(stage, feature);
   stage.appendChild(windowEl);
   stage.appendChild(feature);
 
-  if (stageClass === "freeloader-ticker-stage") {
-    const castImage = feature.querySelector("img");
-
-    function matchCastHeight() {
-      if (!castImage) return;
-      const gifHeight = castImage.getBoundingClientRect().height;
-      if (gifHeight > 0) {
-        stage.style.setProperty("--cast-height", (gifHeight + 10) + "px");
-      }
-    }
-
-    if (castImage) {
-      castImage.addEventListener("load", matchCastHeight);
-      if ("ResizeObserver" in window) {
-        new ResizeObserver(matchCastHeight).observe(castImage);
-      } else {
-        window.addEventListener("resize", matchCastHeight);
-      }
-      matchCastHeight();
-    }
-  }
-
-  let lastWidth = 0;
-  let lastHeight = 0;
-
   function updateTicker() {
-    const width = stage.clientWidth;
-    const firstPhoto = firstGroup.querySelector(".photo-ticker-photo");
-    const photoHeight = firstPhoto
-      ? firstPhoto.getBoundingClientRect().height
-      : 0;
-
-    if (width === lastWidth && photoHeight === lastHeight) return;
-
-    lastWidth = width;
-    lastHeight = photoHeight;
     track.style.animation = "none";
 
     firstGroup.replaceChildren(
-      ...photos.map(([filename, name]) => makePhoto(filename, name))
+      ...Array.from(makeGroup().children)
     );
 
-    const singleWidth = firstGroup.getBoundingClientRect().width;
-    if (!singleWidth) {
+    const groupWidth = firstGroup.getBoundingClientRect().width;
+    if (!groupWidth) {
       track.style.animation = "";
       return;
     }
 
-    const copies = Math.max(1, Math.ceil(width / singleWidth));
+    const copies = Math.max(
+      1,
+      Math.ceil(stage.clientWidth / groupWidth)
+    );
 
     for (let i = 1; i < copies; i++) {
-      photos.forEach(([filename, name]) => {
-        firstGroup.appendChild(makePhoto(filename, name));
+      photos.forEach(([filename]) => {
+        const img = document.createElement("img");
+        img.src = imagePath(filename);
+        img.alt = "";
+        img.className = "photo-ticker-photo";
+        firstGroup.appendChild(img);
       });
     }
 
     secondGroup.replaceChildren(
       ...Array.from(firstGroup.children, img => img.cloneNode(true))
     );
+
     track.style.animation = "";
+  }
+
+  if (stageClass === "freeloader-ticker-stage") {
+    const castImage = feature.querySelector("img");
+
+    function matchCastHeight() {
+      const height = castImage.getBoundingClientRect().height;
+
+      if (height > 0) {
+        stage.style.setProperty(
+          "--cast-height",
+          (height + 10) + "px"
+        );
+      }
+    }
+
+    castImage.addEventListener("load", matchCastHeight);
+
+    if ("ResizeObserver" in window) {
+      new ResizeObserver(matchCastHeight).observe(castImage);
+    }
+
+    matchCastHeight();
   }
 
   updateTicker();
@@ -1369,15 +1549,14 @@ createPhotoTicker(
   "freeloader-ticker-stage"
 );
 
-/* ENDING ARTWORK CLICK AREA */
+/* ENDING TV CLICK AREA */
+
 function positionEndingButton() {
   const svg = document.getElementById("endingComposition");
   const button = document.getElementById("endingArtworkButton");
-  if (!svg || !button) return;
 
   const box = svg.viewBox.baseVal;
   const rect = svg.getBoundingClientRect();
-  if (!box.width || !box.height) return;
 
   const scale = Math.min(
     rect.width / box.width,
@@ -1398,9 +1577,11 @@ document.getElementById("endingArtworkButton")
 
 window.addEventListener("resize", positionEndingButton);
 window.addEventListener("load", positionEndingButton);
+
 positionEndingButton();
 
 /* LIGHTBOX CONTROLS */
+
 document.getElementById("close")
   .addEventListener("click", closeLightbox);
 
@@ -1412,77 +1593,80 @@ document.getElementById("next")
 
 document.getElementById("lightbox")
   .addEventListener("click", event => {
-    if (event.target.id === "lightbox") closeLightbox();
+    if (event.target.id === "lightbox") {
+      closeLightbox();
+    }
   });
 
 document.addEventListener("keydown", event => {
-  const lightbox = document.getElementById("lightbox");
-  if (!lightbox.classList.contains("open")) return;
+  if (!document.getElementById("lightbox").classList.contains("open")) {
+    return;
+  }
 
   if (event.key === "Escape") closeLightbox();
   if (event.key === "ArrowLeft") moveImage(-1);
   if (event.key === "ArrowRight") moveImage(1);
 });
 
-/* 18 SWIMMING BLACK FISHTANK LOGOS */
-function createSwimmingFish() {
-  const school = document.getElementById("fishSchool");
-  if (!school) return;
+/* RED FISHTANK FISH */
+/* 42 fish total, concentrated toward the poster */
 
-  const logoPath = "/images/clients/fishtank/fishtanklogo.png";
+function createRedFishSchool() {
+  const school = document.getElementById("redFishSchool");
+  const logo = "/images/clients/fishtank/fishtanklogo.png";
 
-  // y-position %, width px, speed seconds,
-  // negative delay seconds, direction
-  const swimmers = [
-    [19, 85, 17, -8,  "right"],
-    [25, 44, 22, -16, "left"],
-    [31, 63, 19, -11, "right"],
-    [37, 92, 23, -20, "left"],
-    [43, 50, 15, -6,  "right"],
-    [49, 75, 21, -13, "left"],
-    [55, 42, 18, -15, "right"],
-    [61, 58, 24, -7,  "left"],
-    [23, 36, 16, -13, "left"],
-    [34, 100,25, -9,  "right"],
-    [46, 45, 20, -18, "left"],
-    [57, 64, 17, -12, "right"],
-    [68, 38, 22, -4,  "left"],
-    [74, 90, 19, -17, "right"],
-    [80, 48, 16, -9,  "left"],
-    [86, 72, 24, -19, "right"],
-    [65, 33, 14, -7,  "right"],
-    [89, 57, 20, -15, "left"]
-  ];
+  const totalFish = 42;
 
-  swimmers.forEach(([y, size, speed, delay, direction], index) => {
+  for (let i = 0; i < totalFish; i++) {
     const swimmer = document.createElement("div");
-    swimmer.className =
-      "swimming-fish swim-" + direction;
+
+    const direction = i % 2 === 0 ? "right" : "left";
+
+    swimmer.className = "red-swimmer swim-" + direction;
+
+    /*
+      0–100% of the swimming zone.
+      The first fish are spread across THE FISH section.
+      More fish appear near the poster.
+    */
+
+    let y;
+
+    if (i < 14) {
+      y = 5 + (i * 3.2);
+    } else if (i < 25) {
+      y = 48 + ((i - 14) * 2.2);
+    } else {
+      y = 73 + ((i - 25) * 1.35);
+    }
+
+    const size = 35 + ((i * 19) % 80);
+    const speed = 14 + ((i * 7) % 12);
+    const delay = -((i * 11) % speed);
+    const opacity = 0.6 + ((i % 5) * 0.09);
 
     swimmer.style.setProperty("--fish-y", y + "%");
     swimmer.style.setProperty("--fish-size", size + "px");
     swimmer.style.setProperty("--fish-speed", speed + "s");
     swimmer.style.setProperty("--fish-delay", delay + "s");
-    swimmer.style.setProperty("--bob-speed", (2.5 + index % 4) + "s");
-    swimmer.style.setProperty(
-      "--fish-opacity",
-      (0.7 + (index % 4) * 0.1).toString()
-    );
+    swimmer.style.setProperty("--fish-opacity", opacity);
+    swimmer.style.setProperty("--bob-speed", (2.5 + i % 4) + "s");
 
     const img = document.createElement("img");
-    img.src = logoPath;
+    img.src = logo;
     img.alt = "";
     img.draggable = false;
 
     swimmer.appendChild(img);
     school.appendChild(swimmer);
-  });
+  }
 }
 
-createSwimmingFish();
+createRedFishSchool();
 </script>
 
-<!-- THE VERY LAST IMAGE ON THE WEBSITE -->
+<!-- FINAL COLLAGE — LAST IMAGE -->
+
 <div class="final-collage">
   <img src="/images/clients/fishtank/season1.jpg"
        alt="Fishtank Season 1 collage">
