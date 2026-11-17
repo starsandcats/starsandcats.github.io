@@ -5,9 +5,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fishtank Season 1 | starsandtigers</title>
+
 <style>
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+
 body {
   margin: 0;
   background: #000;
@@ -15,6 +17,8 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   overflow-x: hidden;
 }
+
+/* HEADER */
 header {
   background: #050505;
   border-bottom: 1px solid #777;
@@ -24,7 +28,9 @@ header {
   align-items: center;
   gap: 20px;
 }
+
 .brand { font-size: 20px; font-weight: 900; }
+
 nav { display: flex; flex-wrap: wrap; gap: 22px; }
 nav a {
   color: white;
@@ -34,10 +40,16 @@ nav a {
 }
 nav a:hover { color: #ffdc00; }
 nav a.active { color: #f32918; }
-main { max-width: 1250px; margin: auto; padding: 0 25px; }
+
+main {
+  max-width: 1250px;
+  margin: auto;
+  padding: 0 25px;
+}
 
 /* TITLE */
 .hero { text-align: center; padding: 55px 20px 35px; }
+
 .fishtank-title {
   display: flex;
   justify-content: center;
@@ -50,6 +62,7 @@ main { max-width: 1250px; margin: auto; padding: 0 25px; }
   line-height: 1;
 }
 .fishtank-title span { white-space: nowrap; }
+
 .fishtank-logo {
   width: 150px;
   height: auto;
@@ -57,6 +70,7 @@ main { max-width: 1250px; margin: auto; padding: 0 25px; }
   flex-shrink: 0;
 }
 .logo-reversed { transform: scaleX(-1); }
+
 .season {
   font-family: "Courier New", monospace;
   font-size: 25px;
@@ -64,6 +78,7 @@ main { max-width: 1250px; margin: auto; padding: 0 25px; }
   margin-top: 12px;
 }
 .red-star { color: #ed2616; }
+
 .description {
   font-family: "Courier New", monospace;
   max-width: 530px;
@@ -102,6 +117,7 @@ main { max-width: 1250px; margin: auto; padding: 0 25px; }
 
 /* GALLERY SECTIONS */
 .gallery-section { margin-bottom: 85px; }
+
 .section-heading {
   display: flex;
   justify-content: center;
@@ -155,7 +171,7 @@ main { max-width: 1250px; margin: auto; padding: 0 25px; }
   object-fit: contain;
 }
 
-/* PHOTO TICKERS */
+/* MOVING PHOTO TICKERS */
 .photo-ticker-stage {
   position: relative;
   width: 100vw;
@@ -182,8 +198,7 @@ main { max-width: 1250px; margin: auto; padding: 0 25px; }
   width: max-content;
   flex-shrink: 0;
   will-change: transform;
-  animation: tickerScroll var(--ticker-speed, 30s)
-    linear infinite;
+  animation: tickerScroll var(--ticker-speed, 30s) linear infinite;
 }
 .photo-ticker-group {
   display: flex;
@@ -200,6 +215,8 @@ main { max-width: 1250px; margin: auto; padding: 0 25px; }
   border: 5px solid white;
   background: #111;
 }
+
+/* PRODUCERS — RIGHT TO LEFT */
 .producer-ticker-stage {
   --ticker-speed: 24s;
   min-height: 310px;
@@ -208,10 +225,14 @@ main { max-width: 1250px; margin: auto; padding: 0 25px; }
   width: 170px;
   height: 210px;
 }
+
+/* FREELOADERS — LEFT TO RIGHT */
+/* EXTRA 25PX SPACE BELOW THE FREELOADERS TITLE */
 .freeloader-ticker-stage {
   --ticker-speed: 32s;
   --cast-height: 300px;
   min-height: calc(var(--cast-height) + 30px);
+  margin-top: 25px;
 }
 .freeloader-ticker-stage .photo-ticker-photo {
   height: var(--cast-height);
@@ -223,10 +244,13 @@ main { max-width: 1250px; margin: auto; padding: 0 25px; }
 .freeloader-ticker-stage .photo-ticker-track {
   animation-direction: reverse;
 }
+
 @keyframes tickerScroll {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
+
+/* STATIONARY CENTER GIFS */
 .photo-ticker-stage .featured-gif {
   position: relative;
   z-index: 3;
@@ -243,7 +267,7 @@ main { max-width: 1250px; margin: auto; padding: 0 25px; }
 .producer-ticker-stage .featured-gif img { max-height: 290px; }
 .freeloader-ticker-stage .featured-gif img { max-height: 300px; }
 
-/* PORTRAITS */
+/* POLAROID PORTRAITS */
 .portrait-grid {
   display: flex;
   flex-wrap: wrap;
@@ -367,7 +391,7 @@ main { max-width: 1250px; margin: auto; padding: 0 25px; }
   outline-offset: 4px;
 }
 
-/* CONTINUOUS BLACK TO RED GRADIENT */
+/* CONTINUOUS BLACK-TO-RED GRADIENT */
 .ending-gradient {
   width: 100%;
   min-height: 550px;
@@ -387,8 +411,6 @@ main { max-width: 1250px; margin: auto; padding: 0 25px; }
     #f00000 100%
   );
 }
-
-/* LOWER CAPTION, CLOSER TO BACK LINK */
 .ending-caption {
   font-family: "Courier New", monospace;
   letter-spacing: 2px;
@@ -396,8 +418,6 @@ main { max-width: 1250px; margin: auto; padding: 0 25px; }
   color: #fff;
   margin: 95px 0 0;
 }
-
-/* LINK AND FISH GROUP */
 .ending-links {
   display: flex;
   flex-direction: column;
@@ -414,9 +434,7 @@ main { max-width: 1250px; margin: auto; padding: 0 25px; }
   font-size: 13px;
   font-weight: bold;
   letter-spacing: 1px;
-  transition:
-    color .25s ease,
-    text-shadow .25s ease;
+  transition: color .25s ease, text-shadow .25s ease;
 }
 .back:hover,
 .back:focus-visible {
@@ -446,9 +464,7 @@ main { max-width: 1250px; margin: auto; padding: 0 25px; }
   height: auto;
   object-fit: contain;
   filter: brightness(0) invert(1);
-  transition:
-    transform .25s ease,
-    filter .25s ease;
+  transition: transform .25s ease, filter .25s ease;
 }
 .ending-logo a:hover img,
 .ending-logo a:focus-visible img {
@@ -584,6 +600,7 @@ footer {
 
 <main>
 
+<!-- TITLE AND VIDEO -->
 <section class="hero">
   <h1 class="fishtank-title">
     <img
@@ -625,31 +642,44 @@ footer {
   </div>
 </section>
 
+<!-- PRODUCERS -->
 <section class="gallery-section">
-  <div class="section-heading"><h2>THE PRODUCERS</h2></div>
+  <div class="section-heading">
+    <h2>THE PRODUCERS</h2>
+  </div>
   <div class="featured-gif" id="tvFeature"></div>
   <div class="portrait-grid" id="producers"></div>
 </section>
 
+<!-- FREELOADERS -->
 <section class="gallery-section">
-  <div class="section-heading"><h2>THE FREELOADERS</h2></div>
+  <div class="section-heading">
+    <h2>THE FREELOADERS</h2>
+  </div>
   <div class="featured-gif" id="castFeature"></div>
   <div class="portrait-grid" id="freeloaders"></div>
 </section>
 
+<!-- THE FISH -->
 <section class="gallery-section">
-  <div class="section-heading"><h2>THE FISH</h2></div>
+  <div class="section-heading">
+    <h2>THE FISH</h2>
+  </div>
   <div class="portrait-grid" id="fish"></div>
 </section>
 
+<!-- POSTER -->
 <section class="poster" id="poster"></section>
 
+<!-- SKETCHES -->
 <section class="gallery-section sketches-section">
-  <div class="section-heading"><h2>SKETCHES</h2></div>
+  <div class="section-heading">
+    <h2>SKETCHES</h2>
+  </div>
   <div class="illustration-grid" id="illustrations"></div>
 </section>
 
-<!-- ENDING ARTWORK -->
+<!-- ENDING TV ARTWORK -->
 <section class="ending">
   <div class="ending-artwork-stage" id="endingStage">
     <svg
@@ -735,21 +765,15 @@ footer {
 
 </main>
 
-<!-- ONE CONTINUOUS GRADIENT -->
+<!-- CONTINUOUS ENDING GRADIENT -->
 <div class="ending-gradient">
-
-  <p class="ending-caption">
-    FISHTANK SEASON 1 — THE END
-  </p>
+  <p class="ending-caption">FISHTANK SEASON 1 — THE END</p>
 
   <div class="ending-links">
-
-    <!-- WHITE TEXT WITH RED GLOW ON HOVER -->
     <a href="/client-projects/" class="back">
       ← BACK TO CLIENT PROJECTS
     </a>
 
-    <!-- WHITE FISH WITH MATCHING RED GLOW -->
     <div class="ending-logo">
       <a
         href="https://www.fishtank.live/"
@@ -761,11 +785,9 @@ footer {
           alt="Fishtank logo">
       </a>
     </div>
-
   </div>
 
   <footer>© starsandtigers</footer>
-
 </div>
 
 <!-- IMAGE VIEWER -->
@@ -886,8 +908,7 @@ function imagePath(filename) {
 function thumbnailPath(filename, thumbnail) {
   const name = thumbnail ||
     filename.replace(/\.[^.]+$/, ".webp");
-  return thumbs + encodeURIComponent(name)
-    + "?v=" + thumbnailVersion;
+  return thumbs + encodeURIComponent(name) + "?v=" + thumbnailVersion;
 }
 
 function useThumbnail(img, filename, thumbnail) {
@@ -1108,10 +1129,7 @@ function createPhotoTicker(featureId, photos, stageClass) {
       if (!castImage) return;
       const gifHeight = castImage.getBoundingClientRect().height;
       if (gifHeight > 0) {
-        stage.style.setProperty(
-          "--cast-height",
-          (gifHeight + 10) + "px"
-        );
+        stage.style.setProperty("--cast-height", (gifHeight + 10) + "px");
       }
     }
 
@@ -1180,6 +1198,7 @@ createPhotoTicker(
   producerPhotos,
   "producer-ticker-stage"
 );
+
 createPhotoTicker(
   "castFeature",
   freeloaderPhotos,
