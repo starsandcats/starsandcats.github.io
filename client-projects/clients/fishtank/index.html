@@ -46,8 +46,10 @@ main {
 }
 
 /* TITLE */
-.hero { text-align: center; padding: 55px 20px 35px; }
-
+.hero {
+  text-align: center;
+  padding: 55px 20px 35px;
+}
 .fishtank-title {
   display: flex;
   justify-content: center;
@@ -67,7 +69,6 @@ main {
   flex-shrink: 0;
 }
 .logo-reversed { transform: scaleX(-1); }
-
 .season {
   font-family: "Courier New", monospace;
   font-size: 25px;
@@ -75,7 +76,6 @@ main {
   margin-top: 12px;
 }
 .red-star { color: #ed2616; }
-
 .description {
   font-family: "Courier New", monospace;
   max-width: 530px;
@@ -110,8 +110,6 @@ main {
   background: black;
   border: 3px solid white;
 }
-
-/* WHITE OUTLINE PLAY BUTTON */
 .video-play-button {
   position: absolute;
   top: 50%;
@@ -124,15 +122,12 @@ main {
   width: 100px;
   height: 100px;
   padding: 0;
-  border: 3px solid #ffffff;
+  border: 3px solid #fff;
   border-radius: 50%;
-  background: rgba(12, 12, 12, .88);
-  color: #ffffff;
+  background: rgba(12,12,12,.88);
+  color: #fff;
   cursor: pointer;
-  transition:
-    transform .2s ease,
-    background .2s ease,
-    box-shadow .2s ease;
+  transition: transform .2s, background .2s, box-shadow .2s;
 }
 .video-play-button svg {
   width: 47px;
@@ -143,13 +138,10 @@ main {
 .video-play-button:hover,
 .video-play-button:focus-visible {
   transform: translate(-50%, -50%) scale(1.1);
-  background: rgba(0, 0, 0, .95);
-  box-shadow:
-    0 0 12px rgba(255, 255, 255, .55),
-    0 0 25px rgba(255, 255, 255, .25);
+  background: rgba(0,0,0,.95);
+  box-shadow: 0 0 12px #ffffff88, 0 0 25px #ffffff44;
 }
 .video-play-button.hidden { display: none; }
-
 .video-caption {
   text-align: center;
   font-family: "Courier New", monospace;
@@ -180,7 +172,7 @@ main {
 }
 .section-heading h2 {
   margin: 0;
-  font-size: clamp(29px, 5vw, 49px);
+  font-size: clamp(29px,5vw,49px);
   font-weight: 1000;
 }
 
@@ -240,7 +232,7 @@ main {
   width: max-content;
   flex-shrink: 0;
   will-change: transform;
-  animation: tickerScroll var(--ticker-speed, 30s) linear infinite;
+  animation: tickerScroll var(--ticker-speed,30s) linear infinite;
 }
 .photo-ticker-group {
   display: flex;
@@ -286,7 +278,6 @@ main {
 .freeloader-ticker-stage .photo-ticker-track {
   animation-direction: reverse;
 }
-
 @keyframes tickerScroll {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
@@ -358,14 +349,9 @@ main {
   transition: opacity .35s ease;
 }
 .polaroid:hover .portrait-photo,
-.polaroid:focus-visible .portrait-photo {
-  opacity: 1;
-}
+.polaroid:focus-visible .portrait-photo { opacity: 1; }
 .polaroid:hover .portrait-art,
-.polaroid:focus-visible .portrait-art {
-  opacity: 0;
-}
-
+.polaroid:focus-visible .portrait-art { opacity: 0; }
 .polaroid strong {
   display: block;
   margin-top: 8px;
@@ -375,7 +361,7 @@ main {
 }
 #producers {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 205px));
+  grid-template-columns: repeat(4,minmax(0,205px));
   justify-content: center;
   gap: 22px;
 }
@@ -460,6 +446,9 @@ main {
 
 /* BLACK TO RED GRADIENT */
 .ending-gradient {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   width: 100%;
   min-height: 550px;
   text-align: center;
@@ -478,6 +467,74 @@ main {
     #f00000 100%
   );
 }
+
+/* SWIMMING FISHTANK LOGOS */
+.fish-school {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.swimming-fish {
+  position: absolute;
+  top: var(--fish-y);
+  left: 0;
+  width: var(--fish-size);
+  opacity: var(--fish-opacity, .9);
+  will-change: transform;
+  animation-duration: var(--fish-speed);
+  animation-delay: var(--fish-delay);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.swimming-fish.swim-right {
+  animation-name: swim-to-right;
+}
+
+.swimming-fish.swim-left {
+  animation-name: swim-to-left;
+}
+
+.swimming-fish img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: brightness(0);
+  animation: fish-floating var(--bob-speed,3s) ease-in-out infinite alternate;
+}
+
+/* The source logo faces right. Reverse it only when traveling left. */
+.swimming-fish.swim-left img {
+  transform: scaleX(-1);
+}
+
+@keyframes swim-to-right {
+  from { transform: translateX(-150px); }
+  to { transform: translateX(calc(100vw + 150px)); }
+}
+
+@keyframes swim-to-left {
+  from { transform: translateX(calc(100vw + 150px)); }
+  to { transform: translateX(-150px); }
+}
+
+@keyframes fish-floating {
+  from { translate: 0 -5px; }
+  to { translate: 0 5px; }
+}
+
+/* KEEP FOOTER CONTENT ABOVE SWIMMING FISH */
+.ending-caption,
+.ending-links,
+.ending-gradient footer {
+  position: relative;
+  z-index: 2;
+}
+
 .ending-caption {
   font-family: "Courier New", monospace;
   letter-spacing: 2px;
@@ -513,7 +570,7 @@ main {
     0 0 35px #ff0000;
 }
 
-/* FISH — MATCHING RED GLOW ON HOVER */
+/* WHITE FOOTER LOGO */
 .ending-logo {
   display: flex;
   justify-content: center;
@@ -557,6 +614,22 @@ footer {
   background: transparent;
 }
 
+/* FINAL COLLAGE — LAST IMAGE ON PAGE */
+.final-collage {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  background: #f00000;
+}
+.final-collage img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
 /* LIGHTBOX */
 .lightbox {
   display: none;
@@ -598,23 +671,24 @@ footer {
 /* MOBILE */
 @media (max-width: 950px) {
   #producers {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(4,minmax(0,1fr));
     gap: 10px;
   }
   #producers .polaroid strong {
-    font-size: clamp(8px, 1.8vw, 15px);
+    font-size: clamp(8px,1.8vw,15px);
     overflow-wrap: anywhere;
   }
 }
+
 @media (max-width: 750px) {
   header { flex-direction: column; }
   nav { justify-content: center; gap: 12px; }
   .fishtank-title {
     gap: 8px;
-    font-size: clamp(30px, 8vw, 55px);
+    font-size: clamp(30px,8vw,55px);
     letter-spacing: -1px;
   }
-  .fishtank-logo { width: clamp(40px, 12vw, 95px); }
+  .fishtank-logo { width: clamp(40px,12vw,95px); }
   .portrait-grid .polaroid { width: calc(50% - 12px); }
   .illustration-grid { gap: 14px; }
   .illustration { width: calc((100% - 14px) / 2); }
@@ -636,14 +710,8 @@ footer {
     margin-top: 45px;
     margin-bottom: 35px;
   }
-  .video-play-button {
-    width: 76px;
-    height: 76px;
-  }
-  .video-play-button svg {
-    width: 36px;
-    height: 36px;
-  }
+  .video-play-button { width: 76px; height: 76px; }
+  .video-play-button svg { width: 36px; height: 36px; }
   .ending-gradient { min-height: 480px; }
   .ending-caption { margin-top: 75px; }
   .ending-links { margin-top: 35px; }
@@ -651,9 +719,14 @@ footer {
   .previous { left: 5px; }
   .next { right: 5px; }
 }
+
+/* ACCESSIBILITY */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .photo-ticker-track { animation: none; }
+  .photo-ticker-track,
+  .swimming-fish,
+  .swimming-fish img { animation: none; }
+
   .polaroid,
   .illustration img,
   .featured-gif button,
@@ -697,12 +770,11 @@ footer {
   </div>
 
   <p class="description">
-Fishtank is a popular internet show created by Jet Neptune and Jason Goldstriker the following presents a collection of illustrations done of the contestants (the fish), the freeloaders, and the producers as well as a poster made for the Fishtank.live merch shop with a special video made using these illustrations to finish off the very first season of fishtank.
+    Fishtank is a popular internet show created by Jet Neptune and Jason Goldstriker the following presents a collection of illustrations done of the contestants (the fish), the freeloaders, and the producers as well as a poster made for the Fishtank.live merch shop with a special video made using these illustrations to finish off the very first season of fishtank.
   </p>
 
   <div class="stars">★★★★★</div>
 
-  <!-- FEATURED VIDEO WITH WHITE PLAY BUTTON -->
   <div class="video-feature">
     <div class="video-player">
       <video id="fishtankVideo"
@@ -761,14 +833,13 @@ Fishtank is a popular internet show created by Jet Neptune and Jason Goldstriker
 <!-- ENDING TV ARTWORK -->
 <section class="ending">
   <div class="ending-artwork-stage" id="endingStage">
-    <svg
-      class="ending-composition"
-      id="endingComposition"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="-1800 0 5247 895"
-      preserveAspectRatio="xMidYMid meet"
-      role="img"
-      aria-label="Fishtank TV artwork with extended white lines">
+    <svg class="ending-composition"
+         id="endingComposition"
+         xmlns="http://www.w3.org/2000/svg"
+         viewBox="-1800 0 5247 895"
+         preserveAspectRatio="xMidYMid meet"
+         role="img"
+         aria-label="Fishtank TV artwork with extended white lines">
 
       <g class="drawn-line">
         <path d="M 0 774 C -85 768, -130 785, -190 777 S -320 761, -400 773 C -480 789, -520 768, -605 776 S -735 791, -825 777 C -915 765, -980 788, -1060 779 S -1210 765, -1310 777 C -1440 791, -1530 768, -1640 776 L -2200 778"/>
@@ -781,23 +852,25 @@ Fishtank is a popular internet show created by Jet Neptune and Jason Goldstriker
         <path d="M 1647 838 C 1720 831, 1790 854, 1870 847 S 2000 832, 2080 849 C 2170 866, 2230 841, 2320 856 S 2450 868, 2530 857 C 2620 845, 2710 873, 2810 864 L 3900 868"/>
       </g>
 
-      <image
-        href="/images/clients/fishtank/fishtv1_.jpeg"
-        x="0" y="0" width="1647" height="895"
-        preserveAspectRatio="none"/>
+      <image href="/images/clients/fishtank/fishtv1_.jpeg"
+             x="0" y="0" width="1647" height="895"
+             preserveAspectRatio="none"/>
     </svg>
 
     <button type="button"
-      class="ending-artwork-button"
-      id="endingArtworkButton"
-      aria-label="Enlarge Fishtank TV artwork"></button>
+            class="ending-artwork-button"
+            id="endingArtworkButton"
+            aria-label="Enlarge Fishtank TV artwork"></button>
   </div>
 </section>
 
 </main>
 
-<!-- ENDING GRADIENT -->
+<!-- RED GRADIENT WITH 18 SWIMMING FISHTANK LOGOS -->
 <div class="ending-gradient">
+
+  <div class="fish-school" id="fishSchool" aria-hidden="true"></div>
+
   <p class="ending-caption">FISHTANK SEASON 1 — THE END</p>
 
   <div class="ending-links">
@@ -915,7 +988,6 @@ const freeloaderPhotos = [
   ["taiphoto.jpg", "Tai"]
 ];
 
-/* REAL PHOTOS FOR THE FISH */
 const fishPhotos = [
   ["josiephoto.jpg", "Josie"],
   ["jonphoto.jpg", "Jon"],
@@ -994,17 +1066,14 @@ videoPlayButton.addEventListener("click", () => {
     });
   }
 });
-
 fishtankVideo.addEventListener("play", () => {
   videoPlayButton.classList.add("hidden");
 });
-
 fishtankVideo.addEventListener("pause", () => {
   if (fishtankVideo.currentTime === 0) {
     videoPlayButton.classList.remove("hidden");
   }
 });
-
 fishtankVideo.addEventListener("ended", () => {
   videoPlayButton.classList.remove("hidden");
 });
@@ -1100,7 +1169,6 @@ function createIllustration(item) {
   img.alt = name;
   img.width = 400;
   img.height = 400;
-
   button.appendChild(img);
   button.addEventListener("click", () => openImage(item));
   return button;
@@ -1116,7 +1184,6 @@ function createPoster(item) {
   const img = document.createElement("img");
   useThumbnail(img, filename, thumbnail);
   img.alt = name;
-
   button.appendChild(img);
   button.addEventListener("click", () => openImage(item));
   return button;
@@ -1316,6 +1383,7 @@ function positionEndingButton() {
     rect.width / box.width,
     rect.height / box.height
   );
+
   const offsetX = (rect.width - box.width * scale) / 2;
   const offsetY = (rect.height - box.height * scale) / 2;
 
@@ -1355,7 +1423,70 @@ document.addEventListener("keydown", event => {
   if (event.key === "ArrowLeft") moveImage(-1);
   if (event.key === "ArrowRight") moveImage(1);
 });
+
+/* 18 SWIMMING BLACK FISHTANK LOGOS */
+function createSwimmingFish() {
+  const school = document.getElementById("fishSchool");
+  if (!school) return;
+
+  const logoPath = "/images/clients/fishtank/fishtanklogo.png";
+
+  // y-position %, width px, speed seconds,
+  // negative delay seconds, direction
+  const swimmers = [
+    [19, 85, 17, -8,  "right"],
+    [25, 44, 22, -16, "left"],
+    [31, 63, 19, -11, "right"],
+    [37, 92, 23, -20, "left"],
+    [43, 50, 15, -6,  "right"],
+    [49, 75, 21, -13, "left"],
+    [55, 42, 18, -15, "right"],
+    [61, 58, 24, -7,  "left"],
+    [23, 36, 16, -13, "left"],
+    [34, 100,25, -9,  "right"],
+    [46, 45, 20, -18, "left"],
+    [57, 64, 17, -12, "right"],
+    [68, 38, 22, -4,  "left"],
+    [74, 90, 19, -17, "right"],
+    [80, 48, 16, -9,  "left"],
+    [86, 72, 24, -19, "right"],
+    [65, 33, 14, -7,  "right"],
+    [89, 57, 20, -15, "left"]
+  ];
+
+  swimmers.forEach(([y, size, speed, delay, direction], index) => {
+    const swimmer = document.createElement("div");
+    swimmer.className =
+      "swimming-fish swim-" + direction;
+
+    swimmer.style.setProperty("--fish-y", y + "%");
+    swimmer.style.setProperty("--fish-size", size + "px");
+    swimmer.style.setProperty("--fish-speed", speed + "s");
+    swimmer.style.setProperty("--fish-delay", delay + "s");
+    swimmer.style.setProperty("--bob-speed", (2.5 + index % 4) + "s");
+    swimmer.style.setProperty(
+      "--fish-opacity",
+      (0.7 + (index % 4) * 0.1).toString()
+    );
+
+    const img = document.createElement("img");
+    img.src = logoPath;
+    img.alt = "";
+    img.draggable = false;
+
+    swimmer.appendChild(img);
+    school.appendChild(swimmer);
+  });
+}
+
+createSwimmingFish();
 </script>
+
+<!-- THE VERY LAST IMAGE ON THE WEBSITE -->
+<div class="final-collage">
+  <img src="/images/clients/fishtank/season1.jpg"
+       alt="Fishtank Season 1 collage">
+</div>
 
 </body>
 </html>
