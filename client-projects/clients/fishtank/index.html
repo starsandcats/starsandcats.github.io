@@ -8,6 +8,7 @@
 
 <style>
 * { box-sizing: border-box; }
+
 html { scroll-behavior: smooth; }
 
 body {
@@ -17,6 +18,8 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   overflow-x: hidden;
 }
+
+/* HEADER */
 
 header {
   background: #050505;
@@ -28,7 +31,10 @@ header {
   gap: 20px;
 }
 
-.brand { font-size: 20px; font-weight: 900; }
+.brand {
+  font-size: 20px;
+  font-weight: 900;
+}
 
 nav {
   display: flex;
@@ -172,7 +178,7 @@ main {
   letter-spacing: 1px;
 }
 
-/* SECTIONS */
+/* GALLERY SECTIONS */
 
 .gallery-section { margin-bottom: 85px; }
 
@@ -198,7 +204,7 @@ main {
 
 .section-heading h2 {
   margin: 0;
-  font-size: clamp(29px,5vw,49px);
+  font-size: clamp(29px, 5vw, 49px);
   font-weight: 1000;
 }
 
@@ -267,7 +273,7 @@ main {
   width: max-content;
   flex-shrink: 0;
   will-change: transform;
-  animation: tickerScroll var(--ticker-speed,30s) linear infinite;
+  animation: tickerScroll var(--ticker-speed, 30s) linear infinite;
 }
 
 .photo-ticker-group {
@@ -344,7 +350,7 @@ main {
   max-height: 300px;
 }
 
-/* POLAROIDS */
+/* POLAROID PORTRAITS */
 
 .portrait-grid {
   display: flex;
@@ -419,7 +425,7 @@ main {
 
 #producers {
   display: grid;
-  grid-template-columns: repeat(4,minmax(0,205px));
+  grid-template-columns: repeat(4, minmax(0, 205px));
   justify-content: center;
   gap: 22px;
 }
@@ -429,8 +435,7 @@ main {
   min-width: 0;
 }
 
-/* RED FISHTANK FISH SWIMMING AREA */
-/* Begins at THE FISH and ends after the poster */
+/* RED FISH ZONE — THE FISH THROUGH THE POSTER */
 
 .fish-swimming-zone {
   position: relative;
@@ -482,8 +487,6 @@ main {
   width: 100%;
   height: auto;
   object-fit: contain;
-
-  /* Make the existing logo red */
   filter:
     brightness(0)
     saturate(100%)
@@ -492,31 +495,23 @@ main {
     saturate(7000%)
     hue-rotate(0deg)
     brightness(110%);
-
   animation: fishFloat var(--bob-speed) ease-in-out infinite alternate;
 }
 
-/* Source logo is assumed to face right */
+/* Flip the logo when swimming left */
+
 .red-swimmer.swim-left img {
   transform: scaleX(-1);
 }
 
 @keyframes redSwimRight {
-  from {
-    transform: translateX(-180px);
-  }
-  to {
-    transform: translateX(calc(100vw + 180px));
-  }
+  from { transform: translateX(-180px); }
+  to { transform: translateX(calc(100vw + 180px)); }
 }
 
 @keyframes redSwimLeft {
-  from {
-    transform: translateX(calc(100vw + 180px));
-  }
-  to {
-    transform: translateX(-180px);
-  }
+  from { transform: translateX(calc(100vw + 180px)); }
+  to { transform: translateX(-180px); }
 }
 
 @keyframes fishFloat {
@@ -524,7 +519,7 @@ main {
   to { translate: 0 7px; }
 }
 
-/* POSTER AND HOVER */
+/* SEASON 1 POSTER */
 
 .poster {
   text-align: center;
@@ -544,17 +539,14 @@ main {
   position: relative;
   z-index: 3;
   box-shadow: 0 8px 25px rgba(0,0,0,.65);
-
   transition:
     transform .35s ease,
-    box-shadow .35s ease,
-    border-color .35s ease;
+    box-shadow .35s ease;
 }
 
 .poster button:hover,
 .poster button:focus-visible {
   transform: scale(1.075);
-  border-color: #fff;
   box-shadow:
     0 12px 40px rgba(0,0,0,.85),
     0 0 20px rgba(220,0,0,.6);
@@ -601,7 +593,7 @@ main {
   transform: scale(1.05);
 }
 
-/* ENDING TV */
+/* ENDING TV ARTWORK */
 
 .ending {
   text-align: center;
@@ -640,10 +632,16 @@ main {
   z-index: 2;
 }
 
-/* FOOTER GRADIENT */
+.ending-artwork-button:focus-visible {
+  outline: 2px solid #ffdc00;
+  outline-offset: 4px;
+}
+
+/* RED GRADIENT FOOTER */
 
 .ending-gradient {
   position: relative;
+  isolation: isolate;
   overflow: hidden;
   width: 100%;
   min-height: 550px;
@@ -662,6 +660,65 @@ main {
     #d00000 85%,
     #f00000 100%
   );
+}
+
+/* BLACK FISH SCHOOL IN FOOTER */
+
+.black-fish-school {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.black-swimmer {
+  position: absolute;
+  top: var(--fish-y);
+  left: 0;
+  width: var(--fish-size);
+  opacity: var(--fish-opacity);
+  animation: blackSwimRight var(--fish-speed) linear infinite;
+  animation-delay: var(--fish-delay);
+  will-change: transform;
+}
+
+.black-swimmer.swim-left {
+  animation-name: blackSwimLeft;
+}
+
+.black-swimmer img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: brightness(0);
+  animation: blackFishFloat 3s ease-in-out infinite alternate;
+}
+
+.black-swimmer.swim-left img {
+  transform: scaleX(-1);
+}
+
+@keyframes blackSwimRight {
+  from { transform: translateX(-160px); }
+  to { transform: translateX(calc(100vw + 160px)); }
+}
+
+@keyframes blackSwimLeft {
+  from { transform: translateX(calc(100vw + 160px)); }
+  to { transform: translateX(-160px); }
+}
+
+@keyframes blackFishFloat {
+  from { translate: 0 -6px; }
+  to { translate: 0 6px; }
+}
+
+/* FOOTER CONTENT ABOVE FISH */
+
+.ending-gradient > :not(.black-fish-school) {
+  position: relative;
+  z-index: 2;
 }
 
 .ending-caption {
@@ -690,12 +747,18 @@ main {
   transition: text-shadow .25s ease;
 }
 
-.back:hover {
+.back:hover,
+.back:focus-visible {
   text-shadow:
     0 0 5px #ff0000,
     0 0 12px #ff0000,
     0 0 22px #ff0000,
     0 0 35px #ff0000;
+}
+
+.ending-logo a {
+  display: inline-block;
+  line-height: 0;
 }
 
 .ending-logo img {
@@ -706,7 +769,8 @@ main {
   transition: transform .25s ease, filter .25s ease;
 }
 
-.ending-logo a:hover img {
+.ending-logo a:hover img,
+.ending-logo a:focus-visible img {
   transform: scale(1.08);
   filter:
     brightness(0) invert(1)
@@ -719,24 +783,8 @@ footer {
   width: 100%;
   padding: 80px 20px 20px;
   font-size: 12px;
+  color: white;
   text-align: center;
-}
-
-/* FINAL COLLAGE */
-
-.final-collage {
-  display: block;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  line-height: 0;
-  background: #f00000;
-}
-
-.final-collage img {
-  display: block;
-  width: 100%;
-  height: auto;
 }
 
 /* LIGHTBOX */
@@ -758,6 +806,8 @@ footer {
 .lightbox img {
   max-width: 90vw;
   max-height: 80vh;
+  width: auto;
+  height: auto;
   object-fit: contain;
 }
 
@@ -786,7 +836,7 @@ footer {
 
 @media (max-width: 950px) {
   #producers {
-    grid-template-columns: repeat(4,minmax(0,1fr));
+    grid-template-columns: repeat(4, minmax(0,1fr));
     gap: 10px;
   }
 
@@ -852,6 +902,11 @@ footer {
     max-height: 220px;
   }
 
+  .freeloader-ticker-stage {
+    margin-top: 45px;
+    margin-bottom: 35px;
+  }
+
   .video-play-button {
     width: 76px;
     height: 76px;
@@ -862,24 +917,20 @@ footer {
     height: 36px;
   }
 
-  .ending-gradient { min-height: 480px; }
-
-  .ending-caption { margin-top: 75px; }
-
-  .ending-links { margin-top: 35px; }
-
-  .lightbox { padding: 55px 35px; }
-
-  .previous { left: 5px; }
-  .next { right: 5px; }
-
-  .poster button {
-    max-width: 85%;
-  }
+  .poster button { max-width: 85%; }
 
   .poster button:hover {
     transform: scale(1.035);
   }
+
+  .ending-gradient { min-height: 480px; }
+
+  .ending-caption { margin-top: 75px; }
+  .ending-links { margin-top: 35px; }
+
+  .lightbox { padding: 55px 35px; }
+  .previous { left: 5px; }
+  .next { right: 5px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -887,14 +938,17 @@ footer {
 
   .photo-ticker-track,
   .red-swimmer,
-  .red-swimmer img {
+  .red-swimmer img,
+  .black-swimmer,
+  .black-swimmer img {
     animation: none;
   }
 
   .polaroid,
   .illustration img,
   .poster button,
-  .featured-gif button {
+  .featured-gif button,
+  .ending-logo img {
     transition: none;
   }
 }
@@ -905,6 +959,7 @@ footer {
 
 <header>
   <div class="brand">★ starsandtigers ★</div>
+
   <nav>
     <a href="/">Home</a>
     <a href="/illustration/">Illustrations</a>
@@ -916,16 +971,19 @@ footer {
 
 <main>
 
-<section class="hero">
+<!-- TITLE AND VIDEO -->
 
+<section class="hero">
   <h1 class="fishtank-title">
     <img src="/images/clients/fishtank/fishtanklogo.png"
-         alt="" class="fishtank-logo logo-reversed">
+         alt=""
+         class="fishtank-logo logo-reversed">
 
     <span>FISHTANK</span>
 
     <img src="/images/clients/fishtank/fishtanklogo.png"
-         alt="" class="fishtank-logo">
+         alt=""
+         class="fishtank-logo">
   </h1>
 
   <div class="season">
@@ -950,13 +1008,14 @@ footer {
         <source
           src="/images/clients/fishtank/Fishtankseason1%20THE%20END%20.mp4"
           type="video/mp4">
+        Your browser does not support video playback.
       </video>
 
       <button type="button"
               class="video-play-button"
               id="videoPlayButton"
-              aria-label="Play video">
-        <svg viewBox="0 0 40 40">
+              aria-label="Play Fishtank Season 1 video">
+        <svg viewBox="0 0 40 40" aria-hidden="true">
           <path d="M13 7 L34 20 L13 33 Z"/>
         </svg>
       </button>
@@ -990,7 +1049,7 @@ footer {
   <div class="portrait-grid" id="freeloaders"></div>
 </section>
 
-<!-- RED SWIMMING FISH BEGIN HERE -->
+<!-- RED FISH SCHOOL BEGINS -->
 
 <div class="fish-swimming-zone" id="fishSwimmingZone">
 
@@ -1008,13 +1067,13 @@ footer {
     <div class="portrait-grid" id="fish"></div>
   </section>
 
-  <!-- FISHTANK SEASON 1 POSTER -->
+  <!-- SEASON 1 POSTER -->
 
   <section class="poster" id="poster"></section>
 
 </div>
 
-<!-- RED SWIMMING FISH END HERE -->
+<!-- RED FISH SCHOOL ENDS -->
 
 <!-- SKETCHES -->
 
@@ -1035,7 +1094,9 @@ footer {
          id="endingComposition"
          xmlns="http://www.w3.org/2000/svg"
          viewBox="-1800 0 5247 895"
-         preserveAspectRatio="xMidYMid meet">
+         preserveAspectRatio="xMidYMid meet"
+         role="img"
+         aria-label="Fishtank TV artwork with extended white lines">
 
       <g class="drawn-line">
         <path d="M 0 774 C -85 768, -130 785, -190 777 S -320 761, -400 773 C -480 789, -520 768, -605 776 S -735 791, -825 777 C -915 765, -980 788, -1060 779 S -1210 765, -1310 777 C -1440 791, -1530 768, -1640 776 L -2200 778"/>
@@ -1049,7 +1110,8 @@ footer {
       </g>
 
       <image href="/images/clients/fishtank/fishtv1_.jpeg"
-             x="0" y="0" width="1647" height="895"
+             x="0" y="0"
+             width="1647" height="895"
              preserveAspectRatio="none"/>
     </svg>
 
@@ -1062,9 +1124,13 @@ footer {
 
 </main>
 
-<!-- FOOTER -->
+<!-- GRADIENT FOOTER WITH BLACK FISH SCHOOL -->
 
 <div class="ending-gradient">
+
+  <div class="black-fish-school"
+       id="blackFishSchool"
+       aria-hidden="true"></div>
 
   <p class="ending-caption">
     FISHTANK SEASON 1 — THE END
@@ -1078,7 +1144,8 @@ footer {
     <div class="ending-logo">
       <a href="https://www.fishtank.live/"
          target="_blank"
-         rel="noopener noreferrer">
+         rel="noopener noreferrer"
+         aria-label="Visit Fishtank Live">
         <img src="/images/clients/fishtank/fishtanklogo.png"
              alt="Fishtank logo">
       </a>
@@ -1111,53 +1178,55 @@ const base = "/images/clients/fishtank/";
 const thumbs = base + "thumbs/";
 const thumbnailVersion = "20261116";
 
+/* ARTWORK DATA */
+
 const producers = [
-  ["fish1jet.jpeg","Jet Neptune","fish1jet.webp"],
-  ["fish1goldstriker.jpeg","Goldstriker","fish1goldstriker.webp"],
-  ["fish1ben.jpeg","Ben","fish1ben.webp"],
-  ["fish1tax.jpeg","Tax","fish1tax.webp"]
+  ["fish1jet.jpeg", "Jet Neptune", "fish1jet.webp"],
+  ["fish1goldstriker.jpeg", "Goldstriker", "fish1goldstriker.webp"],
+  ["fish1ben.jpeg", "Ben", "fish1ben.webp"],
+  ["fish1tax.jpeg", "Tax", "fish1tax.webp"]
 ];
 
 const freeloaders = [
-  ["fish1alex.jpeg","Alex","fish1alex.webp"],
-  ["fish1betty.jpeg","Betty","fish1betty.webp"],
-  ["fish1chip.jpeg","Chip","fish1chip.webp"],
-  ["fish1chris.jpeg","Chris","fish1chris.webp"],
-  ["fish1dontarious.jpeg","Dontarious","fish1dontarious.webp"],
-  ["fish1ella.jpeg","Ella","fish1ella.webp"],
-  ["fish1frank.jpeg","Frank","fish1frank.webp"],
-  ["fish1lance.jpeg","Lance","fish1lance.webp"],
-  ["fish1tai.jpeg","Tai","fish1tai.webp"]
+  ["fish1alex.jpeg", "Alex", "fish1alex.webp"],
+  ["fish1betty.jpeg", "Betty", "fish1betty.webp"],
+  ["fish1chip.jpeg", "Chip", "fish1chip.webp"],
+  ["fish1chris.jpeg", "Chris", "fish1chris.webp"],
+  ["fish1dontarious.jpeg", "Dontarious", "fish1dontarious.webp"],
+  ["fish1ella.jpeg", "Ella", "fish1ella.webp"],
+  ["fish1frank.jpeg", "Frank", "fish1frank.webp"],
+  ["fish1lance.jpeg", "Lance", "fish1lance.webp"],
+  ["fish1tai.jpeg", "Tai", "fish1tai.webp"]
 ];
 
 const fish = [
-  ["fish1josie.jpeg","Josie","fish1josie.webp"],
-  ["fish1jonathan.jpeg","Jon","fish1jon.webp"],
-  ["fish1vance.jpeg","Vance","fish1vance.webp"],
-  ["fish1baldvance.jpeg","Bald Vance","fish1baldvance.webp"],
-  ["fish1sylvia.jpeg","Sylvia","fish1sylvia.webp"],
-  ["fish1damiel.jpeg","Damiel","fish1damiel.webp"],
-  ["fish1letty.jpeg","Letty","fish1letty.webp"],
-  ["fish1simmons.jpeg","Simmons","fish1simmons.webp"],
-  ["fish1mauro.jpeg","Mauro","fish1mauro.webp"]
+  ["fish1josie.jpeg", "Josie", "fish1josie.webp"],
+  ["fish1jonathan.jpeg", "Jon", "fish1jon.webp"],
+  ["fish1vance.jpeg", "Vance", "fish1vance.webp"],
+  ["fish1baldvance.jpeg", "Bald Vance", "fish1baldvance.webp"],
+  ["fish1sylvia.jpeg", "Sylvia", "fish1sylvia.webp"],
+  ["fish1damiel.jpeg", "Damiel", "fish1damiel.webp"],
+  ["fish1letty.jpeg", "Letty", "fish1letty.webp"],
+  ["fish1simmons.jpeg", "Simmons", "fish1simmons.webp"],
+  ["fish1mauro.jpeg", "Mauro", "fish1mauro.webp"]
 ];
 
 const illustrations = [
-  ["fish1alexsketch.jpeg","Alex Sketch","fish1alexsketch.webp"],
-  ["fish1bensketch.jpeg","Ben Sketch","fish1bensketch.webp"],
-  ["fish1bettysketch.jpeg","Betty Sketch","fish1bettysketch.webp"],
-  ["fish1chipsketch.jpeg","Chip Sketch","fish1chipsketch.webp"],
-  ["fish1chrissketch.jpeg","Chris Sketch","fish1chrissketch.webp"],
-  ["fish1dontarioussketch.jpeg","Dontarious Sketch","fish1dontarioussketch.webp"],
-  ["fish1ellasketch.jpeg","Ella Sketch","fish1ellasketch.webp"],
-  ["fish1franksketch.jpeg","Frank Sketch","fish1franksketch.webp"],
-  ["fish1goldstrikersketch.jpeg","Goldstriker Sketch","fish1goldstrikersketch.webp"],
-  ["fish1jetsketch.jpeg","Jet Sketch","fish1jetsketch.webp"],
-  ["fish1lancesketch.jpeg","Lance Sketch","fish1lancesketch.webp"],
-  ["fish1taisketch.jpeg","Tai Sketch","fish1taisketch.webp"],
-  ["fish1taxsketch.jpeg","Tax Sketch","fish1taxsketch.webp"],
-  ["josiejonbubbles.jpeg","Josie and Jon","josiejonbubbles.webp"],
-  ["peppasylvia.jpeg","Peppa and Sylvia","peppasylvia.webp"]
+  ["fish1alexsketch.jpeg", "Alex Sketch", "fish1alexsketch.webp"],
+  ["fish1bensketch.jpeg", "Ben Sketch", "fish1bensketch.webp"],
+  ["fish1bettysketch.jpeg", "Betty Sketch", "fish1bettysketch.webp"],
+  ["fish1chipsketch.jpeg", "Chip Sketch", "fish1chipsketch.webp"],
+  ["fish1chrissketch.jpeg", "Chris Sketch", "fish1chrissketch.webp"],
+  ["fish1dontarioussketch.jpeg", "Dontarious Sketch", "fish1dontarioussketch.webp"],
+  ["fish1ellasketch.jpeg", "Ella Sketch", "fish1ellasketch.webp"],
+  ["fish1franksketch.jpeg", "Frank Sketch", "fish1franksketch.webp"],
+  ["fish1goldstrikersketch.jpeg", "Goldstriker Sketch", "fish1goldstrikersketch.webp"],
+  ["fish1jetsketch.jpeg", "Jet Sketch", "fish1jetsketch.webp"],
+  ["fish1lancesketch.jpeg", "Lance Sketch", "fish1lancesketch.webp"],
+  ["fish1taisketch.jpeg", "Tai Sketch", "fish1taisketch.webp"],
+  ["fish1taxsketch.jpeg", "Tax Sketch", "fish1taxsketch.webp"],
+  ["josiejonbubbles.jpeg", "Josie and Jon", "josiejonbubbles.webp"],
+  ["peppasylvia.jpeg", "Peppa and Sylvia", "peppasylvia.webp"]
 ];
 
 const poster = [
@@ -1166,39 +1235,39 @@ const poster = [
    "fishtankseason1poster.webp"]
 ];
 
-const tvGif = ["fish1tvcast.gif","Fishtank TV Cast"];
-const castGif = ["fish1cast.gif","Fishtank Season 1 Cast"];
-const endingArtwork = ["fishtv1_.jpeg","Fishtank TV"];
+const tvGif = ["fish1tvcast.gif", "Fishtank TV Cast"];
+const castGif = ["fish1cast.gif", "Fishtank Season 1 Cast"];
+const endingArtwork = ["fishtv1_.jpeg", "Fishtank TV"];
 
 const producerPhotos = [
-  ["jetphoto.jpg","Jet Neptune"],
-  ["goldstrikerphoto.jpg","Goldstriker"],
-  ["benphoto.jpg","Ben"],
-  ["taxphoto.jpg","Tax"]
+  ["jetphoto.jpg", "Jet Neptune"],
+  ["goldstrikerphoto.jpg", "Goldstriker"],
+  ["benphoto.jpg", "Ben"],
+  ["taxphoto.jpg", "Tax"]
 ];
 
 const freeloaderPhotos = [
-  ["alexphoto.jpg","Alex"],
-  ["bettyphoto.jpg","Betty"],
-  ["chipphoto.jpg","Chip"],
-  ["chrisphoto.jpg","Chris"],
-  ["dontariousphoto.jpg","Dontarious"],
-  ["ellaphoto.jpg","Ella"],
-  ["frankphoto.jpg","Frank"],
-  ["lancephoto.jpg","Lance"],
-  ["taiphoto.jpg","Tai"]
+  ["alexphoto.jpg", "Alex"],
+  ["bettyphoto.jpg", "Betty"],
+  ["chipphoto.jpg", "Chip"],
+  ["chrisphoto.jpg", "Chris"],
+  ["dontariousphoto.jpg", "Dontarious"],
+  ["ellaphoto.jpg", "Ella"],
+  ["frankphoto.jpg", "Frank"],
+  ["lancephoto.jpg", "Lance"],
+  ["taiphoto.jpg", "Tai"]
 ];
 
 const fishPhotos = [
-  ["josiephoto.jpg","Josie"],
-  ["jonphoto.jpg","Jon"],
-  ["vancephoto.jpg","Vance"],
-  ["baldvancephoto.jpg","Bald Vance"],
-  ["sylviaphoto.jpg","Sylvia"],
-  ["damielphoto.jpg","Damiel"],
-  ["lettyphoto.jpg","Letty"],
-  ["simmonsphoto.jpg","Simmons"],
-  ["maurophoto.jpg","Mauro"]
+  ["josie.jpg", "Josie"],
+  ["jon.jpg", "Jon"],
+  ["vance.jpg", "Vance"],
+  ["baldvance.jpg", "Bald Vance"],
+  ["sylvia.jpg", "Sylvia"],
+  ["damiel.jpg", "Damiel"],
+  ["letty.jpg", "Letty"],
+  ["simmons.jpg", "Simmons"],
+  ["mauro.jpg", "Mauro"]
 ];
 
 const allImages = [
@@ -1211,6 +1280,8 @@ const allImages = [
   ...illustrations,
   endingArtwork
 ];
+
+/* IMAGE HELPERS */
 
 function imagePath(filename) {
   return base + encodeURIComponent(filename);
@@ -1266,6 +1337,7 @@ function openImage(item) {
 
   activeIndex = index;
   previousFocus = document.activeElement;
+
   updateLightbox();
 
   document.getElementById("lightbox").classList.add("open");
@@ -1327,6 +1399,7 @@ function createPortrait(item, photoFilename) {
     photo.src = imagePath(photoFilename);
     photo.alt = "";
     photo.loading = "lazy";
+    photo.decoding = "async";
     windowEl.appendChild(photo);
   }
 
@@ -1401,6 +1474,8 @@ function fillGallery(id, items, creator) {
   });
 }
 
+/* BUILD GALLERIES */
+
 fillGallery("producers", producers, item => {
   const photo = producerPhotos.find(
     ([filename, name]) => name === item[1]
@@ -1431,10 +1506,11 @@ fillGallery("poster", poster, createPoster);
 createFeaturedGif("tvFeature", tvGif);
 createFeaturedGif("castFeature", castGif);
 
-/* PRODUCER AND FREELOADER TICKERS */
+/* PHOTO TICKERS */
 
 function createPhotoTicker(featureId, photos, stageClass) {
   const feature = document.getElementById(featureId);
+  if (!feature || !photos.length) return;
 
   const stage = document.createElement("div");
   stage.className = "photo-ticker-stage " + stageClass;
@@ -1446,18 +1522,21 @@ function createPhotoTicker(featureId, photos, stageClass) {
   const track = document.createElement("div");
   track.className = "photo-ticker-track";
 
+  function makePhoto(filename) {
+    const img = document.createElement("img");
+    img.src = imagePath(filename);
+    img.alt = "";
+    img.className = "photo-ticker-photo";
+    img.draggable = false;
+    return img;
+  }
+
   function makeGroup() {
     const group = document.createElement("div");
     group.className = "photo-ticker-group";
 
-    photos.forEach(([filename, name]) => {
-      const img = document.createElement("img");
-      img.src = imagePath(filename);
-      img.alt = "";
-      img.className = "photo-ticker-photo";
-      img.draggable = false;
-
-      group.appendChild(img);
+    photos.forEach(([filename]) => {
+      group.appendChild(makePhoto(filename));
     });
 
     return group;
@@ -1476,11 +1555,10 @@ function createPhotoTicker(featureId, photos, stageClass) {
   function updateTicker() {
     track.style.animation = "none";
 
-    firstGroup.replaceChildren(
-      ...Array.from(makeGroup().children)
-    );
+    firstGroup.replaceChildren(...makeGroup().children);
 
     const groupWidth = firstGroup.getBoundingClientRect().width;
+
     if (!groupWidth) {
       track.style.animation = "";
       return;
@@ -1493,11 +1571,7 @@ function createPhotoTicker(featureId, photos, stageClass) {
 
     for (let i = 1; i < copies; i++) {
       photos.forEach(([filename]) => {
-        const img = document.createElement("img");
-        img.src = imagePath(filename);
-        img.alt = "";
-        img.className = "photo-ticker-photo";
-        firstGroup.appendChild(img);
+        firstGroup.appendChild(makePhoto(filename));
       });
     }
 
@@ -1552,7 +1626,7 @@ createPhotoTicker(
   "freeloader-ticker-stage"
 );
 
-/* ENDING TV CLICK AREA */
+/* ENDING ARTWORK CLICK AREA */
 
 function positionEndingButton() {
   const svg = document.getElementById("endingComposition");
@@ -1560,6 +1634,8 @@ function positionEndingButton() {
 
   const box = svg.viewBox.baseVal;
   const rect = svg.getBoundingClientRect();
+
+  if (!box.width || !box.height) return;
 
   const scale = Math.min(
     rect.width / box.width,
@@ -1602,36 +1678,30 @@ document.getElementById("lightbox")
   });
 
 document.addEventListener("keydown", event => {
-  if (!document.getElementById("lightbox").classList.contains("open")) {
-    return;
-  }
+  const lightbox = document.getElementById("lightbox");
+
+  if (!lightbox.classList.contains("open")) return;
 
   if (event.key === "Escape") closeLightbox();
   if (event.key === "ArrowLeft") moveImage(-1);
   if (event.key === "ArrowRight") moveImage(1);
 });
 
-/* RED FISHTANK FISH */
-/* 42 fish total, concentrated toward the poster */
+/* RED FISH SCHOOL — 42 FISH */
 
 function createRedFishSchool() {
   const school = document.getElementById("redFishSchool");
   const logo = "/images/clients/fishtank/fishtanklogo.png";
 
+  if (!school) return;
+
   const totalFish = 42;
 
   for (let i = 0; i < totalFish; i++) {
     const swimmer = document.createElement("div");
-
     const direction = i % 2 === 0 ? "right" : "left";
 
     swimmer.className = "red-swimmer swim-" + direction;
-
-    /*
-      0–100% of the swimming zone.
-      The first fish are spread across THE FISH section.
-      More fish appear near the poster.
-    */
 
     let y;
 
@@ -1665,9 +1735,64 @@ function createRedFishSchool() {
   }
 }
 
+/* BLACK FISH SCHOOL — 18 FISH */
+
+function createBlackFishSchool() {
+  const school = document.getElementById("blackFishSchool");
+  const logo = "/images/clients/fishtank/fishtanklogo.png";
+
+  if (!school) return;
+
+  const fish = [
+    [18, 85, 17, -8, "right"],
+    [25, 44, 22, -16, "left"],
+    [31, 63, 19, -11, "right"],
+    [37, 92, 23, -20, "left"],
+    [43, 50, 15, -6, "right"],
+    [49, 75, 21, -13, "left"],
+    [55, 42, 18, -15, "right"],
+    [61, 58, 24, -7, "left"],
+    [23, 36, 16, -13, "left"],
+    [34, 100, 25, -9, "right"],
+    [46, 45, 20, -18, "left"],
+    [57, 64, 17, -12, "right"],
+    [68, 38, 22, -4, "left"],
+    [74, 90, 19, -17, "right"],
+    [80, 48, 16, -9, "left"],
+    [86, 72, 24, -19, "right"],
+    [65, 33, 14, -7, "right"],
+    [89, 57, 20, -15, "left"]
+  ];
+
+  fish.forEach(([y, size, speed, delay, direction], i) => {
+    const swimmer = document.createElement("div");
+
+    swimmer.className = "black-swimmer swim-" + direction;
+
+    swimmer.style.setProperty("--fish-y", y + "%");
+    swimmer.style.setProperty("--fish-size", size + "px");
+    swimmer.style.setProperty("--fish-speed", speed + "s");
+    swimmer.style.setProperty("--fish-delay", delay + "s");
+    swimmer.style.setProperty(
+      "--fish-opacity",
+      (0.7 + (i % 4) * 0.1).toString()
+    );
+
+    const img = document.createElement("img");
+    img.src = logo;
+    img.alt = "";
+    img.draggable = false;
+
+    swimmer.appendChild(img);
+    school.appendChild(swimmer);
+  });
+}
+
+/* START BOTH SCHOOLS */
+
 createRedFishSchool();
+createBlackFishSchool();
 </script>
-</div>
 
 </body>
 </html>
