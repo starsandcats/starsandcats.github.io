@@ -2,201 +2,428 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Animations — starsandtigers</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<title>Animations | starsandtigers</title>
 
-    body {
-      background: #000000;
-      color: white;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
+<style>
 
-    header {
-      background: #050505;
-      padding: 28px 5%;
-      border-bottom: 1px solid #777;
-    }
+/* GENERAL */
 
-    .brand {
-      font-size: 16px;
-      font-weight: bold;
-    }
+* {
+  box-sizing: border-box;
+}
 
-    nav {
-      text-align: center;
-      margin-top: 22px;
-    }
+html {
+  scroll-behavior: smooth;
+}
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 10px;
-      font-size: 13px;
-    }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #000000;
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-    nav a:hover {
-      color: #ffdc00;
-    }
+/* HEADER */
 
-    h1 {
-      text-align: center;
-      font-weight: normal;
-      font-size: clamp(34px, 5vw, 64px);
-      margin: 45px 10px 30px;
-      text-transform: uppercase;
-    }
+header {
+  width: 100%;
+  background: #000000;
+  border-bottom: 1px solid #777;
+  padding: 24px 5%;
 
-    .description {
-      text-align: center;
-      margin-bottom: 35px;
-    }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
 
-    .gallery {
-      width: min(1000px, 90%);
-      margin: 30px auto 70px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-      align-items: start;
-    }
+/* BRAND */
 
-    .gallery img {
-      width: 100%;
-      height: auto;
-      display: block;
-      cursor: zoom-in;
-      transition: opacity 0.2s ease;
-    }
+.brand {
+  color: #ffffff;
+  font-size: 23px;
+  font-weight: 900;
+  white-space: nowrap;
+  text-decoration: none;
+}
 
-    .gallery img:hover {
-      opacity: 0.85;
-    }
+/* NAVIGATION */
 
-    .lightbox {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      background: rgba(0, 0, 0, 0.88);
-      justify-content: center;
-      align-items: center;
-      padding: 50px 20px;
-    }
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 24px;
+}
 
-    .lightbox.active {
-      display: flex;
-    }
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
 
-    .lightbox img {
-      max-width: 90vw;
-      max-height: 85vh;
-      width: auto;
-      height: auto;
-      object-fit: contain;
-    }
+nav a:hover,
+nav a.active {
+  color: #ffdc00;
+}
 
-    .lightbox-close {
-      position: absolute;
-      top: 15px;
-      right: 25px;
-      color: white;
-      font-size: 42px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      line-height: 1;
-    }
+/* MAIN CONTENT */
 
-    .lightbox-close:hover {
-      opacity: 0.7;
-    }
-  </style>
+main {
+  width: 100%;
+  padding: 45px 5% 60px;
+}
+
+/* PAGE TITLE */
+
+h1 {
+  margin: 0 0 15px;
+  color: #ffffff;
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+/* DESCRIPTION */
+
+.description {
+  color: #bcbcbc;
+  font-size: 15px;
+  line-height: 1.7;
+  margin: 0 0 35px;
+}
+
+/* ANIMATION GALLERY */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(220px, 1fr)
+  );
+  gap: 20px;
+  width: 100%;
+}
+
+/* GIFS */
+
+.gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0;
+  cursor: zoom-in;
+
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.03);
+  opacity: 0.85;
+}
+
+/* LIGHTBOX */
+
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.95);
+  justify-content: center;
+  align-items: center;
+  padding: 50px 20px;
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+/* ENLARGED GIF */
+
+.lightbox img {
+  max-width: 90vw;
+  max-height: 85vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* CLOSE BUTTON */
+
+.lightbox-close {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  color: #ffffff;
+  font-size: 42px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.lightbox-close:hover {
+  color: #ffdc00;
+}
+
+/* FOOTER */
+
+footer {
+  padding: 20px 5% 30px;
+  color: #999;
+  font-size: 12px;
+}
+
+/* TABLET */
+
+@media (max-width: 900px) {
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  nav {
+    justify-content: flex-start;
+    gap: 18px;
+  }
+
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+  header {
+    padding: 20px 5%;
+  }
+
+  .brand {
+    font-size: 20px;
+  }
+
+  nav {
+    gap: 12px 16px;
+  }
+
+  nav a {
+    font-size: 12px;
+  }
+
+  main {
+    padding-top: 30px;
+  }
+
+  h1 {
+    font-size: 36px;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(150px, 1fr)
+    );
+    gap: 12px;
+  }
+
+}
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+
+  nav a,
+  .gallery img {
+    transition: none;
+  }
+
+}
+
+</style>
 </head>
 
 <body>
 
-  <header>
-    <div class="brand">starsandtigers</div>
+<!-- TOP HEADER -->
 
-    <nav>
-      <a href="../">Home</a>
-      <a href="../illustrations/">Illustrations</a>
-      <a href="../animations/">Animations</a>
-      <a href="../client-projects/">Client Projects</a>
-      <a href="../sketches/">Sketches</a>
-    </nav>
-  </header>
+<header>
 
-  <h1>Animations</h1>
+  <a class="brand" href="/">
+    ★ starsandtigers ★
+  </a>
 
-  <p class="description">★The Animated Works★</p>
+  <nav aria-label="Main navigation">
+
+    <a href="/">
+      Home
+    </a>
+
+    <a href="/illustrations/">
+      Illustrations
+    </a>
+
+    <a href="/animations/"
+       class="active"
+       aria-current="page">
+      Animations
+    </a>
+
+    <a href="/sketches/">
+      Sketches
+    </a>
+
+    <a href="/client-projects/">
+      Client Work
+    </a>
+
+  </nav>
+
+</header>
+
+<!-- MAIN CONTENT -->
+
+<main>
+
+  <h1>ANIMATIONS</h1>
+
+  <p class="description">
+    The Animated Works.
+  </p>
+
+  <!-- ANIMATION GALLERY -->
 
   <div class="gallery">
 
     <img
-      src="../images/animation/DBS_gun_Animation_Final.gif"
+      src="/images/animation/DBS_gun_Animation_Final.gif"
       alt="DBS gun animation">
 
-  </div>
-
-  <div class="lightbox" id="lightbox"
-       role="dialog"
-       aria-modal="true"
-       aria-label="Enlarged animation">
-
-    <button class="lightbox-close" id="lightboxClose"
-            aria-label="Close enlarged image">&times;</button>
-
-    <img id="lightboxImage" src="" alt="">
+    <img
+      src="/images/animation/DBS_lifting_Animation_.GIF"
+      alt="DBS lifting animation">
 
   </div>
 
-  <script>
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImage = document.getElementById('lightboxImage');
-    const closeButton = document.getElementById('lightboxClose');
+</main>
 
-    document.querySelectorAll('.gallery img').forEach(img => {
-      img.addEventListener('click', () => {
-        lightboxImage.src = img.src;
-        lightboxImage.alt = img.alt;
-        lightbox.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        closeButton.focus();
-      });
+<!-- LIGHTBOX -->
+
+<div
+  class="lightbox"
+  id="lightbox"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Enlarged animation">
+
+  <button
+    class="lightbox-close"
+    id="lightboxClose"
+    aria-label="Close enlarged animation">
+    &times;
+  </button>
+
+  <img
+    id="lightboxImage"
+    src=""
+    alt="">
+
+</div>
+
+<!-- FOOTER -->
+
+<footer>
+  © 2026 starsandtigers
+</footer>
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+const lightbox =
+  document.getElementById("lightbox");
+
+const lightboxImage =
+  document.getElementById("lightboxImage");
+
+const closeButton =
+  document.getElementById("lightboxClose");
+
+/* OPEN ANIMATION */
+
+document.querySelectorAll(".gallery img")
+  .forEach(img => {
+
+    img.addEventListener("click", () => {
+
+      lightboxImage.src = img.src;
+      lightboxImage.alt = img.alt;
+
+      lightbox.classList.add("active");
+
+      document.body.style.overflow = "hidden";
+
+      closeButton.focus();
+
     });
 
-    function closeLightbox() {
-      lightbox.classList.remove('active');
-      lightboxImage.src = '';
-      document.body.style.overflow = '';
-    }
+  });
 
-    closeButton.addEventListener('click', closeLightbox);
+/* CLOSE ANIMATION */
 
-    lightbox.addEventListener('click', event => {
-      if (event.target === lightbox) {
-        closeLightbox();
-      }
-    });
+function closeLightbox() {
 
-    document.addEventListener('keydown', event => {
-      if (
-        event.key === 'Escape' &&
-        lightbox.classList.contains('active')
-      ) {
-        closeLightbox();
-      }
-    });
-  </script>
+  lightbox.classList.remove("active");
+
+  lightboxImage.src = "";
+
+  document.body.style.overflow = "";
+
+}
+
+/* CLOSE BUTTON */
+
+closeButton.addEventListener(
+  "click",
+  closeLightbox
+);
+
+/* CLICK OUTSIDE */
+
+lightbox.addEventListener("click", event => {
+
+  if (event.target === lightbox) {
+    closeLightbox();
+  }
+
+});
+
+/* ESCAPE KEY */
+
+document.addEventListener("keydown", event => {
+
+  if (
+    event.key === "Escape" &&
+    lightbox.classList.contains("active")
+  ) {
+    closeLightbox();
+  }
+
+});
+
+</script>
 
 </body>
 </html>
